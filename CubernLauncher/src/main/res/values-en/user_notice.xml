@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- User notice -->
+    <string name="user_notice_title">User Notice and Open Source License</string>
+    <string name="user_notice_agree">I have read and agree</string>
+    <string name="user_notice_intro">Welcome to %s. Please read the user notice below before continuing. This launcher is an unofficial community open source project and is not affiliated with or endorsed by Mojang, Microsoft, or NetEase.</string>
+
+    <string name="user_notice_origin_title">1. Project origin</string>
+    <string name="user_notice_origin_content">This launcher is developed and modified based on Zalith Launcher 1. The original launch kernel and compatibility are preserved, while the interface layer was rewritten and features such as Terracotta multiplayer, automatic Java runtime management and Vulkan rendering support were introduced. The original project author is the Zalith Launcher1 launcher author; the current author of this launcher is 万古沧海.</string>
+
+    <string name="user_notice_non_official_title">2. Unofficial notice</string>
+    <string name="user_notice_non_official_content">%s is an unofficial build. It is not affiliated with or endorsed by Mojang Studios, Microsoft, or NetEase. Minecraft is a trademark of Mojang Studios. This project exists solely to run Minecraft: Java Edition on Android devices and does not distribute any game content.</string>
+
+    <string name="user_notice_network_title">3. Network and accounts</string>
+    <string name="user_notice_network_content">The launcher requires network access to fetch version manifests, assets, libraries and runtimes, and sends your account tokens to the relevant official authentication servers or the third party login server you configure. Aside from the information required for authentication, the launcher does not upload your personal files. Account credentials are stored locally on your device.</string>
+
+    <string name="user_notice_storage_title">4. Local storage</string>
+    <string name="user_notice_storage_content">The launcher stores version files, libraries, resource packs and saves inside the game directory you choose, and keeps settings, account data and multiplayer logs in the app private directory. You can clear the app data from system settings or delete files from the game directory at any time.</string>
+
+    <string name="user_notice_license_title">5. Open source license</string>
+    <string name="user_notice_license_content">%s is released under the GNU General Public License v3.0. The license is copyleft: any code that uses, modifies or derives from this project must also be open sourced under GPL v3.0. If you distribute a modified version, please include the complete corresponding source code and the license notice.</string>
+
+    <string name="user_notice_disclaimer_title">6. Disclaimer</string>
+    <string name="user_notice_disclaimer_content">This software is provided as is, without warranty of any kind. You are responsible for any consequences arising from its use, including but not limited to data loss, account risks and account actions caused by violating the terms of service of the game. Please make sure your usage complies with the applicable terms of service and local laws.</string>
+</resources>

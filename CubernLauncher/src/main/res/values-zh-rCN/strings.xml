@@ -408,6 +408,7 @@
     <string name="main_launch">启动游戏</string>
 
     <string name="setting_category_control">控制设置</string>
+    <string name="setting_category_about">关于本启动器</string>
     <string name="setting_category_virtual_mouse">虚拟鼠标</string>
     <string name="setting_category_gyro_controls">陀螺仪控制</string>
     <string name="setting_category_controller_settings">手柄设置</string>
@@ -699,6 +700,13 @@
     <string name="about_LingMuQiuZhu_desc">为启动器提供了技术支持</string>
     <string name="about_ShirosakiMio_desc">为启动器提供了技术支持，修复了一些漏洞</string>
     <string name="about_bangbang93_desc">启动器使用了其创作的 BMCLAPI 镜像源</string>
+    <string name="about_ZalithLauncher2_desc">陶瓦联机模块的移植来源</string>
+    <string name="about_FoldCraftLauncher_desc">提供陶瓦联机实现参考与 EasyTier 集成方案</string>
+    <string name="about_Amethyst_desc">AI 辅助游戏版本管理功能的设计参考</string>
+    <string name="about_MyRemasteredAI_desc">AI 助手能力与启动器集成方案参考</string>
+    <string name="about_MIUIX_desc">提供界面层使用的 MIUIX Compose UI 组件库</string>
+    <string name="about_check_update">检查更新</string>
+    <string name="about_check_update_desc">检查是否有新版本可用</string>
     <string name="about_access_space">访问空间</string>
     <string name="about_access_link">访问链接</string>
     <string name="about_version_name">软件版本名:</string>

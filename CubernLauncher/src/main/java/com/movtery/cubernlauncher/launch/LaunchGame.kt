@@ -20,6 +20,7 @@ import com.movtery.cubernlauncher.support.touch_controller.ControllerProxy
 import com.movtery.cubernlauncher.task.TaskExecutors
 import com.movtery.cubernlauncher.ui.dialog.LifecycleAwareTipDialog
 import com.movtery.cubernlauncher.ui.dialog.TipDialog
+import com.movtery.cubernlauncher.utils.runtime.RuntimeManager
 import com.movtery.cubernlauncher.utils.ZHTools
 import com.movtery.cubernlauncher.utils.http.NetworkUtils
 import com.movtery.cubernlauncher.utils.stringutils.StringUtils
@@ -50,6 +51,25 @@ class LaunchGame {
         @JvmStatic
         fun preLaunch(context: Context, version: Version) {
             val networkAvailable = NetworkUtils.isNetworkAvailable(context)
+
+            //启动前按需准备 Java 运行时，避免首次启动强制安装全部运行时
+            val declaredJavaVersion = AsyncMinecraftDownloader.getListedVersion(version.getVersionName())
+                ?.javaVersion?.majorVersion
+            val requiredJavaVersion = RuntimeManager.requiredJavaVersion(
+                version.getVersionName(),
+                declaredJavaVersion
+            )
+            if (RuntimeManager.findInstalledRuntime(requiredJavaVersion) == null) {
+                RuntimeManager.ensureRuntime(context, requiredJavaVersion) { installed ->
+                    if (installed == null) {
+                        Toast.makeText(
+                            context,
+                            context.getString(R.string.game_autopick_runtime_failed),
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                }
+            }
 
             fun launch(setOfflineAccount: Boolean = false) {
                 version.offlineAccountLogin = setOfflineAccount
@@ -134,7 +154,13 @@ class LaunchGame {
 
             val customArgs = minecraftVersion.getJavaArgs().takeIf { it.isNotBlank() } ?: ""
 
-            val javaRuntime = getRuntime(activity, minecraftVersion, version.javaVersion?.majorVersion ?: 8)
+            //按需准备 Java 运行时：使用版本号语义比较判断所需的主版本，
+            //仅在对应运行时缺失时进行解压安装，避免首次启动强制安装全部运行时
+            val requiredJavaVersion = RuntimeManager.requiredJavaVersion(
+                minecraftVersion.getVersionName(),
+                version.javaVersion?.majorVersion
+            )
+            val javaRuntime = getRuntime(activity, minecraftVersion, requiredJavaVersion)
 
             printLauncherInfo(
                 minecraftVersion,
@@ -176,8 +202,17 @@ class LaunchGame {
             val pickedRuntime = MultiRTUtils.read(runtime)
             if (pickedRuntime.javaVersion == 0 || pickedRuntime.javaVersion < targetJavaVersion) {
                 runtime = MultiRTUtils.getNearestJreName(targetJavaVersion) ?: run {
+                    //未找到已安装的运行时，尝试按需解压内置运行时
+                    val installed = RuntimeManager.findInstalledRuntime(targetJavaVersion)
+                    if (installed != null) {
+                        return installed
+                    }
                     activity.runOnUiThread {
-                        Toast.makeText(activity, activity.getString(R.string.game_autopick_runtime_failed), Toast.LENGTH_SHORT).show()
+                        Toast.makeText(
+                            activity,
+                            activity.getString(R.string.game_autopick_runtime_failed),
+                            Toast.LENGTH_SHORT
+                        ).show()
                     }
                     return runtime
                 }

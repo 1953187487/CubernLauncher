@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- AI 功能 -->
+    <string name="ai_feature_title">AI version assistant</string>
+    <string name="ai_feature_desc">Inspect installed versions, match Java runtimes and get management advice. Design inspired by Amethyst-iOS and MyRemasteredAI.</string>
+    <string name="ai_feature_advice">Management advice</string>
+    <string name="ai_feature_health">Version health check</string>
+    <string name="ai_feature_java_requirement">Required Java: %1$d</string>
+    <string name="ai_feature_runtime_matched">Matched runtime: %1$s</string>
+    <string name="ai_feature_runtime_missing">not installed</string>
+    <string name="ai_feature_ask">Ask the assistant</string>
+    <string name="ai_feature_api_ready">A user-provided API key is configured, the assistant can answer questions.</string>
+    <string name="ai_feature_api_missing">Configure the USER_LLM_API_KEY environment variable with your own key to enable natural language questions. Offline inspection works without a key.</string>
+    <string name="ai_feature_analyze">Re-analyze versions</string>
+    <string name="ai_feature_ask_button">Ask about version management</string>
+    <string name="ai_feature_ask_prompt">How should I manage the Minecraft versions installed on this device?</string>
+</resources>

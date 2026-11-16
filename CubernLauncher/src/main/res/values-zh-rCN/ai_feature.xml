@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- AI 功能 -->
+    <string name="ai_feature_title">AI 版本助手</string>
+    <string name="ai_feature_desc">体检已安装版本、匹配 Java 运行时并给出管理建议，功能设计参考 Amethyst-iOS 与 MyRemasteredAI。</string>
+    <string name="ai_feature_advice">管理建议</string>
+    <string name="ai_feature_health">版本健康检查</string>
+    <string name="ai_feature_java_requirement">所需 Java：%1$d</string>
+    <string name="ai_feature_runtime_matched">匹配运行时：%1$s</string>
+    <string name="ai_feature_runtime_missing">尚未安装</string>
+    <string name="ai_feature_ask">向助手提问</string>
+    <string name="ai_feature_api_ready">已配置用户自备的 API Key，助手可以回答问题。</string>
+    <string name="ai_feature_api_missing">配置环境变量 USER_LLM_API_KEY 填入你自己的 Key 后即可使用自然语言问答，离线体检功能无需 Key。</string>
+    <string name="ai_feature_analyze">重新体检版本</string>
+    <string name="ai_feature_ask_button">咨询版本管理</string>
+    <string name="ai_feature_ask_prompt">我应该怎样管理这台设备上安装的 Minecraft 版本？</string>
+</resources>

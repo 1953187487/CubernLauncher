@@ -125,6 +125,16 @@
                     app:layout_constraintTop_toBottomOf="@id/dec3"
                     tools:ignore="HardcodedText" />
 
+                <com.movtery.cubernlauncher.ui.view.AnimButton
+                    android:id="@+id/check_update_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_8sdp"
+                    android:text="@string/about_check_update"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/discord_button"
+                    app:layout_constraintTop_toBottomOf="@id/dec3" />
+
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout

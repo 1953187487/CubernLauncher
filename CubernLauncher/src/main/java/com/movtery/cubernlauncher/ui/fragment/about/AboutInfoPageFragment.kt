@@ -13,6 +13,7 @@ import com.movtery.cubernlauncher.InfoCenter
 import com.movtery.cubernlauncher.InfoDistributor
 import com.movtery.cubernlauncher.R
 import com.movtery.cubernlauncher.databinding.FragmentAboutInfoPageBinding
+import com.movtery.cubernlauncher.feature.update.UpdateUtils
 import com.movtery.cubernlauncher.ui.dialog.TipDialog
 import com.movtery.cubernlauncher.ui.subassembly.about.AboutItemBean
 import com.movtery.cubernlauncher.ui.subassembly.about.AboutItemBean.AboutItemButtonBean
@@ -50,6 +51,9 @@ class AboutInfoPageFragment() : Fragment(R.layout.fragment_about_info_page) {
 
             githubButton.setOnClickListener { ZHTools.openLink(requireActivity(), UrlManager.URL_HOME) }
             licenseButton.setOnClickListener { ZHTools.openLink(requireActivity(), "https://www.gnu.org/licenses/gpl-3.0.html") }
+            checkUpdateButton.setOnClickListener {
+                UpdateUtils.checkDownloadedPackage(requireContext(), force = true, ignore = false)
+            }
 
             val aboutAdapter = AboutRecyclerAdapter(this@AboutInfoPageFragment.mAboutData)
             aboutRecycler.apply {
@@ -183,6 +187,66 @@ class AboutInfoPageFragment() : Fragment(R.layout.fragment_about_info_page) {
                     requireActivity(),
                     getString(R.string.about_button_support_development),
                     "https://afdian.com/a/bangbang93"
+                )
+            )
+        )
+        mAboutData.add(
+            AboutItemBean(
+                resources.getDrawable(R.drawable.ic_pojav_full, requireContext().theme),
+                "Zalith Launcher 2",
+                getString(R.string.about_ZalithLauncher2_desc),
+                AboutItemButtonBean(
+                    requireActivity(),
+                    "Github",
+                    "https://github.com/ZalithLauncher/ZalithLauncher2"
+                )
+            )
+        )
+        mAboutData.add(
+            AboutItemBean(
+                resources.getDrawable(R.drawable.ic_pojav_full, requireContext().theme),
+                "FoldCraftLauncher",
+                getString(R.string.about_FoldCraftLauncher_desc),
+                AboutItemButtonBean(
+                    requireActivity(),
+                    "Github",
+                    "https://github.com/FCL-Team/FoldCraftLauncher"
+                )
+            )
+        )
+        mAboutData.add(
+            AboutItemBean(
+                resources.getDrawable(R.drawable.ic_pojav_full, requireContext().theme),
+                "herbrine8403 / Amethyst-iOS",
+                getString(R.string.about_Amethyst_desc),
+                AboutItemButtonBean(
+                    requireActivity(),
+                    "Github",
+                    "https://github.com/herbrine8403/Amethyst-iOS"
+                )
+            )
+        )
+        mAboutData.add(
+            AboutItemBean(
+                resources.getDrawable(R.drawable.ic_pojav_full, requireContext().theme),
+                "MyRemasteredAI",
+                getString(R.string.about_MyRemasteredAI_desc),
+                AboutItemButtonBean(
+                    requireActivity(),
+                    "Github",
+                    "https://github.com/MyRemasteredAI/MyRemasteredAI"
+                )
+            )
+        )
+        mAboutData.add(
+            AboutItemBean(
+                resources.getDrawable(R.drawable.ic_pojav_full, requireContext().theme),
+                "MIUIX",
+                getString(R.string.about_MIUIX_desc),
+                AboutItemButtonBean(
+                    requireActivity(),
+                    "Github",
+                    "https://github.com/compose-miuix-ui/miuix"
                 )
             )
         )

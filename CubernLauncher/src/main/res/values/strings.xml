@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Zalith Launcher -->
+    <!-- Cubern Launcher -->
+    <string name="app_name">Cubern Launcher</string>
     <string name="generic_open">Open</string>
     <string name="generic_close">Close</string>
     <string name="generic_return">Return</string>
@@ -394,6 +395,9 @@
     <string name="main_launch">Launch Game</string>
     <string name="main_setting">Settings</string>
     <string name="main_setting_desc">Renderer, Java runtime, control layout and launcher information</string>
+    <string name="main_files">File management</string>
+    <string name="account_title">Account</string>
+    <string name="download">Download</string>
     <string name="version_current">Current version</string>
     <string name="version_title">Version selection</string>
     <string name="setting_java_select_runtime">Java runtime</string>
@@ -404,6 +408,7 @@
     <string name="about_author_original_value">Zalith Launcher1 启动器作者</string>
     <string name="about_license_title">Open source license</string>
     <string name="setting_category_control">Control settings</string>
+    <string name="setting_category_about">About this launcher</string>
     <string name="setting_category_virtual_mouse">Virtual mouse</string>
     <string name="setting_category_gyro_controls">Gyro controls</string>
     <string name="setting_category_controller_settings">Controller settings</string>
@@ -681,6 +686,13 @@
     <string name="about_LingMuQiuZhu_desc">Provided technical support for the launcher</string>
     <string name="about_ShirosakiMio_desc">Provided technical support for the launcher and fixed some bugs</string>
     <string name="about_bangbang93_desc">The launcher uses the BMCLAPI mirror source created by them</string>
+    <string name="about_ZalithLauncher2_desc">Source of the Terracotta multiplayer module ported into this launcher</string>
+    <string name="about_FoldCraftLauncher_desc">Provided the Terracotta implementation reference and EasyTier integration approach</string>
+    <string name="about_Amethyst_desc">Referenced for the AI-assisted game version management feature design</string>
+    <string name="about_MyRemasteredAI_desc">Referenced for the AI assistant capabilities and launcher integration approach</string>
+    <string name="about_MIUIX_desc">Provided the MIUIX Compose UI component library used by the interface layer</string>
+    <string name="about_check_update">Check for updates</string>
+    <string name="about_check_update_desc">Check whether a newer version of this launcher is available</string>
     <string name="about_access_space">Access Space</string>
     <string name="about_access_link">Access Link</string>
     <string name="about_version_name">Software Version Name:</string>

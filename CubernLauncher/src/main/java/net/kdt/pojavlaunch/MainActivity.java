@@ -568,6 +568,7 @@ public class MainActivity extends BaseActivity implements ControlButtonMenuListe
             //初始化点击事件
             this.binding.forceClose.setOnClickListener(this);
             this.binding.logOutput.setOnClickListener(this);
+            this.binding.terracottaMultiplayer.setOnClickListener(this);
             this.binding.sendCustomKey.setOnClickListener(this);
             this.binding.openMemoryInfo.setOnCheckedChangeListener(this);
             this.binding.openMemoryInfoLayout.setOnClickListener(this);
@@ -628,6 +629,24 @@ public class MainActivity extends BaseActivity implements ControlButtonMenuListe
             this.binding.hotbarWidthAdd.setOnClickListener(this);
         }
 
+        /**
+         * 打开陶瓦联机界面
+         * 与 Zalith Launcher 2 一致，通过游戏内启动器菜单进入联机功能
+         */
+        private void openTerracottaMultiplayer() {
+            runOnUiThread(() -> {
+                try {
+                    Intent intent = new Intent(MainActivity.this,
+                            com.movtery.cubernlauncher.ui.activity.TerracottaActivity.class);
+                    startActivity(intent);
+                } catch (Throwable throwable) {
+                    Toast.makeText(MainActivity.this,
+                            getString(R.string.terracotta_native_unavailable),
+                            Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
+
         private void dialogSendCustomKey() {
             keyboardDialog.setOnMultiKeycodeSelectListener(selectedKeycodes -> {
                 //模拟同时按下，同时松开按键
@@ -677,6 +696,7 @@ public class MainActivity extends BaseActivity implements ControlButtonMenuListe
         @Override public void onClick(View v) {
             if (v == binding.forceClose) ZHTools.dialogForceClose(MainActivity.this);
             else if (v == binding.logOutput) MainActivity.binding.mainLoggerView.toggleViewWithAnim();
+            else if (v == binding.terracottaMultiplayer) openTerracottaMultiplayer();
             else if (v == binding.sendCustomKey) dialogSendCustomKey();
             else if (v == binding.openMemoryInfoLayout) MenuUtils.toggleSwitchState(binding.openMemoryInfo);
             else if (v == binding.openFpsInfoLayout) MenuUtils.toggleSwitchState(binding.openFpsInfo);

@@ -28,6 +28,7 @@ import com.movtery.cubernlauncher.InfoDistributor
 import com.movtery.cubernlauncher.launch.LaunchGame.Companion.preLaunch
 import com.movtery.cubernlauncher.plugins.renderer.RendererPluginManager
 import com.movtery.cubernlauncher.setting.AllSettings
+import com.movtery.cubernlauncher.ui.compose.AiAssistantScreen
 import com.movtery.cubernlauncher.ui.compose.CubernTheme
 import com.movtery.cubernlauncher.ui.compose.LauncherHomeScreen
 import com.movtery.cubernlauncher.ui.compose.SettingsScreen
@@ -87,9 +88,11 @@ class LauncherActivity : FragmentActivity() {
             CubernTheme {
                 var showSettings by remember { mutableStateOf(false) }
                 var showTaowa by remember { mutableStateOf(false) }
+                var showAi by remember { mutableStateOf(false) }
 
                 when {
                     showTaowa -> TaowaScreen(onBack = { showTaowa = false })
+                    showAi -> AiAssistantScreen(onBack = { showAi = false })
                     showSettings -> SettingsScreen(
                         onBack = { showSettings = false },
                         onOpenAbout = { openAboutPage() }
@@ -98,7 +101,9 @@ class LauncherActivity : FragmentActivity() {
                         activity = this,
                         onOpenSettings = { showSettings = true },
                         onOpenTaowa = { showTaowa = true },
-                        onOpenVersionSelector = { openVersionSelector() }
+                        onOpenDownload = { openDownloadPage() },
+                        onOpenVersionSelector = { openVersionSelector() },
+                        onOpenAi = { showAi = true }
                     )
                 }
             }
@@ -132,6 +137,21 @@ class LauncherActivity : FragmentActivity() {
                 fragment,
                 VersionSelectorFragment::class.java,
                 VersionSelectorFragment.TAG,
+                null
+            )
+        }
+    }
+
+    /**
+     * 打开下载页面
+     */
+    private fun openDownloadPage() {
+        val fragment = supportFragmentManager.findFragmentById(R.id.container_fragment)
+        if (fragment != null) {
+            ZHTools.swapFragmentWithAnim(
+                fragment,
+                com.movtery.cubernlauncher.ui.fragment.DownloadFragment::class.java,
+                com.movtery.cubernlauncher.ui.fragment.DownloadFragment.TAG,
                 null
             )
         }

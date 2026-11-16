@@ -82,11 +82,6 @@ private fun SettingsContent(padding: PaddingValues, onOpenAbout: () -> Unit) {
             ) {
                 Text(text = context.getString(R.string.setting_category_video), modifier = Modifier.padding(bottom = 8.dp))
                 RenderModeEntry(mode = renderMode, onModeChange = { renderMode = it })
-                SuperArrow(
-                    title = context.getString(R.string.terracotta_menu),
-                    summary = context.getString(R.string.terracotta_menu_desc),
-                    onClick = { }
-                )
             }
         }
 

@@ -18,6 +18,7 @@ import com.movtery.cubernlauncher.feature.unpack.UnpackJreTask
 import com.movtery.cubernlauncher.feature.unpack.UnpackSingleFilesTask
 import com.movtery.cubernlauncher.task.Task
 import com.movtery.cubernlauncher.ui.dialog.TipDialog
+import com.movtery.cubernlauncher.ui.dialog.UserNotice
 import com.movtery.cubernlauncher.utils.StoragePermissionsUtils
 import com.movtery.cubernlauncher.ui.activity.LauncherActivity
 import net.kdt.pojavlaunch.MissingStorageActivity
@@ -109,18 +110,8 @@ class SplashActivity : BaseActivity() {
                 )
             }
         }
-        Jre.entries.forEach {
-            val unpackJreTask = UnpackJreTask(this, it)
-            if (!unpackJreTask.isCheckFailed()) {
-                items.add(
-                    InstallableItem(
-                        it.jreName,
-                        getString(it.summary),
-                        unpackJreTask
-                    )
-                )
-            }
-        }
+        // Java 运行时改为按需安装：进入启动器后仅在启动游戏时准备所需的运行时，
+        // 避免首次启动强制下载全部运行时组件
         items.sort()
         installableAdapter = InstallableAdapter(items) {
             toMain()
@@ -128,12 +119,15 @@ class SplashActivity : BaseActivity() {
     }
     
     private fun checkEnd() {
-        installableAdapter.checkAllTask()
-        Task.runTask {
-            UnpackSingleFilesTask(this).run()
-        }.execute()
+        //在安装运行时组件之前，先展示用户须知协议
+        UserNotice.show(this) {
+            installableAdapter.checkAllTask()
+            Task.runTask {
+                UnpackSingleFilesTask(this).run()
+            }.execute()
 
-        binding.startButton.isClickable = true
+            binding.startButton.isClickable = true
+        }
     }
 
     private fun toMain() {

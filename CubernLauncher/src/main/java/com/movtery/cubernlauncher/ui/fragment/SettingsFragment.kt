@@ -14,6 +14,7 @@ import com.movtery.cubernlauncher.R
 import com.movtery.cubernlauncher.databinding.FragmentSettingsBinding
 import com.movtery.cubernlauncher.event.value.SettingsPageSwapEvent
 import com.movtery.cubernlauncher.setting.Settings
+import com.movtery.cubernlauncher.ui.fragment.settings.AboutSettingsFragment
 import com.movtery.cubernlauncher.ui.fragment.settings.ControlSettingsFragment
 import com.movtery.cubernlauncher.ui.fragment.settings.ExperimentalSettingsFragment
 import com.movtery.cubernlauncher.ui.fragment.settings.GameSettingsFragment
@@ -82,14 +83,19 @@ class SettingsFragment : FragmentWithAnim(R.layout.fragment_settings) {
     }
 
     private class ViewPagerAdapter(val fragment: FragmentWithAnim): FragmentStateAdapter(fragment.requireActivity()) {
-        override fun getItemCount(): Int = 5
+        /**
+         * 导航顺序：视频 → 游戏 → 启动器 → 实验性 → 控制布局 → 关于本启动器
+         * 控制布局位于倒数第二，关于本启动器位于最后
+         */
+        override fun getItemCount(): Int = 6
         override fun createFragment(position: Int): Fragment {
             return when(position) {
-                1 -> ControlSettingsFragment(fragment)
-                2 -> GameSettingsFragment()
-                3 -> LauncherSettingsFragment(fragment)
-                4 -> ExperimentalSettingsFragment()
-                else -> VideoSettingsFragment()
+                0 -> VideoSettingsFragment()
+                1 -> GameSettingsFragment()
+                2 -> LauncherSettingsFragment(fragment)
+                3 -> ExperimentalSettingsFragment()
+                4 -> ControlSettingsFragment(fragment)
+                else -> AboutSettingsFragment()
             }
         }
     }
