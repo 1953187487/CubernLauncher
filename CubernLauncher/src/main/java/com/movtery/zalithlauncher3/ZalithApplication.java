@@ -1,4 +1,4 @@
-package com.movtery.zalithlauncher3;
+package com.movtery.CubernLauncher3;
 
 import android.app.Application;
 import android.content.Context;

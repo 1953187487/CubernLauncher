@@ -1,4 +1,4 @@
-package com.movtery.zalithlauncher3.ui.activity;
+package com.movtery.CubernLauncher3.ui.activity;
 
 import android.os.Bundle;
 import android.view.View;
@@ -7,7 +7,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.movtery.zalithlauncher3.R;
+import com.movtery.CubernLauncher3.R;
 
 /**
  * Launcher 主界面 Activity
