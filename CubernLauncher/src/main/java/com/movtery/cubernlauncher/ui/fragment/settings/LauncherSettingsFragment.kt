@@ -19,7 +19,6 @@ import com.movtery.cubernlauncher.ui.fragment.settings.wrapper.SeekBarSettingsWr
 import com.movtery.cubernlauncher.ui.fragment.settings.wrapper.SwitchSettingsWrapper
 import com.movtery.cubernlauncher.utils.CleanUpCache.Companion.start
 import com.movtery.cubernlauncher.utils.ZHTools
-import net.kdt.pojavlaunch.LauncherActivity
 import org.greenrobot.eventbus.EventBus
 
 class LauncherSettingsFragment() : AbstractSettingsFragment(R.layout.settings_fragment_launcher, SettingCategory.LAUNCHER) {
@@ -194,7 +193,7 @@ class LauncherSettingsFragment() : AbstractSettingsFragment(R.layout.settings_fr
 
     private fun setupNotificationRequestPreference(notificationPermissionRequest: SwitchSettingsWrapper) {
         val activity = requireActivity()
-        if (activity is LauncherActivity) {
+        if (activity is com.movtery.cubernlauncher.ui.activity.LauncherActivity) {
             if (ZHTools.checkForNotificationPermission()) notificationPermissionRequest.setGone()
             notificationPermissionRequest.switchView.setOnCheckedChangeListener { _, _ ->
                 activity.askForNotificationPermission {

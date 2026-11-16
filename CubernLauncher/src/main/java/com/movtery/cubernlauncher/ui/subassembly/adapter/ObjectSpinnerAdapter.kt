@@ -19,6 +19,17 @@ class ObjectSpinnerAdapter<T>(
     private val itemNameProvider: (T) -> String //提供函数来获取字符串
 ) : RecyclerView.Adapter<ObjectSpinnerAdapter.ViewHolder<T>>(),
     PowerSpinnerInterface<T> {
+    /**
+     * 使用固定条目列表创建适配器
+     */
+    constructor(
+        powerSpinnerView: PowerSpinnerView,
+        items: List<T>,
+        itemNameProvider: (T) -> String
+    ) : this(powerSpinnerView, itemNameProvider) {
+        setItems(items)
+    }
+
     companion object {
         private const val NO_INT_VALUE = Int.MIN_VALUE
         private const val NO_SELECTED_INDEX = -1

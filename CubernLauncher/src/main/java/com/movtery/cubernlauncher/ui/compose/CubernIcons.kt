@@ -53,6 +53,34 @@ object CubernIcons {
     }
 
     /**
+     * 文件夹图标
+     */
+    val Folder: ImageVector by lazy {
+        ImageVector.Builder(
+            name = "CubernFolder",
+            defaultWidth = 24.dp,
+            defaultHeight = 24.dp,
+            viewportWidth = 24f,
+            viewportHeight = 24f
+        ).apply {
+            path(fill = SolidColor(Color.Black)) {
+                moveTo(10f, 4f)
+                lineTo(12f, 4f)
+                lineTo(14f, 6f)
+                lineTo(20f, 6f)
+                curveTo(20.55f, 6f, 21f, 6.45f, 21f, 7f)
+                lineTo(21f, 19f)
+                curveTo(21f, 19.55f, 20.55f, 20f, 20f, 20f)
+                lineTo(4f, 20f)
+                curveTo(3.45f, 20f, 3f, 19.55f, 3f, 19f)
+                lineTo(3f, 5f)
+                curveTo(3f, 4.45f, 3.45f, 4f, 4f, 4f)
+                close()
+            }
+        }.build()
+    }
+
+    /**
      * 设置图标
      */
     val Settings: ImageVector by lazy {

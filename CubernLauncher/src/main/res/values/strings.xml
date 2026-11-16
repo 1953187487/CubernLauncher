@@ -389,8 +389,20 @@
     <!-- Main Page & Settings -->
     <string name="main_open_main_dir">Open main directory</string>
     <string name="main_install_jar_file">Execute .jar file</string>
+    <string name="main_install_jar_file_desc">Run a Minecraft launcher or modpack .jar file</string>
     <string name="main_share_logs">Share log files</string>
     <string name="main_launch">Launch Game</string>
+    <string name="main_setting">Settings</string>
+    <string name="main_setting_desc">Renderer, Java runtime, control layout and launcher information</string>
+    <string name="version_current">Current version</string>
+    <string name="version_title">Version selection</string>
+    <string name="setting_java_select_runtime">Java runtime</string>
+    <string name="setting_video_render_mode">Renderer mode</string>
+    <string name="about_author_current">Current launcher author</string>
+    <string name="about_author_current_value">万古沧海</string>
+    <string name="about_author_original">Original author</string>
+    <string name="about_author_original_value">Zalith Launcher1 启动器作者</string>
+    <string name="about_license_title">Open source license</string>
     <string name="setting_category_control">Control settings</string>
     <string name="setting_category_virtual_mouse">Virtual mouse</string>
     <string name="setting_category_gyro_controls">Gyro controls</string>

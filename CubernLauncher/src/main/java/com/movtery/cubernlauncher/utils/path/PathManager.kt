@@ -28,11 +28,17 @@ class PathManager {
         lateinit var DIR_USER_SKIN: File
         lateinit var DIR_INSTALLED_RENDERER_PLUGIN: File
 
+        /** 陶瓦联机工作目录 */
+        @JvmField var DIR_TERRACOTTA: File = File("/data/local/tmp/terracotta")
+
         lateinit var FILE_SETTINGS: File
         lateinit var FILE_PROFILE_PATH: File
         lateinit var FILE_CTRLDEF_FILE: String
         lateinit var FILE_VERSION_LIST: String
         lateinit var FILE_NEWBIE_GUIDE: File
+
+        /** 陶瓦联机日志文件 */
+        @JvmField var FILE_TERRACOTTA_LOG: File = File("/data/local/tmp/terracotta.log")
 
         @JvmStatic
         fun initContextConstants(context: Context) {
@@ -52,6 +58,10 @@ class PathManager {
             DIR_APP_CACHE = context.externalCacheDir!!
             DIR_USER_SKIN = File(DIR_FILE, "/user_skin")
             DIR_INSTALLED_RENDERER_PLUGIN = File(DIR_FILE, "/renderer_plugins")
+            DIR_TERRACOTTA = File(DIR_FILE, "/terracotta").also {
+                it.mkdirs()
+            }
+            FILE_TERRACOTTA_LOG = File(DIR_TERRACOTTA, "terracotta.log")
             DIR_RUNTIME_MOD = context.getDir("runtime_mod", 0)?.also {
                 it.mkdirs()
             }

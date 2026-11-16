@@ -44,7 +44,6 @@ import com.movtery.cubernlauncher.utils.ZHTools;
 import com.movtery.cubernlauncher.utils.runtime.SelectRuntimeUtils;
 import com.movtery.cubernlauncher.utils.stringutils.StringUtils;
 
-import net.kdt.pojavlaunch.fragments.MainMenuFragment;
 import net.kdt.pojavlaunch.lifecycle.ContextExecutorTask;
 import net.kdt.pojavlaunch.memory.MemoryHoleFinder;
 import net.kdt.pojavlaunch.memory.SelfMapsParser;
@@ -683,7 +682,8 @@ public final class Tools {
     }
 
     public static void backToMainMenu(FragmentActivity fragmentActivity) {
-        fragmentActivity.getSupportFragmentManager().popBackStack(MainMenuFragment.TAG, 0);
+        // 新的 MIUIX 主界面作为根页面，返回时清空全部功能页面栈
+        fragmentActivity.getSupportFragmentManager().popBackStack(null, androidx.fragment.app.FragmentManager.POP_BACK_STACK_INCLUSIVE);
     }
 
     /** Remove the current fragment */
@@ -698,10 +698,11 @@ public final class Tools {
         }
 
         if(!customJavaArgs){ // Launch the intent to get the jar file
-            if(!(activity instanceof LauncherActivity))
+            if(!(activity instanceof com.movtery.cubernlauncher.ui.activity.LauncherActivity))
                 throw new IllegalStateException("Cannot start Mod Installer without LauncherActivity");
-            LauncherActivity launcherActivity = (LauncherActivity)activity;
-            launcherActivity.modInstallerLauncher.launch(null);
+            com.movtery.cubernlauncher.ui.activity.LauncherActivity launcherActivity =
+                    (com.movtery.cubernlauncher.ui.activity.LauncherActivity) activity;
+            launcherActivity.launchModInstaller();
             return;
         }
 

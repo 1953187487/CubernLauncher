@@ -49,7 +49,7 @@ abstract class AbstractResourceDownloadFragment(
     private val classify: Classify,
     private val categoryList: List<Category>,
     private val showModloader: Boolean,
-    private val recommendedPlatform: Platform = Platform.CURSEFORGE
+    private val recommendedPlatform: Platform = Platform.recommendedPlatform()
 ) : FragmentWithAnim(R.layout.fragment_download_resource) {
     private lateinit var binding: FragmentDownloadResourceBinding
 
@@ -57,7 +57,7 @@ abstract class AbstractResourceDownloadFragment(
     private lateinit var mSortAdapter: ObjectSpinnerAdapter<Sort>
     private lateinit var mCategoryAdapter: ObjectSpinnerAdapter<Category>
     private lateinit var mModLoaderAdapter: ObjectSpinnerAdapter<ModLoader>
-    private var mCurrentPlatform: Platform = Platform.CURSEFORGE
+    private var mCurrentPlatform: Platform = Platform.recommendedPlatform()
     private val mFilters: Filters = Filters()
 
     private val mInfoAdapter = InfoAdapter(parentFragment,
@@ -84,7 +84,7 @@ abstract class AbstractResourceDownloadFragment(
     ): View {
         binding = FragmentDownloadResourceBinding.inflate(layoutInflater)
 
-        mPlatformAdapter = ObjectSpinnerAdapter(binding.platformSpinner) { platform -> platform.pName }
+        mPlatformAdapter = ObjectSpinnerAdapter(binding.platformSpinner, Platform.availablePlatforms()) { platform -> platform.pName }
         mSortAdapter = ObjectSpinnerAdapter(binding.sortSpinner) { sort -> getString(sort.resNameID) }
         mCategoryAdapter = ObjectSpinnerAdapter(binding.categorySpinner) { category -> getString(category.resNameID) }
         mModLoaderAdapter = ObjectSpinnerAdapter(binding.modloaderSpinner) { modloader ->
@@ -200,7 +200,7 @@ abstract class AbstractResourceDownloadFragment(
 
     private fun initSpinnerIndex() {
         binding.apply {
-            platformSpinner.selectItemByIndex(recommendedPlatform.ordinal)
+            platformSpinner.selectItemByIndex(Platform.availablePlatforms().indexOf(recommendedPlatform).coerceAtLeast(0))
             sortSpinner.selectItemByIndex(0)
             categorySpinner.selectItemByIndex(0)
             if (showModloader) modloaderSpinner.selectItemByIndex(0)
