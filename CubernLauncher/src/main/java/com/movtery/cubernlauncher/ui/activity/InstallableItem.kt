@@ -1,6 +1,6 @@
-package com.movtery.CubernLauncher.ui.activity
+package com.movtery.cubernlauncher.ui.activity
 
-import com.movtery.CubernLauncher.feature.unpack.AbstractUnpackTask
+import com.movtery.cubernlauncher.feature.unpack.AbstractUnpackTask
 
 class InstallableItem(
     val name: String,

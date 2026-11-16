@@ -1,10 +1,10 @@
-package com.movtery.CubernLauncher.feature.download.utils
+package com.movtery.cubernlauncher.feature.download.utils
 
-import com.movtery.CubernLauncher.InfoDistributor
-import com.movtery.CubernLauncher.feature.download.Filters
-import com.movtery.CubernLauncher.feature.download.enums.Classify
-import com.movtery.CubernLauncher.utils.stringutils.StringUtils.containsChinese
-import com.movtery.CubernLauncher.utils.stringutils.StringUtilsKt
+import com.movtery.cubernlauncher.InfoDistributor
+import com.movtery.cubernlauncher.feature.download.Filters
+import com.movtery.cubernlauncher.feature.download.enums.Classify
+import com.movtery.cubernlauncher.utils.stringutils.StringUtils.containsChinese
+import com.movtery.cubernlauncher.utils.stringutils.StringUtilsKt
 import net.kdt.pojavlaunch.modloaders.modpacks.api.ApiHandler
 import org.jackhuang.hmcl.ui.versions.ModTranslations
 import org.jackhuang.hmcl.util.StringUtils

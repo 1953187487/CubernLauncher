@@ -1,4 +1,4 @@
-package com.movtery.CubernLauncher.ui.fragment
+package com.movtery.cubernlauncher.ui.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,14 +10,14 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
 import com.movtery.anim.AnimPlayer
 import com.movtery.anim.animations.Animations
-import com.movtery.CubernLauncher.R
-import com.movtery.CubernLauncher.databinding.FragmentAboutBinding
-import com.movtery.CubernLauncher.ui.dialog.TipDialog
-import com.movtery.CubernLauncher.ui.fragment.about.AboutInfoPageFragment
-import com.movtery.CubernLauncher.ui.fragment.about.AboutSponsorPageFragment
-import com.movtery.CubernLauncher.utils.ZHTools
-import com.movtery.CubernLauncher.utils.path.UrlManager
-import com.movtery.CubernLauncher.utils.stringutils.StringUtils
+import com.movtery.cubernlauncher.R
+import com.movtery.cubernlauncher.databinding.FragmentAboutBinding
+import com.movtery.cubernlauncher.ui.dialog.TipDialog
+import com.movtery.cubernlauncher.ui.fragment.about.AboutInfoPageFragment
+import com.movtery.cubernlauncher.ui.fragment.about.AboutSponsorPageFragment
+import com.movtery.cubernlauncher.utils.ZHTools
+import com.movtery.cubernlauncher.utils.path.UrlManager
+import com.movtery.cubernlauncher.utils.stringutils.StringUtils
 
 class AboutFragment : FragmentWithAnim(R.layout.fragment_about) {
     companion object {

@@ -1,4 +1,4 @@
-package com.movtery.CubernLauncher.ui.dialog
+package com.movtery.cubernlauncher.ui.dialog
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -11,8 +11,8 @@ import android.view.View
 import android.view.Window
 import android.widget.TextView
 import androidx.annotation.CheckResult
-import com.movtery.CubernLauncher.databinding.DialogTipBinding
-import com.movtery.CubernLauncher.ui.dialog.DraggableDialog.DialogInitializationListener
+import com.movtery.cubernlauncher.databinding.DialogTipBinding
+import com.movtery.cubernlauncher.ui.dialog.DraggableDialog.DialogInitializationListener
 
 
 class TipDialog private constructor(

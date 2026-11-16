@@ -1,11 +1,11 @@
-package com.movtery.CubernLauncher.feature.version.install
+package com.movtery.cubernlauncher.feature.version.install
 
 import android.content.Intent
 import com.google.gson.JsonParser
 import com.kdt.mcgui.ProgressLayout
-import com.movtery.CubernLauncher.R
-import com.movtery.CubernLauncher.feature.customprofilepath.ProfilePathHome
-import com.movtery.CubernLauncher.utils.path.LibPath
+import com.movtery.cubernlauncher.R
+import com.movtery.cubernlauncher.feature.customprofilepath.ProfilePathHome
+import com.movtery.cubernlauncher.utils.path.LibPath
 import net.kdt.pojavlaunch.JavaGUILauncherActivity
 import net.kdt.pojavlaunch.progresskeeper.ProgressKeeper
 import java.io.File

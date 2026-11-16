@@ -1,4 +1,4 @@
-package com.movtery.CubernLauncher.feature.background
+package com.movtery.cubernlauncher.feature.background
 
 import android.graphics.drawable.Drawable
 import android.widget.ImageView

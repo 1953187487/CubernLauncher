@@ -1,10 +1,10 @@
-package com.movtery.CubernLauncher.ui.dialog
+package com.movtery.cubernlauncher.ui.dialog
 
 import android.annotation.SuppressLint
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
 import androidx.lifecycle.LifecycleOwner
-import com.movtery.CubernLauncher.task.TaskExecutors
+import com.movtery.cubernlauncher.task.TaskExecutors
 import java.util.concurrent.atomic.AtomicBoolean
 
 abstract class LifecycleAwareTipDialog: LifecycleEventObserver {

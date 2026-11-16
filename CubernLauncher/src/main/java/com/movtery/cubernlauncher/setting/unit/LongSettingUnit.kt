@@ -1,6 +1,6 @@
-package com.movtery.CubernLauncher.setting.unit
+package com.movtery.cubernlauncher.setting.unit
 
-import com.movtery.CubernLauncher.setting.Settings.Manager
+import com.movtery.cubernlauncher.setting.Settings.Manager
 
 class LongSettingUnit(key: String, defaultValue: Long) : AbstractSettingUnit<Long>(key, defaultValue) {
     override fun getValue() = Manager.getValue(key, defaultValue) { it.toLongOrNull() }

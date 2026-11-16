@@ -1,4 +1,4 @@
-package com.movtery.CubernLauncher.ui.subassembly.about;
+package com.movtery.cubernlauncher.ui.subassembly.about;
 
 public class SponsorMeta {
     public Sponsor[] sponsors;

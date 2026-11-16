@@ -1,4 +1,4 @@
-package com.movtery.CubernLauncher.feature.version;
+package com.movtery.cubernlauncher.feature.version;
 
 public class NoVersionException extends RuntimeException {
     public NoVersionException(String message) {

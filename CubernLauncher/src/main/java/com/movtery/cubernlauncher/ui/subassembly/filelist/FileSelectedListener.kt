@@ -1,4 +1,4 @@
-package com.movtery.CubernLauncher.ui.subassembly.filelist
+package com.movtery.cubernlauncher.ui.subassembly.filelist
 
 import java.io.File
 

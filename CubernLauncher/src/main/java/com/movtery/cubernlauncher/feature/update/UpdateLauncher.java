@@ -1,19 +1,19 @@
-package com.movtery.CubernLauncher.feature.update;
+package com.movtery.cubernlauncher.feature.update;
 
-import static com.movtery.CubernLauncher.task.TaskExecutors.runInUIThread;
-import static com.movtery.CubernLauncher.utils.file.FileTools.formatFileSize;
-import static com.movtery.CubernLauncher.utils.path.UrlManager.TIME_OUT;
+import static com.movtery.cubernlauncher.task.TaskExecutors.runInUIThread;
+import static com.movtery.cubernlauncher.utils.file.FileTools.formatFileSize;
+import static com.movtery.cubernlauncher.utils.path.UrlManager.TIME_OUT;
 
 import android.app.Dialog;
 import android.content.Context;
 
 import androidx.annotation.NonNull;
 
-import com.movtery.CubernLauncher.R;
-import com.movtery.CubernLauncher.feature.log.Logging;
-import com.movtery.CubernLauncher.ui.dialog.ProgressDialog;
-import com.movtery.CubernLauncher.utils.ZHTools;
-import com.movtery.CubernLauncher.utils.path.UrlManager;
+import com.movtery.cubernlauncher.R;
+import com.movtery.cubernlauncher.feature.log.Logging;
+import com.movtery.cubernlauncher.ui.dialog.ProgressDialog;
+import com.movtery.cubernlauncher.utils.ZHTools;
+import com.movtery.cubernlauncher.utils.path.UrlManager;
 
 import net.kdt.pojavlaunch.Tools;
 

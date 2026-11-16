@@ -1,9 +1,9 @@
-package com.movtery.CubernLauncher.context
+package com.movtery.cubernlauncher.context
 
 import android.content.Context
 import android.content.ContextWrapper
-import com.movtery.CubernLauncher.setting.Settings
-import com.movtery.CubernLauncher.utils.path.PathManager
+import com.movtery.cubernlauncher.setting.Settings
+import com.movtery.cubernlauncher.utils.path.PathManager
 import net.kdt.pojavlaunch.prefs.LauncherPreferences
 
 class LocaleHelper(context: Context) : ContextWrapper(context) {

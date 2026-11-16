@@ -1,14 +1,14 @@
-package com.movtery.CubernLauncher.launch
+package com.movtery.cubernlauncher.launch
 
 import androidx.collection.ArrayMap
-import com.movtery.CubernLauncher.InfoDistributor
-import com.movtery.CubernLauncher.feature.accounts.AccountUtils
-import com.movtery.CubernLauncher.feature.customprofilepath.ProfilePathHome
-import com.movtery.CubernLauncher.feature.customprofilepath.ProfilePathHome.Companion.getLibrariesHome
-import com.movtery.CubernLauncher.feature.version.Version
-import com.movtery.CubernLauncher.utils.ZHTools
-import com.movtery.CubernLauncher.utils.path.LibPath
-import com.movtery.CubernLauncher.utils.path.PathManager
+import com.movtery.cubernlauncher.InfoDistributor
+import com.movtery.cubernlauncher.feature.accounts.AccountUtils
+import com.movtery.cubernlauncher.feature.customprofilepath.ProfilePathHome
+import com.movtery.cubernlauncher.feature.customprofilepath.ProfilePathHome.Companion.getLibrariesHome
+import com.movtery.cubernlauncher.feature.version.Version
+import com.movtery.cubernlauncher.utils.ZHTools
+import com.movtery.cubernlauncher.utils.path.LibPath
+import com.movtery.cubernlauncher.utils.path.PathManager
 import net.kdt.pojavlaunch.AWTCanvasView
 import net.kdt.pojavlaunch.JMinecraftVersionList
 import net.kdt.pojavlaunch.Tools

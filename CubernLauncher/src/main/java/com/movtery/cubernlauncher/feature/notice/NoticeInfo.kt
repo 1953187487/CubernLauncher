@@ -1,4 +1,4 @@
-package com.movtery.CubernLauncher.feature.notice
+package com.movtery.cubernlauncher.feature.notice
 
 data class NoticeInfo(
     @JvmField val title: String,

@@ -1,7 +1,7 @@
-package com.movtery.CubernLauncher.feature.download.item
+package com.movtery.cubernlauncher.feature.download.item
 
-import com.movtery.CubernLauncher.feature.download.enums.ModLoader
-import com.movtery.CubernLauncher.feature.download.enums.VersionType
+import com.movtery.cubernlauncher.feature.download.enums.ModLoader
+import com.movtery.cubernlauncher.feature.download.enums.VersionType
 import java.util.Date
 
 /**

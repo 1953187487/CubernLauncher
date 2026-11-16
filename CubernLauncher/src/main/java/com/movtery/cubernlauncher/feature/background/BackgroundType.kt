@@ -1,4 +1,4 @@
-package com.movtery.CubernLauncher.feature.background
+package com.movtery.cubernlauncher.feature.background
 
 enum class BackgroundType {
     MAIN_MENU, CUSTOM_CONTROLS, IN_GAME

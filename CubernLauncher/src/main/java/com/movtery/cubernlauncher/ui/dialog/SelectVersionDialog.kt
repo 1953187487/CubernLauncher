@@ -1,14 +1,14 @@
-package com.movtery.CubernLauncher.ui.dialog
+package com.movtery.cubernlauncher.ui.dialog
 
 import android.content.Context
 import android.os.Bundle
 import androidx.core.widget.doAfterTextChanged
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayout.OnTabSelectedListener
-import com.movtery.CubernLauncher.R
-import com.movtery.CubernLauncher.databinding.DialogSelectVersionBinding
-import com.movtery.CubernLauncher.ui.subassembly.versionlist.VersionSelectedListener
-import com.movtery.CubernLauncher.ui.subassembly.versionlist.VersionType
+import com.movtery.cubernlauncher.R
+import com.movtery.cubernlauncher.databinding.DialogSelectVersionBinding
+import com.movtery.cubernlauncher.ui.subassembly.versionlist.VersionSelectedListener
+import com.movtery.cubernlauncher.ui.subassembly.versionlist.VersionType
 
 class SelectVersionDialog(context: Context) : FullScreenDialog(context) {
     private val binding: DialogSelectVersionBinding = DialogSelectVersionBinding.inflate(layoutInflater)

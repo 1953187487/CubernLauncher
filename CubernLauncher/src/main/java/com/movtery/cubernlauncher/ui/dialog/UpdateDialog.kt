@@ -1,4 +1,4 @@
-package com.movtery.CubernLauncher.ui.dialog
+package com.movtery.cubernlauncher.ui.dialog
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -6,18 +6,18 @@ import android.os.Bundle
 import android.view.View
 import android.view.Window
 import android.widget.Toast
-import com.movtery.CubernLauncher.R
-import com.movtery.CubernLauncher.databinding.DialogUpdateBinding
-import com.movtery.CubernLauncher.feature.update.LauncherVersion
-import com.movtery.CubernLauncher.feature.update.LauncherVersion.WhatsNew
-import com.movtery.CubernLauncher.feature.update.UpdateLauncher
-import com.movtery.CubernLauncher.feature.update.UpdateUtils.Companion.getFileSize
-import com.movtery.CubernLauncher.setting.AllSettings.Companion.ignoreUpdate
-import com.movtery.CubernLauncher.task.TaskExecutors.Companion.runInUIThread
-import com.movtery.CubernLauncher.ui.dialog.DraggableDialog.DialogInitializationListener
-import com.movtery.CubernLauncher.utils.ZHTools
-import com.movtery.CubernLauncher.utils.file.FileTools.Companion.formatFileSize
-import com.movtery.CubernLauncher.utils.stringutils.StringUtils
+import com.movtery.cubernlauncher.R
+import com.movtery.cubernlauncher.databinding.DialogUpdateBinding
+import com.movtery.cubernlauncher.feature.update.LauncherVersion
+import com.movtery.cubernlauncher.feature.update.LauncherVersion.WhatsNew
+import com.movtery.cubernlauncher.feature.update.UpdateLauncher
+import com.movtery.cubernlauncher.feature.update.UpdateUtils.Companion.getFileSize
+import com.movtery.cubernlauncher.setting.AllSettings.Companion.ignoreUpdate
+import com.movtery.cubernlauncher.task.TaskExecutors.Companion.runInUIThread
+import com.movtery.cubernlauncher.ui.dialog.DraggableDialog.DialogInitializationListener
+import com.movtery.cubernlauncher.utils.ZHTools
+import com.movtery.cubernlauncher.utils.file.FileTools.Companion.formatFileSize
+import com.movtery.cubernlauncher.utils.stringutils.StringUtils
 
 class UpdateDialog(context: Context, private val launcherVersion: LauncherVersion) :
     FullScreenDialog(context), DialogInitializationListener {

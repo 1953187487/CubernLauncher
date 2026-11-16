@@ -1,10 +1,10 @@
-package com.movtery.CubernLauncher.utils.file
+package com.movtery.cubernlauncher.utils.file
 
 import android.content.Context
-import com.movtery.CubernLauncher.R
-import com.movtery.CubernLauncher.task.TaskExecutors
-import com.movtery.CubernLauncher.ui.dialog.ProgressDialog
-import com.movtery.CubernLauncher.utils.ZHTools
+import com.movtery.cubernlauncher.R
+import com.movtery.cubernlauncher.task.TaskExecutors
+import com.movtery.cubernlauncher.ui.dialog.ProgressDialog
+import com.movtery.cubernlauncher.utils.ZHTools
 import java.util.Timer
 import java.util.TimerTask
 import java.util.concurrent.Future

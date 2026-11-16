@@ -1,10 +1,10 @@
-package com.movtery.CubernLauncher.feature.download.item
+package com.movtery.cubernlauncher.feature.download.item
 
-import com.movtery.CubernLauncher.feature.download.enums.Category
-import com.movtery.CubernLauncher.feature.download.enums.Classify
-import com.movtery.CubernLauncher.feature.download.enums.DependencyType
-import com.movtery.CubernLauncher.feature.download.enums.ModLoader
-import com.movtery.CubernLauncher.feature.download.enums.Platform
+import com.movtery.cubernlauncher.feature.download.enums.Category
+import com.movtery.cubernlauncher.feature.download.enums.Classify
+import com.movtery.cubernlauncher.feature.download.enums.DependencyType
+import com.movtery.cubernlauncher.feature.download.enums.ModLoader
+import com.movtery.cubernlauncher.feature.download.enums.Platform
 import java.util.Date
 
 open class DependenciesInfoItem(

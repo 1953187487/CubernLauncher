@@ -1,6 +1,6 @@
-package com.movtery.CubernLauncher.feature.download.install
+package com.movtery.cubernlauncher.feature.download.install
 
-import com.movtery.CubernLauncher.feature.download.item.ModLoaderWrapper
+import com.movtery.cubernlauncher.feature.download.item.ModLoaderWrapper
 import java.io.File
 import java.io.IOException
 

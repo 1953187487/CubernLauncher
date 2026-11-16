@@ -1,6 +1,6 @@
-package com.movtery.CubernLauncher.feature.download.enums
+package com.movtery.cubernlauncher.feature.download.enums
 
-import com.movtery.CubernLauncher.R
+import com.movtery.cubernlauncher.R
 
 /**
  * CurseForge与Modrinth双平台的类别汇集，记录类别所代指的实际值，以便搜索资源时填入类别。

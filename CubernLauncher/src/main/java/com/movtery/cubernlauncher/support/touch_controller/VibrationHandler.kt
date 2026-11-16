@@ -1,9 +1,9 @@
-package com.movtery.CubernLauncher.support.touch_controller
+package com.movtery.cubernlauncher.support.touch_controller
 
 import android.os.VibrationEffect
 import android.os.Vibrator
-import com.movtery.CubernLauncher.feature.log.Logging
-import com.movtery.CubernLauncher.setting.AllSettings
+import com.movtery.cubernlauncher.feature.log.Logging
+import com.movtery.cubernlauncher.setting.AllSettings
 import top.fifthlight.touchcontroller.proxy.client.LauncherProxyClient
 import top.fifthlight.touchcontroller.proxy.message.VibrateMessage
 

@@ -1,4 +1,4 @@
-package com.movtery.CubernLauncher.ui.view
+package com.movtery.cubernlauncher.ui.view
 
 import android.animation.AnimatorInflater
 import android.content.Context
@@ -6,8 +6,8 @@ import android.graphics.drawable.Drawable
 import android.util.AttributeSet
 import androidx.appcompat.widget.AppCompatEditText
 import com.movtery.anim.animations.Animations
-import com.movtery.CubernLauncher.R
-import com.movtery.CubernLauncher.utils.anim.ViewAnimUtils.Companion.setViewAnim
+import com.movtery.cubernlauncher.R
+import com.movtery.cubernlauncher.utils.anim.ViewAnimUtils.Companion.setViewAnim
 
 class AnimEditText @JvmOverloads constructor(
     context: Context,

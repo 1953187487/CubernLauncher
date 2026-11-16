@@ -1,4 +1,4 @@
-package com.movtery.CubernLauncher.feature.mod.parser
+package com.movtery.cubernlauncher.feature.mod.parser
 
 /**
  * 模组解析进度监听器，用于回调当前已经处理的模组和模组总数

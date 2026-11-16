@@ -1,4 +1,4 @@
-package com.movtery.CubernLauncher.event.sticky
+package com.movtery.cubernlauncher.event.sticky
 
 import net.kdt.pojavlaunch.JMinecraftVersionList
 

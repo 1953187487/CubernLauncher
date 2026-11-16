@@ -1,4 +1,4 @@
-package com.movtery.CubernLauncher.ui.dialog
+package com.movtery.cubernlauncher.ui.dialog
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -6,9 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.movtery.CubernLauncher.R
-import com.movtery.CubernLauncher.databinding.ItemFileListViewBinding
-import com.movtery.CubernLauncher.feature.login.AuthResult.AvailableProfiles
+import com.movtery.cubernlauncher.R
+import com.movtery.cubernlauncher.databinding.ItemFileListViewBinding
+import com.movtery.cubernlauncher.feature.login.AuthResult.AvailableProfiles
 
 class SelectRoleDialog(
     context: Context,

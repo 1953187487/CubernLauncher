@@ -1,4 +1,4 @@
-package com.movtery.CubernLauncher.ui.subassembly.customcontrols;
+package com.movtery.cubernlauncher.ui.subassembly.customcontrols;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -14,13 +14,13 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.flexbox.FlexboxLayout;
-import com.movtery.CubernLauncher.R;
-import com.movtery.CubernLauncher.databinding.ItemControlListViewBinding;
-import com.movtery.CubernLauncher.databinding.ItemFileListViewBinding;
-import com.movtery.CubernLauncher.task.Task;
-import com.movtery.CubernLauncher.task.TaskExecutors;
-import com.movtery.CubernLauncher.ui.dialog.ControlInfoDialog;
-import com.movtery.CubernLauncher.utils.stringutils.StringUtils;
+import com.movtery.cubernlauncher.R;
+import com.movtery.cubernlauncher.databinding.ItemControlListViewBinding;
+import com.movtery.cubernlauncher.databinding.ItemFileListViewBinding;
+import com.movtery.cubernlauncher.task.Task;
+import com.movtery.cubernlauncher.task.TaskExecutors;
+import com.movtery.cubernlauncher.ui.dialog.ControlInfoDialog;
+import com.movtery.cubernlauncher.utils.stringutils.StringUtils;
 
 import net.kdt.pojavlaunch.Tools;
 

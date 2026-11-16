@@ -1,4 +1,4 @@
-package com.movtery.CubernLauncher.ui.subassembly.versionlist;
+package com.movtery.cubernlauncher.ui.subassembly.versionlist;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -9,12 +9,12 @@ import android.widget.LinearLayout;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.movtery.CubernLauncher.R;
-import com.movtery.CubernLauncher.event.sticky.MinecraftVersionValueEvent;
-import com.movtery.CubernLauncher.feature.log.Logging;
-import com.movtery.CubernLauncher.task.TaskExecutors;
-import com.movtery.CubernLauncher.ui.subassembly.filelist.FileItemBean;
-import com.movtery.CubernLauncher.ui.subassembly.filelist.FileRecyclerViewCreator;
+import com.movtery.cubernlauncher.R;
+import com.movtery.cubernlauncher.event.sticky.MinecraftVersionValueEvent;
+import com.movtery.cubernlauncher.feature.log.Logging;
+import com.movtery.cubernlauncher.task.TaskExecutors;
+import com.movtery.cubernlauncher.ui.subassembly.filelist.FileItemBean;
+import com.movtery.cubernlauncher.ui.subassembly.filelist.FileRecyclerViewCreator;
 
 import net.kdt.pojavlaunch.JMinecraftVersionList;
 import net.kdt.pojavlaunch.Tools;

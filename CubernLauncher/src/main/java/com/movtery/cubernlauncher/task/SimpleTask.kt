@@ -1,4 +1,4 @@
-package com.movtery.CubernLauncher.task
+package com.movtery.cubernlauncher.task
 
 import java.util.concurrent.Callable
 

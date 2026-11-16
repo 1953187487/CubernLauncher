@@ -1,10 +1,10 @@
-package com.movtery.CubernLauncher.ui.dialog
+package com.movtery.cubernlauncher.ui.dialog
 
 import android.content.Context
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.movtery.CubernLauncher.R
-import com.movtery.CubernLauncher.utils.runtime.RuntimeSelectedListener
+import com.movtery.cubernlauncher.R
+import com.movtery.cubernlauncher.utils.runtime.RuntimeSelectedListener
 import net.kdt.pojavlaunch.multirt.MultiRTUtils
 import net.kdt.pojavlaunch.multirt.RTRecyclerViewAdapter
 import net.kdt.pojavlaunch.multirt.Runtime

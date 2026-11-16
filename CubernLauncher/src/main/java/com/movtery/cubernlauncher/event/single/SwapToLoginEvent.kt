@@ -1,3 +1,3 @@
-package com.movtery.CubernLauncher.event.single
+package com.movtery.cubernlauncher.event.single
 
 class SwapToLoginEvent

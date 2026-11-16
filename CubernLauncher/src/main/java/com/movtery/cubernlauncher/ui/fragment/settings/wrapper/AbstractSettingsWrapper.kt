@@ -1,10 +1,10 @@
-package com.movtery.CubernLauncher.ui.fragment.settings.wrapper
+package com.movtery.cubernlauncher.ui.fragment.settings.wrapper
 
 import android.content.Context
 import android.view.View
-import com.movtery.CubernLauncher.R
-import com.movtery.CubernLauncher.ui.dialog.TipDialog
-import com.movtery.CubernLauncher.utils.ZHTools
+import com.movtery.cubernlauncher.R
+import com.movtery.cubernlauncher.ui.dialog.TipDialog
+import com.movtery.cubernlauncher.utils.ZHTools
 
 abstract class AbstractSettingsWrapper(
     private val mainView: View

@@ -1,4 +1,4 @@
-package com.movtery.CubernLauncher.feature.notice
+package com.movtery.cubernlauncher.feature.notice
 
 import com.google.gson.annotations.SerializedName
 

@@ -1,14 +1,14 @@
-package com.movtery.CubernLauncher.feature.version
+package com.movtery.cubernlauncher.feature.version
 
 import android.content.Context
 import android.os.Parcel
 import android.os.Parcelable
 import com.google.gson.JsonParser
-import com.movtery.CubernLauncher.R
-import com.movtery.CubernLauncher.feature.log.Logging
-import com.movtery.CubernLauncher.feature.version.VersionsManager.getZalithVersionPath
-import com.movtery.CubernLauncher.setting.AllSettings
-import com.movtery.CubernLauncher.utils.stringutils.StringUtils.getStringNotNull
+import com.movtery.cubernlauncher.R
+import com.movtery.cubernlauncher.feature.log.Logging
+import com.movtery.cubernlauncher.feature.version.VersionsManager.getZalithVersionPath
+import com.movtery.cubernlauncher.setting.AllSettings
+import com.movtery.cubernlauncher.utils.stringutils.StringUtils.getStringNotNull
 import net.kdt.pojavlaunch.Tools
 import java.io.File
 import java.io.FileWriter

@@ -1,21 +1,21 @@
-package com.movtery.CubernLauncher.feature.download.platform.curseforge
+package com.movtery.cubernlauncher.feature.download.platform.curseforge
 
 import android.widget.Toast
-import com.movtery.CubernLauncher.R
-import com.movtery.CubernLauncher.context.ContextExecutor
-import com.movtery.CubernLauncher.feature.download.Filters
-import com.movtery.CubernLauncher.feature.download.enums.Classify
-import com.movtery.CubernLauncher.feature.download.install.InstallHelper
-import com.movtery.CubernLauncher.feature.download.install.UnpackWorldZipHelper
-import com.movtery.CubernLauncher.feature.download.item.InfoItem
-import com.movtery.CubernLauncher.feature.download.item.ModLoaderWrapper
-import com.movtery.CubernLauncher.feature.download.item.ScreenshotItem
-import com.movtery.CubernLauncher.feature.download.item.SearchResult
-import com.movtery.CubernLauncher.feature.download.item.VersionItem
-import com.movtery.CubernLauncher.feature.download.platform.AbstractPlatformHelper
-import com.movtery.CubernLauncher.feature.download.platform.curseforge.CurseForgeCommonUtils.Companion.CURSEFORGE_MODPACK_CLASS_ID
-import com.movtery.CubernLauncher.feature.download.platform.curseforge.CurseForgeCommonUtils.Companion.CURSEFORGE_MOD_CLASS_ID
-import com.movtery.CubernLauncher.feature.download.utils.PlatformUtils
+import com.movtery.cubernlauncher.R
+import com.movtery.cubernlauncher.context.ContextExecutor
+import com.movtery.cubernlauncher.feature.download.Filters
+import com.movtery.cubernlauncher.feature.download.enums.Classify
+import com.movtery.cubernlauncher.feature.download.install.InstallHelper
+import com.movtery.cubernlauncher.feature.download.install.UnpackWorldZipHelper
+import com.movtery.cubernlauncher.feature.download.item.InfoItem
+import com.movtery.cubernlauncher.feature.download.item.ModLoaderWrapper
+import com.movtery.cubernlauncher.feature.download.item.ScreenshotItem
+import com.movtery.cubernlauncher.feature.download.item.SearchResult
+import com.movtery.cubernlauncher.feature.download.item.VersionItem
+import com.movtery.cubernlauncher.feature.download.platform.AbstractPlatformHelper
+import com.movtery.cubernlauncher.feature.download.platform.curseforge.CurseForgeCommonUtils.Companion.CURSEFORGE_MODPACK_CLASS_ID
+import com.movtery.cubernlauncher.feature.download.platform.curseforge.CurseForgeCommonUtils.Companion.CURSEFORGE_MOD_CLASS_ID
+import com.movtery.cubernlauncher.feature.download.utils.PlatformUtils
 import java.io.File
 
 class CurseForgeHelper : AbstractPlatformHelper(PlatformUtils.createCurseForgeApi()) {

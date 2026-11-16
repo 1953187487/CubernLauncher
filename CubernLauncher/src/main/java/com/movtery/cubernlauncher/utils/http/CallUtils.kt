@@ -1,6 +1,6 @@
-package com.movtery.CubernLauncher.utils.http
+package com.movtery.cubernlauncher.utils.http
 
-import com.movtery.CubernLauncher.utils.path.UrlManager
+import com.movtery.cubernlauncher.utils.path.UrlManager
 import okhttp3.Call
 import okhttp3.Callback
 import okhttp3.Interceptor

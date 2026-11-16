@@ -1,11 +1,11 @@
-package com.movtery.CubernLauncher.feature.mod.modloader;
+package com.movtery.cubernlauncher.feature.mod.modloader;
 
 import androidx.annotation.NonNull;
 
 import com.kdt.mcgui.ProgressLayout;
-import com.movtery.CubernLauncher.R;
-import com.movtery.CubernLauncher.feature.version.install.InstallTask;
-import com.movtery.CubernLauncher.utils.path.PathManager;
+import com.movtery.cubernlauncher.R;
+import com.movtery.cubernlauncher.feature.version.install.InstallTask;
+import com.movtery.cubernlauncher.utils.path.PathManager;
 
 import net.kdt.pojavlaunch.Tools;
 import net.kdt.pojavlaunch.modloaders.ForgeUtils;

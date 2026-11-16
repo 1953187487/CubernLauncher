@@ -1,4 +1,4 @@
-package com.movtery.CubernLauncher.utils
+package com.movtery.cubernlauncher.utils
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -8,9 +8,9 @@ import com.getkeepsafe.taptargetview.TapTarget
 import com.google.gson.Gson
 import com.google.gson.JsonArray
 import com.google.gson.JsonParser
-import com.movtery.CubernLauncher.R
-import com.movtery.CubernLauncher.feature.log.Logging.e
-import com.movtery.CubernLauncher.utils.path.PathManager
+import com.movtery.cubernlauncher.R
+import com.movtery.cubernlauncher.feature.log.Logging.e
+import com.movtery.cubernlauncher.utils.path.PathManager
 import net.kdt.pojavlaunch.Tools
 import java.io.FileWriter
 

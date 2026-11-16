@@ -1,18 +1,18 @@
-package com.movtery.CubernLauncher.ui.fragment.download.addon
+package com.movtery.cubernlauncher.ui.fragment.download.addon
 
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.movtery.CubernLauncher.R
-import com.movtery.CubernLauncher.event.sticky.SelectInstallTaskEvent
-import com.movtery.CubernLauncher.feature.log.Logging.e
-import com.movtery.CubernLauncher.feature.mod.modloader.ModVersionListAdapter
-import com.movtery.CubernLauncher.task.TaskExecutors
-import com.movtery.CubernLauncher.ui.subassembly.modlist.ModListFragment
-import com.movtery.CubernLauncher.utils.ZHTools
+import com.movtery.cubernlauncher.R
+import com.movtery.cubernlauncher.event.sticky.SelectInstallTaskEvent
+import com.movtery.cubernlauncher.feature.log.Logging.e
+import com.movtery.cubernlauncher.feature.mod.modloader.ModVersionListAdapter
+import com.movtery.cubernlauncher.task.TaskExecutors
+import com.movtery.cubernlauncher.ui.subassembly.modlist.ModListFragment
+import com.movtery.cubernlauncher.utils.ZHTools
 import net.kdt.pojavlaunch.Tools
 import net.kdt.pojavlaunch.modloaders.FabricVersion
-import com.movtery.CubernLauncher.feature.mod.modloader.FabricLikeUtils
-import com.movtery.CubernLauncher.ui.fragment.InstallGameFragment.Companion.BUNDLE_MC_VERSION
+import com.movtery.cubernlauncher.feature.mod.modloader.FabricLikeUtils
+import com.movtery.cubernlauncher.ui.fragment.InstallGameFragment.Companion.BUNDLE_MC_VERSION
 import org.greenrobot.eventbus.EventBus
 import java.util.concurrent.Future
 

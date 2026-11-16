@@ -1,4 +1,4 @@
-package com.movtery.CubernLauncher.ui.activity;
+package com.movtery.cubernlauncher.ui.activity;
 
 import android.content.Context;
 import android.content.Intent;
@@ -8,15 +8,15 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.movtery.CubernLauncher.context.ContextExecutor;
-import com.movtery.CubernLauncher.context.LocaleHelper;
-import com.movtery.CubernLauncher.event.single.LauncherIgnoreNotchEvent;
-import com.movtery.CubernLauncher.feature.accounts.AccountsManager;
-import com.movtery.CubernLauncher.feature.customprofilepath.ProfilePathManager;
-import com.movtery.CubernLauncher.plugins.PluginLoader;
-import com.movtery.CubernLauncher.renderer.Renderers;
-import com.movtery.CubernLauncher.setting.AllSettings;
-import com.movtery.CubernLauncher.utils.StoragePermissionsUtils;
+import com.movtery.cubernlauncher.context.ContextExecutor;
+import com.movtery.cubernlauncher.context.LocaleHelper;
+import com.movtery.cubernlauncher.event.single.LauncherIgnoreNotchEvent;
+import com.movtery.cubernlauncher.feature.accounts.AccountsManager;
+import com.movtery.cubernlauncher.feature.customprofilepath.ProfilePathManager;
+import com.movtery.cubernlauncher.plugins.PluginLoader;
+import com.movtery.cubernlauncher.renderer.Renderers;
+import com.movtery.cubernlauncher.setting.AllSettings;
+import com.movtery.cubernlauncher.utils.StoragePermissionsUtils;
 
 import net.kdt.pojavlaunch.MissingStorageActivity;
 import net.kdt.pojavlaunch.Tools;

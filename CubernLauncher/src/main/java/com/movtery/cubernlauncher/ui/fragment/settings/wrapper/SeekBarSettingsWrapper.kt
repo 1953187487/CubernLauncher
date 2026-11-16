@@ -1,4 +1,4 @@
-package com.movtery.CubernLauncher.ui.fragment.settings.wrapper
+package com.movtery.cubernlauncher.ui.fragment.settings.wrapper
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -8,10 +8,10 @@ import android.widget.SeekBar
 import android.widget.SeekBar.OnSeekBarChangeListener
 import android.widget.TextView
 import androidx.core.content.ContextCompat
-import com.movtery.CubernLauncher.R
-import com.movtery.CubernLauncher.feature.log.Logging.e
-import com.movtery.CubernLauncher.setting.unit.IntSettingUnit
-import com.movtery.CubernLauncher.ui.dialog.EditTextDialog
+import com.movtery.cubernlauncher.R
+import com.movtery.cubernlauncher.feature.log.Logging.e
+import com.movtery.cubernlauncher.setting.unit.IntSettingUnit
+import com.movtery.cubernlauncher.ui.dialog.EditTextDialog
 
 @SuppressLint("UseSwitchCompatOrMaterialCode", "StringFormatInvalid")
 class SeekBarSettingsWrapper(

@@ -1,4 +1,4 @@
-package com.movtery.CubernLauncher.plugins.renderer
+package com.movtery.cubernlauncher.plugins.renderer
 
 abstract class RendererPlugin(
     val id: String,

@@ -1,4 +1,4 @@
-package com.movtery.CubernLauncher.ui.subassembly.about;
+package com.movtery.cubernlauncher.ui.subassembly.about;
 
 import android.annotation.SuppressLint;
 import android.graphics.drawable.Drawable;
@@ -10,8 +10,8 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.movtery.CubernLauncher.R;
-import com.movtery.CubernLauncher.databinding.ItemSponsorViewBinding;
+import com.movtery.cubernlauncher.R;
+import com.movtery.cubernlauncher.databinding.ItemSponsorViewBinding;
 
 public class SponsorRecyclerAdapter extends RecyclerView.Adapter<SponsorRecyclerAdapter.Holder> {
     private final SponsorMeta mMeta;

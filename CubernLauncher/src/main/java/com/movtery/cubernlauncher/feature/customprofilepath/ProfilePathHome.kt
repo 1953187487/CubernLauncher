@@ -1,4 +1,4 @@
-package com.movtery.CubernLauncher.feature.customprofilepath
+package com.movtery.cubernlauncher.feature.customprofilepath
 
 class ProfilePathHome {
     companion object {

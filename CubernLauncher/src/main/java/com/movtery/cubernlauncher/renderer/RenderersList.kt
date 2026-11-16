@@ -1,4 +1,4 @@
-package com.movtery.CubernLauncher.renderer
+package com.movtery.cubernlauncher.renderer
 
 /**
  * @param rendererIdentifier 渲染器唯一标识符

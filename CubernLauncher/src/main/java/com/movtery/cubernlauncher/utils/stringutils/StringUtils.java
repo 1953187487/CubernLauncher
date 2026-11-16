@@ -1,4 +1,4 @@
-package com.movtery.CubernLauncher.utils.stringutils;
+package com.movtery.cubernlauncher.utils.stringutils;
 
 import static android.content.Context.CLIPBOARD_SERVICE;
 
@@ -8,8 +8,8 @@ import android.content.Context;
 import android.util.Base64;
 import android.widget.Toast;
 
-import com.movtery.CubernLauncher.R;
-import com.movtery.CubernLauncher.task.TaskExecutors;
+import com.movtery.cubernlauncher.R;
+import com.movtery.cubernlauncher.task.TaskExecutors;
 
 import org.commonmark.node.Node;
 import org.commonmark.parser.Parser;

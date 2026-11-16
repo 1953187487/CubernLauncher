@@ -1,4 +1,4 @@
-package com.movtery.CubernLauncher.plugins.renderer
+package com.movtery.cubernlauncher.plugins.renderer
 
 data class RendererConfig(
     val pluginVersion: Int,

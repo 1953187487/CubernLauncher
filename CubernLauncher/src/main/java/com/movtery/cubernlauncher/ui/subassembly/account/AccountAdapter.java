@@ -1,4 +1,4 @@
-package com.movtery.CubernLauncher.ui.subassembly.account;
+package com.movtery.cubernlauncher.ui.subassembly.account;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -8,11 +8,11 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.movtery.CubernLauncher.R;
-import com.movtery.CubernLauncher.databinding.ItemAccountManagerBinding;
-import com.movtery.CubernLauncher.feature.accounts.AccountUtils;
-import com.movtery.CubernLauncher.feature.log.Logging;
-import com.movtery.CubernLauncher.utils.skin.SkinLoader;
+import com.movtery.cubernlauncher.R;
+import com.movtery.cubernlauncher.databinding.ItemAccountManagerBinding;
+import com.movtery.cubernlauncher.feature.accounts.AccountUtils;
+import com.movtery.cubernlauncher.feature.log.Logging;
+import com.movtery.cubernlauncher.utils.skin.SkinLoader;
 
 import net.kdt.pojavlaunch.Tools;
 import net.kdt.pojavlaunch.value.MinecraftAccount;

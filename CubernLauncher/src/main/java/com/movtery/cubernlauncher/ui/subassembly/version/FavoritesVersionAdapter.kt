@@ -1,11 +1,11 @@
-package com.movtery.CubernLauncher.ui.subassembly.version
+package com.movtery.cubernlauncher.ui.subassembly.version
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.movtery.CubernLauncher.databinding.ItemFileListViewBinding
-import com.movtery.CubernLauncher.feature.version.favorites.FavoritesVersionUtils
+import com.movtery.cubernlauncher.databinding.ItemFileListViewBinding
+import com.movtery.cubernlauncher.feature.version.favorites.FavoritesVersionUtils
 
 class FavoritesVersionAdapter(private val versionName: String) : RecyclerView.Adapter<FavoritesVersionAdapter.ViewHolder>() {
     private val allCategories = FavoritesVersionUtils.getFavoritesStructure().keys.toList()

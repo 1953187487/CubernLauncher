@@ -1,9 +1,9 @@
-package com.movtery.CubernLauncher.utils.skin
+package com.movtery.cubernlauncher.utils.skin
 
 import com.google.gson.JsonObject
-import com.movtery.CubernLauncher.feature.log.Logging
-import com.movtery.CubernLauncher.utils.path.UrlManager
-import com.movtery.CubernLauncher.utils.stringutils.StringUtils
+import com.movtery.cubernlauncher.feature.log.Logging
+import com.movtery.cubernlauncher.utils.path.UrlManager
+import com.movtery.cubernlauncher.utils.stringutils.StringUtils
 import net.kdt.pojavlaunch.Tools
 import net.kdt.pojavlaunch.utils.DownloadUtils
 import okhttp3.Request

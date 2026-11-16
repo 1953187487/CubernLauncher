@@ -1,4 +1,4 @@
-package com.movtery.CubernLauncher.utils;
+package com.movtery.cubernlauncher.utils;
 
 import android.Manifest;
 import android.content.Context;
@@ -33,18 +33,18 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.movtery.CubernLauncher.BuildConfig;
-import com.movtery.CubernLauncher.InfoDistributor;
-import com.movtery.CubernLauncher.R;
-import com.movtery.CubernLauncher.context.ContextExecutor;
-import com.movtery.CubernLauncher.feature.log.Logging;
-import com.movtery.CubernLauncher.setting.AllSettings;
-import com.movtery.CubernLauncher.task.Task;
-import com.movtery.CubernLauncher.task.TaskExecutors;
-import com.movtery.CubernLauncher.ui.dialog.TipDialog;
-import com.movtery.CubernLauncher.ui.fragment.FragmentWithAnim;
-import com.movtery.CubernLauncher.utils.file.FileTools;
-import com.movtery.CubernLauncher.utils.path.PathManager;
+import com.movtery.cubernlauncher.BuildConfig;
+import com.movtery.cubernlauncher.InfoDistributor;
+import com.movtery.cubernlauncher.R;
+import com.movtery.cubernlauncher.context.ContextExecutor;
+import com.movtery.cubernlauncher.feature.log.Logging;
+import com.movtery.cubernlauncher.setting.AllSettings;
+import com.movtery.cubernlauncher.task.Task;
+import com.movtery.cubernlauncher.task.TaskExecutors;
+import com.movtery.cubernlauncher.ui.dialog.TipDialog;
+import com.movtery.cubernlauncher.ui.fragment.FragmentWithAnim;
+import com.movtery.cubernlauncher.utils.file.FileTools;
+import com.movtery.cubernlauncher.utils.path.PathManager;
 
 import net.kdt.pojavlaunch.Tools;
 

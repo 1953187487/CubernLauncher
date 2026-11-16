@@ -1,10 +1,10 @@
-package com.movtery.CubernLauncher.utils.anim
+package com.movtery.cubernlauncher.utils.anim
 
 import android.view.View
 import com.movtery.anim.animations.Animations
-import com.movtery.CubernLauncher.setting.AllSettings
-import com.movtery.CubernLauncher.task.Task
-import com.movtery.CubernLauncher.utils.anim.ViewAnimUtils.Companion.setViewAnim
+import com.movtery.cubernlauncher.setting.AllSettings
+import com.movtery.cubernlauncher.task.Task
+import com.movtery.cubernlauncher.utils.anim.ViewAnimUtils.Companion.setViewAnim
 
 class AnimUtils {
     companion object {

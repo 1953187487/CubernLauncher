@@ -1,21 +1,21 @@
-package com.movtery.CubernLauncher.feature.version
+package com.movtery.cubernlauncher.feature.version
 
 import android.content.Context
-import com.movtery.CubernLauncher.InfoDistributor
-import com.movtery.CubernLauncher.R
-import com.movtery.CubernLauncher.event.single.RefreshVersionsEvent
-import com.movtery.CubernLauncher.event.single.RefreshVersionsEvent.MODE.END
-import com.movtery.CubernLauncher.event.single.RefreshVersionsEvent.MODE.START
-import com.movtery.CubernLauncher.feature.customprofilepath.ProfilePathHome
-import com.movtery.CubernLauncher.feature.log.Logging
-import com.movtery.CubernLauncher.feature.version.favorites.FavoritesVersionUtils
-import com.movtery.CubernLauncher.feature.version.utils.VersionInfoUtils
-import com.movtery.CubernLauncher.task.Task
-import com.movtery.CubernLauncher.task.TaskExecutors
-import com.movtery.CubernLauncher.ui.dialog.EditTextDialog
-import com.movtery.CubernLauncher.utils.ZHTools
-import com.movtery.CubernLauncher.utils.file.FileTools
-import com.movtery.CubernLauncher.utils.stringutils.SortStrings
+import com.movtery.cubernlauncher.InfoDistributor
+import com.movtery.cubernlauncher.R
+import com.movtery.cubernlauncher.event.single.RefreshVersionsEvent
+import com.movtery.cubernlauncher.event.single.RefreshVersionsEvent.MODE.END
+import com.movtery.cubernlauncher.event.single.RefreshVersionsEvent.MODE.START
+import com.movtery.cubernlauncher.feature.customprofilepath.ProfilePathHome
+import com.movtery.cubernlauncher.feature.log.Logging
+import com.movtery.cubernlauncher.feature.version.favorites.FavoritesVersionUtils
+import com.movtery.cubernlauncher.feature.version.utils.VersionInfoUtils
+import com.movtery.cubernlauncher.task.Task
+import com.movtery.cubernlauncher.task.TaskExecutors
+import com.movtery.cubernlauncher.ui.dialog.EditTextDialog
+import com.movtery.cubernlauncher.utils.ZHTools
+import com.movtery.cubernlauncher.utils.file.FileTools
+import com.movtery.cubernlauncher.utils.stringutils.SortStrings
 import kotlinx.coroutines.CoroutineName
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -70,7 +70,7 @@ object VersionsManager {
     /**
      * 异步刷新当前的版本列表，刷新完成后，将使用一个事件进行通知，不过这个事件并不会在UI线程执行
      * @param tag 标记是谁发起了版本刷新任务，方便debug
-     * @see com.movtery.CubernLauncher.event.single.RefreshVersionsEvent
+     * @see com.movtery.cubernlauncher.event.single.RefreshVersionsEvent
      */
     fun refresh(tag: String, refreshVersionInfo: Boolean = false) {
         Logging.i("VersionsManager", "$tag initiated the refresh version task")

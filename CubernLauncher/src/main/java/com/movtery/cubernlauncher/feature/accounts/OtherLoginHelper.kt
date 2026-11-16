@@ -1,13 +1,13 @@
-package com.movtery.CubernLauncher.feature.accounts
+package com.movtery.cubernlauncher.feature.accounts
 
 import android.content.Context
-import com.movtery.CubernLauncher.R
-import com.movtery.CubernLauncher.feature.log.Logging
-import com.movtery.CubernLauncher.feature.login.AuthResult
-import com.movtery.CubernLauncher.feature.login.OtherLoginApi
-import com.movtery.CubernLauncher.task.Task
-import com.movtery.CubernLauncher.task.TaskExecutors
-import com.movtery.CubernLauncher.ui.dialog.SelectRoleDialog
+import com.movtery.cubernlauncher.R
+import com.movtery.cubernlauncher.feature.log.Logging
+import com.movtery.cubernlauncher.feature.login.AuthResult
+import com.movtery.cubernlauncher.feature.login.OtherLoginApi
+import com.movtery.cubernlauncher.task.Task
+import com.movtery.cubernlauncher.task.TaskExecutors
+import com.movtery.cubernlauncher.ui.dialog.SelectRoleDialog
 import net.kdt.pojavlaunch.value.MinecraftAccount
 import java.util.Objects
 

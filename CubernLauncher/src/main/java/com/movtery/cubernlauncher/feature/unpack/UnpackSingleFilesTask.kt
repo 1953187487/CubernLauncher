@@ -1,9 +1,9 @@
-package com.movtery.CubernLauncher.feature.unpack
+package com.movtery.cubernlauncher.feature.unpack
 
 import android.content.Context
-import com.movtery.CubernLauncher.feature.log.Logging.e
-import com.movtery.CubernLauncher.utils.CopyDefaultFromAssets.Companion.copyFromAssets
-import com.movtery.CubernLauncher.utils.path.PathManager
+import com.movtery.cubernlauncher.feature.log.Logging.e
+import com.movtery.cubernlauncher.utils.CopyDefaultFromAssets.Companion.copyFromAssets
+import com.movtery.cubernlauncher.utils.path.PathManager
 import net.kdt.pojavlaunch.Tools
 
 class UnpackSingleFilesTask(val context: Context) : AbstractUnpackTask() {

@@ -1,4 +1,4 @@
-package com.movtery.CubernLauncher.event.value
+package com.movtery.cubernlauncher.event.value
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,7 +8,7 @@ import androidx.fragment.app.FragmentActivity
  * 将一个新的Fragment添加到事务管理中，由LauncherActivity接受并处理
  * 保证Fragment添加的时候，父Fragment一定是当前的Fragment
  * @see net.kdt.pojavlaunch.LauncherActivity
- * @see com.movtery.CubernLauncher.utils.ZHTools.addFragment
+ * @see com.movtery.cubernlauncher.utils.ZHTools.addFragment
  */
 class AddFragmentEvent(
     val fragmentClass: Class<out Fragment?>,

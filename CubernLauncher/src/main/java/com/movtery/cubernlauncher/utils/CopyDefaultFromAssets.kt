@@ -1,7 +1,7 @@
-package com.movtery.CubernLauncher.utils
+package com.movtery.cubernlauncher.utils
 
 import android.content.Context
-import com.movtery.CubernLauncher.utils.path.PathManager
+import com.movtery.cubernlauncher.utils.path.PathManager
 import net.kdt.pojavlaunch.Tools
 import java.io.File
 import java.io.IOException

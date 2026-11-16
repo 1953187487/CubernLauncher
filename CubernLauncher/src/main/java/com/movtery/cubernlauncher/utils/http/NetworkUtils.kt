@@ -1,4 +1,4 @@
-package com.movtery.CubernLauncher.utils.http
+package com.movtery.cubernlauncher.utils.http
 
 import android.content.Context
 import android.net.ConnectivityManager

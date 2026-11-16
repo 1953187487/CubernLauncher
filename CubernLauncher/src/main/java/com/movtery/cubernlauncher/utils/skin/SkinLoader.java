@@ -1,4 +1,4 @@
-package com.movtery.CubernLauncher.utils.skin;
+package com.movtery.cubernlauncher.utils.skin;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -9,8 +9,8 @@ import android.graphics.Paint;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 
-import com.movtery.CubernLauncher.feature.log.Logging;
-import com.movtery.CubernLauncher.utils.path.PathManager;
+import com.movtery.cubernlauncher.feature.log.Logging;
+import com.movtery.cubernlauncher.utils.path.PathManager;
 
 import net.kdt.pojavlaunch.value.MinecraftAccount;
 

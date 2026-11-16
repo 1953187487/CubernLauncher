@@ -1,12 +1,12 @@
-package com.movtery.CubernLauncher.feature.version.utils
+package com.movtery.cubernlauncher.feature.version.utils
 
 import android.widget.ImageView
 import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
-import com.movtery.CubernLauncher.R
-import com.movtery.CubernLauncher.feature.version.Version
-import com.movtery.CubernLauncher.feature.version.VersionsManager
+import com.movtery.cubernlauncher.R
+import com.movtery.cubernlauncher.feature.version.Version
+import com.movtery.cubernlauncher.feature.version.VersionsManager
 import org.apache.commons.io.FileUtils
 
 /**

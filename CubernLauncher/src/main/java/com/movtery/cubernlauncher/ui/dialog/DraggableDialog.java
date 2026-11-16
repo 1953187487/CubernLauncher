@@ -1,4 +1,4 @@
-package com.movtery.CubernLauncher.ui.dialog;
+package com.movtery.cubernlauncher.ui.dialog;
 
 import static net.kdt.pojavlaunch.Tools.currentDisplayMetrics;
 
@@ -8,8 +8,8 @@ import android.view.WindowManager;
 
 import androidx.annotation.NonNull;
 
-import com.movtery.CubernLauncher.feature.log.Logging;
-import com.movtery.CubernLauncher.ui.subassembly.view.DraggableViewWrapper;
+import com.movtery.cubernlauncher.feature.log.Logging;
+import com.movtery.cubernlauncher.ui.subassembly.view.DraggableViewWrapper;
 
 public final class DraggableDialog {
     private DraggableDialog() {}

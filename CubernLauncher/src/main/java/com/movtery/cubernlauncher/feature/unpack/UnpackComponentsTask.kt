@@ -1,9 +1,9 @@
-package com.movtery.CubernLauncher.feature.unpack
+package com.movtery.cubernlauncher.feature.unpack
 
 import android.content.Context
 import android.content.res.AssetManager
-import com.movtery.CubernLauncher.feature.log.Logging.i
-import com.movtery.CubernLauncher.utils.path.PathManager
+import com.movtery.cubernlauncher.feature.log.Logging.i
+import com.movtery.cubernlauncher.utils.path.PathManager
 import net.kdt.pojavlaunch.Tools
 import org.apache.commons.io.FileUtils
 import java.io.File

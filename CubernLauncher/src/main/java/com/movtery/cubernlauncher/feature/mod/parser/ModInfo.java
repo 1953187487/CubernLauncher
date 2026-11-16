@@ -1,4 +1,4 @@
-package com.movtery.CubernLauncher.feature.mod.parser;
+package com.movtery.cubernlauncher.feature.mod.parser;
 
 import androidx.annotation.NonNull;
 

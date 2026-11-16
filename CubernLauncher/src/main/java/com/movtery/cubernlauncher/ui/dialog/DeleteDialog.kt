@@ -1,10 +1,10 @@
-package com.movtery.CubernLauncher.ui.dialog
+package com.movtery.cubernlauncher.ui.dialog
 
 import android.annotation.SuppressLint
 import android.content.Context
-import com.movtery.CubernLauncher.R
-import com.movtery.CubernLauncher.task.Task
-import com.movtery.CubernLauncher.utils.file.FileDeletionHandler
+import com.movtery.cubernlauncher.R
+import com.movtery.cubernlauncher.task.Task
+import com.movtery.cubernlauncher.utils.file.FileDeletionHandler
 import java.io.File
 
 @SuppressLint("CheckResult")

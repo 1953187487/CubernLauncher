@@ -1,4 +1,4 @@
-package com.movtery.CubernLauncher.ui.subassembly.filelist;
+package com.movtery.cubernlauncher.ui.subassembly.filelist;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -9,8 +9,8 @@ import android.widget.Toast;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.movtery.CubernLauncher.R;
-import com.movtery.CubernLauncher.task.TaskExecutors;
+import com.movtery.cubernlauncher.R;
+import com.movtery.cubernlauncher.task.TaskExecutors;
 
 import java.io.File;
 import java.util.ArrayList;

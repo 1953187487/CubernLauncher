@@ -1,4 +1,4 @@
-package com.movtery.CubernLauncher.ui.fragment
+package com.movtery.cubernlauncher.ui.fragment
 
 import android.annotation.SuppressLint
 import android.os.Bundle
@@ -10,11 +10,11 @@ import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayout.OnTabSelectedListener
 import com.movtery.anim.AnimPlayer
 import com.movtery.anim.animations.Animations
-import com.movtery.CubernLauncher.R
-import com.movtery.CubernLauncher.databinding.FragmentVersionBinding
-import com.movtery.CubernLauncher.ui.subassembly.versionlist.VersionSelectedListener
-import com.movtery.CubernLauncher.ui.subassembly.versionlist.VersionType
-import com.movtery.CubernLauncher.utils.ZHTools
+import com.movtery.cubernlauncher.R
+import com.movtery.cubernlauncher.databinding.FragmentVersionBinding
+import com.movtery.cubernlauncher.ui.subassembly.versionlist.VersionSelectedListener
+import com.movtery.cubernlauncher.ui.subassembly.versionlist.VersionType
+import com.movtery.cubernlauncher.utils.ZHTools
 import net.kdt.pojavlaunch.Tools
 
 class VersionSelectorFragment : FragmentWithAnim(R.layout.fragment_version) {

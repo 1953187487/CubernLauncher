@@ -1,4 +1,4 @@
-package com.movtery.CubernLauncher.event.value
+package com.movtery.cubernlauncher.event.value
 
 /**
  * 下载页面的一些事件

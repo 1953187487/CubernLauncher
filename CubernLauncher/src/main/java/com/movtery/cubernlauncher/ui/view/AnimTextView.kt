@@ -1,4 +1,4 @@
-package com.movtery.CubernLauncher.ui.view
+package com.movtery.cubernlauncher.ui.view
 
 import android.animation.AnimatorInflater
 import android.annotation.SuppressLint
@@ -8,7 +8,7 @@ import android.graphics.drawable.RippleDrawable
 import android.util.AttributeSet
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.core.content.ContextCompat
-import com.movtery.CubernLauncher.R
+import com.movtery.cubernlauncher.R
 
 @SuppressLint("Recycle")
 class AnimTextView @JvmOverloads constructor(

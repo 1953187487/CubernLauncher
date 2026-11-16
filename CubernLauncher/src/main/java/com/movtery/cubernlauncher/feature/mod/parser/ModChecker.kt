@@ -1,13 +1,13 @@
-package com.movtery.CubernLauncher.feature.mod.parser
+package com.movtery.cubernlauncher.feature.mod.parser
 
 import android.content.Context
 import android.os.Parcel
 import android.os.Parcelable
 import com.mio.util.AndroidUtil
-import com.movtery.CubernLauncher.R
-import com.movtery.CubernLauncher.feature.log.Logging
-import com.movtery.CubernLauncher.task.TaskExecutors
-import com.movtery.CubernLauncher.ui.dialog.TipDialog
+import com.movtery.cubernlauncher.R
+import com.movtery.cubernlauncher.feature.log.Logging
+import com.movtery.cubernlauncher.task.TaskExecutors
+import com.movtery.cubernlauncher.ui.dialog.TipDialog
 import net.kdt.pojavlaunch.Architecture
 import net.kdt.pojavlaunch.Logger
 import net.kdt.pojavlaunch.plugins.FFmpegPlugin

@@ -1,6 +1,6 @@
-package com.movtery.CubernLauncher.feature.mod.parser
+package com.movtery.cubernlauncher.feature.mod.parser
 
-import com.movtery.CubernLauncher.setting.unit.StringSettingUnit
+import com.movtery.cubernlauncher.setting.unit.StringSettingUnit
 
 enum class AllModCheckSettings(val unit: StringSettingUnit) {
     TOUCH_CONTROLLER(StringSettingUnit("modCheckTouchController", "0")),

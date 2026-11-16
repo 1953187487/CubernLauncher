@@ -1,15 +1,15 @@
-package com.movtery.CubernLauncher.feature.download.platform.modrinth
+package com.movtery.cubernlauncher.feature.download.platform.modrinth
 
-import com.movtery.CubernLauncher.feature.download.Filters
-import com.movtery.CubernLauncher.feature.download.enums.Classify
-import com.movtery.CubernLauncher.feature.download.install.InstallHelper
-import com.movtery.CubernLauncher.feature.download.item.InfoItem
-import com.movtery.CubernLauncher.feature.download.item.ModLoaderWrapper
-import com.movtery.CubernLauncher.feature.download.item.ScreenshotItem
-import com.movtery.CubernLauncher.feature.download.item.SearchResult
-import com.movtery.CubernLauncher.feature.download.item.VersionItem
-import com.movtery.CubernLauncher.feature.download.platform.AbstractPlatformHelper
-import com.movtery.CubernLauncher.feature.download.platform.PlatformNotSupportedException
+import com.movtery.cubernlauncher.feature.download.Filters
+import com.movtery.cubernlauncher.feature.download.enums.Classify
+import com.movtery.cubernlauncher.feature.download.install.InstallHelper
+import com.movtery.cubernlauncher.feature.download.item.InfoItem
+import com.movtery.cubernlauncher.feature.download.item.ModLoaderWrapper
+import com.movtery.cubernlauncher.feature.download.item.ScreenshotItem
+import com.movtery.cubernlauncher.feature.download.item.SearchResult
+import com.movtery.cubernlauncher.feature.download.item.VersionItem
+import com.movtery.cubernlauncher.feature.download.platform.AbstractPlatformHelper
+import com.movtery.cubernlauncher.feature.download.platform.PlatformNotSupportedException
 import net.kdt.pojavlaunch.modloaders.modpacks.api.ApiHandler
 import java.io.File
 

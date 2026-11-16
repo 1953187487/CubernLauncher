@@ -1,9 +1,9 @@
-package com.movtery.CubernLauncher.utils.runtime
+package com.movtery.cubernlauncher.utils.runtime
 
 import android.content.Context
-import com.movtery.CubernLauncher.setting.AllSettings
-import com.movtery.CubernLauncher.task.TaskExecutors
-import com.movtery.CubernLauncher.ui.dialog.SelectRuntimeDialog
+import com.movtery.cubernlauncher.setting.AllSettings
+import com.movtery.cubernlauncher.task.TaskExecutors
+import com.movtery.cubernlauncher.ui.dialog.SelectRuntimeDialog
 
 class SelectRuntimeUtils {
     companion object {

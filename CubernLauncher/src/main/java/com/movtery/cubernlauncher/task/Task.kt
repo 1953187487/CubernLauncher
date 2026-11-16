@@ -1,4 +1,4 @@
-package com.movtery.CubernLauncher.task
+package com.movtery.cubernlauncher.task
 
 import androidx.annotation.CheckResult
 import java.util.concurrent.Callable

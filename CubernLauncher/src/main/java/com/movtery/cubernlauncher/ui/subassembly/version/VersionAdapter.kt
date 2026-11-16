@@ -1,4 +1,4 @@
-package com.movtery.CubernLauncher.ui.subassembly.version
+package com.movtery.cubernlauncher.ui.subassembly.version
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -14,18 +14,18 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.flexbox.FlexboxLayout
-import com.movtery.CubernLauncher.R
-import com.movtery.CubernLauncher.databinding.ItemVersionBinding
-import com.movtery.CubernLauncher.databinding.ViewVersionManagerBinding
-import com.movtery.CubernLauncher.feature.customprofilepath.ProfilePathManager
-import com.movtery.CubernLauncher.feature.version.Version
-import com.movtery.CubernLauncher.feature.version.utils.VersionIconUtils
-import com.movtery.CubernLauncher.feature.version.VersionsManager
-import com.movtery.CubernLauncher.task.Task
-import com.movtery.CubernLauncher.ui.dialog.TipDialog
-import com.movtery.CubernLauncher.ui.fragment.FilesFragment
-import com.movtery.CubernLauncher.utils.ZHTools
-import com.movtery.CubernLauncher.utils.file.FileDeletionHandler
+import com.movtery.cubernlauncher.R
+import com.movtery.cubernlauncher.databinding.ItemVersionBinding
+import com.movtery.cubernlauncher.databinding.ViewVersionManagerBinding
+import com.movtery.cubernlauncher.feature.customprofilepath.ProfilePathManager
+import com.movtery.cubernlauncher.feature.version.Version
+import com.movtery.cubernlauncher.feature.version.utils.VersionIconUtils
+import com.movtery.cubernlauncher.feature.version.VersionsManager
+import com.movtery.cubernlauncher.task.Task
+import com.movtery.cubernlauncher.ui.dialog.TipDialog
+import com.movtery.cubernlauncher.ui.fragment.FilesFragment
+import com.movtery.cubernlauncher.utils.ZHTools
+import com.movtery.cubernlauncher.utils.file.FileDeletionHandler
 import net.kdt.pojavlaunch.Tools
 
 class VersionAdapter(

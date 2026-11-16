@@ -1,4 +1,4 @@
-package com.movtery.CubernLauncher.utils.anim
+package com.movtery.cubernlauncher.utils.anim
 
 import com.movtery.anim.AnimPlayer
 

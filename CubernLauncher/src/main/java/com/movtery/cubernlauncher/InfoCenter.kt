@@ -1,7 +1,7 @@
-package com.movtery.CubernLauncher
+package com.movtery.cubernlauncher
 
 import android.content.Context
-import com.movtery.CubernLauncher.InfoDistributor.APP_NAME
+import com.movtery.cubernlauncher.InfoDistributor.APP_NAME
 
 class InfoCenter {
     companion object {

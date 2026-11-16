@@ -1,4 +1,4 @@
-package com.movtery.CubernLauncher.ui.fragment.settings
+package com.movtery.cubernlauncher.ui.fragment.settings
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,11 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import com.movtery.anim.AnimPlayer
 import com.movtery.anim.animations.Animations
-import com.movtery.CubernLauncher.R
-import com.movtery.CubernLauncher.databinding.SettingsFragmentExperimentalBinding
-import com.movtery.CubernLauncher.setting.AllSettings
-import com.movtery.CubernLauncher.ui.fragment.settings.wrapper.SeekBarSettingsWrapper
-import com.movtery.CubernLauncher.ui.fragment.settings.wrapper.SwitchSettingsWrapper
+import com.movtery.cubernlauncher.R
+import com.movtery.cubernlauncher.databinding.SettingsFragmentExperimentalBinding
+import com.movtery.cubernlauncher.setting.AllSettings
+import com.movtery.cubernlauncher.ui.fragment.settings.wrapper.SeekBarSettingsWrapper
+import com.movtery.cubernlauncher.ui.fragment.settings.wrapper.SwitchSettingsWrapper
 
 class ExperimentalSettingsFragment :
     AbstractSettingsFragment(R.layout.settings_fragment_experimental, SettingCategory.EXPERIMENTAL) {

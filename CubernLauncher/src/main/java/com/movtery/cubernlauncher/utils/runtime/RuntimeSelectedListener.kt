@@ -1,4 +1,4 @@
-package com.movtery.CubernLauncher.utils.runtime
+package com.movtery.cubernlauncher.utils.runtime
 
 fun interface RuntimeSelectedListener {
     fun onSelected(jreName: String?)

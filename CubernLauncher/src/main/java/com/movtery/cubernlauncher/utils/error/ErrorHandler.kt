@@ -1,5 +1,7 @@
 package com.movtery.cubernlauncher.utils.error
 
+import android.content.Context
+
 /**
  * 错误处理与提示
  * 当设备不支持、库缺失、Java不匹配或参数错误时，明确提示具体原因

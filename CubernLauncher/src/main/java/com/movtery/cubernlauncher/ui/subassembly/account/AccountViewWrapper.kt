@@ -1,17 +1,17 @@
-package com.movtery.CubernLauncher.ui.subassembly.account
+package com.movtery.cubernlauncher.ui.subassembly.account
 
 import android.content.Context
 import android.view.View
 import androidx.core.content.ContextCompat
-import com.movtery.CubernLauncher.R
-import com.movtery.CubernLauncher.databinding.ViewAccountBinding
-import com.movtery.CubernLauncher.feature.accounts.AccountUtils
-import com.movtery.CubernLauncher.feature.accounts.AccountsManager
-import com.movtery.CubernLauncher.feature.log.Logging
-import com.movtery.CubernLauncher.ui.fragment.AccountFragment
-import com.movtery.CubernLauncher.ui.fragment.FragmentWithAnim
-import com.movtery.CubernLauncher.utils.ZHTools
-import com.movtery.CubernLauncher.utils.skin.SkinLoader
+import com.movtery.cubernlauncher.R
+import com.movtery.cubernlauncher.databinding.ViewAccountBinding
+import com.movtery.cubernlauncher.feature.accounts.AccountUtils
+import com.movtery.cubernlauncher.feature.accounts.AccountsManager
+import com.movtery.cubernlauncher.feature.log.Logging
+import com.movtery.cubernlauncher.ui.fragment.AccountFragment
+import com.movtery.cubernlauncher.ui.fragment.FragmentWithAnim
+import com.movtery.cubernlauncher.utils.ZHTools
+import com.movtery.cubernlauncher.utils.skin.SkinLoader
 import net.kdt.pojavlaunch.Tools
 
 class AccountViewWrapper(private val parentFragment: FragmentWithAnim? = null, val binding: ViewAccountBinding) {

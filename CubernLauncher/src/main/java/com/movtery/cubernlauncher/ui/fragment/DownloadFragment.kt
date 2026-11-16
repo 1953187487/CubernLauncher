@@ -1,4 +1,4 @@
-package com.movtery.CubernLauncher.ui.fragment
+package com.movtery.cubernlauncher.ui.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,16 +10,16 @@ import androidx.viewpager2.widget.ViewPager2
 import androidx.viewpager2.widget.ViewPager2.OnPageChangeCallback
 import com.movtery.anim.AnimPlayer
 import com.movtery.anim.animations.Animations
-import com.movtery.CubernLauncher.R
-import com.movtery.CubernLauncher.databinding.FragmentDownloadBinding
-import com.movtery.CubernLauncher.event.value.DownloadPageEvent
-import com.movtery.CubernLauncher.event.value.DownloadPageEvent.PageSwapEvent.Companion.IN
-import com.movtery.CubernLauncher.event.value.DownloadPageEvent.PageSwapEvent.Companion.OUT
-import com.movtery.CubernLauncher.ui.fragment.download.resource.ModDownloadFragment
-import com.movtery.CubernLauncher.ui.fragment.download.resource.ModPackDownloadFragment
-import com.movtery.CubernLauncher.ui.fragment.download.resource.ResourcePackDownloadFragment
-import com.movtery.CubernLauncher.ui.fragment.download.resource.ShaderPackDownloadFragment
-import com.movtery.CubernLauncher.ui.fragment.download.resource.WorldDownloadFragment
+import com.movtery.cubernlauncher.R
+import com.movtery.cubernlauncher.databinding.FragmentDownloadBinding
+import com.movtery.cubernlauncher.event.value.DownloadPageEvent
+import com.movtery.cubernlauncher.event.value.DownloadPageEvent.PageSwapEvent.Companion.IN
+import com.movtery.cubernlauncher.event.value.DownloadPageEvent.PageSwapEvent.Companion.OUT
+import com.movtery.cubernlauncher.ui.fragment.download.resource.ModDownloadFragment
+import com.movtery.cubernlauncher.ui.fragment.download.resource.ModPackDownloadFragment
+import com.movtery.cubernlauncher.ui.fragment.download.resource.ResourcePackDownloadFragment
+import com.movtery.cubernlauncher.ui.fragment.download.resource.ShaderPackDownloadFragment
+import com.movtery.cubernlauncher.ui.fragment.download.resource.WorldDownloadFragment
 import org.greenrobot.eventbus.EventBus
 
 class DownloadFragment : FragmentWithAnim(R.layout.fragment_download) {

@@ -1,4 +1,4 @@
-package com.movtery.CubernLauncher.ui.subassembly.account
+package com.movtery.cubernlauncher.ui.subassembly.account
 
 import net.kdt.pojavlaunch.value.MinecraftAccount
 

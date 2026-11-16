@@ -1,11 +1,11 @@
-package com.movtery.CubernLauncher.feature
+package com.movtery.cubernlauncher.feature
 
 import android.content.Context
 import android.os.Build
 import android.os.FileObserver
-import com.movtery.CubernLauncher.event.single.MCOptionChangeEvent
-import com.movtery.CubernLauncher.feature.log.Logging
-import com.movtery.CubernLauncher.feature.version.Version
+import com.movtery.cubernlauncher.event.single.MCOptionChangeEvent
+import com.movtery.cubernlauncher.feature.log.Logging
+import com.movtery.cubernlauncher.feature.version.Version
 import net.kdt.pojavlaunch.Tools
 import org.greenrobot.eventbus.EventBus
 import org.lwjgl.glfw.CallbackBridge.windowHeight

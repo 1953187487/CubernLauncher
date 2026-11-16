@@ -1,11 +1,11 @@
-package com.movtery.CubernLauncher.feature.version.utils
+package com.movtery.cubernlauncher.feature.version.utils
 
 import com.google.gson.JsonArray
 import com.google.gson.JsonElement
 import com.google.gson.JsonObject
 import com.google.gson.JsonParser
-import com.movtery.CubernLauncher.feature.log.Logging
-import com.movtery.CubernLauncher.feature.version.VersionInfo
+import com.movtery.cubernlauncher.feature.log.Logging
+import com.movtery.cubernlauncher.feature.version.VersionInfo
 import net.kdt.pojavlaunch.Tools
 import java.io.File
 

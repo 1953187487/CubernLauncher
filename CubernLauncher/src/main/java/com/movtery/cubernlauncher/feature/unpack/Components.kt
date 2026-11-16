@@ -1,6 +1,6 @@
-package com.movtery.CubernLauncher.feature.unpack
+package com.movtery.cubernlauncher.feature.unpack
 
-import com.movtery.CubernLauncher.R
+import com.movtery.cubernlauncher.R
 
 enum class Components(val component: String, val displayName: String, val summary: Int?, val privateDirectory: Boolean) {
     OTHER_LOGIN("other_login", "authlib-injector", R.string.splash_screen_authlib_injector, false),

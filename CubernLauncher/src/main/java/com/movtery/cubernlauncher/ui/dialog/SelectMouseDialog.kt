@@ -1,16 +1,16 @@
-package com.movtery.CubernLauncher.ui.dialog
+package com.movtery.cubernlauncher.ui.dialog
 
 import android.annotation.SuppressLint
 import android.content.Context
 import androidx.recyclerview.widget.RecyclerView
-import com.movtery.CubernLauncher.R
-import com.movtery.CubernLauncher.setting.AllSettings
-import com.movtery.CubernLauncher.ui.subassembly.filelist.FileIcon
-import com.movtery.CubernLauncher.ui.subassembly.filelist.FileItemBean
-import com.movtery.CubernLauncher.ui.subassembly.filelist.FileRecyclerViewCreator
-import com.movtery.CubernLauncher.utils.path.PathManager
-import com.movtery.CubernLauncher.utils.file.FileTools.Companion.mkdirs
-import com.movtery.CubernLauncher.utils.image.ImageUtils.Companion.isImage
+import com.movtery.cubernlauncher.R
+import com.movtery.cubernlauncher.setting.AllSettings
+import com.movtery.cubernlauncher.ui.subassembly.filelist.FileIcon
+import com.movtery.cubernlauncher.ui.subassembly.filelist.FileItemBean
+import com.movtery.cubernlauncher.ui.subassembly.filelist.FileRecyclerViewCreator
+import com.movtery.cubernlauncher.utils.path.PathManager
+import com.movtery.cubernlauncher.utils.file.FileTools.Companion.mkdirs
+import com.movtery.cubernlauncher.utils.image.ImageUtils.Companion.isImage
 import java.io.File
 
 class SelectMouseDialog(

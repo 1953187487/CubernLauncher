@@ -1,4 +1,4 @@
-package com.movtery.CubernLauncher.ui.subassembly.customprofilepath
+package com.movtery.cubernlauncher.ui.subassembly.customprofilepath
 
 import android.annotation.SuppressLint
 import android.os.Bundle
@@ -9,19 +9,19 @@ import android.view.ViewGroup
 import android.widget.PopupWindow
 import android.widget.RadioButton
 import androidx.recyclerview.widget.RecyclerView
-import com.movtery.CubernLauncher.R
-import com.movtery.CubernLauncher.databinding.ItemProfilePathBinding
-import com.movtery.CubernLauncher.databinding.ViewPathManagerBinding
-import com.movtery.CubernLauncher.feature.customprofilepath.ProfilePathManager
-import com.movtery.CubernLauncher.feature.customprofilepath.ProfilePathManager.setCurrentPathId
-import com.movtery.CubernLauncher.feature.version.VersionsManager
-import com.movtery.CubernLauncher.setting.AllSettings.Companion.launcherProfile
-import com.movtery.CubernLauncher.ui.dialog.EditTextDialog
-import com.movtery.CubernLauncher.ui.dialog.TipDialog
-import com.movtery.CubernLauncher.ui.fragment.FilesFragment
-import com.movtery.CubernLauncher.ui.fragment.FragmentWithAnim
-import com.movtery.CubernLauncher.utils.StoragePermissionsUtils
-import com.movtery.CubernLauncher.utils.ZHTools
+import com.movtery.cubernlauncher.R
+import com.movtery.cubernlauncher.databinding.ItemProfilePathBinding
+import com.movtery.cubernlauncher.databinding.ViewPathManagerBinding
+import com.movtery.cubernlauncher.feature.customprofilepath.ProfilePathManager
+import com.movtery.cubernlauncher.feature.customprofilepath.ProfilePathManager.setCurrentPathId
+import com.movtery.cubernlauncher.feature.version.VersionsManager
+import com.movtery.cubernlauncher.setting.AllSettings.Companion.launcherProfile
+import com.movtery.cubernlauncher.ui.dialog.EditTextDialog
+import com.movtery.cubernlauncher.ui.dialog.TipDialog
+import com.movtery.cubernlauncher.ui.fragment.FilesFragment
+import com.movtery.cubernlauncher.ui.fragment.FragmentWithAnim
+import com.movtery.cubernlauncher.utils.StoragePermissionsUtils
+import com.movtery.cubernlauncher.utils.ZHTools
 
 class ProfilePathAdapter(
     private val fragment: FragmentWithAnim,

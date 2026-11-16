@@ -1,4 +1,4 @@
-package com.movtery.CubernLauncher.support.touch_controller
+package com.movtery.cubernlauncher.support.touch_controller
 
 import android.util.SparseIntArray
 import android.view.MotionEvent

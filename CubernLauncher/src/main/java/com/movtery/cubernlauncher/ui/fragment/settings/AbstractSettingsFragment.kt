@@ -1,10 +1,10 @@
-package com.movtery.CubernLauncher.ui.fragment.settings
+package com.movtery.cubernlauncher.ui.fragment.settings
 
 import androidx.annotation.CallSuper
 import com.movtery.anim.AnimPlayer
-import com.movtery.CubernLauncher.event.single.SettingsChangeEvent
-import com.movtery.CubernLauncher.event.value.SettingsPageSwapEvent
-import com.movtery.CubernLauncher.ui.fragment.FragmentWithAnim
+import com.movtery.cubernlauncher.event.single.SettingsChangeEvent
+import com.movtery.cubernlauncher.event.value.SettingsPageSwapEvent
+import com.movtery.cubernlauncher.ui.fragment.FragmentWithAnim
 import net.kdt.pojavlaunch.prefs.LauncherPreferences
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe

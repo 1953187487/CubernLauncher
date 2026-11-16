@@ -1,4 +1,4 @@
-package com.movtery.CubernLauncher.ui.subassembly.modlist
+package com.movtery.cubernlauncher.ui.subassembly.modlist
 
 import android.content.Context
 import android.graphics.Paint
@@ -16,14 +16,14 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.movtery.anim.AnimPlayer
 import com.movtery.anim.animations.Animations
-import com.movtery.CubernLauncher.R
-import com.movtery.CubernLauncher.databinding.FragmentModDownloadBinding
-import com.movtery.CubernLauncher.setting.AllSettings
-import com.movtery.CubernLauncher.ui.fragment.FragmentWithAnim
-import com.movtery.CubernLauncher.utils.ZHTools
-import com.movtery.CubernLauncher.utils.anim.AnimUtils
-import com.movtery.CubernLauncher.utils.anim.AnimUtils.Companion.playVisibilityAnim
-import com.movtery.CubernLauncher.utils.stringutils.StringUtils
+import com.movtery.cubernlauncher.R
+import com.movtery.cubernlauncher.databinding.FragmentModDownloadBinding
+import com.movtery.cubernlauncher.setting.AllSettings
+import com.movtery.cubernlauncher.ui.fragment.FragmentWithAnim
+import com.movtery.cubernlauncher.utils.ZHTools
+import com.movtery.cubernlauncher.utils.anim.AnimUtils
+import com.movtery.cubernlauncher.utils.anim.AnimUtils.Companion.playVisibilityAnim
+import com.movtery.cubernlauncher.utils.stringutils.StringUtils
 import java.util.concurrent.Future
 
 

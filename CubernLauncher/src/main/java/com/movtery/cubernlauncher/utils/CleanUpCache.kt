@@ -1,12 +1,12 @@
-package com.movtery.CubernLauncher.utils
+package com.movtery.cubernlauncher.utils
 
 import android.content.Context
 import android.widget.Toast
-import com.movtery.CubernLauncher.R
-import com.movtery.CubernLauncher.task.Task
-import com.movtery.CubernLauncher.task.TaskExecutors
-import com.movtery.CubernLauncher.utils.file.FileTools
-import com.movtery.CubernLauncher.utils.path.PathManager
+import com.movtery.cubernlauncher.R
+import com.movtery.cubernlauncher.task.Task
+import com.movtery.cubernlauncher.task.TaskExecutors
+import com.movtery.cubernlauncher.utils.file.FileTools
+import com.movtery.cubernlauncher.utils.path.PathManager
 import org.apache.commons.io.FileUtils
 import java.io.File
 

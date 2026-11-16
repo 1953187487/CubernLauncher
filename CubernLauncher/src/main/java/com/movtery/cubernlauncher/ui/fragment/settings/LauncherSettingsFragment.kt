@@ -1,4 +1,4 @@
-package com.movtery.CubernLauncher.ui.fragment.settings
+package com.movtery.cubernlauncher.ui.fragment.settings
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,19 +6,19 @@ import android.view.View
 import android.view.ViewGroup
 import com.movtery.anim.AnimPlayer
 import com.movtery.anim.animations.Animations
-import com.movtery.CubernLauncher.R
-import com.movtery.CubernLauncher.databinding.SettingsFragmentLauncherBinding
-import com.movtery.CubernLauncher.event.single.PageOpacityChangeEvent
-import com.movtery.CubernLauncher.feature.update.UpdateUtils
-import com.movtery.CubernLauncher.setting.AllSettings
-import com.movtery.CubernLauncher.ui.fragment.CustomBackgroundFragment
-import com.movtery.CubernLauncher.ui.fragment.FragmentWithAnim
-import com.movtery.CubernLauncher.ui.fragment.settings.wrapper.BaseSettingsWrapper
-import com.movtery.CubernLauncher.ui.fragment.settings.wrapper.ListSettingsWrapper
-import com.movtery.CubernLauncher.ui.fragment.settings.wrapper.SeekBarSettingsWrapper
-import com.movtery.CubernLauncher.ui.fragment.settings.wrapper.SwitchSettingsWrapper
-import com.movtery.CubernLauncher.utils.CleanUpCache.Companion.start
-import com.movtery.CubernLauncher.utils.ZHTools
+import com.movtery.cubernlauncher.R
+import com.movtery.cubernlauncher.databinding.SettingsFragmentLauncherBinding
+import com.movtery.cubernlauncher.event.single.PageOpacityChangeEvent
+import com.movtery.cubernlauncher.feature.update.UpdateUtils
+import com.movtery.cubernlauncher.setting.AllSettings
+import com.movtery.cubernlauncher.ui.fragment.CustomBackgroundFragment
+import com.movtery.cubernlauncher.ui.fragment.FragmentWithAnim
+import com.movtery.cubernlauncher.ui.fragment.settings.wrapper.BaseSettingsWrapper
+import com.movtery.cubernlauncher.ui.fragment.settings.wrapper.ListSettingsWrapper
+import com.movtery.cubernlauncher.ui.fragment.settings.wrapper.SeekBarSettingsWrapper
+import com.movtery.cubernlauncher.ui.fragment.settings.wrapper.SwitchSettingsWrapper
+import com.movtery.cubernlauncher.utils.CleanUpCache.Companion.start
+import com.movtery.cubernlauncher.utils.ZHTools
 import net.kdt.pojavlaunch.LauncherActivity
 import org.greenrobot.eventbus.EventBus
 

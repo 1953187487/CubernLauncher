@@ -1,15 +1,15 @@
-package com.movtery.CubernLauncher.feature.background
+package com.movtery.cubernlauncher.feature.background
 
 import android.content.Context
 import android.widget.ImageView
 import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
-import com.movtery.CubernLauncher.InfoDistributor
-import com.movtery.CubernLauncher.R
-import com.movtery.CubernLauncher.feature.log.Logging
-import com.movtery.CubernLauncher.utils.path.PathManager
-import com.movtery.CubernLauncher.utils.file.FileTools.Companion.mkdirs
-import com.movtery.CubernLauncher.utils.image.ImageUtils.Companion.isImage
+import com.movtery.cubernlauncher.InfoDistributor
+import com.movtery.cubernlauncher.R
+import com.movtery.cubernlauncher.feature.log.Logging
+import com.movtery.cubernlauncher.utils.path.PathManager
+import com.movtery.cubernlauncher.utils.file.FileTools.Companion.mkdirs
+import com.movtery.cubernlauncher.utils.image.ImageUtils.Companion.isImage
 import net.kdt.pojavlaunch.Tools
 import java.io.File
 import java.io.FileReader

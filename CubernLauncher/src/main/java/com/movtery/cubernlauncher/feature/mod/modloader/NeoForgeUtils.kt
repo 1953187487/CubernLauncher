@@ -1,4 +1,4 @@
-package com.movtery.CubernLauncher.feature.mod.modloader
+package com.movtery.cubernlauncher.feature.mod.modloader
 
 import net.kdt.pojavlaunch.modloaders.ForgeVersionListHandler
 import net.kdt.pojavlaunch.utils.DownloadUtils

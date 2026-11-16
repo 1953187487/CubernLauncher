@@ -1,4 +1,4 @@
-package com.movtery.CubernLauncher.ui.fragment
+package com.movtery.cubernlauncher.ui.fragment
 
 import androidx.fragment.app.Fragment
 import net.kdt.pojavlaunch.progresskeeper.ProgressKeeper

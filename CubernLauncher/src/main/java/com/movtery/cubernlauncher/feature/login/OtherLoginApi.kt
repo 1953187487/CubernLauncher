@@ -1,12 +1,12 @@
-package com.movtery.CubernLauncher.feature.login
+package com.movtery.cubernlauncher.feature.login
 
 import android.content.Context
 import com.google.gson.Gson
-import com.movtery.CubernLauncher.R
-import com.movtery.CubernLauncher.feature.log.Logging
-import com.movtery.CubernLauncher.utils.path.UrlManager
-import com.movtery.CubernLauncher.utils.path.UrlManager.Companion.createRequestBuilder
-import com.movtery.CubernLauncher.utils.stringutils.StringUtilsKt
+import com.movtery.cubernlauncher.R
+import com.movtery.cubernlauncher.feature.log.Logging
+import com.movtery.cubernlauncher.utils.path.UrlManager
+import com.movtery.cubernlauncher.utils.path.UrlManager.Companion.createRequestBuilder
+import com.movtery.cubernlauncher.utils.stringutils.StringUtilsKt
 import net.kdt.pojavlaunch.Tools
 import net.kdt.pojavlaunch.value.MinecraftAccount
 import okhttp3.MediaType.Companion.toMediaTypeOrNull

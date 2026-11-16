@@ -1,9 +1,9 @@
-package com.movtery.CubernLauncher.feature.mod
+package com.movtery.cubernlauncher.feature.mod
 
 import android.content.Context
-import com.movtery.CubernLauncher.task.Task
-import com.movtery.CubernLauncher.utils.file.FileHandler
-import com.movtery.CubernLauncher.utils.file.FileSearchProgress
+import com.movtery.cubernlauncher.task.Task
+import com.movtery.cubernlauncher.utils.file.FileHandler
+import com.movtery.cubernlauncher.utils.file.FileSearchProgress
 import org.apache.commons.io.FileUtils
 import java.io.File
 import java.util.concurrent.atomic.AtomicLong

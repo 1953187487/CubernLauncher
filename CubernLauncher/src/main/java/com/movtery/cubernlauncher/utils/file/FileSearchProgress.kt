@@ -1,4 +1,4 @@
-package com.movtery.CubernLauncher.utils.file
+package com.movtery.cubernlauncher.utils.file
 
 interface FileSearchProgress {
     fun getCurrentFileCount(): Long = 0

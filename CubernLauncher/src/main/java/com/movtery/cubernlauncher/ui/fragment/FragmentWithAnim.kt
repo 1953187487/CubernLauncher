@@ -1,8 +1,8 @@
-package com.movtery.CubernLauncher.ui.fragment
+package com.movtery.cubernlauncher.ui.fragment
 
 import com.movtery.anim.AnimPlayer
-import com.movtery.CubernLauncher.setting.AllSettings
-import com.movtery.CubernLauncher.utils.anim.SlideAnimation
+import com.movtery.cubernlauncher.setting.AllSettings
+import com.movtery.cubernlauncher.utils.anim.SlideAnimation
 
 abstract class FragmentWithAnim : BaseFragment, SlideAnimation {
     private var animPlayer: AnimPlayer = AnimPlayer()

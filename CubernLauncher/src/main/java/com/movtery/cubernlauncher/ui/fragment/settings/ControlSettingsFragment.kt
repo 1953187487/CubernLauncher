@@ -1,4 +1,4 @@
-package com.movtery.CubernLauncher.ui.fragment.settings
+package com.movtery.cubernlauncher.ui.fragment.settings
 
 import android.content.Context
 import android.hardware.Sensor
@@ -10,15 +10,15 @@ import android.view.ViewGroup
 import android.widget.Toast
 import com.movtery.anim.AnimPlayer
 import com.movtery.anim.animations.Animations
-import com.movtery.CubernLauncher.R
-import com.movtery.CubernLauncher.databinding.SettingsFragmentControlBinding
-import com.movtery.CubernLauncher.setting.AllSettings
-import com.movtery.CubernLauncher.ui.fragment.CustomMouseFragment
-import com.movtery.CubernLauncher.ui.fragment.FragmentWithAnim
-import com.movtery.CubernLauncher.ui.fragment.settings.wrapper.BaseSettingsWrapper
-import com.movtery.CubernLauncher.ui.fragment.settings.wrapper.SeekBarSettingsWrapper
-import com.movtery.CubernLauncher.ui.fragment.settings.wrapper.SwitchSettingsWrapper
-import com.movtery.CubernLauncher.utils.ZHTools
+import com.movtery.cubernlauncher.R
+import com.movtery.cubernlauncher.databinding.SettingsFragmentControlBinding
+import com.movtery.cubernlauncher.setting.AllSettings
+import com.movtery.cubernlauncher.ui.fragment.CustomMouseFragment
+import com.movtery.cubernlauncher.ui.fragment.FragmentWithAnim
+import com.movtery.cubernlauncher.ui.fragment.settings.wrapper.BaseSettingsWrapper
+import com.movtery.cubernlauncher.ui.fragment.settings.wrapper.SeekBarSettingsWrapper
+import com.movtery.cubernlauncher.ui.fragment.settings.wrapper.SwitchSettingsWrapper
+import com.movtery.cubernlauncher.utils.ZHTools
 import fr.spse.gamepad_remapper.Remapper
 import net.kdt.pojavlaunch.fragments.GamepadMapperFragment
 

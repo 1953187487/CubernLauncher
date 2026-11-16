@@ -1,12 +1,12 @@
-package com.movtery.CubernLauncher.feature.version.install
+package com.movtery.cubernlauncher.feature.version.install
 
 import android.app.Activity
 import com.kdt.mcgui.ProgressLayout
-import com.movtery.CubernLauncher.R
-import com.movtery.CubernLauncher.event.value.InstallGameEvent
-import com.movtery.CubernLauncher.feature.log.Logging
-import com.movtery.CubernLauncher.feature.version.VersionsManager
-import com.movtery.CubernLauncher.task.Task
+import com.movtery.cubernlauncher.R
+import com.movtery.cubernlauncher.event.value.InstallGameEvent
+import com.movtery.cubernlauncher.feature.log.Logging
+import com.movtery.cubernlauncher.feature.version.VersionsManager
+import com.movtery.cubernlauncher.task.Task
 import net.kdt.pojavlaunch.Tools
 import net.kdt.pojavlaunch.progresskeeper.ProgressKeeper
 import net.kdt.pojavlaunch.tasks.AsyncMinecraftDownloader

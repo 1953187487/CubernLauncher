@@ -1,4 +1,4 @@
-package com.movtery.CubernLauncher.ui.subassembly.view
+package com.movtery.cubernlauncher.ui.subassembly.view
 
 import android.view.View
 import android.widget.CheckBox
@@ -7,7 +7,7 @@ import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.fragment.app.Fragment
-import com.movtery.CubernLauncher.R
+import com.movtery.cubernlauncher.R
 import com.petterp.floatingx.assist.FxGravity
 import com.petterp.floatingx.assist.helper.FxScopeHelper
 import com.petterp.floatingx.listener.IFxViewLifecycle

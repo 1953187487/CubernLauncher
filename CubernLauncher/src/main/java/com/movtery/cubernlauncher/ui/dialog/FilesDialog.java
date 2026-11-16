@@ -1,4 +1,4 @@
-package com.movtery.CubernLauncher.ui.dialog;
+package com.movtery.cubernlauncher.ui.dialog;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -8,11 +8,11 @@ import android.widget.RelativeLayout;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.movtery.CubernLauncher.R;
-import com.movtery.CubernLauncher.databinding.DialogOperationFileBinding;
-import com.movtery.CubernLauncher.task.Task;
-import com.movtery.CubernLauncher.utils.file.FileTools;
-import com.movtery.CubernLauncher.utils.file.PasteFile;
+import com.movtery.cubernlauncher.R;
+import com.movtery.cubernlauncher.databinding.DialogOperationFileBinding;
+import com.movtery.cubernlauncher.task.Task;
+import com.movtery.cubernlauncher.utils.file.FileTools;
+import com.movtery.cubernlauncher.utils.file.PasteFile;
 
 import java.io.File;
 import java.util.ArrayList;

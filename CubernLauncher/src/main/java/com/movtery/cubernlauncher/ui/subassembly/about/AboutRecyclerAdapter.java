@@ -1,4 +1,4 @@
-package com.movtery.CubernLauncher.ui.subassembly.about;
+package com.movtery.cubernlauncher.ui.subassembly.about;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,8 +7,8 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.movtery.CubernLauncher.databinding.ItemAboutViewBinding;
-import com.movtery.CubernLauncher.utils.ZHTools;
+import com.movtery.cubernlauncher.databinding.ItemAboutViewBinding;
+import com.movtery.cubernlauncher.utils.ZHTools;
 
 import java.util.List;
 

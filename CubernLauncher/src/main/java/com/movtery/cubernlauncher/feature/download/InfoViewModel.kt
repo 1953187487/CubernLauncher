@@ -1,8 +1,8 @@
-package com.movtery.CubernLauncher.feature.download
+package com.movtery.cubernlauncher.feature.download
 
 import androidx.lifecycle.ViewModel
-import com.movtery.CubernLauncher.feature.download.item.InfoItem
-import com.movtery.CubernLauncher.feature.download.platform.AbstractPlatformHelper
+import com.movtery.cubernlauncher.feature.download.item.InfoItem
+import com.movtery.cubernlauncher.feature.download.platform.AbstractPlatformHelper
 
 class InfoViewModel : ViewModel() {
     var platformHelper: AbstractPlatformHelper? = null

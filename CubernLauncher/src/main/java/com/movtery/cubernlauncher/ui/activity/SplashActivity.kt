@@ -1,4 +1,4 @@
-package com.movtery.CubernLauncher.ui.activity
+package com.movtery.cubernlauncher.ui.activity
 
 import android.Manifest
 import android.annotation.SuppressLint
@@ -7,19 +7,19 @@ import android.os.Build
 import android.os.Bundle
 import androidx.core.app.ActivityCompat
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.movtery.CubernLauncher.InfoCenter
-import com.movtery.CubernLauncher.InfoDistributor
-import com.movtery.CubernLauncher.R
-import com.movtery.CubernLauncher.databinding.ActivitySplashBinding
-import com.movtery.CubernLauncher.feature.unpack.Components
-import com.movtery.CubernLauncher.feature.unpack.Jre
-import com.movtery.CubernLauncher.feature.unpack.UnpackComponentsTask
-import com.movtery.CubernLauncher.feature.unpack.UnpackJreTask
-import com.movtery.CubernLauncher.feature.unpack.UnpackSingleFilesTask
-import com.movtery.CubernLauncher.task.Task
-import com.movtery.CubernLauncher.ui.dialog.TipDialog
-import com.movtery.CubernLauncher.utils.StoragePermissionsUtils
-import net.kdt.pojavlaunch.LauncherActivity
+import com.movtery.cubernlauncher.InfoCenter
+import com.movtery.cubernlauncher.InfoDistributor
+import com.movtery.cubernlauncher.R
+import com.movtery.cubernlauncher.databinding.ActivitySplashBinding
+import com.movtery.cubernlauncher.feature.unpack.Components
+import com.movtery.cubernlauncher.feature.unpack.Jre
+import com.movtery.cubernlauncher.feature.unpack.UnpackComponentsTask
+import com.movtery.cubernlauncher.feature.unpack.UnpackJreTask
+import com.movtery.cubernlauncher.feature.unpack.UnpackSingleFilesTask
+import com.movtery.cubernlauncher.task.Task
+import com.movtery.cubernlauncher.ui.dialog.TipDialog
+import com.movtery.cubernlauncher.utils.StoragePermissionsUtils
+import com.movtery.cubernlauncher.ui.activity.LauncherActivity
 import net.kdt.pojavlaunch.MissingStorageActivity
 import net.kdt.pojavlaunch.Tools
 

@@ -1,4 +1,4 @@
-package com.movtery.CubernLauncher.ui.fragment
+package com.movtery.cubernlauncher.ui.fragment
 
 import android.annotation.SuppressLint
 import android.net.Uri
@@ -15,23 +15,23 @@ import com.bumptech.glide.request.target.DrawableImageViewTarget
 import com.getkeepsafe.taptargetview.TapTargetSequence
 import com.movtery.anim.AnimPlayer
 import com.movtery.anim.animations.Animations
-import com.movtery.CubernLauncher.R
-import com.movtery.CubernLauncher.databinding.FragmentCustomMouseBinding
-import com.movtery.CubernLauncher.setting.AllSettings
-import com.movtery.CubernLauncher.task.Task
-import com.movtery.CubernLauncher.task.TaskExecutors
-import com.movtery.CubernLauncher.ui.dialog.FilesDialog
-import com.movtery.CubernLauncher.ui.dialog.FilesDialog.FilesButton
-import com.movtery.CubernLauncher.ui.subassembly.filelist.FileIcon
-import com.movtery.CubernLauncher.ui.subassembly.filelist.FileItemBean
-import com.movtery.CubernLauncher.ui.subassembly.filelist.FileRecyclerViewCreator
-import com.movtery.CubernLauncher.utils.NewbieGuideUtils
-import com.movtery.CubernLauncher.utils.path.PathManager
-import com.movtery.CubernLauncher.utils.ZHTools
-import com.movtery.CubernLauncher.utils.file.FileTools
-import com.movtery.CubernLauncher.utils.file.FileTools.Companion.mkdirs
-import com.movtery.CubernLauncher.utils.image.ImageUtils.Companion.isImage
-import com.movtery.CubernLauncher.utils.stringutils.StringUtils
+import com.movtery.cubernlauncher.R
+import com.movtery.cubernlauncher.databinding.FragmentCustomMouseBinding
+import com.movtery.cubernlauncher.setting.AllSettings
+import com.movtery.cubernlauncher.task.Task
+import com.movtery.cubernlauncher.task.TaskExecutors
+import com.movtery.cubernlauncher.ui.dialog.FilesDialog
+import com.movtery.cubernlauncher.ui.dialog.FilesDialog.FilesButton
+import com.movtery.cubernlauncher.ui.subassembly.filelist.FileIcon
+import com.movtery.cubernlauncher.ui.subassembly.filelist.FileItemBean
+import com.movtery.cubernlauncher.ui.subassembly.filelist.FileRecyclerViewCreator
+import com.movtery.cubernlauncher.utils.NewbieGuideUtils
+import com.movtery.cubernlauncher.utils.path.PathManager
+import com.movtery.cubernlauncher.utils.ZHTools
+import com.movtery.cubernlauncher.utils.file.FileTools
+import com.movtery.cubernlauncher.utils.file.FileTools.Companion.mkdirs
+import com.movtery.cubernlauncher.utils.image.ImageUtils.Companion.isImage
+import com.movtery.cubernlauncher.utils.stringutils.StringUtils
 import net.kdt.pojavlaunch.Tools
 import java.io.File
 

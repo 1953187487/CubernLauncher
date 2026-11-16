@@ -1,4 +1,4 @@
-package com.movtery.CubernLauncher.ui.dialog
+package com.movtery.cubernlauncher.ui.dialog
 
 import android.content.Context
 import android.os.Bundle
@@ -6,10 +6,10 @@ import android.view.View
 import android.view.Window
 import android.widget.EditText
 import androidx.annotation.CheckResult
-import com.movtery.CubernLauncher.R
-import com.movtery.CubernLauncher.databinding.DialogEditTextBinding
-import com.movtery.CubernLauncher.ui.dialog.DraggableDialog.DialogInitializationListener
-import com.movtery.CubernLauncher.utils.stringutils.StringUtilsKt.Companion.isEmptyOrBlank
+import com.movtery.cubernlauncher.R
+import com.movtery.cubernlauncher.databinding.DialogEditTextBinding
+import com.movtery.cubernlauncher.ui.dialog.DraggableDialog.DialogInitializationListener
+import com.movtery.cubernlauncher.utils.stringutils.StringUtilsKt.Companion.isEmptyOrBlank
 
 class EditTextDialog private constructor(
     private val context: Context,

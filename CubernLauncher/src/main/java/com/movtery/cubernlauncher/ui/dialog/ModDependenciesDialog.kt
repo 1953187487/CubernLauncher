@@ -1,4 +1,4 @@
-package com.movtery.CubernLauncher.ui.dialog
+package com.movtery.cubernlauncher.ui.dialog
 
 import android.content.Context
 import android.os.Bundle
@@ -8,12 +8,12 @@ import android.view.WindowManager
 import android.view.animation.AnimationUtils
 import android.view.animation.LayoutAnimationController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.movtery.CubernLauncher.R
-import com.movtery.CubernLauncher.databinding.DialogModDependenciesBinding
-import com.movtery.CubernLauncher.feature.download.ModDependenciesAdapter
-import com.movtery.CubernLauncher.feature.download.item.DependenciesInfoItem
-import com.movtery.CubernLauncher.feature.download.item.InfoItem
-import com.movtery.CubernLauncher.feature.log.Logging
+import com.movtery.cubernlauncher.R
+import com.movtery.cubernlauncher.databinding.DialogModDependenciesBinding
+import com.movtery.cubernlauncher.feature.download.ModDependenciesAdapter
+import com.movtery.cubernlauncher.feature.download.item.DependenciesInfoItem
+import com.movtery.cubernlauncher.feature.download.item.InfoItem
+import com.movtery.cubernlauncher.feature.log.Logging
 import net.kdt.pojavlaunch.Tools
 
 class ModDependenciesDialog(

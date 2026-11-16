@@ -1,12 +1,12 @@
-package com.movtery.CubernLauncher.feature.version
+package com.movtery.cubernlauncher.feature.version
 
 import android.os.Parcel
 import android.os.Parcelable
-import com.movtery.CubernLauncher.feature.customprofilepath.ProfilePathHome
-import com.movtery.CubernLauncher.feature.mod.parser.ModChecker
-import com.movtery.CubernLauncher.setting.AllSettings
-import com.movtery.CubernLauncher.utils.ZHTools
-import com.movtery.CubernLauncher.utils.path.PathManager
+import com.movtery.cubernlauncher.feature.customprofilepath.ProfilePathHome
+import com.movtery.cubernlauncher.feature.mod.parser.ModChecker
+import com.movtery.cubernlauncher.setting.AllSettings
+import com.movtery.cubernlauncher.utils.ZHTools
+import com.movtery.cubernlauncher.utils.path.PathManager
 import net.kdt.pojavlaunch.Tools
 import java.io.File
 

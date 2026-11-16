@@ -1,4 +1,4 @@
-package com.movtery.CubernLauncher.feature.download.item
+package com.movtery.cubernlauncher.feature.download.item
 
 /**
  * 用于记录搜索结果

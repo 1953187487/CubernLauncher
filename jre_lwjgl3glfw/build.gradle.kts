@@ -1,31 +1,38 @@
 plugins {
-    id("com.android.library")
-    id("org.jetbrains.kotlin.android")
+    java
 }
 
-android {
-    namespace = "com.movtery.zalithlauncher3.lwjgl"
-    compileSdk = 34
+group = "org.lwjgl.glfw"
 
-    defaultConfig {
-        minSdk = 26
-        targetSdk = 34
+configurations.getByName("default").isCanBeResolved = true
+
+tasks.jar {
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+    archiveBaseName.set("lwjgl-glfw-classes")
+    destinationDirectory.set(file("../CubernLauncher/src/main/assets/components/lwjgl3/"))
+    doLast {
+        val versionFile = file("../CubernLauncher/src/main/assets/components/lwjgl3/version")
+        versionFile.writeText(System.currentTimeMillis().toString())
     }
-
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
+    from({
+        configurations.getByName("default").map {
+            println(it.name)
+            if (it.isDirectory) it else zipTree(it)
+        }
+    })
+    exclude("net/java/openjdk/cacio/ctc/**")
+    manifest {
+        attributes("Manifest-Version" to "3.3.6")
+        attributes("Automatic-Module-Name" to "org.lwjgl")
     }
+}
 
-    kotlinOptions {
-        jvmTarget = "17"
+java {
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(8))
     }
 }
 
 dependencies {
-    // LWJGL dependencies will be added from the libs folder
-    implementation(files("libs/lwjgl.jar"))
-    implementation(files("libs/lwjgl-glfw.jar"))
-    implementation(files("libs/lwjgl-opengl.jar"))
-    implementation(files("libs/lwjgl-openal.jar"))
+    implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
 }

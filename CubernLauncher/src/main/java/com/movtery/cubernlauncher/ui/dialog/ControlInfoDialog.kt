@@ -1,17 +1,17 @@
-package com.movtery.CubernLauncher.ui.dialog
+package com.movtery.cubernlauncher.ui.dialog
 
 import android.content.Context
 import android.os.Bundle
 import android.view.Window
 import android.widget.TextView
-import com.movtery.CubernLauncher.R
-import com.movtery.CubernLauncher.databinding.DialogControlInfoBinding
-import com.movtery.CubernLauncher.task.Task
-import com.movtery.CubernLauncher.ui.dialog.DraggableDialog.DialogInitializationListener
-import com.movtery.CubernLauncher.ui.subassembly.customcontrols.ControlInfoData
-import com.movtery.CubernLauncher.ui.subassembly.customcontrols.EditControlData.Companion.loadCustomControlsFromFile
-import com.movtery.CubernLauncher.ui.subassembly.customcontrols.EditControlData.Companion.saveToFile
-import com.movtery.CubernLauncher.utils.path.PathManager
+import com.movtery.cubernlauncher.R
+import com.movtery.cubernlauncher.databinding.DialogControlInfoBinding
+import com.movtery.cubernlauncher.task.Task
+import com.movtery.cubernlauncher.ui.dialog.DraggableDialog.DialogInitializationListener
+import com.movtery.cubernlauncher.ui.subassembly.customcontrols.ControlInfoData
+import com.movtery.cubernlauncher.ui.subassembly.customcontrols.EditControlData.Companion.loadCustomControlsFromFile
+import com.movtery.cubernlauncher.ui.subassembly.customcontrols.EditControlData.Companion.saveToFile
+import com.movtery.cubernlauncher.utils.path.PathManager
 import java.io.File
 
 class ControlInfoDialog(

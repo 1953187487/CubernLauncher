@@ -1,8 +1,8 @@
-package com.movtery.CubernLauncher.feature.unpack
+package com.movtery.cubernlauncher.feature.unpack
 
 import android.content.Context
 import android.content.res.AssetManager
-import com.movtery.CubernLauncher.feature.log.Logging
+import com.movtery.cubernlauncher.feature.log.Logging
 import net.kdt.pojavlaunch.Architecture
 import net.kdt.pojavlaunch.Tools
 import net.kdt.pojavlaunch.multirt.MultiRTUtils

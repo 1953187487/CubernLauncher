@@ -1,6 +1,6 @@
-package com.movtery.CubernLauncher.feature.unpack
+package com.movtery.cubernlauncher.feature.unpack
 
-import com.movtery.CubernLauncher.R
+import com.movtery.cubernlauncher.R
 
 enum class Jre(val jreName: String, val jrePath: String, val summary: Int) {
     JRE_8("Internal-8", "components/jre-8", R.string.splash_screen_jre8),

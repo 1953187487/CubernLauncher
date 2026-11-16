@@ -1,7 +1,7 @@
-package com.movtery.CubernLauncher.ui.subassembly.filelist
+package com.movtery.cubernlauncher.ui.subassembly.filelist
 
 import android.graphics.drawable.Drawable
-import com.movtery.CubernLauncher.utils.stringutils.SortStrings.Companion.compareChar
+import com.movtery.cubernlauncher.utils.stringutils.SortStrings.Companion.compareChar
 import org.apache.commons.io.FileUtils
 import java.io.File
 import java.util.Date

@@ -1,7 +1,7 @@
-package com.movtery.CubernLauncher.ui.subassembly.modlist
+package com.movtery.cubernlauncher.ui.subassembly.modlist
 
 import androidx.recyclerview.widget.RecyclerView
-import com.movtery.CubernLauncher.feature.download.enums.ModLoader
+import com.movtery.cubernlauncher.feature.download.enums.ModLoader
 import java.util.concurrent.atomic.AtomicReference
 
 class ModListItemBean(

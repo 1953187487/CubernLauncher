@@ -1,8 +1,8 @@
-package com.movtery.CubernLauncher.utils.file
+package com.movtery.cubernlauncher.utils.file
 
 import android.content.Context
-import com.movtery.CubernLauncher.feature.log.Logging
-import com.movtery.CubernLauncher.task.Task
+import com.movtery.cubernlauncher.feature.log.Logging
+import com.movtery.cubernlauncher.task.Task
 import org.apache.commons.io.FileUtils
 import java.io.File
 import java.util.concurrent.atomic.AtomicLong

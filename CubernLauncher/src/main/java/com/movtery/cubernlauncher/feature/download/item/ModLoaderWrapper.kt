@@ -1,14 +1,14 @@
-package com.movtery.CubernLauncher.feature.download.item
+package com.movtery.cubernlauncher.feature.download.item
 
 import android.content.Context
 import android.content.Intent
-import com.movtery.CubernLauncher.feature.download.enums.ModLoader
-import com.movtery.CubernLauncher.feature.mod.modloader.NeoForgeDownloadTask
-import com.movtery.CubernLauncher.feature.version.install.InstallTask
+import com.movtery.cubernlauncher.feature.download.enums.ModLoader
+import com.movtery.cubernlauncher.feature.mod.modloader.NeoForgeDownloadTask
+import com.movtery.cubernlauncher.feature.version.install.InstallTask
 import net.kdt.pojavlaunch.JavaGUILauncherActivity
-import com.movtery.CubernLauncher.feature.mod.modloader.FabricLikeUtils
-import com.movtery.CubernLauncher.feature.mod.modloader.ForgeDownloadTask
-import com.movtery.CubernLauncher.feature.version.install.InstallArgsUtils
+import com.movtery.cubernlauncher.feature.mod.modloader.FabricLikeUtils
+import com.movtery.cubernlauncher.feature.mod.modloader.ForgeDownloadTask
+import com.movtery.cubernlauncher.feature.version.install.InstallArgsUtils
 import java.io.File
 
 class ModLoaderWrapper(

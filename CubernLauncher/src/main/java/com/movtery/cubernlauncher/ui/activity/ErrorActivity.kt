@@ -1,4 +1,4 @@
-package com.movtery.CubernLauncher.ui.activity
+package com.movtery.cubernlauncher.ui.activity
 
 import android.content.Context
 import android.content.Intent
@@ -6,10 +6,10 @@ import android.os.Bundle
 import android.view.View
 import android.view.WindowManager
 import androidx.core.content.ContextCompat
-import com.movtery.CubernLauncher.InfoCenter
-import com.movtery.CubernLauncher.R
-import com.movtery.CubernLauncher.databinding.ActivityErrorBinding
-import com.movtery.CubernLauncher.utils.ZHTools
+import com.movtery.cubernlauncher.InfoCenter
+import com.movtery.cubernlauncher.R
+import com.movtery.cubernlauncher.databinding.ActivityErrorBinding
+import com.movtery.cubernlauncher.utils.ZHTools
 import net.kdt.pojavlaunch.Tools
 
 class ErrorActivity : BaseActivity() {

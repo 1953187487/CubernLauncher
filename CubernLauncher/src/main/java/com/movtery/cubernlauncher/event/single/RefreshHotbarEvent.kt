@@ -1,4 +1,4 @@
-package com.movtery.CubernLauncher.event.single
+package com.movtery.cubernlauncher.event.single
 
 /**
  * 通过这个事件刷新MC物品栏的判定框

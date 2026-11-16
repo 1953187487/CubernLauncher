@@ -1,12 +1,12 @@
-package com.movtery.CubernLauncher.feature.notice
+package com.movtery.cubernlauncher.feature.notice
 
-import com.movtery.CubernLauncher.feature.log.Logging
-import com.movtery.CubernLauncher.setting.AllSettings
-import com.movtery.CubernLauncher.utils.ZHTools
-import com.movtery.CubernLauncher.utils.http.CallUtils
-import com.movtery.CubernLauncher.utils.http.CallUtils.CallbackListener
-import com.movtery.CubernLauncher.utils.path.UrlManager
-import com.movtery.CubernLauncher.utils.stringutils.StringUtils
+import com.movtery.cubernlauncher.feature.log.Logging
+import com.movtery.cubernlauncher.setting.AllSettings
+import com.movtery.cubernlauncher.utils.ZHTools
+import com.movtery.cubernlauncher.utils.http.CallUtils
+import com.movtery.cubernlauncher.utils.http.CallUtils.CallbackListener
+import com.movtery.cubernlauncher.utils.path.UrlManager
+import com.movtery.cubernlauncher.utils.stringutils.StringUtils
 import net.kdt.pojavlaunch.Tools
 import okhttp3.Call
 import okhttp3.Response

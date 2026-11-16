@@ -1,4 +1,4 @@
-package com.movtery.CubernLauncher.feature.unpack
+package com.movtery.cubernlauncher.feature.unpack
 
 abstract class AbstractUnpackTask: Runnable {
     abstract fun isNeedUnpack(): Boolean

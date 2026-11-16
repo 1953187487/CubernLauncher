@@ -1,4 +1,4 @@
-package com.movtery.CubernLauncher.ui.subassembly.adapter
+package com.movtery.cubernlauncher.ui.subassembly.adapter
 
 import android.annotation.SuppressLint
 import android.util.TypedValue

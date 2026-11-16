@@ -1,4 +1,4 @@
-package com.movtery.CubernLauncher.ui.subassembly.modlist
+package com.movtery.cubernlauncher.ui.subassembly.modlist
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -8,12 +8,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
-import com.movtery.CubernLauncher.R
-import com.movtery.CubernLauncher.databinding.ItemModDownloadBinding
-import com.movtery.CubernLauncher.feature.download.enums.DependencyType
-import com.movtery.CubernLauncher.feature.download.enums.ModLoader
-import com.movtery.CubernLauncher.feature.version.utils.VersionIconUtils
-import com.movtery.CubernLauncher.feature.version.VersionsManager
+import com.movtery.cubernlauncher.R
+import com.movtery.cubernlauncher.databinding.ItemModDownloadBinding
+import com.movtery.cubernlauncher.feature.download.enums.DependencyType
+import com.movtery.cubernlauncher.feature.download.enums.ModLoader
+import com.movtery.cubernlauncher.feature.version.utils.VersionIconUtils
+import com.movtery.cubernlauncher.feature.version.VersionsManager
 
 class ModListAdapter(
     private val fragment: ModListFragment,

@@ -1,6 +1,6 @@
-package com.movtery.CubernLauncher.renderer.renderers
+package com.movtery.cubernlauncher.renderer.renderers
 
-import com.movtery.CubernLauncher.renderer.RendererInterface
+import com.movtery.cubernlauncher.renderer.RendererInterface
 
 class VulkanZinkRenderer : RendererInterface {
     override fun getRendererId(): String = "vulkan_zink"

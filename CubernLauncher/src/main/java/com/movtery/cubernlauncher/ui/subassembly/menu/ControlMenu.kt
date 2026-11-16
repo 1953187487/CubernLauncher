@@ -1,4 +1,4 @@
-package com.movtery.CubernLauncher.ui.subassembly.menu
+package com.movtery.cubernlauncher.ui.subassembly.menu
 
 import android.app.Activity
 import android.content.Intent
@@ -6,9 +6,9 @@ import android.provider.DocumentsContract
 import android.view.View
 import android.widget.CompoundButton
 import android.widget.SeekBar
-import com.movtery.CubernLauncher.R
-import com.movtery.CubernLauncher.databinding.ViewControlMenuBinding
-import com.movtery.CubernLauncher.setting.AllSettings
+import com.movtery.cubernlauncher.R
+import com.movtery.cubernlauncher.databinding.ViewControlMenuBinding
+import com.movtery.cubernlauncher.setting.AllSettings
 import net.kdt.pojavlaunch.Tools
 import net.kdt.pojavlaunch.customcontrols.ControlData
 import net.kdt.pojavlaunch.customcontrols.ControlDrawerData

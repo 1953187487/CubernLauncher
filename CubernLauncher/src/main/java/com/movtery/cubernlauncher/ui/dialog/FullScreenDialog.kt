@@ -1,4 +1,4 @@
-package com.movtery.CubernLauncher.ui.dialog
+package com.movtery.cubernlauncher.ui.dialog
 
 import android.app.Dialog
 import android.content.Context
@@ -7,7 +7,7 @@ import android.os.Build
 import android.os.Bundle
 import android.view.View
 import android.view.WindowManager
-import com.movtery.CubernLauncher.R
+import com.movtery.cubernlauncher.R
 
 abstract class FullScreenDialog(context: Context) : Dialog(context, R.style.CustomDialogStyle) {
     override fun onCreate(savedInstanceState: Bundle?) {

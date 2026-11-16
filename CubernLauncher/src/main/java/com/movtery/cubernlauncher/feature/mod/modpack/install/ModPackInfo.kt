@@ -1,4 +1,4 @@
-package com.movtery.CubernLauncher.feature.mod.modpack.install
+package com.movtery.cubernlauncher.feature.mod.modpack.install
 
 /**
  * 整合包关键信息

@@ -1,15 +1,15 @@
-package com.movtery.CubernLauncher.plugins
+package com.movtery.cubernlauncher.plugins
 
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
-import com.movtery.CubernLauncher.plugins.driver.DriverPluginManager
-import com.movtery.CubernLauncher.plugins.renderer.RendererPlugin
-import com.movtery.CubernLauncher.plugins.renderer.RendererPluginManager
-import com.movtery.CubernLauncher.renderer.RendererInterface
-import com.movtery.CubernLauncher.renderer.Renderers
-import com.movtery.CubernLauncher.utils.path.PathManager
+import com.movtery.cubernlauncher.plugins.driver.DriverPluginManager
+import com.movtery.cubernlauncher.plugins.renderer.RendererPlugin
+import com.movtery.cubernlauncher.plugins.renderer.RendererPluginManager
+import com.movtery.cubernlauncher.renderer.RendererInterface
+import com.movtery.cubernlauncher.renderer.Renderers
+import com.movtery.cubernlauncher.utils.path.PathManager
 import org.apache.commons.io.FileUtils
 
 /**

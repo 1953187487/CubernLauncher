@@ -1,10 +1,10 @@
-package com.movtery.CubernLauncher.feature
+package com.movtery.cubernlauncher.feature
 
-import com.movtery.CubernLauncher.feature.log.Logging
-import com.movtery.CubernLauncher.feature.version.Version
-import com.movtery.CubernLauncher.setting.AllSettings
-import com.movtery.CubernLauncher.utils.MCVersionRegex
-import com.movtery.CubernLauncher.utils.ZHTools
+import com.movtery.cubernlauncher.feature.log.Logging
+import com.movtery.cubernlauncher.feature.version.Version
+import com.movtery.cubernlauncher.setting.AllSettings
+import com.movtery.cubernlauncher.utils.MCVersionRegex
+import com.movtery.cubernlauncher.utils.ZHTools
 import org.jackhuang.hmcl.util.versioning.VersionNumber
 import org.jackhuang.hmcl.util.versioning.VersionRange
 

@@ -1,7 +1,7 @@
-package com.movtery.CubernLauncher.feature.download.utils
+package com.movtery.cubernlauncher.feature.download.utils
 
-import com.movtery.CubernLauncher.feature.download.enums.Category
-import com.movtery.CubernLauncher.feature.download.enums.Classify
+import com.movtery.cubernlauncher.feature.download.enums.Category
+import com.movtery.cubernlauncher.feature.download.enums.Classify
 
 class CategoryUtils {
     companion object {

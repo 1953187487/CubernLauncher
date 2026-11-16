@@ -1,4 +1,4 @@
-package com.movtery.CubernLauncher.feature.download.enums
+package com.movtery.cubernlauncher.feature.download.enums
 
 enum class Classify(val type: Int) {
     ALL(-1),

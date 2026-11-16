@@ -1,4 +1,4 @@
-package com.movtery.CubernLauncher.ui.subassembly.customcontrols
+package com.movtery.cubernlauncher.ui.subassembly.customcontrols
 
 class ControlItemBean(@JvmField val controlInfoData: ControlInfoData) {
     @JvmField

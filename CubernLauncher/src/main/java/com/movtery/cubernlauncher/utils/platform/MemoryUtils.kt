@@ -1,4 +1,4 @@
-package com.movtery.CubernLauncher.utils.platform
+package com.movtery.cubernlauncher.utils.platform
 
 import android.app.ActivityManager
 import android.content.Context

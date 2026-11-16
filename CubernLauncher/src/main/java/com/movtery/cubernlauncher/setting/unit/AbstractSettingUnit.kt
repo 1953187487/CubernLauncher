@@ -1,7 +1,7 @@
-package com.movtery.CubernLauncher.setting.unit
+package com.movtery.cubernlauncher.setting.unit
 
 import androidx.annotation.CheckResult
-import com.movtery.CubernLauncher.setting.Settings
+import com.movtery.cubernlauncher.setting.Settings
 
 abstract class AbstractSettingUnit<V>(
     val key: String,

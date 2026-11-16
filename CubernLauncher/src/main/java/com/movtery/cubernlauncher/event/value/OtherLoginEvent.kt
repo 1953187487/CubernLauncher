@@ -1,4 +1,4 @@
-package com.movtery.CubernLauncher.event.value
+package com.movtery.cubernlauncher.event.value
 
 import net.kdt.pojavlaunch.value.MinecraftAccount
 

@@ -1,4 +1,4 @@
-package com.movtery.CubernLauncher.ui.subassembly.filelist
+package com.movtery.cubernlauncher.ui.subassembly.filelist
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -9,10 +9,10 @@ import android.view.animation.LayoutAnimationController
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.movtery.CubernLauncher.R
-import com.movtery.CubernLauncher.feature.mod.ModUtils
-import com.movtery.CubernLauncher.ui.subassembly.filelist.FileRecyclerAdapter.OnMultiSelectListener
-import com.movtery.CubernLauncher.utils.stringutils.StringFilter.Companion.containsSubstring
+import com.movtery.cubernlauncher.R
+import com.movtery.cubernlauncher.feature.mod.ModUtils
+import com.movtery.cubernlauncher.ui.subassembly.filelist.FileRecyclerAdapter.OnMultiSelectListener
+import com.movtery.cubernlauncher.utils.stringutils.StringFilter.Companion.containsSubstring
 import java.io.File
 import java.util.Date
 import java.util.concurrent.atomic.AtomicInteger

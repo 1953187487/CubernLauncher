@@ -1,4 +1,4 @@
-package com.movtery.CubernLauncher.utils
+package com.movtery.cubernlauncher.utils
 
 import android.Manifest
 import android.app.Activity
@@ -12,9 +12,9 @@ import android.provider.Settings
 import androidx.annotation.RequiresApi
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import com.movtery.CubernLauncher.InfoCenter
-import com.movtery.CubernLauncher.R
-import com.movtery.CubernLauncher.ui.dialog.TipDialog
+import com.movtery.cubernlauncher.InfoCenter
+import com.movtery.cubernlauncher.R
+import com.movtery.cubernlauncher.ui.dialog.TipDialog
 
 class StoragePermissionsUtils {
     companion object {

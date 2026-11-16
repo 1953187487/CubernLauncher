@@ -1,8 +1,8 @@
-package com.movtery.CubernLauncher.ui.subassembly.settingsbutton
+package com.movtery.cubernlauncher.ui.subassembly.settingsbutton
 
 import android.widget.ImageButton
 import androidx.core.content.ContextCompat
-import com.movtery.CubernLauncher.R
+import com.movtery.cubernlauncher.R
 
 class SettingsButtonWrapper(val button: ImageButton) {
     private var onTypeChangeListener: OnTypeChangeListener? = null

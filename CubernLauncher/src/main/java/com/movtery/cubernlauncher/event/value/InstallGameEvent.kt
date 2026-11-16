@@ -1,11 +1,11 @@
-package com.movtery.CubernLauncher.event.value
+package com.movtery.cubernlauncher.event.value
 
-import com.movtery.CubernLauncher.feature.version.install.Addon
-import com.movtery.CubernLauncher.feature.version.install.InstallTaskItem
+import com.movtery.cubernlauncher.feature.version.install.Addon
+import com.movtery.cubernlauncher.feature.version.install.InstallTaskItem
 
 /**
  * 安装任务开始时，将使用这个事件进行通知
- * @see com.movtery.CubernLauncher.ui.fragment.InstallGameFragment
+ * @see com.movtery.cubernlauncher.ui.fragment.InstallGameFragment
  * @param minecraftVersion MC原版版本
  * @param customVersionName 自定义的版本文件夹名称
  * @param taskMap 安装任务

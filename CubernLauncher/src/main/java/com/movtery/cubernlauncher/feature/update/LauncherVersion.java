@@ -1,4 +1,4 @@
-package com.movtery.CubernLauncher.feature.update;
+package com.movtery.cubernlauncher.feature.update;
 
 import androidx.annotation.NonNull;
 

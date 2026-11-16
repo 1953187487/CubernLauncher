@@ -1,12 +1,12 @@
-package com.movtery.CubernLauncher.setting
+package com.movtery.cubernlauncher.setting
 
-import com.movtery.CubernLauncher.InfoDistributor
-import com.movtery.CubernLauncher.context.ContextExecutor
-import com.movtery.CubernLauncher.setting.unit.BooleanSettingUnit
-import com.movtery.CubernLauncher.setting.unit.IntSettingUnit
-import com.movtery.CubernLauncher.setting.unit.LongSettingUnit
-import com.movtery.CubernLauncher.setting.unit.StringSettingUnit
-import com.movtery.CubernLauncher.utils.path.PathManager
+import com.movtery.cubernlauncher.InfoDistributor
+import com.movtery.cubernlauncher.context.ContextExecutor
+import com.movtery.cubernlauncher.setting.unit.BooleanSettingUnit
+import com.movtery.cubernlauncher.setting.unit.IntSettingUnit
+import com.movtery.cubernlauncher.setting.unit.LongSettingUnit
+import com.movtery.cubernlauncher.setting.unit.StringSettingUnit
+import com.movtery.cubernlauncher.utils.path.PathManager
 import net.kdt.pojavlaunch.Tools
 import net.kdt.pojavlaunch.prefs.LauncherPreferences
 

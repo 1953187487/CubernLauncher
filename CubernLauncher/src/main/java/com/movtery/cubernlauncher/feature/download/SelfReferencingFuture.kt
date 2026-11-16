@@ -1,6 +1,6 @@
-package com.movtery.CubernLauncher.feature.download
+package com.movtery.cubernlauncher.feature.download
 
-import com.movtery.CubernLauncher.feature.log.Logging.i
+import com.movtery.cubernlauncher.feature.log.Logging.i
 import okhttp3.internal.notify
 import okhttp3.internal.wait
 import java.util.concurrent.ExecutorService

@@ -1,4 +1,4 @@
-package com.movtery.CubernLauncher.ui.subassembly.menu
+package com.movtery.cubernlauncher.ui.subassembly.menu
 
 import android.annotation.SuppressLint
 import android.widget.SeekBar

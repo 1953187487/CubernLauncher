@@ -1,4 +1,4 @@
-package com.movtery.CubernLauncher.ui.fragment.about
+package com.movtery.cubernlauncher.ui.fragment.about
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,15 +6,15 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.movtery.CubernLauncher.R
-import com.movtery.CubernLauncher.databinding.FragmentAboutSponsorPageBinding
-import com.movtery.CubernLauncher.feature.CheckSponsor
-import com.movtery.CubernLauncher.feature.CheckSponsor.Companion.check
-import com.movtery.CubernLauncher.feature.CheckSponsor.Companion.getSponsorData
-import com.movtery.CubernLauncher.feature.log.Logging
-import com.movtery.CubernLauncher.task.TaskExecutors
-import com.movtery.CubernLauncher.ui.subassembly.about.SponsorMeta
-import com.movtery.CubernLauncher.ui.subassembly.about.SponsorRecyclerAdapter
+import com.movtery.cubernlauncher.R
+import com.movtery.cubernlauncher.databinding.FragmentAboutSponsorPageBinding
+import com.movtery.cubernlauncher.feature.CheckSponsor
+import com.movtery.cubernlauncher.feature.CheckSponsor.Companion.check
+import com.movtery.cubernlauncher.feature.CheckSponsor.Companion.getSponsorData
+import com.movtery.cubernlauncher.feature.log.Logging
+import com.movtery.cubernlauncher.task.TaskExecutors
+import com.movtery.cubernlauncher.ui.subassembly.about.SponsorMeta
+import com.movtery.cubernlauncher.ui.subassembly.about.SponsorRecyclerAdapter
 
 class AboutSponsorPageFragment : Fragment(R.layout.fragment_about_sponsor_page) {
     private lateinit var binding: FragmentAboutSponsorPageBinding

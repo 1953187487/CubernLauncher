@@ -1,4 +1,4 @@
-package com.movtery.CubernLauncher.utils
+package com.movtery.cubernlauncher.utils
 
 import java.util.regex.Pattern
 

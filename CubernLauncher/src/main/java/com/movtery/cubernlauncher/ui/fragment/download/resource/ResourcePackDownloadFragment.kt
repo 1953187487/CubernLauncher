@@ -1,4 +1,4 @@
-package com.movtery.CubernLauncher.ui.fragment.download.resource
+package com.movtery.cubernlauncher.ui.fragment.download.resource
 
 import android.net.Uri
 import android.os.Bundle
@@ -6,14 +6,14 @@ import android.widget.Button
 import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.fragment.app.Fragment
-import com.movtery.CubernLauncher.R
-import com.movtery.CubernLauncher.feature.download.enums.Classify
-import com.movtery.CubernLauncher.feature.download.platform.AbstractPlatformHelper.Companion.getResourcePackPath
-import com.movtery.CubernLauncher.feature.download.utils.CategoryUtils
-import com.movtery.CubernLauncher.task.Task
-import com.movtery.CubernLauncher.task.TaskExecutors
-import com.movtery.CubernLauncher.utils.ZHTools
-import com.movtery.CubernLauncher.utils.file.FileTools
+import com.movtery.cubernlauncher.R
+import com.movtery.cubernlauncher.feature.download.enums.Classify
+import com.movtery.cubernlauncher.feature.download.platform.AbstractPlatformHelper.Companion.getResourcePackPath
+import com.movtery.cubernlauncher.feature.download.utils.CategoryUtils
+import com.movtery.cubernlauncher.task.Task
+import com.movtery.cubernlauncher.task.TaskExecutors
+import com.movtery.cubernlauncher.utils.ZHTools
+import com.movtery.cubernlauncher.utils.file.FileTools
 import net.kdt.pojavlaunch.Tools
 import net.kdt.pojavlaunch.contracts.OpenDocumentWithExtension
 

@@ -1,4 +1,4 @@
-package com.movtery.CubernLauncher.ui.fragment
+package com.movtery.cubernlauncher.ui.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,15 +10,15 @@ import androidx.viewpager2.widget.ViewPager2
 import androidx.viewpager2.widget.ViewPager2.OnPageChangeCallback
 import com.movtery.anim.AnimPlayer
 import com.movtery.anim.animations.Animations
-import com.movtery.CubernLauncher.R
-import com.movtery.CubernLauncher.databinding.FragmentSettingsBinding
-import com.movtery.CubernLauncher.event.value.SettingsPageSwapEvent
-import com.movtery.CubernLauncher.setting.Settings
-import com.movtery.CubernLauncher.ui.fragment.settings.ControlSettingsFragment
-import com.movtery.CubernLauncher.ui.fragment.settings.ExperimentalSettingsFragment
-import com.movtery.CubernLauncher.ui.fragment.settings.GameSettingsFragment
-import com.movtery.CubernLauncher.ui.fragment.settings.LauncherSettingsFragment
-import com.movtery.CubernLauncher.ui.fragment.settings.VideoSettingsFragment
+import com.movtery.cubernlauncher.R
+import com.movtery.cubernlauncher.databinding.FragmentSettingsBinding
+import com.movtery.cubernlauncher.event.value.SettingsPageSwapEvent
+import com.movtery.cubernlauncher.setting.Settings
+import com.movtery.cubernlauncher.ui.fragment.settings.ControlSettingsFragment
+import com.movtery.cubernlauncher.ui.fragment.settings.ExperimentalSettingsFragment
+import com.movtery.cubernlauncher.ui.fragment.settings.GameSettingsFragment
+import com.movtery.cubernlauncher.ui.fragment.settings.LauncherSettingsFragment
+import com.movtery.cubernlauncher.ui.fragment.settings.VideoSettingsFragment
 import org.greenrobot.eventbus.EventBus
 
 class SettingsFragment : FragmentWithAnim(R.layout.fragment_settings) {

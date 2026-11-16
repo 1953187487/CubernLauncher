@@ -1,9 +1,9 @@
-package com.movtery.CubernLauncher.feature.download
+package com.movtery.cubernlauncher.feature.download
 
-import com.movtery.CubernLauncher.feature.download.item.DependenciesInfoItem
-import com.movtery.CubernLauncher.feature.download.item.ModLikeVersionItem
-import com.movtery.CubernLauncher.feature.download.item.ModVersionItem
-import com.movtery.CubernLauncher.feature.download.item.VersionItem
+import com.movtery.cubernlauncher.feature.download.item.DependenciesInfoItem
+import com.movtery.cubernlauncher.feature.download.item.ModLikeVersionItem
+import com.movtery.cubernlauncher.feature.download.item.ModVersionItem
+import com.movtery.cubernlauncher.feature.download.item.VersionItem
 
 /**
  * 将搜索得到的信息缓存在内存中，下次加载时可直接从内存中拿到上次的搜索结果

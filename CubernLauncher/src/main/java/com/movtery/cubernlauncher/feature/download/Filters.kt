@@ -1,8 +1,8 @@
-package com.movtery.CubernLauncher.feature.download
+package com.movtery.cubernlauncher.feature.download
 
-import com.movtery.CubernLauncher.feature.download.enums.Category
-import com.movtery.CubernLauncher.feature.download.enums.ModLoader
-import com.movtery.CubernLauncher.feature.download.enums.Sort
+import com.movtery.cubernlauncher.feature.download.enums.Category
+import com.movtery.cubernlauncher.feature.download.enums.ModLoader
+import com.movtery.cubernlauncher.feature.download.enums.Sort
 
 /**
  * 用于平台进行搜索时，提供筛选信息

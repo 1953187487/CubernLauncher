@@ -1,6 +1,6 @@
-package com.movtery.CubernLauncher.feature.download.utils
+package com.movtery.cubernlauncher.feature.download.utils
 
-import com.movtery.CubernLauncher.feature.download.enums.ModLoader
+import com.movtery.cubernlauncher.feature.download.enums.ModLoader
 
 class ModLoaderUtils {
     companion object {

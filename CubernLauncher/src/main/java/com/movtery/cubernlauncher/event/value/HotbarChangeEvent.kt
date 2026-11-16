@@ -1,4 +1,4 @@
-package com.movtery.CubernLauncher.event.value
+package com.movtery.cubernlauncher.event.value
 
 /**
  * 当快捷栏判定框变更时，会广播这个事件

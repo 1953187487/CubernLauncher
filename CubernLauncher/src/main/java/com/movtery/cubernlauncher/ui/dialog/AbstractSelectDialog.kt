@@ -1,10 +1,10 @@
-package com.movtery.CubernLauncher.ui.dialog
+package com.movtery.cubernlauncher.ui.dialog
 
 import android.content.Context
 import android.os.Bundle
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
-import com.movtery.CubernLauncher.databinding.DialogSelectItemBinding
+import com.movtery.cubernlauncher.databinding.DialogSelectItemBinding
 
 abstract class AbstractSelectDialog(context: Context) : FullScreenDialog(context) {
     protected val binding = DialogSelectItemBinding.inflate(layoutInflater)

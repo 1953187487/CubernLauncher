@@ -1,13 +1,13 @@
-package com.movtery.CubernLauncher.feature.customprofilepath
+package com.movtery.cubernlauncher.feature.customprofilepath
 
 import com.google.gson.JsonObject
 import com.google.gson.JsonParser
-import com.movtery.CubernLauncher.feature.log.Logging
-import com.movtery.CubernLauncher.feature.version.VersionsManager
-import com.movtery.CubernLauncher.setting.AllSettings
-import com.movtery.CubernLauncher.ui.subassembly.customprofilepath.ProfileItem
-import com.movtery.CubernLauncher.utils.path.PathManager
-import com.movtery.CubernLauncher.utils.StoragePermissionsUtils
+import com.movtery.cubernlauncher.feature.log.Logging
+import com.movtery.cubernlauncher.feature.version.VersionsManager
+import com.movtery.cubernlauncher.setting.AllSettings
+import com.movtery.cubernlauncher.ui.subassembly.customprofilepath.ProfileItem
+import com.movtery.cubernlauncher.utils.path.PathManager
+import com.movtery.cubernlauncher.utils.StoragePermissionsUtils
 import net.kdt.pojavlaunch.Tools
 import java.io.File
 import java.io.FileWriter

@@ -1,4 +1,4 @@
-package com.movtery.CubernLauncher.feature.login;
+package com.movtery.cubernlauncher.feature.login;
 
 import com.google.gson.annotations.SerializedName;
 

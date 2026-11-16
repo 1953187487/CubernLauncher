@@ -1,10 +1,10 @@
-package com.movtery.CubernLauncher.ui.view
+package com.movtery.cubernlauncher.ui.view
 
 import android.animation.AnimatorInflater
 import android.content.Context
 import android.util.AttributeSet
 import androidx.appcompat.widget.AppCompatCheckBox
-import com.movtery.CubernLauncher.R
+import com.movtery.cubernlauncher.R
 
 class AnimCheckBox @JvmOverloads constructor(
     context: Context,

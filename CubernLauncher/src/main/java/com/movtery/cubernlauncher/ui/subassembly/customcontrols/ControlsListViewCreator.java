@@ -1,4 +1,4 @@
-package com.movtery.CubernLauncher.ui.subassembly.customcontrols;
+package com.movtery.cubernlauncher.ui.subassembly.customcontrols;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -10,14 +10,14 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.movtery.CubernLauncher.R;
-import com.movtery.CubernLauncher.task.Task;
-import com.movtery.CubernLauncher.task.TaskExecutors;
-import com.movtery.CubernLauncher.ui.dialog.DeleteDialog;
-import com.movtery.CubernLauncher.ui.subassembly.filelist.RefreshListener;
-import com.movtery.CubernLauncher.utils.path.PathManager;
-import com.movtery.CubernLauncher.utils.file.FileTools;
-import com.movtery.CubernLauncher.utils.stringutils.StringFilter;
+import com.movtery.cubernlauncher.R;
+import com.movtery.cubernlauncher.task.Task;
+import com.movtery.cubernlauncher.task.TaskExecutors;
+import com.movtery.cubernlauncher.ui.dialog.DeleteDialog;
+import com.movtery.cubernlauncher.ui.subassembly.filelist.RefreshListener;
+import com.movtery.cubernlauncher.utils.path.PathManager;
+import com.movtery.cubernlauncher.utils.file.FileTools;
+import com.movtery.cubernlauncher.utils.stringutils.StringFilter;
 
 import java.io.File;
 import java.util.ArrayList;

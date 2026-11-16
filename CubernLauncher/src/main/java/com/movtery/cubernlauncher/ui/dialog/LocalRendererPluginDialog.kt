@@ -1,4 +1,4 @@
-package com.movtery.CubernLauncher.ui.dialog
+package com.movtery.cubernlauncher.ui.dialog
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -6,12 +6,12 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.movtery.CubernLauncher.R
-import com.movtery.CubernLauncher.databinding.ItemLocalRendererViewBinding
-import com.movtery.CubernLauncher.plugins.PluginLoader
-import com.movtery.CubernLauncher.plugins.renderer.LocalRendererPlugin
-import com.movtery.CubernLauncher.plugins.renderer.RendererPluginManager
-import com.movtery.CubernLauncher.renderer.Renderers
+import com.movtery.cubernlauncher.R
+import com.movtery.cubernlauncher.databinding.ItemLocalRendererViewBinding
+import com.movtery.cubernlauncher.plugins.PluginLoader
+import com.movtery.cubernlauncher.plugins.renderer.LocalRendererPlugin
+import com.movtery.cubernlauncher.plugins.renderer.RendererPluginManager
+import com.movtery.cubernlauncher.renderer.Renderers
 import org.apache.commons.io.FileUtils
 
 class LocalRendererPluginDialog(

@@ -1,13 +1,13 @@
-package com.movtery.CubernLauncher.ui.dialog
+package com.movtery.cubernlauncher.ui.dialog
 
 import android.content.Context
 import android.os.Bundle
 import android.view.Window
 import android.widget.EditText
-import com.movtery.CubernLauncher.R
-import com.movtery.CubernLauncher.databinding.DialogEditControlInfoBinding
-import com.movtery.CubernLauncher.ui.dialog.DraggableDialog.DialogInitializationListener
-import com.movtery.CubernLauncher.ui.subassembly.customcontrols.ControlInfoData
+import com.movtery.cubernlauncher.R
+import com.movtery.cubernlauncher.databinding.DialogEditControlInfoBinding
+import com.movtery.cubernlauncher.ui.dialog.DraggableDialog.DialogInitializationListener
+import com.movtery.cubernlauncher.ui.subassembly.customcontrols.ControlInfoData
 
 class EditControlInfoDialog(
     context: Context,

@@ -1,4 +1,4 @@
-package com.movtery.CubernLauncher.event.value
+package com.movtery.cubernlauncher.event.value
 
 /**
  * 当有新的下载任务时，使用这个任务向LauncherActivity通知任务的键

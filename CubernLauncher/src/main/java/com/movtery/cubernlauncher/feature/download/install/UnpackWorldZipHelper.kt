@@ -1,6 +1,6 @@
-package com.movtery.CubernLauncher.feature.download.install
+package com.movtery.cubernlauncher.feature.download.install
 
-import com.movtery.CubernLauncher.feature.log.Logging
+import com.movtery.cubernlauncher.feature.log.Logging
 import net.kdt.pojavlaunch.utils.ZipUtils
 import org.apache.commons.io.FileUtils
 import java.io.File

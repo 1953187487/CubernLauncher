@@ -1,13 +1,13 @@
-package com.movtery.CubernLauncher.setting
+package com.movtery.cubernlauncher.setting
 
 import androidx.annotation.CheckResult
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.google.gson.reflect.TypeToken
-import com.movtery.CubernLauncher.event.single.SettingsChangeEvent
-import com.movtery.CubernLauncher.feature.log.Logging
-import com.movtery.CubernLauncher.setting.unit.AbstractSettingUnit
-import com.movtery.CubernLauncher.utils.path.PathManager
+import com.movtery.cubernlauncher.event.single.SettingsChangeEvent
+import com.movtery.cubernlauncher.feature.log.Logging
+import com.movtery.cubernlauncher.setting.unit.AbstractSettingUnit
+import com.movtery.cubernlauncher.utils.path.PathManager
 import net.kdt.pojavlaunch.Tools
 import org.apache.commons.io.FileUtils
 import org.greenrobot.eventbus.EventBus

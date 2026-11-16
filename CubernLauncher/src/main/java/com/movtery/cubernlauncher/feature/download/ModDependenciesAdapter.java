@@ -1,7 +1,7 @@
-package com.movtery.CubernLauncher.feature.download;
+package com.movtery.cubernlauncher.feature.download;
 
-import static com.movtery.CubernLauncher.feature.download.InfoAdapter.createCategoryView;
-import static com.movtery.CubernLauncher.feature.download.InfoAdapter.getTagTextView;
+import static com.movtery.cubernlauncher.feature.download.InfoAdapter.createCategoryView;
+import static com.movtery.cubernlauncher.feature.download.InfoAdapter.getTagTextView;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -20,19 +20,19 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.RequestBuilder;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.google.android.flexbox.FlexboxLayout;
-import com.movtery.CubernLauncher.R;
-import com.movtery.CubernLauncher.databinding.ItemModDependenciesBinding;
-import com.movtery.CubernLauncher.event.value.AddFragmentEvent;
-import com.movtery.CubernLauncher.feature.download.enums.Category;
-import com.movtery.CubernLauncher.feature.download.enums.ModLoader;
-import com.movtery.CubernLauncher.feature.download.enums.Platform;
-import com.movtery.CubernLauncher.feature.download.item.DependenciesInfoItem;
-import com.movtery.CubernLauncher.feature.download.item.InfoItem;
-import com.movtery.CubernLauncher.feature.download.utils.DependencyUtils;
-import com.movtery.CubernLauncher.setting.AllSettings;
-import com.movtery.CubernLauncher.ui.fragment.DownloadModFragment;
-import com.movtery.CubernLauncher.utils.NumberWithUnits;
-import com.movtery.CubernLauncher.utils.ZHTools;
+import com.movtery.cubernlauncher.R;
+import com.movtery.cubernlauncher.databinding.ItemModDependenciesBinding;
+import com.movtery.cubernlauncher.event.value.AddFragmentEvent;
+import com.movtery.cubernlauncher.feature.download.enums.Category;
+import com.movtery.cubernlauncher.feature.download.enums.ModLoader;
+import com.movtery.cubernlauncher.feature.download.enums.Platform;
+import com.movtery.cubernlauncher.feature.download.item.DependenciesInfoItem;
+import com.movtery.cubernlauncher.feature.download.item.InfoItem;
+import com.movtery.cubernlauncher.feature.download.utils.DependencyUtils;
+import com.movtery.cubernlauncher.setting.AllSettings;
+import com.movtery.cubernlauncher.ui.fragment.DownloadModFragment;
+import com.movtery.cubernlauncher.utils.NumberWithUnits;
+import com.movtery.cubernlauncher.utils.ZHTools;
 
 import net.kdt.pojavlaunch.Tools;
 

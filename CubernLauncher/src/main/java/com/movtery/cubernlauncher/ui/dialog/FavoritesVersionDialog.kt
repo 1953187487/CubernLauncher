@@ -1,13 +1,13 @@
-package com.movtery.CubernLauncher.ui.dialog
+package com.movtery.cubernlauncher.ui.dialog
 
 import android.content.Context
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.movtery.CubernLauncher.R
-import com.movtery.CubernLauncher.feature.version.favorites.FavoritesVersionUtils
-import com.movtery.CubernLauncher.task.Task
-import com.movtery.CubernLauncher.task.TaskExecutors
-import com.movtery.CubernLauncher.ui.subassembly.version.FavoritesVersionAdapter
+import com.movtery.cubernlauncher.R
+import com.movtery.cubernlauncher.feature.version.favorites.FavoritesVersionUtils
+import com.movtery.cubernlauncher.task.Task
+import com.movtery.cubernlauncher.task.TaskExecutors
+import com.movtery.cubernlauncher.ui.subassembly.version.FavoritesVersionAdapter
 
 class FavoritesVersionDialog(
     context: Context,

@@ -1,13 +1,13 @@
-package com.movtery.CubernLauncher.ui.dialog
+package com.movtery.cubernlauncher.ui.dialog
 
 import android.content.Context
 import android.os.Bundle
 import android.view.View
 import android.view.Window
-import com.movtery.CubernLauncher.databinding.DialogProgressBinding
-import com.movtery.CubernLauncher.setting.AllSettings
-import com.movtery.CubernLauncher.ui.dialog.DraggableDialog.DialogInitializationListener
-import com.movtery.CubernLauncher.utils.file.FileTools.Companion.formatFileSize
+import com.movtery.cubernlauncher.databinding.DialogProgressBinding
+import com.movtery.cubernlauncher.setting.AllSettings
+import com.movtery.cubernlauncher.ui.dialog.DraggableDialog.DialogInitializationListener
+import com.movtery.cubernlauncher.utils.file.FileTools.Companion.formatFileSize
 
 class ProgressDialog(
     context: Context,

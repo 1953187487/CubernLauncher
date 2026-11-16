@@ -1,8 +1,8 @@
-package com.movtery.CubernLauncher.feature.download.utils
+package com.movtery.cubernlauncher.feature.download.utils
 
 import android.content.Context
-import com.movtery.CubernLauncher.R
-import com.movtery.CubernLauncher.feature.download.enums.DependencyType
+import com.movtery.cubernlauncher.R
+import com.movtery.cubernlauncher.feature.download.enums.DependencyType
 
 class DependencyUtils {
     companion object {

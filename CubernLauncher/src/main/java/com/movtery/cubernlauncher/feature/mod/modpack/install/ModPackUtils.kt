@@ -1,12 +1,12 @@
-package com.movtery.CubernLauncher.feature.mod.modpack.install
+package com.movtery.cubernlauncher.feature.mod.modpack.install
 
 import android.app.Activity
-import com.movtery.CubernLauncher.R
-import com.movtery.CubernLauncher.utils.LauncherProfiles
-import com.movtery.CubernLauncher.feature.download.item.ModLoaderWrapper
-import com.movtery.CubernLauncher.feature.log.Logging
-import com.movtery.CubernLauncher.feature.mod.models.MCBBSPackMeta
-import com.movtery.CubernLauncher.utils.runtime.SelectRuntimeUtils
+import com.movtery.cubernlauncher.R
+import com.movtery.cubernlauncher.utils.LauncherProfiles
+import com.movtery.cubernlauncher.feature.download.item.ModLoaderWrapper
+import com.movtery.cubernlauncher.feature.log.Logging
+import com.movtery.cubernlauncher.feature.mod.models.MCBBSPackMeta
+import com.movtery.cubernlauncher.utils.runtime.SelectRuntimeUtils
 import net.kdt.pojavlaunch.JavaGUILauncherActivity
 import net.kdt.pojavlaunch.Tools
 import net.kdt.pojavlaunch.modloaders.modpacks.models.CurseManifest

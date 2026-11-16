@@ -1,4 +1,4 @@
-package com.movtery.CubernLauncher.listener;
+package com.movtery.cubernlauncher.listener;
 
 import android.text.TextWatcher;
 

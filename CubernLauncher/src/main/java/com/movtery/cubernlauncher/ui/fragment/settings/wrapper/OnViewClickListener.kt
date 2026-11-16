@@ -1,4 +1,4 @@
-package com.movtery.CubernLauncher.ui.fragment.settings.wrapper
+package com.movtery.cubernlauncher.ui.fragment.settings.wrapper
 
 fun interface OnViewClickListener {
     fun onClick()

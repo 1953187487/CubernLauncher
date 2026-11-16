@@ -1,4 +1,4 @@
-package com.movtery.CubernLauncher.ui.subassembly.versionlist
+package com.movtery.cubernlauncher.ui.subassembly.versionlist
 
 abstract class VersionSelectedListener {
     abstract fun onVersionSelected(version: String?)

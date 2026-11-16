@@ -1,4 +1,4 @@
-package com.movtery.CubernLauncher.feature.accounts
+package com.movtery.cubernlauncher.feature.accounts
 
 enum class AccountType(val type: String) {
     MICROSOFT("Microsoft"),

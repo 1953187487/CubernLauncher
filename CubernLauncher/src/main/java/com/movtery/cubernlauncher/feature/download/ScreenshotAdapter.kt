@@ -1,4 +1,4 @@
-package com.movtery.CubernLauncher.feature.download
+package com.movtery.cubernlauncher.feature.download
 
 import android.annotation.SuppressLint
 import android.graphics.drawable.Drawable
@@ -13,9 +13,9 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
-import com.movtery.CubernLauncher.databinding.ViewInfoScreenshotBinding
-import com.movtery.CubernLauncher.feature.download.item.ScreenshotItem
-import com.movtery.CubernLauncher.setting.AllSettings
+import com.movtery.cubernlauncher.databinding.ViewInfoScreenshotBinding
+import com.movtery.cubernlauncher.feature.download.item.ScreenshotItem
+import com.movtery.cubernlauncher.setting.AllSettings
 
 class ScreenshotAdapter(private val screenshotItems: List<ScreenshotItem>) : RecyclerView.Adapter<ScreenshotAdapter.ViewHolder>() {
 

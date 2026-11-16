@@ -1,4 +1,4 @@
-package com.movtery.CubernLauncher.feature.mod.parser
+package com.movtery.cubernlauncher.feature.mod.parser
 
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
@@ -6,11 +6,11 @@ import com.google.gson.JsonArray
 import com.google.gson.JsonParser
 import com.google.gson.reflect.TypeToken
 import com.moandjiezana.toml.Toml
-import com.movtery.CubernLauncher.feature.log.Logging
-import com.movtery.CubernLauncher.feature.version.Version
-import com.movtery.CubernLauncher.task.Task
-import com.movtery.CubernLauncher.utils.file.FileTools
-import com.movtery.CubernLauncher.utils.path.PathManager
+import com.movtery.cubernlauncher.feature.log.Logging
+import com.movtery.cubernlauncher.feature.version.Version
+import com.movtery.cubernlauncher.task.Task
+import com.movtery.cubernlauncher.utils.file.FileTools
+import com.movtery.cubernlauncher.utils.path.PathManager
 import kotlinx.coroutines.*
 import kotlinx.coroutines.sync.Semaphore
 import net.kdt.pojavlaunch.Tools

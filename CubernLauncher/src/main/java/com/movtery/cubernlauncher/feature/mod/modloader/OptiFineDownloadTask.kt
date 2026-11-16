@@ -1,9 +1,9 @@
-package com.movtery.CubernLauncher.feature.mod.modloader
+package com.movtery.cubernlauncher.feature.mod.modloader
 
 import com.kdt.mcgui.ProgressLayout
-import com.movtery.CubernLauncher.R
-import com.movtery.CubernLauncher.feature.version.install.InstallTask
-import com.movtery.CubernLauncher.utils.path.PathManager
+import com.movtery.cubernlauncher.R
+import com.movtery.cubernlauncher.feature.version.install.InstallTask
+import com.movtery.cubernlauncher.utils.path.PathManager
 import net.kdt.pojavlaunch.Tools.DownloaderFeedback
 import net.kdt.pojavlaunch.modloaders.OFDownloadPageScraper
 import net.kdt.pojavlaunch.modloaders.OptiFineUtils.OptiFineVersion

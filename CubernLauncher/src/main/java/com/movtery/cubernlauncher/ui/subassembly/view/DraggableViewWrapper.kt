@@ -1,9 +1,9 @@
-package com.movtery.CubernLauncher.ui.subassembly.view
+package com.movtery.cubernlauncher.ui.subassembly.view
 
 import android.annotation.SuppressLint
 import android.view.MotionEvent
 import android.view.View
-import com.movtery.CubernLauncher.utils.ZHTools
+import com.movtery.cubernlauncher.utils.ZHTools
 import kotlin.math.max
 import kotlin.math.min
 

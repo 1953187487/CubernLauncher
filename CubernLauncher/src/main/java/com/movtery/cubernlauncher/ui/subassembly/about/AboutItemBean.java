@@ -1,4 +1,4 @@
-package com.movtery.CubernLauncher.ui.subassembly.about;
+package com.movtery.cubernlauncher.ui.subassembly.about;
 
 import android.app.Activity;
 import android.graphics.drawable.Drawable;

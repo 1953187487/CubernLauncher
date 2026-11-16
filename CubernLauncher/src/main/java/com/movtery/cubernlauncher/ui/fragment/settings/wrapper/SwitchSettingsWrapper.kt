@@ -1,11 +1,11 @@
-package com.movtery.CubernLauncher.ui.fragment.settings.wrapper
+package com.movtery.cubernlauncher.ui.fragment.settings.wrapper
 
 import android.annotation.SuppressLint
 import android.content.Context
 import android.view.View
 import android.widget.CompoundButton
 import android.widget.Switch
-import com.movtery.CubernLauncher.setting.unit.BooleanSettingUnit
+import com.movtery.cubernlauncher.setting.unit.BooleanSettingUnit
 
 @SuppressLint("UseSwitchCompatOrMaterialCode")
 class SwitchSettingsWrapper(

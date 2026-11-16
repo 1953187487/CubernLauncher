@@ -1,7 +1,7 @@
-package com.movtery.CubernLauncher.ui.fragment.download.addon
+package com.movtery.cubernlauncher.ui.fragment.download.addon
 
-import com.movtery.CubernLauncher.R
-import com.movtery.CubernLauncher.feature.version.install.Addon
+import com.movtery.cubernlauncher.R
+import com.movtery.cubernlauncher.feature.version.install.Addon
 
 class DownloadFabricApiFragment: DownloadFabricLikeApiModFragment(
     Addon.FABRIC_API,

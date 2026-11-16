@@ -1,13 +1,13 @@
-package com.movtery.CubernLauncher.plugins.renderer
+package com.movtery.cubernlauncher.plugins.renderer
 
 import android.content.Context
 import android.content.pm.ApplicationInfo
-import com.movtery.CubernLauncher.R
-import com.movtery.CubernLauncher.feature.log.Logging
-import com.movtery.CubernLauncher.feature.update.UpdateUtils
-import com.movtery.CubernLauncher.renderer.Renderers
-import com.movtery.CubernLauncher.utils.path.PathManager
-import com.movtery.CubernLauncher.utils.stringutils.StringUtilsKt
+import com.movtery.cubernlauncher.R
+import com.movtery.cubernlauncher.feature.log.Logging
+import com.movtery.cubernlauncher.feature.update.UpdateUtils
+import com.movtery.cubernlauncher.renderer.Renderers
+import com.movtery.cubernlauncher.utils.path.PathManager
+import com.movtery.cubernlauncher.utils.stringutils.StringUtilsKt
 import net.kdt.pojavlaunch.Architecture
 import net.kdt.pojavlaunch.Tools
 import net.kdt.pojavlaunch.utils.ZipUtils

@@ -1,6 +1,6 @@
-package com.movtery.CubernLauncher.renderer.renderers
+package com.movtery.cubernlauncher.renderer.renderers
 
-import com.movtery.CubernLauncher.renderer.RendererInterface
+import com.movtery.cubernlauncher.renderer.RendererInterface
 
 class PanfrostRenderer : RendererInterface {
     override fun getRendererId(): String = "gallium_panfrost"

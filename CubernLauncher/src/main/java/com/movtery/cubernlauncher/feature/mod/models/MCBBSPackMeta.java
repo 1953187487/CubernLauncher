@@ -1,4 +1,4 @@
-package com.movtery.CubernLauncher.feature.mod.models;
+package com.movtery.cubernlauncher.feature.mod.models;
 
 public class MCBBSPackMeta {
     public String author;

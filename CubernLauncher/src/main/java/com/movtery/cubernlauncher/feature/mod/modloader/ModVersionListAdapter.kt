@@ -1,4 +1,4 @@
-package com.movtery.CubernLauncher.feature.mod.modloader
+package com.movtery.cubernlauncher.feature.mod.modloader
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -7,10 +7,10 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.movtery.anim.animations.Animations
-import com.movtery.CubernLauncher.R
-import com.movtery.CubernLauncher.databinding.ItemFileListViewBinding
-import com.movtery.CubernLauncher.feature.download.item.VersionItem
-import com.movtery.CubernLauncher.utils.anim.ViewAnimUtils
+import com.movtery.cubernlauncher.R
+import com.movtery.cubernlauncher.databinding.ItemFileListViewBinding
+import com.movtery.cubernlauncher.feature.download.item.VersionItem
+import com.movtery.cubernlauncher.utils.anim.ViewAnimUtils
 import net.kdt.pojavlaunch.modloaders.FabricVersion
 import net.kdt.pojavlaunch.modloaders.OptiFineUtils.OptiFineVersion
 

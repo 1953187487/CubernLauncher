@@ -1,12 +1,12 @@
-package com.movtery.CubernLauncher.feature.accounts
+package com.movtery.cubernlauncher.feature.accounts
 
 import android.annotation.SuppressLint
 import android.app.Activity
-import com.movtery.CubernLauncher.R
-import com.movtery.CubernLauncher.setting.AllSettings
-import com.movtery.CubernLauncher.ui.dialog.TipDialog
-import com.movtery.CubernLauncher.utils.ZHTools
-import com.movtery.CubernLauncher.utils.path.UrlManager
+import com.movtery.cubernlauncher.R
+import com.movtery.cubernlauncher.setting.AllSettings
+import com.movtery.cubernlauncher.ui.dialog.TipDialog
+import com.movtery.cubernlauncher.utils.ZHTools
+import com.movtery.cubernlauncher.utils.path.UrlManager
 
 class LocalAccountUtils {
     companion object {

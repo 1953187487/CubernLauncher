@@ -1,16 +1,16 @@
-package com.movtery.CubernLauncher.feature.mod.modpack
+package com.movtery.cubernlauncher.feature.mod.modpack
 
 import android.content.Context
-import com.movtery.CubernLauncher.R
-import com.movtery.CubernLauncher.feature.download.enums.ModLoader
-import com.movtery.CubernLauncher.feature.download.item.ModLoaderWrapper
-import com.movtery.CubernLauncher.feature.log.Logging
-import com.movtery.CubernLauncher.feature.mod.models.MCBBSPackMeta
-import com.movtery.CubernLauncher.feature.mod.models.MCBBSPackMeta.MCBBSAddons
-import com.movtery.CubernLauncher.feature.mod.modpack.install.ModPackUtils
-import com.movtery.CubernLauncher.task.TaskExecutors
-import com.movtery.CubernLauncher.ui.dialog.ProgressDialog
-import com.movtery.CubernLauncher.utils.file.FileTools
+import com.movtery.cubernlauncher.R
+import com.movtery.cubernlauncher.feature.download.enums.ModLoader
+import com.movtery.cubernlauncher.feature.download.item.ModLoaderWrapper
+import com.movtery.cubernlauncher.feature.log.Logging
+import com.movtery.cubernlauncher.feature.mod.models.MCBBSPackMeta
+import com.movtery.cubernlauncher.feature.mod.models.MCBBSPackMeta.MCBBSAddons
+import com.movtery.cubernlauncher.feature.mod.modpack.install.ModPackUtils
+import com.movtery.cubernlauncher.task.TaskExecutors
+import com.movtery.cubernlauncher.ui.dialog.ProgressDialog
+import com.movtery.cubernlauncher.utils.file.FileTools
 import net.kdt.pojavlaunch.Tools
 import net.kdt.pojavlaunch.utils.FileUtils
 import net.kdt.pojavlaunch.utils.ZipUtils

@@ -1,4 +1,4 @@
-package com.movtery.CubernLauncher.renderer
+package com.movtery.cubernlauncher.renderer
 
 /**
  * 启动器渲染器实现

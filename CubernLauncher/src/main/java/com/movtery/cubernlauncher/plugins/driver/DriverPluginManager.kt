@@ -1,8 +1,8 @@
-package com.movtery.CubernLauncher.plugins.driver
+package com.movtery.cubernlauncher.plugins.driver
 
 import android.content.Context
 import android.content.pm.ApplicationInfo
-import com.movtery.CubernLauncher.setting.AllSettings
+import com.movtery.cubernlauncher.setting.AllSettings
 
 /**
  * FCL 驱动器插件

@@ -1,4 +1,4 @@
-package com.movtery.CubernLauncher.ui.fragment.about
+package com.movtery.cubernlauncher.ui.fragment.about
 
 import android.annotation.SuppressLint
 import android.content.res.Resources
@@ -9,16 +9,16 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager2.widget.ViewPager2
-import com.movtery.CubernLauncher.InfoCenter
-import com.movtery.CubernLauncher.InfoDistributor
-import com.movtery.CubernLauncher.R
-import com.movtery.CubernLauncher.databinding.FragmentAboutInfoPageBinding
-import com.movtery.CubernLauncher.ui.dialog.TipDialog
-import com.movtery.CubernLauncher.ui.subassembly.about.AboutItemBean
-import com.movtery.CubernLauncher.ui.subassembly.about.AboutItemBean.AboutItemButtonBean
-import com.movtery.CubernLauncher.ui.subassembly.about.AboutRecyclerAdapter
-import com.movtery.CubernLauncher.utils.ZHTools
-import com.movtery.CubernLauncher.utils.path.UrlManager
+import com.movtery.cubernlauncher.InfoCenter
+import com.movtery.cubernlauncher.InfoDistributor
+import com.movtery.cubernlauncher.R
+import com.movtery.cubernlauncher.databinding.FragmentAboutInfoPageBinding
+import com.movtery.cubernlauncher.ui.dialog.TipDialog
+import com.movtery.cubernlauncher.ui.subassembly.about.AboutItemBean
+import com.movtery.cubernlauncher.ui.subassembly.about.AboutItemBean.AboutItemButtonBean
+import com.movtery.cubernlauncher.ui.subassembly.about.AboutRecyclerAdapter
+import com.movtery.cubernlauncher.utils.ZHTools
+import com.movtery.cubernlauncher.utils.path.UrlManager
 
 class AboutInfoPageFragment() : Fragment(R.layout.fragment_about_info_page) {
     private lateinit var binding: FragmentAboutInfoPageBinding
@@ -100,6 +100,30 @@ class AboutInfoPageFragment() : Fragment(R.layout.fragment_about_info_page) {
                     requireActivity(),
                     getString(R.string.about_access_space),
                     "https://space.bilibili.com/2008204513"
+                )
+            )
+        )
+        mAboutData.add(
+            AboutItemBean(
+                resources.getDrawable(R.drawable.image_about_movtery, requireContext().theme),
+                "万古沧海",
+                getString(R.string.about_WanGuCangHai_desc),
+                AboutItemButtonBean(
+                    requireActivity(),
+                    getString(R.string.about_access_space),
+                    "https://github.com/1953187487"
+                )
+            )
+        )
+        mAboutData.add(
+            AboutItemBean(
+                resources.getDrawable(R.drawable.image_about_movtery, requireContext().theme),
+                "Zalith Launcher1 启动器作者",
+                getString(R.string.about_ZalithLauncher1_desc),
+                AboutItemButtonBean(
+                    requireActivity(),
+                    getString(R.string.about_access_space),
+                    "https://github.com/ZalithLauncher"
                 )
             )
         )

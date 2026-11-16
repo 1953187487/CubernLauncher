@@ -1,16 +1,16 @@
-package com.movtery.CubernLauncher.ui.dialog
+package com.movtery.cubernlauncher.ui.dialog
 
 import android.content.Context
 import android.os.Bundle
 import android.view.View
 import android.view.Window
 import android.widget.Toast
-import com.movtery.CubernLauncher.R
-import com.movtery.CubernLauncher.databinding.DialogOtherLoginBinding
-import com.movtery.CubernLauncher.feature.accounts.OtherLoginHelper
-import com.movtery.CubernLauncher.feature.login.Servers.Server
-import com.movtery.CubernLauncher.ui.dialog.DraggableDialog.DialogInitializationListener
-import com.movtery.CubernLauncher.utils.ZHTools
+import com.movtery.cubernlauncher.R
+import com.movtery.cubernlauncher.databinding.DialogOtherLoginBinding
+import com.movtery.cubernlauncher.feature.accounts.OtherLoginHelper
+import com.movtery.cubernlauncher.feature.login.Servers.Server
+import com.movtery.cubernlauncher.ui.dialog.DraggableDialog.DialogInitializationListener
+import com.movtery.cubernlauncher.utils.ZHTools
 
 class OtherLoginDialog(
     context: Context,

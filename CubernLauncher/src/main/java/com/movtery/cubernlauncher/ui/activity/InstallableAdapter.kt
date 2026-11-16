@@ -1,4 +1,4 @@
-package com.movtery.CubernLauncher.ui.activity
+package com.movtery.cubernlauncher.ui.activity
 
 import android.os.Handler
 import android.os.Looper
@@ -6,8 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.movtery.CubernLauncher.databinding.ItemInstallableBinding
-import com.movtery.CubernLauncher.feature.unpack.OnTaskRunningListener
+import com.movtery.cubernlauncher.databinding.ItemInstallableBinding
+import com.movtery.cubernlauncher.feature.unpack.OnTaskRunningListener
 
 class InstallableAdapter(
     private val items: List<InstallableItem>,

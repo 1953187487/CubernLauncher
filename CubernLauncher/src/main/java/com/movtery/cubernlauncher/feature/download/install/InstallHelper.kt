@@ -1,14 +1,14 @@
-package com.movtery.CubernLauncher.feature.download.install
+package com.movtery.cubernlauncher.feature.download.install
 
 import com.kdt.mcgui.ProgressLayout
-import com.movtery.CubernLauncher.R
-import com.movtery.CubernLauncher.event.value.DownloadProgressKeyEvent
-import com.movtery.CubernLauncher.feature.download.item.ModLoaderWrapper
-import com.movtery.CubernLauncher.feature.download.item.VersionItem
-import com.movtery.CubernLauncher.feature.log.Logging
-import com.movtery.CubernLauncher.feature.version.VersionsManager
-import com.movtery.CubernLauncher.task.Task
-import com.movtery.CubernLauncher.utils.path.PathManager
+import com.movtery.cubernlauncher.R
+import com.movtery.cubernlauncher.event.value.DownloadProgressKeyEvent
+import com.movtery.cubernlauncher.feature.download.item.ModLoaderWrapper
+import com.movtery.cubernlauncher.feature.download.item.VersionItem
+import com.movtery.cubernlauncher.feature.log.Logging
+import com.movtery.cubernlauncher.feature.version.VersionsManager
+import com.movtery.cubernlauncher.task.Task
+import com.movtery.cubernlauncher.utils.path.PathManager
 import net.kdt.pojavlaunch.progresskeeper.DownloaderProgressWrapper
 import net.kdt.pojavlaunch.utils.DownloadUtils
 import org.apache.commons.io.FileUtils

@@ -1,12 +1,12 @@
-package com.movtery.CubernLauncher.ui.fragment.settings.wrapper
+package com.movtery.cubernlauncher.ui.fragment.settings.wrapper
 
 import android.annotation.SuppressLint
 import android.content.Context
 import android.view.View
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
-import com.movtery.CubernLauncher.R
-import com.movtery.CubernLauncher.setting.unit.StringSettingUnit
+import com.movtery.cubernlauncher.R
+import com.movtery.cubernlauncher.setting.unit.StringSettingUnit
 
 @SuppressLint("UseSwitchCompatOrMaterialCode")
 class ListSettingsWrapper(

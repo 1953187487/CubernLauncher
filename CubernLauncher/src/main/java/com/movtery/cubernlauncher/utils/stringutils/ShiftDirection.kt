@@ -1,4 +1,4 @@
-package com.movtery.CubernLauncher.utils.stringutils
+package com.movtery.cubernlauncher.utils.stringutils
 
 enum class ShiftDirection {
     LEFT, RIGHT

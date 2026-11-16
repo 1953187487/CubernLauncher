@@ -1,9 +1,9 @@
-package com.movtery.CubernLauncher.utils.path
+package com.movtery.cubernlauncher.utils.path
 
 import android.content.Context
 import android.os.Build.VERSION
 import android.os.Environment
-import com.movtery.CubernLauncher.InfoDistributor
+import com.movtery.cubernlauncher.InfoDistributor
 import org.apache.commons.io.FileUtils
 import java.io.File
 

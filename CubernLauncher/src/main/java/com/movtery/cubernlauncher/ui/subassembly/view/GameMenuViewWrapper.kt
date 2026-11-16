@@ -1,15 +1,15 @@
-package com.movtery.CubernLauncher.ui.subassembly.view
+package com.movtery.cubernlauncher.ui.subassembly.view
 
 import android.app.Activity
 import android.view.View
 import android.widget.TextView
 import com.getkeepsafe.taptargetview.TapTargetView
-import com.movtery.CubernLauncher.R
-import com.movtery.CubernLauncher.setting.AllSettings
-import com.movtery.CubernLauncher.task.TaskExecutors
-import com.movtery.CubernLauncher.utils.NewbieGuideUtils
-import com.movtery.CubernLauncher.utils.file.FileTools.Companion.formatFileSize
-import com.movtery.CubernLauncher.utils.platform.MemoryUtils
+import com.movtery.cubernlauncher.R
+import com.movtery.cubernlauncher.setting.AllSettings
+import com.movtery.cubernlauncher.task.TaskExecutors
+import com.movtery.cubernlauncher.utils.NewbieGuideUtils
+import com.movtery.cubernlauncher.utils.file.FileTools.Companion.formatFileSize
+import com.movtery.cubernlauncher.utils.platform.MemoryUtils
 import com.petterp.floatingx.assist.FxGravity
 import com.petterp.floatingx.assist.helper.FxScopeHelper
 import com.petterp.floatingx.listener.IFxViewLifecycle

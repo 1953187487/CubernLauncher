@@ -1,7 +1,7 @@
-package com.movtery.CubernLauncher.utils
+package com.movtery.cubernlauncher.utils
 
-import com.movtery.CubernLauncher.feature.customprofilepath.ProfilePathHome
-import com.movtery.CubernLauncher.feature.log.Logging
+import com.movtery.cubernlauncher.feature.customprofilepath.ProfilePathHome
+import com.movtery.cubernlauncher.feature.log.Logging
 import org.apache.commons.io.FileUtils
 import java.io.File
 import java.io.IOException

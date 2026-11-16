@@ -1,4 +1,4 @@
-package com.movtery.CubernLauncher.ui.fragment.settings.wrapper
+package com.movtery.cubernlauncher.ui.fragment.settings.wrapper
 
 import android.annotation.SuppressLint
 import android.content.Context

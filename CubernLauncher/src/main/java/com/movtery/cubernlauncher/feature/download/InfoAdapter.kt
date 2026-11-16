@@ -1,4 +1,4 @@
-package com.movtery.CubernLauncher.feature.download
+package com.movtery.cubernlauncher.feature.download
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -15,17 +15,17 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.google.android.flexbox.FlexboxLayout
-import com.movtery.CubernLauncher.R
-import com.movtery.CubernLauncher.databinding.ItemDownloadInfoBinding
-import com.movtery.CubernLauncher.event.value.DownloadPageEvent
-import com.movtery.CubernLauncher.feature.download.enums.Platform
-import com.movtery.CubernLauncher.feature.download.item.InfoItem
-import com.movtery.CubernLauncher.feature.download.item.ModInfoItem
-import com.movtery.CubernLauncher.setting.AllSettings
-import com.movtery.CubernLauncher.ui.fragment.DownloadModFragment
-import com.movtery.CubernLauncher.utils.NumberWithUnits
-import com.movtery.CubernLauncher.utils.ZHTools
-import com.movtery.CubernLauncher.utils.stringutils.StringUtils
+import com.movtery.cubernlauncher.R
+import com.movtery.cubernlauncher.databinding.ItemDownloadInfoBinding
+import com.movtery.cubernlauncher.event.value.DownloadPageEvent
+import com.movtery.cubernlauncher.feature.download.enums.Platform
+import com.movtery.cubernlauncher.feature.download.item.InfoItem
+import com.movtery.cubernlauncher.feature.download.item.ModInfoItem
+import com.movtery.cubernlauncher.setting.AllSettings
+import com.movtery.cubernlauncher.ui.fragment.DownloadModFragment
+import com.movtery.cubernlauncher.utils.NumberWithUnits
+import com.movtery.cubernlauncher.utils.ZHTools
+import com.movtery.cubernlauncher.utils.stringutils.StringUtils
 import net.kdt.pojavlaunch.Tools
 import org.greenrobot.eventbus.EventBus
 import org.jackhuang.hmcl.ui.versions.ModTranslations
@@ -184,7 +184,7 @@ class InfoAdapter(
     private class LoadingViewHolder(view: View) : RecyclerView.ViewHolder(view)
 
     /**
-     * @see com.movtery.CubernLauncher.ui.fragment.download.AbstractResourceDownloadFragment
+     * @see com.movtery.cubernlauncher.ui.fragment.download.AbstractResourceDownloadFragment
      */
     interface CallSearchListener {
         /**

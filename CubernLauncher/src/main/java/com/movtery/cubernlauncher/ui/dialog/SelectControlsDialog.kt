@@ -1,9 +1,9 @@
-package com.movtery.CubernLauncher.ui.dialog
+package com.movtery.cubernlauncher.ui.dialog
 
 import android.content.Context
 import androidx.recyclerview.widget.RecyclerView
-import com.movtery.CubernLauncher.ui.subassembly.customcontrols.ControlSelectedListener
-import com.movtery.CubernLauncher.ui.subassembly.customcontrols.ControlsListViewCreator
+import com.movtery.cubernlauncher.ui.subassembly.customcontrols.ControlSelectedListener
+import com.movtery.cubernlauncher.ui.subassembly.customcontrols.ControlsListViewCreator
 import java.io.File
 
 class SelectControlsDialog(

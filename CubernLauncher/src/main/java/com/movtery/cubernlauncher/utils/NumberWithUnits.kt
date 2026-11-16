@@ -1,8 +1,8 @@
-package com.movtery.CubernLauncher.utils
+package com.movtery.cubernlauncher.utils
 
-import com.movtery.CubernLauncher.R
-import com.movtery.CubernLauncher.context.ContextExecutor.Companion.getString
-import com.movtery.CubernLauncher.utils.stringutils.StringUtils
+import com.movtery.cubernlauncher.R
+import com.movtery.cubernlauncher.context.ContextExecutor.Companion.getString
+import com.movtery.cubernlauncher.utils.stringutils.StringUtils
 import java.math.BigDecimal
 import java.math.RoundingMode
 import java.text.DecimalFormat

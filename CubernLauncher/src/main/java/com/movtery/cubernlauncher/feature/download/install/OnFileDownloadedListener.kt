@@ -1,4 +1,4 @@
-package com.movtery.CubernLauncher.feature.download.install
+package com.movtery.cubernlauncher.feature.download.install
 
 import java.io.File
 

@@ -1,4 +1,4 @@
-package com.movtery.CubernLauncher.event.single
+package com.movtery.cubernlauncher.event.single
 
 /**
  * 通知LauncherActivity实时变更页面不透明度

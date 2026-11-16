@@ -1,4 +1,4 @@
-package com.movtery.CubernLauncher.ui.dialog;
+package com.movtery.cubernlauncher.ui.dialog;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -10,9 +10,9 @@ import android.view.WindowManager;
 
 import androidx.annotation.NonNull;
 
-import com.movtery.CubernLauncher.R;
-import com.movtery.CubernLauncher.databinding.DialogKeyboardBinding;
-import com.movtery.CubernLauncher.ui.view.AnimButton;
+import com.movtery.cubernlauncher.R;
+import com.movtery.cubernlauncher.databinding.DialogKeyboardBinding;
+import com.movtery.cubernlauncher.ui.view.AnimButton;
 
 import net.kdt.pojavlaunch.Tools;
 

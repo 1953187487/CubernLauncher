@@ -1,4 +1,4 @@
-package com.movtery.CubernLauncher.utils.file;
+package com.movtery.cubernlauncher.utils.file;
 
 public class InvalidFilenameException extends RuntimeException {
     private final FilenameErrorType type;

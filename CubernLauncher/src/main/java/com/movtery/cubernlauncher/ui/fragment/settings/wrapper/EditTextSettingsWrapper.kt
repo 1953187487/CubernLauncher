@@ -1,4 +1,4 @@
-package com.movtery.CubernLauncher.ui.fragment.settings.wrapper
+package com.movtery.cubernlauncher.ui.fragment.settings.wrapper
 
 import android.text.InputFilter
 import android.text.InputFilter.LengthFilter
@@ -7,7 +7,7 @@ import android.view.Gravity
 import android.view.View
 import android.widget.EditText
 import androidx.core.widget.doAfterTextChanged
-import com.movtery.CubernLauncher.setting.unit.StringSettingUnit
+import com.movtery.cubernlauncher.setting.unit.StringSettingUnit
 
 class EditTextSettingsWrapper(
     private val unit: StringSettingUnit,

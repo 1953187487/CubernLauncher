@@ -1,4 +1,4 @@
-package com.movtery.CubernLauncher.task
+package com.movtery.cubernlauncher.task
 
 /**
  * 任务执行的各种阶段的监听器

@@ -1,7 +1,7 @@
-package com.movtery.CubernLauncher.utils.path
+package com.movtery.cubernlauncher.utils.path
 
-import com.movtery.CubernLauncher.utils.path.PathManager.Companion.DIR_DATA
-import com.movtery.CubernLauncher.utils.path.PathManager.Companion.DIR_GAME_HOME
+import com.movtery.cubernlauncher.utils.path.PathManager.Companion.DIR_DATA
+import com.movtery.cubernlauncher.utils.path.PathManager.Companion.DIR_GAME_HOME
 import java.io.File
 
 class LibPath {

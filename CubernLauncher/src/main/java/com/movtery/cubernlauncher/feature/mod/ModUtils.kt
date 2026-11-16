@@ -1,6 +1,6 @@
-package com.movtery.CubernLauncher.feature.mod
+package com.movtery.cubernlauncher.feature.mod
 
-import com.movtery.CubernLauncher.utils.file.FileTools.Companion.renameFile
+import com.movtery.cubernlauncher.utils.file.FileTools.Companion.renameFile
 import java.io.File
 
 class ModUtils {

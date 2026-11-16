@@ -1,4 +1,4 @@
-package com.movtery.CubernLauncher.event.single
+package com.movtery.cubernlauncher.event.single
 
 /**
  * 启动器全屏模式设置项变更事件

@@ -1,12 +1,12 @@
-package com.movtery.CubernLauncher.renderer
+package com.movtery.cubernlauncher.renderer
 
 import android.content.Context
-import com.movtery.CubernLauncher.feature.log.Logging
-import com.movtery.CubernLauncher.renderer.renderers.FreedrenoRenderer
-import com.movtery.CubernLauncher.renderer.renderers.GL4ESRenderer
-import com.movtery.CubernLauncher.renderer.renderers.PanfrostRenderer
-import com.movtery.CubernLauncher.renderer.renderers.VirGLRenderer
-import com.movtery.CubernLauncher.renderer.renderers.VulkanZinkRenderer
+import com.movtery.cubernlauncher.feature.log.Logging
+import com.movtery.cubernlauncher.renderer.renderers.FreedrenoRenderer
+import com.movtery.cubernlauncher.renderer.renderers.GL4ESRenderer
+import com.movtery.cubernlauncher.renderer.renderers.PanfrostRenderer
+import com.movtery.cubernlauncher.renderer.renderers.VirGLRenderer
+import com.movtery.cubernlauncher.renderer.renderers.VulkanZinkRenderer
 import net.kdt.pojavlaunch.Architecture
 import net.kdt.pojavlaunch.Tools
 

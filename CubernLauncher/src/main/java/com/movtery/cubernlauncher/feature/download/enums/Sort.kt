@@ -1,6 +1,6 @@
-package com.movtery.CubernLauncher.feature.download.enums
+package com.movtery.cubernlauncher.feature.download.enums
 
-import com.movtery.CubernLauncher.R
+import com.movtery.cubernlauncher.R
 
 enum class Sort(val resNameID: Int, val curseforge: Int, val modrinth: String) {
     RELEVANT(R.string.download_ui_sort_by_relevant, 1, "relevance"),

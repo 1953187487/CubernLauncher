@@ -1,4 +1,4 @@
-package com.movtery.CubernLauncher.utils.image
+package com.movtery.cubernlauncher.utils.image
 
 class Dimension(@JvmField var width: Int, @JvmField var height: Int) {
     override fun toString(): String {

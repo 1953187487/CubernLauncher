@@ -1,4 +1,4 @@
-package com.movtery.CubernLauncher.utils.anim
+package com.movtery.cubernlauncher.utils.anim
 
 import android.view.View
 import com.movtery.anim.AnimCallback

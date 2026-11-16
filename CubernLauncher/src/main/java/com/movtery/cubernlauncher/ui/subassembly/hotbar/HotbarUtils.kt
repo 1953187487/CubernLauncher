@@ -1,6 +1,6 @@
-package com.movtery.CubernLauncher.ui.subassembly.hotbar
+package com.movtery.cubernlauncher.ui.subassembly.hotbar
 
-import com.movtery.CubernLauncher.setting.AllSettings.Companion.hotbarType
+import com.movtery.cubernlauncher.setting.AllSettings.Companion.hotbarType
 
 class HotbarUtils {
     companion object {

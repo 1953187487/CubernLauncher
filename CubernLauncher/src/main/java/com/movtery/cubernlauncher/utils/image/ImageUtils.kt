@@ -1,4 +1,4 @@
-package com.movtery.CubernLauncher.utils.image
+package com.movtery.cubernlauncher.utils.image
 
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory

@@ -1,9 +1,9 @@
-package com.movtery.CubernLauncher.feature.log
+package com.movtery.cubernlauncher.feature.log
 
 import android.util.Log
-import com.movtery.CubernLauncher.BuildConfig
-import com.movtery.CubernLauncher.InfoDistributor
-import com.movtery.CubernLauncher.utils.path.PathManager.Companion.DIR_LAUNCHER_LOG
+import com.movtery.cubernlauncher.BuildConfig
+import com.movtery.cubernlauncher.InfoDistributor
+import com.movtery.cubernlauncher.utils.path.PathManager.Companion.DIR_LAUNCHER_LOG
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi

@@ -1,8 +1,8 @@
-package com.movtery.CubernLauncher.feature.version
+package com.movtery.cubernlauncher.feature.version
 
 import com.google.gson.annotations.SerializedName
-import com.movtery.CubernLauncher.feature.customprofilepath.ProfilePathHome
-import com.movtery.CubernLauncher.feature.log.Logging
+import com.movtery.cubernlauncher.feature.customprofilepath.ProfilePathHome
+import com.movtery.cubernlauncher.feature.log.Logging
 import net.kdt.pojavlaunch.Tools
 import org.apache.commons.io.FileUtils
 import java.io.File

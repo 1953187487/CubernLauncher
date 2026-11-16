@@ -1,7 +1,7 @@
-package com.movtery.CubernLauncher.ui.subassembly.customcontrols
+package com.movtery.cubernlauncher.ui.subassembly.customcontrols
 
 import android.content.Context
-import com.movtery.CubernLauncher.feature.log.Logging
+import com.movtery.cubernlauncher.feature.log.Logging
 import net.kdt.pojavlaunch.Tools
 import net.kdt.pojavlaunch.customcontrols.CustomControls
 import net.kdt.pojavlaunch.customcontrols.LayoutConverter

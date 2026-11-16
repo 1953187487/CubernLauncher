@@ -1,6 +1,6 @@
-package com.movtery.CubernLauncher.feature.version.favorites
+package com.movtery.cubernlauncher.feature.version.favorites
 
-import com.movtery.CubernLauncher.feature.version.VersionsManager
+import com.movtery.cubernlauncher.feature.version.VersionsManager
 import java.util.concurrent.ConcurrentHashMap
 
 class FavoritesVersionUtils private constructor() {

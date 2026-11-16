@@ -1,7 +1,7 @@
-package com.movtery.CubernLauncher.renderer.renderers
+package com.movtery.cubernlauncher.renderer.renderers
 
-import com.movtery.CubernLauncher.renderer.RendererInterface
-import com.movtery.CubernLauncher.utils.path.PathManager
+import com.movtery.cubernlauncher.renderer.RendererInterface
+import com.movtery.cubernlauncher.utils.path.PathManager
 import java.io.File
 
 class VirGLRenderer : RendererInterface {

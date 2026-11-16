@@ -1,14 +1,14 @@
-package com.movtery.CubernLauncher.feature.mod.modloader
+package com.movtery.cubernlauncher.feature.mod.modloader
 
 import com.kdt.mcgui.ProgressLayout
-import com.movtery.CubernLauncher.R
-import com.movtery.CubernLauncher.feature.log.Logging
-import com.movtery.CubernLauncher.feature.mod.modloader.NeoForgeUtils.Companion.downloadNeoForgeVersions
-import com.movtery.CubernLauncher.feature.mod.modloader.NeoForgeUtils.Companion.downloadNeoForgedForgeVersions
-import com.movtery.CubernLauncher.feature.mod.modloader.NeoForgeUtils.Companion.getNeoForgeInstallerUrl
-import com.movtery.CubernLauncher.feature.mod.modloader.NeoForgeUtils.Companion.getNeoForgedForgeInstallerUrl
-import com.movtery.CubernLauncher.feature.version.install.InstallTask
-import com.movtery.CubernLauncher.utils.path.PathManager
+import com.movtery.cubernlauncher.R
+import com.movtery.cubernlauncher.feature.log.Logging
+import com.movtery.cubernlauncher.feature.mod.modloader.NeoForgeUtils.Companion.downloadNeoForgeVersions
+import com.movtery.cubernlauncher.feature.mod.modloader.NeoForgeUtils.Companion.downloadNeoForgedForgeVersions
+import com.movtery.cubernlauncher.feature.mod.modloader.NeoForgeUtils.Companion.getNeoForgeInstallerUrl
+import com.movtery.cubernlauncher.feature.mod.modloader.NeoForgeUtils.Companion.getNeoForgedForgeInstallerUrl
+import com.movtery.cubernlauncher.feature.version.install.InstallTask
+import com.movtery.cubernlauncher.utils.path.PathManager
 import net.kdt.pojavlaunch.Tools.DownloaderFeedback
 import net.kdt.pojavlaunch.progresskeeper.ProgressKeeper
 import net.kdt.pojavlaunch.utils.DownloadUtils

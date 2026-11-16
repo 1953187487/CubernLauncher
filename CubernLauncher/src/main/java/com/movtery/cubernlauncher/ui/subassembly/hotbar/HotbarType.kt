@@ -1,6 +1,6 @@
-package com.movtery.CubernLauncher.ui.subassembly.hotbar
+package com.movtery.cubernlauncher.ui.subassembly.hotbar
 
-import com.movtery.CubernLauncher.R
+import com.movtery.cubernlauncher.R
 
 /**
  * 快捷栏判定类型

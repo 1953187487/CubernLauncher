@@ -1,11 +1,11 @@
-package com.movtery.CubernLauncher.support.touch_controller;
+package com.movtery.cubernlauncher.support.touch_controller;
 
 import android.content.Context;
 import android.os.Vibrator;
 import android.system.Os;
 
-import com.movtery.CubernLauncher.InfoDistributor;
-import com.movtery.CubernLauncher.feature.log.Logging;
+import com.movtery.cubernlauncher.InfoDistributor;
+import com.movtery.cubernlauncher.feature.log.Logging;
 
 import net.kdt.pojavlaunch.Logger;
 
