@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Cubern Launcher</string>
+    <string name="launcher_author_default">Cubern Team</string>
+    <string name="launcher_author_new">Cubern Team &amp; Contributors</string>
+    <string name="update_check_url">https://api.cubernlauncher.cn/v1/update</string>
+    <string name="about_launcher">关于启动器</string>
+    <string name="settings">设置</string>
+    <string name="control_panel">管理控制</string>
+</resources>
