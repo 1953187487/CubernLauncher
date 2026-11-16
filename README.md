@@ -1,22 +1,28 @@
-# Zalith Launcher 3 - 26.2+ 独立分支
+# Cubern Launcher
 
-## 项目概述
-
-基于 Zalith Launcher 1 重构开发的全新启动器，支持 26.2+ 版本，集成淘瓦联机功能，采用独立的运行环境分支。
+基于 Zalith Launcher 1 重构开发的 Minecraft Java 版启动器，采用 GPLv3 开源协议。
 
 ## 主要特性
 
-- 独立的 26.2+ 运行环境分支，不覆盖旧版本启动逻辑
-- 完善的版本语义比较，禁止伪造/跳过版本号
-- 自动 Java 运行时管理（识别、下载、校验、注入）
-- 集成 Zalith Launcher 2 淘瓦联机功能（右上角入口）
-- UI 重构：关于启动器和管理控制合并到设置中
-- 重构版本 JSON 解析、启动参数生成、依赖管理
-- Vulkan 支持检测与四种渲染模式选择
-- 安全的错误提示与兼容回退机制
+- **26.2+ 运行环境支持**：完善版本语义比较，禁止伪造版本号
+- **自动 Java 运行时管理**：识别、下载、校验并注入兼容Java运行时
+- **淘瓦联机功能**：集成 Zalith Launcher 2 联机功能
+- **Vulkan 渲染支持**：四种渲染模式选择，自动检测与回退
+- **MUIX Compose UI**：现代化用户界面
+- **依赖库去重**：按 groupId:artifactId:version:classifier:abi 去重
+- **安全启动**：明确错误提示，安全兼容回退
 
-## 技术栈
+## 快速开始
 
-- 语言：Java + C/C++ (NDK)
-- 平台：Android (minSdk 26+)
-- 构建：Gradle (Kotlin DSL)
+```bash
+# 克隆仓库
+git clone https://github.com/1953187487/CubernLauncher.git
+
+# 使用Gradle构建
+cd CubernLauncher
+./gradlew build
+```
+
+## 许可证
+
+GNU General Public License v3.0
