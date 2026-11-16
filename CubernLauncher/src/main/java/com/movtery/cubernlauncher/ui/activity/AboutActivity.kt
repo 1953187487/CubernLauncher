@@ -46,13 +46,14 @@ fun AboutScreen() {
             Spacer(modifier = Modifier.height(16.dp))
             
             Text("版本: v1.0.0-26.2+")
-            Text("作者: Cubern Team & Contributors")
+            Text("当前启动器作者: Cubern")
+            Text("原作者: Zalith Launcher1 启动器作者")
             Text("协议: GNU General Public License v3.0")
             
             Spacer(modifier = Modifier.height(24.dp))
             
             Text(
-                text = "Cubern Launcher 是一款基于 Zalith Launcher 1 重构开发的 Minecraft Java版启动器。",
+                text = "Cubern Launcher 是基于 Zalith Launcher1 进行二改开发的 Minecraft Java版启动器，在保留原版核心功能的基础上引入了多项新特性。",
                 style = MaterialTheme.typography.bodyLarge
             )
         }
