@@ -5,6 +5,7 @@ import com.github.megatronking.stringfog.plugin.StringFogExtension
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android") version "2.0.21"
+    id("org.jetbrains.kotlin.plugin.compose") version "2.0.21"
     id("stringfog")
 }
 apply(plugin = "stringfog")
@@ -171,6 +172,10 @@ android {
         targetCompatibility = JavaVersion.VERSION_1_8
     }
 
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.6.11"
+    }
+
     packaging {
         jniLibs {
             useLegacyPackaging = true
@@ -182,6 +187,7 @@ android {
         prefab = true
         buildConfig = true
         viewBinding = true
+        compose = true
     }
 
     buildToolsVersion = "34.0.0"
@@ -238,6 +244,9 @@ dependencies {
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     implementation("androidx.core:core-ktx:1.13.0")
     implementation("androidx.palette:palette-ktx:1.0.0")
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.8.6")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.6")
+    implementation("androidx.security:security-crypto:1.1.0-alpha06")
 
     implementation("com.github.duanhong169:checkerboarddrawable:1.0.2")
     implementation("com.github.PojavLauncherTeam:portrait-sdp:ed33e89cbc")
@@ -277,4 +286,13 @@ dependencies {
     implementation("com.moandjiezana.toml:toml4j:0.7.2") {
         exclude(group = "com.google.code.gson", module = "gson")
     }
+
+    implementation(platform("androidx.compose:compose-bom:2024.10.00"))
+    implementation("androidx.compose.ui:ui")
+    implementation("androidx.compose.foundation:foundation")
+    implementation("androidx.compose.material3:material3")
+    implementation("androidx.compose.material:material-icons-extended")
+    implementation("androidx.compose.ui:ui-tooling-preview")
+    implementation("androidx.activity:activity-compose:1.9.3")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.8.1")
 }

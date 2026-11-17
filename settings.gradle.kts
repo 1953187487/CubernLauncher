@@ -2,6 +2,7 @@ pluginManagement {
     repositories {
         gradlePluginPortal()
         google()
+        mavenCentral()
     }
 }
 
@@ -14,6 +15,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Zalith Launcher"
+rootProject.name = "Cubern Launcher"
 include(":jre_lwjgl3glfw")
 include(":ZalithLauncher")
