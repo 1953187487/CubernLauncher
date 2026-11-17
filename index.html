@@ -220,19 +220,21 @@ section,.metric,.card{content-visibility:auto;contain-intrinsic-size:auto 420px}
   .orb{filter:blur(60px);opacity:.35}
   .card::before{display:none}
 }
-/* ===== 第二导航栏 ===== */
-.appbar{position:sticky;top:64px;z-index:45;background:rgba(8,12,24,.72);backdrop-filter:var(--glass);-webkit-backdrop-filter:var(--glass);border-bottom:1px solid var(--line)}
-html[data-theme=light] .appbar{background:rgba(238,242,255,.75)}
-.appbar-in{max-width:1140px;margin:0 auto;padding:0 22px;display:flex;gap:6px;overflow-x:auto}
-.appbar a{display:flex;align-items:center;gap:7px;padding:12px 16px;font-size:13px;color:var(--mut);white-space:nowrap;border-bottom:2px solid transparent;transition:.25s;cursor:pointer}
-.appbar a:hover{color:var(--txt)}
-.appbar a.on{color:var(--txt);border-color:var(--c2)}
-.appbar a .ic{font-size:15px}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal,.metric{opacity:1;transform:none}}
+
+/* ===== 底部导航（移动端 App 风格）===== */
+.bottom-nav{position:fixed;left:0;right:0;bottom:0;z-index:80;display:flex;justify-content:space-around;align-items:center;height:64px;padding-bottom:env(safe-area-inset-bottom);background:rgba(8,12,24,.92);backdrop-filter:var(--glass);-webkit-backdrop-filter:var(--glass);border-top:1px solid var(--line)}
+html[data-theme=light] .bottom-nav{background:rgba(238,242,255,.94)}
+.bottom-nav a{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;color:var(--mut);font-size:11px;cursor:pointer;transition:.25s;padding:6px 0}
+.bottom-nav a .ic{font-size:21px;line-height:1;transition:.25s}
+.bottom-nav a.on{color:var(--c2)}
+.bottom-nav a.on .ic{transform:translateY(-2px) scale(1.12)}
+body{padding-bottom:70px}
 .view{display:none;animation:fade .35s}
 .view.on{display:block}
 
-/* ===== 功能区通用 ===== */
-.app-panel{max-width:1140px;margin:0 auto;padding:30px 22px}
+/* ===== 功能区 ===== */
+.app-panel{max-width:1140px;margin:0 auto;padding:26px 22px 40px}
 .app-panel .ph{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px;margin-bottom:22px}
 .app-panel .ph h2{font-size:24px;font-weight:900}
 .app-panel .ph .sub{font-size:13px;color:var(--mut);margin-top:3px}
@@ -241,20 +243,26 @@ html[data-theme=light] .appbar{background:rgba(238,242,255,.75)}
 .mode-tag.demo{color:var(--warn);border-color:rgba(255,159,67,.4)}
 
 /* 登录卡 */
-.login-wrap{max-width:440px;margin:0 auto}
+.login-wrap{max-width:460px;margin:0 auto}
 .login-card{border-radius:20px;padding:30px;text-align:center}
-.login-card .lg-ic{width:66px;height:66px;border-radius:18px;background:#00a1d6;display:grid;place-items:center;font-size:32px;margin:0 auto 16px;box-shadow:0 10px 30px rgba(0,161,214,.4)}
-.login-card h3{font-size:20px;margin-bottom:6px}
-.login-card .lg-sub{font-size:13px;color:var(--mut);margin-bottom:22px;line-height:1.7}
-.login-btn{width:100%;padding:14px;border-radius:12px;background:#00a1d6;color:#fff;border:0;font-size:15px;font-weight:800;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:9px;transition:.25s}
-.login-btn:hover{background:#00b5e5;transform:translateY(-2px)}
-.user-chip{display:flex;align-items:center;gap:12px;padding:14px;border-radius:14px;background:rgba(0,229,176,.07);border:1px solid rgba(0,229,176,.3);text-align:left}
-.user-chip img{width:46px;height:46px;border-radius:50%;object-fit:cover}
-.user-chip .un{flex:1}.user-chip .un b{display:block;font-size:15px}.user-chip .un span{font-size:12px;color:var(--mut)}
-.user-chip button{padding:7px 12px;border-radius:9px;border:1px solid var(--line);background:none;color:var(--mut);font-size:12px;cursor:pointer}
+.login-card .lg-ic{width:66px;height:66px;border-radius:18px;background:#24292f;display:grid;place-items:center;font-size:32px;margin:0 auto 16px;box-shadow:0 10px 30px rgba(0,0,0,.35)}
+html[data-theme=light] .login-card .lg-ic{background:#f6f8fa}
+.login-btn{width:100%;padding:14px;border-radius:12px;background:#24292f;color:#fff;border:0;font-size:15px;font-weight:800;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:9px;transition:.25s}
+html[data-theme=light] .login-btn{background:#24292f}
+.login-btn:hover{transform:translateY(-2px);opacity:.9}
+.user-chip{display:flex;align-items:center;gap:12px;padding:15px;border-radius:14px;background:rgba(0,229,176,.07);border:1px solid rgba(0,229,176,.3);text-align:left}
+.user-chip img{width:48px;height:48px;border-radius:50%;object-fit:cover;background:var(--line)}
+.user-chip .un{flex:1;min-width:0}.user-chip .un b{display:block;font-size:15px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.user-chip .un span{font-size:12px;color:var(--mut)}
+.user-chip button{padding:7px 12px;border-radius:9px;border:1px solid var(--line);background:none;color:var(--mut);font-size:12px;cursor:pointer;flex:none}
+
+/* 需登录遮罩 */
+.login-gate{border-radius:20px;padding:48px 24px;text-align:center;max-width:460px;margin:0 auto}
+.login-gate .gate-ic{font-size:56px;margin-bottom:16px}
+.login-gate h3{font-size:20px;margin-bottom:8px}
+.login-gate p{font-size:13px;color:var(--mut);margin-bottom:22px;line-height:1.7}
 
 /* 聊天 */
-.chat-box{border-radius:18px;padding:0;overflow:hidden;display:flex;flex-direction:column;height:460px}
+.chat-box{border-radius:18px;overflow:hidden;display:flex;flex-direction:column;height:min(560px,70vh)}
 .chat-head{padding:14px 18px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:9px;font-weight:800}
 .chat-head .dot{width:8px;height:8px;border-radius:50%;background:var(--c2);box-shadow:0 0 10px var(--c2)}
 .chat-head .cnt{margin-left:auto;font-size:12px;color:var(--mut);font-weight:400}
@@ -270,39 +278,39 @@ html[data-theme=light] .appbar{background:rgba(238,242,255,.75)}
 .chat-input button{padding:11px 20px;border-radius:11px;background:linear-gradient(135deg,var(--c1),#8a6cff);color:#fff;border:0;font-weight:700;cursor:pointer}
 .chat-input button:disabled{opacity:.4;cursor:not-allowed}
 
+/* 我的：仓库同步卡 */
+.repo-card{border-radius:16px;padding:20px;margin-bottom:18px}
+.repo-card h4{font-size:15px;margin-bottom:14px;display:flex;align-items:center;gap:8px}
+.repo-stat{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.repo-stat .s{text-align:center;padding:12px 6px;border-radius:12px;background:rgba(124,140,255,.08)}
+.repo-stat .s b{display:block;font-size:20px;font-weight:900;color:var(--c1)}
+.repo-stat .s span{font-size:11px;color:var(--mut)}
+.repo-desc{font-size:12px;color:var(--mut);margin-top:12px;line-height:1.6}
+.sync-btn{width:100%;margin-top:14px;padding:11px;border-radius:11px;background:linear-gradient(135deg,var(--c1),#8a6cff);color:#fff;border:0;font-weight:700;cursor:pointer}
+
 /* 宠物 */
-.pet-wrap{max-width:560px;margin:0 auto;text-align:center}
-.pet-stage{border-radius:22px;padding:36px 24px;margin-bottom:18px;position:relative;overflow:hidden}
+.pet-stage{border-radius:22px;padding:30px 20px;margin-bottom:18px;position:relative;overflow:hidden;text-align:center}
 .pet-stage::before{content:"";position:absolute;width:280px;height:280px;border-radius:50%;background:radial-gradient(circle,rgba(124,140,255,.22),transparent 65%);top:-60px;left:50%;transform:translateX(-50%)}
-.pet-creature{font-size:88px;line-height:1;margin:10px 0 16px;display:inline-block;animation:petfloat 3s ease-in-out infinite;filter:drop-shadow(0 10px 20px rgba(0,0,0,.3))}
-@keyframes petfloat{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-14px) rotate(3deg)}}
-.pet-name{font-size:22px;font-weight:900;margin-bottom:4px}
-.pet-lv{font-size:12px;color:var(--c2);margin-bottom:20px}
-.pet-bars{display:flex;flex-direction:column;gap:12px;max-width:320px;margin:0 auto 22px;text-align:left}
+.pet-creature{font-size:80px;line-height:1;margin:10px 0 14px;display:inline-block;animation:petfloat 3s ease-in-out infinite;filter:drop-shadow(0 10px 20px rgba(0,0,0,.3));position:relative}
+@keyframes petfloat{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-12px) rotate(3deg)}}
+.pet-name{font-size:21px;font-weight:900;margin-bottom:4px;position:relative}
+.pet-lv{font-size:12px;color:var(--c2);margin-bottom:18px;position:relative}
+.pet-bars{display:flex;flex-direction:column;gap:11px;max-width:340px;margin:0 auto 20px;text-align:left;position:relative}
 .pet-bar .lb{display:flex;justify-content:space-between;font-size:12px;color:var(--mut);margin-bottom:5px}
 .pet-bar .track{height:9px;border-radius:9px;background:rgba(150,180,255,.16);overflow:hidden}
 .pet-bar .fill{height:100%;border-radius:9px;transition:width .5s}
-.pet-actions{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
-.pet-actions button{padding:11px 20px;border-radius:12px;border:1px solid var(--line);background:var(--panel);color:var(--txt);font-size:14px;font-weight:700;cursor:pointer;transition:.25s}
-.pet-actions button:hover{border-color:var(--c1);transform:translateY(-2px)}
-.pet-msg{font-size:13px;color:var(--mut);min-height:20px;margin-top:16px}
+.pet-actions{display:flex;gap:9px;justify-content:center;flex-wrap:wrap;position:relative}
+.pet-actions button{padding:10px 18px;border-radius:12px;border:1px solid var(--line);background:var(--panel);color:var(--txt);font-size:14px;font-weight:700;cursor:pointer;transition:.25s}
+.pet-actions button:hover:not(:disabled){border-color:var(--c1);transform:translateY(-2px)}
+.pet-actions button:disabled{opacity:.45;cursor:not-allowed}
+.pet-msg{font-size:13px;color:var(--mut);min-height:20px;margin-top:14px;position:relative}
 
-/* 后端配置 */
-.backend-cfg{max-width:560px;margin:0 auto 22px;border-radius:14px;padding:16px;font-size:13px}
-.backend-cfg .row{display:flex;gap:9px;margin-top:10px}
-.backend-cfg input{flex:1;padding:10px 12px;border-radius:10px;border:1px solid var(--line);background:rgba(255,255,255,.04);color:var(--txt);font-size:12px;outline:none}
-.backend-cfg input:focus{border-color:var(--c1)}
-.backend-cfg button{padding:10px 16px;border-radius:10px;background:linear-gradient(135deg,var(--c1),#8a6cff);color:#fff;border:0;font-size:12px;font-weight:700;cursor:pointer}
-
-@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal,.metric{opacity:1;transform:none}}
+.backend-note{border-radius:14px;padding:16px;margin-bottom:18px;font-size:12px;color:var(--mut);line-height:1.7}
 </style>
 </head>
 <body>
-
 <div class="aurora"><span class="orb a"></span><span class="orb b"></span><span class="orb c"></span></div>
 <div class="grid-bg"></div>
-
-<!-- 公告 -->
 <div class="notice" id="notice">
   <div class="notice-in">
     <span class="pulse"></span>
@@ -310,7 +318,6 @@ html[data-theme=light] .appbar{background:rgba(238,242,255,.75)}
     <button class="close" id="noticeClose" title="关闭">×</button>
   </div>
 </div>
-
 <nav id="nav">
   <div class="wrap">
     <a href="#top" class="brand"><span class="logo">⛏️</span> Cubern Launcher</a>
@@ -328,15 +335,13 @@ html[data-theme=light] .appbar{background:rgba(238,242,255,.75)}
   </div>
 </nav>
 
-<!-- 第二导航栏：应用功能 -->
-<div class="appbar" id="appbar">
-  <div class="appbar-in" id="appNav">
-    <a data-view="home" class="on"><span class="ic">🏠</span> 首页</a>
-    <a data-view="chat"><span class="ic">💬</span> 世界聊天频道</a>
-    <a data-view="login"><span class="ic">📺</span> B站登录</a>
-    <a data-view="pet"><span class="ic">🐾</span> 宠物系统</a>
-  </div>
-</div>
+<!-- 底部三导航 -->
+<nav class="bottom-nav" id="bottomNav">
+  <a data-view="home" class="on"><span class="ic">🏠</span>首页</a>
+  <a data-view="chat"><span class="ic">💬</span>世界频道</a>
+  <a data-view="me"><span class="ic">👤</span>我的</a>
+</nav>
+
 
 <div id="view-home" class="view on">
 <header id="top">
@@ -486,55 +491,38 @@ html[data-theme=light] .appbar{background:rgba(238,242,255,.75)}
 </footer>
 </div><!-- /view-home -->
 
-<!-- ========== 世界聊天频道 ========== -->
+<!-- 世界频道 -->
 <div id="view-chat" class="view">
   <div class="app-panel">
-    <div class="ph">
-      <div><h2>💬 世界聊天频道</h2><div class="sub">所有玩家都能看到的公共频道，消息实时保存</div></div>
-      <span class="mode-tag demo" id="chatMode">演示模式</span>
-    </div>
-    <div class="chat-box glass">
-      <div class="chat-head"><span class="dot"></span> 世界频道 <span class="cnt" id="chatCount">0 条消息</span></div>
-      <div class="chat-list" id="chatList"><div class="chat-empty">还没有消息，来发第一条吧～</div></div>
-      <div class="chat-input">
-        <input id="chatInput" maxlength="300" placeholder="说点什么…（演示模式存本机，配置后端后全网同步）">
-        <button id="chatSend">发送</button>
+    <div class="ph"><div><h2>💬 世界频道</h2><div class="sub">所有登录玩家的公共聊天室</div></div><span class="mode-tag demo" id="chatMode">演示模式</span></div>
+    <div id="chatGate"></div>
+    <div id="chatContent" style="display:none">
+      <div class="chat-box glass">
+        <div class="chat-head"><span class="dot"></span> 世界频道 <span class="cnt" id="chatCount">0 条消息</span></div>
+        <div class="chat-list" id="chatList"><div class="chat-empty">还没有消息，来发第一条吧～</div></div>
+        <div class="chat-input"><input id="chatInput" maxlength="300" placeholder="说点什么…"><button id="chatSend">发送</button></div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- ========== B站登录 ========== -->
-<div id="view-login" class="view">
+<!-- 我的（登录 + 仓库同步 + 宠物） -->
+<div id="view-me" class="view">
   <div class="app-panel">
-    <div class="ph">
-      <div><h2>📺 B站登录</h2><div class="sub">使用哔哩哔哩账号登录，解锁聊天与宠物系统</div></div>
-      <span class="mode-tag demo" id="loginMode">演示模式</span>
-    </div>
-    <div class="backend-cfg glass">
-      <div style="font-weight:700;margin-bottom:4px">⚙️ 后端地址（可选）</div>
-      <div style="color:var(--mut);font-size:12px">填入 Cloudflare Workers 地址即可切换为真实 B站登录；留空则本机演示。部署说明见后端 README。</div>
-      <div class="row"><input id="backendUrl" placeholder="https://cubern-backend.<你的子域>.workers.dev"><button id="saveBackend">保存</button></div>
-    </div>
-    <div class="login-wrap">
-      <div class="login-card glass" id="loginCard">
-        <div class="lg-ic">📺</div>
-        <h3>使用哔哩哔哩登录</h3>
-        <p class="lg-sub">授权后可进入世界聊天频道、领取并养成你的专属宠物。<br>不会获取你的密码，仅使用官方 OAuth 授权。</p>
-        <button class="login-btn" id="biliLogin">📺 哔哩哔哩一键登录</button>
+    <div class="ph"><div><h2>👤 我的</h2><div class="sub">GitHub 登录、仓库同步、我的宠物</div></div><span class="mode-tag demo" id="meMode">演示模式</span></div>
+    <div id="loginArea"></div>
+    <div id="meContent" style="display:none">
+      <div class="repo-card glass" id="repoCard">
+        <h4>📦 我的开源仓库</h4>
+        <div class="repo-stat">
+          <div class="s"><b id="repoStars">—</b><span>Stars</span></div>
+          <div class="s"><b id="repoForks">—</b><span>Forks</span></div>
+          <div class="s"><b id="repoIssues">—</b><span>Issues</span></div>
+        </div>
+        <div class="repo-desc" id="repoDesc">点击同步，自动拉取你的 CubernLauncher 仓库信息。</div>
+        <button class="sync-btn" id="syncRepo">🔄 立即同步仓库</button>
       </div>
-    </div>
-  </div>
-</div>
-
-<!-- ========== 宠物系统 ========== -->
-<div id="view-pet" class="view">
-  <div class="app-panel">
-    <div class="ph">
-      <div><h2>🐾 宠物系统</h2><div class="sub">领养你的 Cubern 幼崽，喂食、玩耍、升级</div></div>
-      <span class="mode-tag demo" id="petMode">演示模式</span>
-    </div>
-    <div class="pet-wrap">
+      <div class="ph" style="margin-top:26px"><div><h2 style="font-size:19px">🐾 我的宠物</h2></div></div>
       <div class="pet-stage glass">
         <div class="pet-creature" id="petEmoji">🐋</div>
         <div class="pet-name" id="petName">Cubern 幼崽</div>
@@ -543,29 +531,12 @@ html[data-theme=light] .appbar{background:rgba(238,242,255,.75)}
           <div class="pet-bar"><div class="lb"><span>🍖 饱食度</span><span id="hungerVal">80%</span></div><div class="track"><div class="fill" id="hungerBar" style="width:80%;background:linear-gradient(90deg,#ff9f43,#ffcf5c)"></div></div></div>
           <div class="pet-bar"><div class="lb"><span>😊 心情值</span><span id="moodVal">80%</span></div><div class="track"><div class="fill" id="moodBar" style="width:80%;background:linear-gradient(90deg,#ff6ec7,#c084fc)"></div></div></div>
         </div>
-        <div class="pet-actions">
-          <button id="petFeed">🍖 喂食</button>
-          <button id="petPlay">🎮 玩耍</button>
-          <button id="petRename">✏️ 改名</button>
-        </div>
-        <div class="pet-msg" id="petMsg">数据自动保存在本机，配置后端后云端同步。</div>
+        <div class="pet-actions"><button id="petFeed">🍖 喂食</button><button id="petPlay">🎮 玩耍</button><button id="petRename">✏️ 改名</button></div>
+        <div class="pet-msg" id="petMsg">喂食/玩耍每 30 秒一次，等级上限 10 级。</div>
       </div>
     </div>
   </div>
 </div>
-
-<button class="addr-fab" id="addrFab" title="访问地址">🔗</button>
-<div class="addr-panel glass" id="addrPanel">
-  <h4>🔗 当前访问地址</h4>
-  <div class="hint">这是 Cubern Launcher 的官方站点，点一下即可复制网址分享给朋友。</div>
-  <div class="addr-item" id="addrItem">
-    <span class="ic">🌐</span>
-    <span class="info"><b>官网地址</b><code id="addrCode">—</code></span>
-    <span class="badge">当前</span>
-  </div>
-</div>
-<button class="to-top" id="toTop" title="返回顶部">↑</button>
-<div class="toast" id="toast"></div>
 
 <!-- 用户须知协议 -->
 <div class="agreement" id="agreement">
@@ -597,50 +568,64 @@ html[data-theme=light] .appbar{background:rgba(238,242,255,.75)}
     </div>
   </div>
 </div>
+<button class="addr-fab" id="addrFab" title="访问地址">🔗</button>
+<div class="addr-panel glass" id="addrPanel">
+  <h4>🔗 当前访问地址</h4>
+  <div class="hint">这是 Cubern Launcher 的官方站点，点一下即可复制网址分享给朋友。</div>
+  <div class="addr-item" id="addrItem">
+    <span class="ic">🌐</span>
+    <span class="info"><b>官网地址</b><code id="addrCode">—</code></span>
+    <span class="badge">当前</span>
+  </div>
+</div>
+<button class="to-top" id="toTop" title="返回顶部">↑</button>
+<div class="toast" id="toast"></div>
 
 <script>
 (function(){
   const root=document.documentElement,reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  /* 后端地址（部署后填这里，留空=演示模式） */
+  const BACKEND_URL='';
+  function backend(){return BACKEND_URL.replace(/\/$/,'')}
+
   /* 主题 */
   const tb=document.getElementById('themeBtn'),saved=localStorage.getItem('cubern-theme'),sysDark=matchMedia('(prefers-color-scheme: dark)').matches;
-  function apply(t){root.dataset.theme=t;tb.textContent=t==='dark'?'🌙':'☀️'}
+  function apply(t){root.dataset.theme=t;if(tb)tb.textContent=t==='dark'?'🌙':'☀️'}
   apply(saved||(sysDark?'dark':'light'));
-  tb.addEventListener('click',()=>{const n=root.dataset.theme==='dark'?'light':'dark';apply(n);localStorage.setItem('cubern-theme',n);toast(n==='dark'?'深色模式 🌙':'浅色模式 ☀️')});
+  if(tb)tb.addEventListener('click',()=>{const n=root.dataset.theme==='dark'?'light':'dark';apply(n);localStorage.setItem('cubern-theme',n);toast(n==='dark'?'深色模式 🌙':'浅色模式 ☀️')});
+
   /* 用户须知协议 */
-  const agBox=document.getElementById('agreement'),agAgree=document.getElementById('agAgree'),agAccept=document.getElementById('agAccept'),agDecline=document.getElementById('agDecline');
+  const agBox=document.getElementById('agreement'),agAgree=document.getElementById('agAgree'),agAccept=document.getElementById('agAccept');
   const AG_KEY='cubern-agreement-v1';
   function agreed(){try{return localStorage.getItem(AG_KEY)==='1'}catch(e){return false}}
   function openAg(){agBox.classList.add('show');document.body.style.overflow='hidden'}
   function closeAg(){agBox.classList.remove('show');document.body.style.overflow='';agAgree.checked=false;agAccept.classList.add('disabled')}
   agAgree.addEventListener('change',()=>agAccept.classList.toggle('disabled',!agAgree.checked));
   agAccept.addEventListener('click',()=>{if(!agAgree.checked)return;try{localStorage.setItem(AG_KEY,'1')}catch(e){}closeAg();toast('感谢你的理解，祝游玩愉快 ⛏️')});
-  agDecline.addEventListener('click',()=>{closeAg()});
+  document.getElementById('agDecline').addEventListener('click',closeAg);
   document.getElementById('agreementLink').addEventListener('click',e=>{e.preventDefault();openAg()});
   if(!agreed())setTimeout(openAg,600);
-  /* 未同意协议时拦截所有 APK 下载 */
-  document.querySelectorAll('a[href$=".apk"]').forEach(a=>a.addEventListener('click',e=>{
-    if(!agreed()){e.preventDefault();openAg();toast('请先阅读并同意用户须知协议')}
-  }));
+  document.querySelectorAll('a[href$=".apk"]').forEach(a=>a.addEventListener('click',e=>{if(!agreed()){e.preventDefault();openAg();toast('请先阅读并同意用户须知协议')}}));
+
   /* 公告关闭 */
   document.getElementById('noticeClose').addEventListener('click',()=>{document.getElementById('notice').style.display='none'});
+
   /* 手机 3D + 卡片光晕 */
   const phone=document.getElementById('phone');
-  if(!reduced&&matchMedia('(pointer:fine)').matches){
+  if(!reduced&&matchMedia('(pointer:fine)').matches&&phone){
     addEventListener('mousemove',e=>{const r=phone.getBoundingClientRect(),dx=(e.clientX-(r.left+r.width/2))/r.width,dy=(e.clientY-(r.top+r.height/2))/r.height;phone.style.transform='rotateY('+(dx*13)+'deg) rotateX('+(-dy*13)+'deg)'});
     addEventListener('mouseleave',()=>phone.style.transform='');
   }
   document.querySelectorAll('.card').forEach(c=>c.addEventListener('mousemove',e=>{const r=c.getBoundingClientRect();c.style.setProperty('--fx',(e.clientX-r.left)+'px');c.style.setProperty('--fy',(e.clientY-r.top)+'px')}));
-  /* 进场 + 数字 */
+
+  /* 进场动画 */
   const io=new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target)}}),{threshold:.1});
   document.querySelectorAll('.reveal,.metric').forEach(el=>io.observe(el));
-  /* 导航滚动 */
-  const nav=document.getElementById('nav'),toTop=document.getElementById('toTop');
-  addEventListener('scroll',()=>{const y=scrollY;nav.classList.toggle('scrolled',y>20);toTop.classList.toggle('show',y>500)},{passive:true});
-  toTop.addEventListener('click',()=>scrollTo({top:0,behavior:'smooth'}));
-  /* 移动菜单 */
-  const mb=document.getElementById('menuBtn'),nl=document.getElementById('navLinks');
-  mb.addEventListener('click',()=>nl.classList.toggle('open'));
-  nl.addEventListener('click',e=>{if(e.target.tagName==='A')nl.classList.remove('open')});
+
+  /* Toast */
+  const el=document.getElementById('toast');let tt;
+  function toast(m){el.textContent=m;el.classList.add('show');clearTimeout(tt);tt=setTimeout(()=>el.classList.remove('show'),2000)}
+
   /* 地址面板 */
   const cur=location.href.split('?')[0].split('#')[0];
   document.getElementById('addrCode').textContent=cur;
@@ -648,168 +633,199 @@ html[data-theme=light] .appbar{background:rgba(238,242,255,.75)}
   fab.addEventListener('click',e=>{e.stopPropagation();panel.classList.toggle('show')});
   document.getElementById('addrItem').addEventListener('click',()=>{if(navigator.clipboard)navigator.clipboard.writeText(cur).then(()=>toast('网址已复制 ✓')).catch(()=>{})});
   document.addEventListener('click',e=>{if(!panel.contains(e.target)&&e.target!==fab)panel.classList.remove('show')});
-  /* 复制构建命令 */
-  document.getElementById('copyBtn').addEventListener('click',()=>{if(navigator.clipboard)navigator.clipboard.writeText('./gradlew :CubernLauncher:assembleRelease').then(()=>toast('构建命令已复制 ✓')).catch(()=>toast('复制失败'))});
-  /* Toast */
-  const el=document.getElementById('toast');let tt;
-  function toast(m){el.textContent=m;el.classList.add('show');clearTimeout(tt);tt=setTimeout(()=>el.classList.remove('show'),1900)}
+  document.getElementById('copyBtn').addEventListener('click',()=>{if(navigator.clipboard)navigator.clipboard.writeText('./gradlew :CubernLauncher:assembleRelease').then(()=>toast('构建命令已复制 ✓')).catch(()=>{})});
 
-  /* ========== 应用视图切换 ========== */
-  const appNav=document.getElementById('appNav');
-  const views=['home','chat','login','pet'];
+  /* ===== 底部导航切换 ===== */
   function switchView(v){
-    views.forEach(x=>{
-      const el=document.getElementById('view-'+x);
-      if(el)el.classList.toggle('on',x===v);
-    });
-    document.querySelectorAll('#appNav a').forEach(a=>a.classList.toggle('on',a.dataset.view===v));
-    document.getElementById('appbar').scrollIntoView({behavior:'smooth',block:'start'});
+    ['home','chat','me'].forEach(x=>document.getElementById('view-'+x).classList.toggle('on',x===v));
+    document.querySelectorAll('#bottomNav a').forEach(a=>a.classList.toggle('on',a.dataset.view===v));
     scrollTo({top:0,behavior:'smooth'});
-    if(v==='chat')loadChat();
-    if(v==='login')renderLogin();
-    if(v==='pet')renderPet();
+    if(v==='chat')renderChatView();
+    if(v==='me')renderMe();
   }
-  document.querySelectorAll('#appNav a').forEach(a=>a.addEventListener('click',()=>switchView(a.dataset.view)));
+  document.querySelectorAll('#bottomNav a').forEach(a=>a.addEventListener('click',()=>switchView(a.dataset.view)));
 
-  /* ========== 后端配置（Workers 地址）========== */
-  const BE_KEY='cubern_backend';
-  function backend(){try{return (localStorage.getItem(BE_KEY)||'').replace(/\/$/,'')}catch(e){return ''}}
-  const beInput=document.getElementById('backendUrl');
-  beInput.value=backend();
-  document.getElementById('saveBackend').addEventListener('click',()=>{
-    const v=beInput.value.trim().replace(/\/$/,'');
-    try{v?localStorage.setItem(BE_KEY,v):localStorage.removeItem(BE_KEY)}catch(e){}
-    toast(v?'后端已保存，切换为联网模式 ✓':'已切换回演示模式');
-    updateModes();
-  });
-  function updateModes(){
-    const live=!!backend();
-    ['chatMode','loginMode','petMode'].forEach(id=>{
-      const e=document.getElementById(id);if(!e)return;
-      e.textContent=live?'联网模式':'演示模式';
-      e.className='mode-tag '+(live?'live':'demo');
-    });
-  }
-  updateModes();
-
-  /* 读取 B站回调 token：#login=xxx&name=yyy */
+  /* ===== 登录态 ===== */
   try{
-    const hash=location.hash;
-    if(hash.includes('login=')){
-      const params=new URLSearchParams(hash.slice(1));
-      const tk=params.get('login'),nm=params.get('name');
-      if(tk){localStorage.setItem('cubern_token',tk);if(nm)localStorage.setItem('cubern_name',nm);toast('登录成功，欢迎 '+(nm||'玩家')+' 🎉');history.replaceState(null,'',location.pathname);}
+    if(location.hash.includes('login=')){
+      const p=new URLSearchParams(location.hash.slice(1));
+      const tk=p.get('login'),nm=p.get('name'),face=p.get('face'),gh=p.get('gh');
+      if(tk){
+        localStorage.setItem('cubern_token',tk);
+        if(nm)localStorage.setItem('cubern_name',nm);
+        if(face)localStorage.setItem('cubern_face',face);
+        if(gh)localStorage.setItem('cubern_gh',gh);
+        toast('GitHub 登录成功，欢迎 '+(nm||'玩家')+' 🎉');
+        history.replaceState(null,'',location.pathname);
+      }
     }
   }catch(e){}
   function token(){try{return localStorage.getItem('cubern_token')||''}catch(e){return ''}}
-  function uname(){try{return localStorage.getItem('cubern_name')||'我'}catch(e){return '我'}}
-  function api(path,opts){const b=backend();return fetch(b+path,opts)}
+  function uname(){try{return localStorage.getItem('cubern_name')||'玩家'}catch(e){return '玩家'}}
+  function uface(){try{return localStorage.getItem('cubern_face')||''}catch(e){return ''}}
+  function ghToken(){try{return localStorage.getItem('cubern_gh')||''}catch(e){return ''}}
+  function api(path,opts){return fetch(backend()+path,opts)}
+  function modeTag(){
+    const live=!!backend();
+    ['chatMode','meMode'].forEach(id=>{const e=document.getElementById(id);if(e){e.textContent=live?'联网模式':'演示模式';e.className='mode-tag '+(live?'live':'demo')}});
+  }
+  modeTag();
 
-  /* ========== 世界聊天 ========== */
-  const chatListEl=document.getElementById('chatList'),chatCountEl=document.getElementById('chatCount');
-  function renderChatMsgs(list){
-    if(!list||!list.length){chatListEl.innerHTML='<div class="chat-empty">还没有消息，来发第一条吧～</div>';chatCountEl.textContent='0 条消息';return}
-    chatListEl.innerHTML=list.map(m=>{
-      const initial=(m.name||'?').slice(0,1);
-      const t=m.at?new Date(m.at).toLocaleTimeString('zh-CN',{hour:'2-digit',minute:'2-digit'}):'';
-      return '<div class="chat-msg"><div class="av">'+esc(initial)+'</div><div class="meta"><b>'+esc(m.name||'匿名')+'</b><span class="t">'+t+'</span><p>'+esc(m.text)+'</p></div></div>';
-    }).join('');
-    chatCountEl.textContent=list.length+' 条消息';
-    chatListEl.scrollTop=chatListEl.scrollHeight;
+  /* GitHub 登录按钮（渲染在“我的”页） */
+  function loginGate(title,desc){
+    return '<div class="login-gate glass"><div class="gate-ic">🔒</div><h3>'+title+'</h3><p>'+desc+'</p><button class="login-btn" onclick="window._cubernLogin()">🐙 使用 GitHub 登录</button></div>';
+  }
+  window._cubernLogin=function(){
+    if(backend())location.href=backend()+'/api/login';
+    else{toast('演示模式：后端未部署。请先按 README 部署 Cloudflare Workers 并填入地址');}
+  };
+
+  /* ===== 世界频道（需登录）===== */
+  function renderChatView(){
+    const gate=document.getElementById('chatGate'),content=document.getElementById('chatContent');
+    if(!token()){
+      gate.innerHTML=loginGate('登录后进入世界频道','世界频道仅对登录用户开放，使用 GitHub 账号登录即可参与。');
+      content.style.display='none';return;
+    }
+    gate.innerHTML='';content.style.display='';loadChat();
   }
   function esc(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+  function renderChatMsgs(list){
+    const box=document.getElementById('chatList');
+    if(!list||!list.length){box.innerHTML='<div class="chat-empty">还没有消息，来发第一条吧～</div>';document.getElementById('chatCount').textContent='0 条消息';return}
+    box.innerHTML=list.map(m=>{
+      const t=m.at?new Date(m.at).toLocaleTimeString('zh-CN',{hour:'2-digit',minute:'2-digit'}):'';
+      return '<div class="chat-msg"><div class="av">'+esc((m.name||'?').slice(0,1))+'</div><div class="meta"><b>'+esc(m.name||'匿名')+'</b><span class="t">'+t+'</span><p>'+esc(m.text)+'</p></div></div>';
+    }).join('');
+    document.getElementById('chatCount').textContent=list.length+' 条消息';
+    box.scrollTop=box.scrollHeight;
+  }
   function loadChat(){
-    if(backend()){
-      api('/api/chat').then(r=>r.json()).then(j=>renderChatMsgs(j.list||[])).catch(()=>toast('连接后端失败'));
-    }else{
-      let list=[];try{list=JSON.parse(localStorage.getItem('cubern_chat')||'[]')}catch(e){}
-      renderChatMsgs(list);
-    }
+    if(backend()){api('/api/chat').then(r=>r.json()).then(j=>renderChatMsgs(j.list||[])).catch(()=>toast('连接后端失败'))}
+    else{let l=[];try{l=JSON.parse(localStorage.getItem('cubern_chat')||'[]')}catch(e){}renderChatMsgs(l)}
   }
   document.getElementById('chatSend').addEventListener('click',sendChat);
   document.getElementById('chatInput').addEventListener('keydown',e=>{if(e.key==='Enter')sendChat()});
   function sendChat(){
+    if(!token()){toast('请先登录');return}
     const inp=document.getElementById('chatInput'),text=inp.value.trim();
-    if(!text){toast('说点什么再发吧');return}
+    if(!text)return;
     if(backend()){
-      if(!token()){toast('请先到「B站登录」登录');switchView('login');return}
       api('/api/chat/send',{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer '+token()},body:JSON.stringify({text})})
         .then(r=>r.json()).then(j=>{if(j.ok){inp.value='';loadChat()}else toast(j.error||'发送失败')}).catch(()=>toast('发送失败'));
     }else{
-      let list=[];try{list=JSON.parse(localStorage.getItem('cubern_chat')||'[]')}catch(e){}
-      list.push({name:uname(),text,at:Date.now()});
-      try{localStorage.setItem('cubern_chat',JSON.stringify(list.slice(-100)))}catch(e){}
-      inp.value='';renderChatMsgs(list);
+      let l=[];try{l=JSON.parse(localStorage.getItem('cubern_chat')||'[]')}catch(e){}
+      l.push({name:uname(),text,at:Date.now()});
+      try{localStorage.setItem('cubern_chat',JSON.stringify(l.slice(-100)))}catch(e){}
+      inp.value='';renderChatMsgs(l);
     }
   }
 
-  /* ========== B站登录视图 ========== */
-  function renderLogin(){
-    const card=document.getElementById('loginCard');
-    if(token()){
-      card.innerHTML='<div class="lg-ic">📺</div><h3>已登录</h3><div class="user-chip" style="margin-top:8px"><img src="https://i0.hdslb.com/bfs/face/placeholder.jpg" alt="" onerror="this.style.display=\'none\'"><div class="un"><b>'+esc(uname())+'</b><span>哔哩哔哩用户</span></div><button id="logoutBtn">退出</button></div><p class="lg-sub" style="margin-top:16px">你现在可以进入世界聊天频道、养成宠物了。</p>';
-      document.getElementById('logoutBtn').addEventListener('click',()=>{
-        try{localStorage.removeItem('cubern_token');localStorage.removeItem('cubern_name')}catch(e){}
-        toast('已退出登录');renderLogin();
-      });
+  /* ===== 我的（登录 + 仓库 + 宠物，需登录）===== */
+  function renderMe(){
+    const area=document.getElementById('loginArea'),content=document.getElementById('meContent');
+    if(!token()){
+      area.innerHTML='<div class="login-gate glass"><div class="gate-ic">🐙</div><h3>登录解锁全部功能</h3><p>使用 GitHub 开源账号登录，即可同步你的仓库、养成专属宠物、进入世界频道。</p><button class="login-btn" id="meLoginBtn">🐙 使用 GitHub 登录</button></div>';
+      content.style.display='none';
+      document.getElementById('meLoginBtn').addEventListener('click',window._cubernLogin);
+      return;
     }
+    area.innerHTML='<div class="user-chip glass"><img src="'+esc(uface())+'" alt="" onerror="this.style.display=\'none\'"><div class="un"><b>'+esc(uname())+'</b><span>已通过 GitHub 登录</span></div><button id="logoutBtn">退出</button></div>';
+    document.getElementById('logoutBtn').addEventListener('click',()=>{
+      ['cubern_token','cubern_name','cubern_face','cubern_gh'].forEach(k=>{try{localStorage.removeItem(k)}catch(e){}});
+      toast('已退出登录');renderMe();
+    });
+    content.style.display='';
+    loadRepo();loadPet();
   }
-  document.getElementById('biliLogin')?.addEventListener('click',()=>{
-    if(backend()){
-      location.href=backend()+'/api/login';
-    }else{
-      // 演示模式：模拟登录
-      try{localStorage.setItem('cubern_token','demo-token');localStorage.setItem('cubern_name','演示玩家')}catch(e){}
-      toast('演示模式：已模拟登录（配置后端后可真实B站登录）');renderLogin();
-    }
+
+  /* 仓库同步 */
+  function showRepo(info){
+    document.getElementById('repoStars').textContent=info.stars??'—';
+    document.getElementById('repoForks').textContent=info.forks??'—';
+    document.getElementById('repoIssues').textContent=info.open_issues??'—';
+    document.getElementById('repoDesc').textContent=(info.description||'Cubern Launcher')+(info.syncedAt?' · 同步于 '+new Date(info.syncedAt).toLocaleTimeString('zh-CN'):'');
+  }
+  function loadRepo(){
+    if(backend()){api('/api/repo').then(r=>r.json()).then(j=>{if(j.repo)showRepo(j.repo)}).catch(()=>{})}
+  }
+  document.getElementById('syncRepo').addEventListener('click',()=>{
+    if(!token()){toast('请先登录');return}
+    if(!backend()){toast('演示模式：部署后端后可同步真实仓库数据');showRepo({stars:0,forks:0,open_issues:0,description:'Cubern Launcher（演示数据）',syncedAt:Date.now()});return}
+    const btn=document.getElementById('syncRepo');btn.textContent='同步中…';
+    api('/api/repo/sync',{method:'POST',headers:{'Content-Type':'application/json','X-GitHub-Token':ghToken()},body:JSON.stringify({repo:'1953187487/CubernLauncher'})})
+      .then(r=>r.json()).then(j=>{if(j.repo){showRepo({...j.repo,syncedAt:Date.now()});toast('仓库已同步 ✓')}else toast(j.error||'同步失败')})
+      .catch(()=>toast('同步失败')).finally(()=>btn.textContent='🔄 立即同步仓库');
   });
 
-  /* ========== 宠物系统 ========== */
-  function petDefault(){return {name:'Cubern 幼崽',level:1,exp:0,hunger:80,mood:80}}
+  /* 宠物（需登录，30秒冷却） */
+  function petDefault(){return {name:'Cubern 幼崽',level:1,exp:0,hunger:80,mood:80,lastFeed:0,lastPlay:0}}
+  const CD=30000;
   function renderPet(p){
     p=p||petDefault();
     const emojis=['🐋','🐬','🐳','🐟','🐠'];
-    document.getElementById('petEmoji').textContent=emojis[Math.min(p.level-1,emojis.length-1)];
-    document.getElementById('petName').textContent=p.name;
-    document.getElementById('petLv').textContent='Lv.'+p.level+' · '+(p.exp%50)+'/50 经验';
-    document.getElementById('hungerVal').textContent=p.hunger+'%';
-    document.getElementById('hungerBar').style.width=p.hunger+'%';
-    document.getElementById('moodVal').textContent=p.mood+'%';
-    document.getElementById('moodBar').style.width=p.mood+'%';
+    document.getElementById('petEmoji').textContent=emojis[Math.min((p.level||1)-1,emojis.length-1)];
+    document.getElementById('petName').textContent=p.name||'Cubern 幼崽';
+    document.getElementById('petLv').textContent='Lv.'+(p.level||1)+' · '+((p.exp||0)%50)+'/50 经验';
+    const hg=p.hunger??80,md=p.mood??80;
+    document.getElementById('hungerVal').textContent=hg+'%';
+    document.getElementById('hungerBar').style.width=hg+'%';
+    document.getElementById('moodVal').textContent=md+'%';
+    document.getElementById('moodBar').style.width=md+'%';
+    updatePetBtns(p);
   }
+  function updatePetBtns(p){
+    p=p||petDefault();const now=Date.now();
+    const f=document.getElementById('petFeed'),pl=document.getElementById('petPlay');
+    const fcd=Math.max(0,CD-(now-(p.lastFeed||0))),pcd=Math.max(0,CD-(now-(p.lastPlay||0)));
+    f.disabled=fcd>0||(p.hunger??80)>=100;
+    pl.disabled=pcd>0||(p.mood??80)>=100;
+    f.textContent=fcd>0?('🍖 '+Math.ceil(fcd/1000)+'s'):'🍖 喂食';
+    pl.textContent=pcd>0?('🎮 '+Math.ceil(pcd/1000)+'s'):'🎮 玩耍';
+  }
+  function getLocalPet(){let p=null;try{p=JSON.parse(localStorage.getItem('cubern_pet')||'null')}catch(e){}return p||petDefault()}
   function loadPet(){
-    if(backend()&&token()){
-      api('/api/pet?token='+encodeURIComponent(token())).then(r=>r.json()).then(j=>{if(j.pet)renderPet(j.pet)}).catch(()=>{});
-    }else{
-      let p=null;try{p=JSON.parse(localStorage.getItem('cubern_pet')||'null')}catch(e){}
-      renderPet(p);
-    }
+    if(!token())return;
+    if(backend()){api('/api/pet?token='+encodeURIComponent(token())).then(r=>r.json()).then(j=>{if(j.pet)renderPet(j.pet)}).catch(()=>{})}
+    else renderPet(getLocalPet());
   }
   function petAction(action){
+    if(!token()){toast('请先登录');return}
     const msg=document.getElementById('petMsg');
-    if(backend()&&token()){
+    if(backend()){
       api('/api/pet/action',{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer '+token()},body:JSON.stringify({action})})
-        .then(r=>r.json()).then(j=>{if(j.pet){renderPet(j.pet);msg.textContent=petTip(action)}}).catch(()=>toast('操作失败'));
+        .then(r=>r.json()).then(j=>{if(j.pet){renderPet(j.pet);msg.textContent=petTip(action)}else{toast(j.error||'操作失败');if(j.pet)renderPet(j.pet)}}).catch(()=>toast('操作失败'));
     }else{
-      let p=petDefault();try{p=JSON.parse(localStorage.getItem('cubern_pet')||'null')||petDefault()}catch(e){}
-      if(action==='feed'){p.hunger=Math.min(100,p.hunger+20);p.exp+=5}
-      if(action==='play'){p.mood=Math.min(100,p.mood+20);p.exp+=5}
-      p.level=1+Math.floor(p.exp/50);
+      const now=Date.now(),p=getLocalPet();
+      if(action==='feed'){
+        if(now-(p.lastFeed||0)<CD){toast('喂食冷却中');return}
+        if((p.hunger??80)>=100){toast('已经吃饱了');return}
+        p.hunger=Math.min(100,(p.hunger??80)+20);p.exp=(p.exp||0)+5;p.lastFeed=now;
+      }else if(action==='play'){
+        if(now-(p.lastPlay||0)<CD){toast('玩耍冷却中');return}
+        if((p.mood??80)>=100){toast('心情已经很好了');return}
+        p.mood=Math.min(100,(p.mood??80)+20);p.exp=(p.exp||0)+5;p.lastPlay=now;
+      }
+      p.level=Math.min(10,1+Math.floor((p.exp||0)/50));
       try{localStorage.setItem('cubern_pet',JSON.stringify(p))}catch(e){}
       renderPet(p);msg.textContent=petTip(action);
+      setTimeout(()=>updatePetBtns(getLocalPet()),1000);
+      (function tick(){setTimeout(()=>updatePetBtns(getLocalPet()),1000)})();
     }
   }
   function petTip(a){return a==='feed'?'🍖 好好吃，饱食度 +20，经验 +5':a==='play'?'🎮 玩得开心，心情 +20，经验 +5':'已更新'}
   document.getElementById('petFeed').addEventListener('click',()=>petAction('feed'));
   document.getElementById('petPlay').addEventListener('click',()=>petAction('play'));
   document.getElementById('petRename').addEventListener('click',()=>{
+    if(!token()){toast('请先登录');return}
     const name=prompt('给宠物起个名字：',document.getElementById('petName').textContent);
     if(!name)return;
-    let p=null;try{p=JSON.parse(localStorage.getItem('cubern_pet')||'null')||petDefault()}catch(e){}
-    p=p||petDefault();p.name=name.slice(0,20);
+    let p=getLocalPet();p.name=name.slice(0,20);
     try{localStorage.setItem('cubern_pet',JSON.stringify(p))}catch(e){}
     renderPet(p);document.getElementById('petMsg').textContent='✏️ 新名字：'+name;
   });
+  /* 定时刷新宠物按钮冷却 */
+  setInterval(()=>{if(token()&&document.getElementById('view-me').classList.contains('on'))loadPet()},5000);
 })();
 </script>
 </body>
