@@ -727,4 +727,188 @@
     <!-- Sponsorship Related -->
     <string name="request_sponsorship_title">支持我的开发</string>
     <string name="request_sponsorship_message">这款软件的大部分内容都是我一个人开发和维护的。如果你觉得这款软件对你有帮助，并且条件允许的话，希望你能考虑赞助我，让我有更多动力继续开发和改进，谢谢你的支持！</string>
+    <!-- Cubern Launcher: Terracotta -->
+    <string name="terracotta_menu">陶瓦联机</string>
+    <string name="terracotta_menu_desc">陶瓦联机（Terracotta）是一款面向 Minecraft Java 版的 P2P 联机方案。联机成功后设备之间直接连接，不通过第三方服务器转发游戏流量。</string>
+    <string name="terracotta_native_unavailable">当前设备不可用陶瓦联机原生库，无法使用联机功能。</string>
+    <string name="terracotta_waiting">等待中</string>
+    <string name="terracotta_host_mode">创建房间</string>
+    <string name="terracotta_host_mode_desc">创建房间并将房间码分享给好友加入。</string>
+    <string name="terracotta_guest_mode">加入房间</string>
+    <string name="terracotta_guest_mode_desc">输入房主分享的房间码以加入联机。</string>
+    <string name="terracotta_reset">重置连接</string>
+    <string name="terracotta_room_code">房间码</string>
+    <string name="terracotta_room_code_hint">请输入房间码</string>
+    <string name="terracotta_player_name_hint">玩家昵称（可选）</string>
+    <string name="terracotta_room_code_invalid">房间码无效或为空。</string>
+    <string name="terracotta_room_code_copied">房间码已复制到剪贴板。</string>
+    <string name="terracotta_nodes">EasyTier 节点</string>
+    <string name="terracotta_show_log">显示联机日志</string>
+    <string name="terracotta_hide_log">隐藏联机日志</string>
+    <string name="terracotta_status_host_scanning">正在扫描节点…</string>
+    <string name="terracotta_status_host_scanning_desc">正在准备房间，请稍候。</string>
+    <string name="terracotta_status_host_starting">正在启动房主…</string>
+    <string name="terracotta_status_host_ok">已创建房间</string>
+    <string name="terracotta_status_host_ok_code">房间码</string>
+    <string name="terracotta_status_host_ok_code_copy">复制</string>
+    <string name="terracotta_status_guest_starting">正在加入房间…</string>
+    <string name="terracotta_status_guest_ok">已加入房间</string>
+    <string name="terracotta_status_exception">连接异常</string>
+    <string name="terracotta_permission_vpn_denied">VPN 权限被拒绝，无法使用联机功能。</string>
+    <string name="terracotta_init_failed">联机初始化失败，请查看日志。</string>
+    <!-- Cubern Launcher: AI assistant -->
+    <string name="ai_feature_title">Cubern AI 助手</string>
+    <string name="ai_feature_desc">离线启动器辅助功能：解释 Minecraft 命令、分析启动日志、推荐 Java 与渲染器设置、解答陶瓦联机常见问题。</string>
+    <string name="ai_welcome">你好，我是 Cubern AI 助手。我可以帮你解释 Minecraft 命令、分析启动日志、推荐 Java 与渲染设置，以及解答陶瓦联机问题。请勿在对话中提供密码、正版账号令牌或支付信息。</string>
+    <string name="ai_not_configured">尚未配置 AI 服务。请进入「设置 → AI 助手」配置兼容服务地址与密钥，或选择启动器提供的合规服务。</string>
+    <string name="ai_send">发送</string>
+    <string name="ai_stop">停止</string>
+    <string name="ai_regenerate">重新生成</string>
+    <string name="ai_clear_session">清空当前会话</string>
+    <string name="ai_input_hint">输入消息…</string>
+    <string name="ai_copy">复制</string>
+    <string name="ai_copied">已复制到剪贴板。</string>
+    <string name="ai_network_error">网络异常，请重试。</string>
+    <string name="ai_retry">重试</string>
+    <string name="ai_empty_reply">（无回复）</string>
+    <string name="ai_confirm_clear">确定要清空全部对话历史吗？</string>
+    <!-- Cubern Launcher: Terracotta state -->
+    <string name="terracotta_difficulty_easiest">和平</string>
+    <string name="terracotta_difficulty_simple">简单</string>
+    <string name="terracotta_difficulty_medium">普通</string>
+    <string name="terracotta_difficulty_tough">困难</string>
+    <string name="terracotta_player_kind_local">本地</string>
+    <string name="terracotta_player_kind_host">房主</string>
+    <string name="terracotta_player_kind_guest">房客</string>
+    <string name="terracotta_notification_title">陶瓦联机</string>
+    <string name="terracotta_notification_desc">陶瓦联机正在后台运行。</string>
+    <string name="terracotta_notification_state_preparing">准备中…</string>
+    <string name="terracotta_status_exception_desc_ping_host_fail">无法连接到房主，房主可能已离线。</string>
+    <string name="terracotta_status_exception_desc_ping_host_rst">与房主的连接被重置。</string>
+    <string name="terracotta_status_exception_desc_guest_et_crash">EasyTier 房客进程已崩溃。</string>
+    <string name="terracotta_status_exception_desc_host_et_crash">EasyTier 房主进程已崩溃。</string>
+    <string name="terracotta_status_exception_desc_ping_server_rst">与 ping 服务器的连接被重置。</string>
+    <string name="terracotta_status_exception_desc_scaffolding_invalid_response">收到无效的脚手架响应。</string>
+    <!-- Cubern Launcher: User notice -->
+    <string name="user_notice_title">用户须知与服务协议</string>
+    <string name="user_notice_version_info">应用：%1$s  %2$s（测试版 / Pre-release）</string>
+    <string name="user_notice_accept">我已阅读并同意</string>
+    <string name="user_notice_decline">拒绝并退出</string>
+    <string name="user_notice_checkbox">我已完整阅读并理解以上内容</string>
+    <string name="user_notice_reopen">重新查看用户须知</string>
+    <string name="user_notice_body"><![CDATA[
+1. 应用与状态
+- 应用名称：Cubern Launcher
+- 版本：1.0.3（测试版 / Pre-release）
+- 当前作者：万古沧海
+- 原作者：Zalith Launcher 1 启动器作者
+
+2. 开源协议（GPL-3.0）
+- 本项目遵循 GNU GPL-3.0 开源协议发布。你可以在遵守 GPL-3.0 条款的前提下使用、修改与分发本软件及其源代码。
+- 基于本项目的修改版本在分发时应同样遵循 GPL-3.0，并向接收者提供对应的源代码与许可证文本。
+
+3. 第三方项目致谢
+- 本启动器基于 Zalith Launcher 1 原版底层开发，并参考或使用以下项目与资源：Zalith Launcher 1/Zalith Launcher 2、PojavLauncher、FoldCraftLauncher、Amethyst-iOS、MyRemasteredAI、MIUIX（设计参考）、EasyTier、HMCL、CommonMark、AndroidViewAnimations、TapTargetView、MC 百科等，以及项目贡献者与社区作者。
+- 各第三方项目的商标、代码与资源归其各自权利人所有，受其各自许可证约束。
+
+4. 用户使用须知
+- 本启动器仅作为 Minecraft: Java Edition 的启动与管理工具，不提供任何游戏本体。你应通过合法渠道获取并使用游戏内容及相关账号。
+- 请勿将本软件用于违法违规活动，包括但不限于侵害他人权益、破坏网络秩序或传播恶意内容。
+- 使用过程中请自行备份重要存档与数据；因设备环境、模组兼容性、第三方服务异常等造成的损失需由你自行评估与承担。
+
+5. 隐私说明
+- 启动器会在本地保存必要的配置信息（如版本设置、已同意协议的状态与时间、AI 服务配置项等），以提供基础功能。
+- 联机、下载、登录等功能会与对应服务通信；除实现功能所必需的信息外，启动器不主动上传与你游戏内容无关的个人隐私数据。
+- 若你启用 AI 助手并配置第三方服务，相关对话内容将按你的配置发送至所选服务；请勿在对话中输入密码、正版账号令牌、支付信息等敏感数据。
+
+6. AI 功能说明与免责声明
+- 启动器内置 AI 助手仅用于离线辅助：命令解释与纠错、启动失败日志分析、崩溃原因初步诊断、Java/渲染设置建议、模组/数据包/资源包说明、陶瓦联机常见问题、玩法与攻略查询等。
+- AI 回复可能存在不准确或过时内容，不构成官方客服、法律、账号安全或付费建议。请自行核实关键结论，涉及账号与安全操作时谨慎处理。
+
+7. 陶瓦联机说明
+- 陶瓦联机（Terracotta）基于 P2P 技术。联机成功后，参与设备之间尽可能直接连接，正常情况下不通过第三方服务器中转游戏流量（节点发现/协调等必要信令除外，具体以实现为准）。
+- 使用联机功能时，你应遵守所在地法律法规及网络使用规范，不得利用联机功能从事违法活动。
+
+8. Minecraft 正版账号与版权声明
+- “Minecraft” 及相关名称、标识为 Mojang Studios/Microsoft 的商标或版权内容。本项目与 Mojang、Microsoft、网易公司无隶属、合作或官方背书关系。
+- 启动器不提供绕过正版验证、盗版分发或破解能力。请支持正版并遵守相关服务条款。
+
+9. 免责声明
+- 本软件按“现状”提供，开发者不对其适用性、稳定性或特定目的的适配性作明示或暗示担保。
+- 在法律允许范围内，因使用或无法使用本软件产生的任何直接或间接损失，开发者与贡献者不承担责任。
+
+协议版本：1.0.3-agreement-1
+]]></string>
+
+    <!-- Cubern Launcher: Terracotta UI -->
+    <string name="terracotta_tab_notice">用户须知</string>
+    <string name="terracotta_tab_host_tutorial">房主教程</string>
+    <string name="terracotta_tab_guest_tutorial">房客教程</string>
+    <string name="terracotta_notice_understand">我已了解</string>
+    <string name="terracotta_enable_switch">启用多人联机</string>
+    <string name="terracotta_custom_nodes_switch">自定义 EasyTier 服务器节点</string>
+    <string name="terracotta_connection_mode">当前连接模式</string>
+    <string name="terracotta_share_logs">分享联机核心日志</string>
+    <string name="terracotta_about_easytier">关于 EasyTier</string>
+    <string name="terracotta_about_easytier_desc">EasyTier 是一个去中心化的内网穿透与组网工具，陶瓦联机使用它来完成 P2P 直连。</string>
+    <string name="terracotta_notice_body"><![CDATA[
+陶瓦联机（Terracotta）说明：
+
+- 本功能基于第三方开源自由软件实现，遵循 GPL-3.0 许可证。
+- 采用 P2P 技术：联机成功后，参与设备之间直接连接，正常情况下不通过第三方服务器转发游戏流量（节点发现与协调等必要信令除外，具体以实现为准）。
+- 使用本功能时，你应遵守所在地法律法规及网络使用规范，不得利用联机功能从事违法活动。
+- 相关项目致谢：Zalith Launcher、FoldCraftLauncher、EasyTier、HMCL 及社区贡献者。
+]]></string>
+    <string name="terracotta_host_tutorial_steps"><![CDATA[
+房主教程：
+
+1. 进入「陶瓦联机」页面，阅读用户须知并点击「我已了解」。
+2. 确认「启用多人联机」开关为开启状态。
+3. 在「当前连接模式」下点击「创建房间」。
+4. 等待房主状态变为「已创建房间」，此时会显示一个房间码。
+5. 将房间码分享给好友，让他们以房客身份加入。
+6. 好友加入后即可在游戏内直接连接游玩。
+]]></string>
+    <string name="terracotta_guest_tutorial_steps"><![CDATA[
+房客教程：
+
+1. 进入「陶瓦联机」页面，阅读用户须知并点击「我已了解」。
+2. 确认「启用多人联机」开关为开启状态。
+3. 输入房主分享的房间码（以及可选的玩家昵称）。
+4. 点击「加入房间」并等待连接成功。
+5. 连接成功后，在游戏内连接到房主提供的地址即可游玩。
+]]></string>
+
+    <!-- Cubern Launcher: AI settings -->
+    <string name="ai_settings_title">AI 助手设置</string>
+    <string name="ai_settings_general">通用</string>
+    <string name="ai_settings_enabled">启用 AI 助手</string>
+    <string name="ai_settings_service">服务</string>
+    <string name="ai_settings_base_url">AI 服务地址（OpenAI 兼容）</string>
+    <string name="ai_settings_model">模型名称</string>
+    <string name="ai_settings_api_key">API Key</string>
+    <string name="ai_settings_api_key_hint">密钥使用 Android Keystore 加密并保存在本地，不会写入日志或 strings.xml。</string>
+    <string name="ai_settings_behavior">行为</string>
+    <string name="ai_settings_stream">启用流式响应</string>
+    <string name="ai_settings_save_history">启用本地历史记录</string>
+    <string name="ai_settings_max_history">最大历史消息数：%d</string>
+    <string name="ai_settings_temperature">温度：%s</string>
+    <string name="ai_settings_actions">操作</string>
+    <string name="ai_settings_save">保存设置</string>
+    <string name="ai_settings_saved">AI 设置已保存。</string>
+    <string name="ai_settings_clear_history">清除对话记录</string>
+    <string name="ai_settings_cleared">对话记录已清除。</string>
+    <string name="ai_settings_notice">隐私说明</string>
+    <string name="user_notice_ai_excerpt">对话内容会按你的配置发送至所选服务。请勿输入密码、正版账号令牌或支付信息。AI 回复仅供参考，不构成权威结论。</string>
+
+    <string name="main_setting">设置</string>
+
+    <string name="ai_analyze_log">分析启动日志</string>
+    <string name="ai_log_dialog_title">分析启动日志</string>
+    <string name="ai_log_dialog_body">启动日志可能包含设备路径、账户标识和网络地址。系统将自动隐藏敏感信息（令牌、API Key、UUID、路径中的用户名）。是否继续发送给 AI 服务？</string>
+    <string name="ai_log_dialog_confirm">脱敏并发送</string>
+    <string name="ai_log_analysis_prompt">请分析以下已脱敏的启动日志，总结可能原因并给出具体的修复步骤；如涉及 Java 运行时、渲染器或版本设置，请一并说明：
+
+%1$s</string>
+    <string name="log_unavailable">未找到最近的启动日志，你可以手动粘贴日志内容。</string>
 </resources>

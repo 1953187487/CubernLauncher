@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="user_notice_title">User Notice &amp; Service Agreement</string>
+    <string name="user_notice_version_info">App: %1$s  %2$s (Beta / Pre-release)</string>
+    <string name="user_notice_accept">I have read and agree</string>
+    <string name="user_notice_decline">Decline and exit</string>
+    <string name="user_notice_checkbox">I have fully read and understood the above</string>
+    <string name="user_notice_reopen">Review user notice</string>
+    <string name="user_notice_body"><![CDATA[
+1. App and status
+- App name: Cubern Launcher
+- Version: 1.0.3 (Beta / Pre-release)
+- Current author: 万古沧海
+- Original author: Zalith Launcher 1 launcher author
+
+2. Open source license (GPL-3.0)
+- This project is released under the GNU GPL-3.0 open source license. You may use, modify and distribute this software and its source code under the terms of GPL-3.0.
+- Modified versions based on this project must also follow GPL-3.0 when distributed, and provide the corresponding source code and license text to recipients.
+
+3. Third-party acknowledgements
+- This launcher is developed on the Zalith Launcher 1 original base and references or uses the following projects and resources: Zalith Launcher 1/Zalith Launcher 2, PojavLauncher, FoldCraftLauncher, Amethyst-iOS, MyRemasteredAI, MIUIX (design reference), EasyTier, HMCL, CommonMark, AndroidViewAnimations, TapTargetView, MC 百科, as well as project contributors and community authors.
+- The trademarks, code and resources of each third-party project belong to their respective rights holders and are governed by their respective licenses.
+
+4. User usage notice
+- This launcher is only a startup and management tool for Minecraft: Java Edition, and does not provide the game itself. You should obtain and use game content and related accounts through legal channels.
+- Do not use this software for illegal or unlawful activities, including but not limited to infringing on others rights, disrupting network order, or spreading malicious content.
+- Please back up important saves and data yourself. Losses caused by device environment, mod compatibility, third-party service failures, etc. must be assessed and borne by you.
+
+5. Privacy notice
+- The launcher stores necessary configuration information locally (such as version settings, agreement acceptance status and time, AI service configuration items, etc.) to provide basic functionality.
+- Multiplayer, download and login features communicate with corresponding services; apart from information necessary to implement functionality, the launcher does not proactively upload personal privacy data unrelated to your game content.
+- If you enable the AI assistant and configure a third-party service, relevant conversation content will be sent to the selected service according to your configuration; please do not enter passwords, official account tokens, payment information, or other sensitive data in conversations.
+
+6. AI feature description and disclaimer
+- The built-in AI assistant is only for offline assistance: command explanation and correction, startup failure log analysis, preliminary crash diagnosis, Java/renderer setting suggestions, mod/data pack/resource pack instructions, common Terracotta multiplayer questions, gameplay and walkthrough queries, etc.
+- AI replies may be inaccurate or outdated, and do not constitute official customer service, legal, account security or payment advice. Please verify key conclusions yourself and be cautious with account and security operations.
+
+7. Terracotta multiplayer notice
+- Terracotta multiplayer is based on P2P technology. After a successful connection, participating devices connect directly whenever possible; under normal circumstances game traffic is not relayed through third-party servers (except necessary signaling such as node discovery/coordination, as implemented).
+- When using the multiplayer feature, you should comply with local laws, regulations and network usage rules, and must not use multiplayer for illegal activities.
+
+8. Minecraft official account and copyright statement
+- "Minecraft" and related names and marks are trademarks or copyright content of Mojang Studios/Microsoft. This project has no affiliation, cooperation or official endorsement with Mojang, Microsoft, or NetEase.
+- The launcher does not provide the ability to bypass official authentication, distribute pirated content, or crack. Please support the official version and comply with relevant terms of service.
+
+9. Disclaimer
+- This software is provided "as is"; the developer makes no express or implied warranty of fitness, stability, or fitness for a particular purpose.
+- To the extent permitted by law, the developer and contributors are not liable for any direct or indirect loss arising from the use or inability to use this software.
+
+Agreement version: 1.0.3-agreement-1
+]]></string>
+</resources>

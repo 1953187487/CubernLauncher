@@ -693,4 +693,137 @@
     <!-- Sponsorship Related -->
     <string name="request_sponsorship_title">Support My Development</string>
     <string name="request_sponsorship_message">Most of the content in this software is developed and maintained by me alone. If you find this software helpful and are in a position to do so, I hope you will consider sponsoring me to give me more motivation to continue developing and improving it. Thank you for your support!</string>
+<!-- Cubern Launcher: Terracotta -->
+    <string name="terracotta_menu">Terracotta Multiplayer</string>
+    <string name="terracotta_menu_desc">Terracotta is a P2P multiplayer solution for Minecraft Java Edition. After a successful connection, devices connect directly without relaying game traffic through third-party servers.</string>
+    <string name="terracotta_native_unavailable">The Terracotta native library is not available on this device, so multiplayer cannot be used.</string>
+    <string name="terracotta_waiting">Waiting</string>
+    <string name="terracotta_host_mode">Host a room</string>
+    <string name="terracotta_host_mode_desc">Create a room and share the room code with friends to join.</string>
+    <string name="terracotta_guest_mode">Join a room</string>
+    <string name="terracotta_guest_mode_desc">Enter the room code shared by the host to join.</string>
+    <string name="terracotta_reset">Reset connection</string>
+    <string name="terracotta_room_code">Room code</string>
+    <string name="terracotta_room_code_hint">Enter room code</string>
+    <string name="terracotta_player_name_hint">Player name (optional)</string>
+    <string name="terracotta_room_code_invalid">The room code is invalid or empty.</string>
+    <string name="terracotta_room_code_copied">Room code copied to clipboard.</string>
+    <string name="terracotta_nodes">EasyTier nodes</string>
+    <string name="terracotta_show_log">Show multiplayer log</string>
+    <string name="terracotta_hide_log">Hide multiplayer log</string>
+    <string name="terracotta_status_host_scanning">Scanning for nodes…</string>
+    <string name="terracotta_status_host_scanning_desc">Please wait while the room is being prepared.</string>
+    <string name="terracotta_status_host_starting">Starting host…</string>
+    <string name="terracotta_status_host_ok">Hosting room</string>
+    <string name="terracotta_status_host_ok_code">Room code</string>
+    <string name="terracotta_status_host_ok_code_copy">Copy</string>
+    <string name="terracotta_status_guest_starting">Joining room…</string>
+    <string name="terracotta_status_guest_ok">Joined room</string>
+    <string name="terracotta_status_exception">Connection error</string>
+    <string name="terracotta_permission_vpn_denied">VPN permission was denied. Multiplayer cannot be used.</string>
+    <string name="terracotta_init_failed">Failed to initialize multiplayer. Please check the logs.</string>
+    <!-- Cubern Launcher: AI assistant -->
+    <string name="ai_feature_title">Cubern AI Assistant</string>
+    <string name="ai_feature_desc">An offline launcher helper: explain Minecraft commands, analyze startup logs, recommend Java and renderer settings, and answer Terracotta multiplayer questions.</string>
+    <string name="ai_welcome">Hello, I am the Cubern AI Assistant. I can help you explain Minecraft commands, analyze startup logs, recommend Java and renderer settings, and answer Terracotta multiplayer questions. Please do not provide passwords, official account tokens, or payment information in the conversation.</string>
+    <string name="ai_not_configured">AI service is not configured yet. Please go to Settings → AI Assistant to configure a compatible service address and key, or choose a compliant service provided by the launcher.</string>
+    <string name="ai_send">Send</string>
+    <string name="ai_stop">Stop</string>
+    <string name="ai_regenerate">Regenerate</string>
+    <string name="ai_clear_session">Clear current session</string>
+    <string name="ai_input_hint">Type a message…</string>
+    <string name="ai_copy">Copy</string>
+    <string name="ai_copied">Copied to clipboard.</string>
+    <string name="ai_network_error">Network error, please try again.</string>
+    <string name="ai_retry">Retry</string>
+    <string name="ai_empty_reply">(No reply)</string>
+    <string name="ai_confirm_clear">Clear all conversation history?</string>
+    <!-- Cubern Launcher: Terracotta state -->
+    <string name="terracotta_difficulty_easiest">Peaceful</string>
+    <string name="terracotta_difficulty_simple">Easy</string>
+    <string name="terracotta_difficulty_medium">Normal</string>
+    <string name="terracotta_difficulty_tough">Hard</string>
+    <string name="terracotta_player_kind_local">Local</string>
+    <string name="terracotta_player_kind_host">Host</string>
+    <string name="terracotta_player_kind_guest">Guest</string>
+    <string name="terracotta_notification_title">Terracotta Multiplayer</string>
+    <string name="terracotta_notification_desc">Terracotta is running in the background.</string>
+    <string name="terracotta_notification_state_preparing">Preparing…</string>
+    <string name="terracotta_status_exception_desc_ping_host_fail">Failed to ping the host. The host may be offline.</string>
+    <string name="terracotta_status_exception_desc_ping_host_rst">Connection to the host was reset.</string>
+    <string name="terracotta_status_exception_desc_guest_et_crash">The EasyTier guest process crashed.</string>
+    <string name="terracotta_status_exception_desc_host_et_crash">The EasyTier host process crashed.</string>
+    <string name="terracotta_status_exception_desc_ping_server_rst">The ping server connection was reset.</string>
+    <string name="terracotta_status_exception_desc_scaffolding_invalid_response">Invalid scaffolding response received.</string>
+    <!-- Cubern Launcher: Terracotta UI -->
+    <string name="terracotta_tab_notice">User notice</string>
+    <string name="terracotta_tab_host_tutorial">Host tutorial</string>
+    <string name="terracotta_tab_guest_tutorial">Guest tutorial</string>
+    <string name="terracotta_notice_understand">I understand</string>
+    <string name="terracotta_enable_switch">Enable multiplayer</string>
+    <string name="terracotta_custom_nodes_switch">Custom EasyTier server nodes</string>
+    <string name="terracotta_connection_mode">Current connection mode</string>
+    <string name="terracotta_share_logs">Share multiplayer core log</string>
+    <string name="terracotta_about_easytier">About EasyTier</string>
+    <string name="terracotta_about_easytier_desc">EasyTier 是一个去中心化的内网穿透与组网工具，陶瓦联机使用它来完成 P2P 直连。</string>
+    <string name="terracotta_notice_body"><![CDATA[
+Terracotta multiplayer notes:
+
+- This feature is implemented using third-party open source free software and follows the GPL-3.0 license.
+- It uses P2P technology: after a successful connection, devices connect directly without relaying game traffic through third-party servers (except necessary signaling such as node discovery and coordination, implementation-specific).
+- When using this feature, you should comply with local laws, regulations and network usage rules, and must not use multiplayer for illegal activities.
+- Credits: Zalith Launcher, FoldCraftLauncher, EasyTier, HMCL and community contributors.
+]]></string>
+
+    <!-- Cubern Launcher: AI settings -->
+    <string name="ai_settings_title">AI Assistant Settings</string>
+    <string name="ai_settings_general">General</string>
+    <string name="ai_settings_enabled">Enable AI assistant</string>
+    <string name="ai_settings_service">Service</string>
+    <string name="ai_settings_base_url">AI service address (OpenAI compatible)</string>
+    <string name="ai_settings_model">Model name</string>
+    <string name="ai_settings_api_key">API key</string>
+    <string name="ai_settings_api_key_hint">The key is encrypted with Android Keystore and stored locally. It is never written to logs or strings.xml.</string>
+    <string name="ai_settings_behavior">Behavior</string>
+    <string name="ai_settings_stream">Streaming response</string>
+    <string name="ai_settings_save_history">Save local history</string>
+    <string name="ai_settings_max_history">Max history messages: %d</string>
+    <string name="ai_settings_temperature">Temperature: %s</string>
+    <string name="ai_settings_actions">Actions</string>
+    <string name="ai_settings_save">Save settings</string>
+    <string name="ai_settings_saved">AI settings saved.</string>
+    <string name="ai_settings_clear_history">Clear conversation history</string>
+    <string name="ai_settings_cleared">Conversation history cleared.</string>
+    <string name="ai_settings_notice">Privacy notice</string>
+    <string name="user_notice_ai_excerpt">AI conversations are sent to the service you configure. Do not enter passwords, official account tokens, or payment information. AI replies are for reference only and are not authoritative.</string>
+
+    <string name="terracotta_host_tutorial_steps"><![CDATA[
+Host tutorial:
+
+1. Open the Terracotta page, read the user notice, and tap "I understand".
+2. Confirm the "Enable multiplayer" switch is on.
+3. Under "Current connection mode", tap "Host a room".
+4. Wait until the host state becomes "Hosting room" and a room code is shown.
+5. Share the room code with your friends so they can join as guests.
+6. Once friends join, connect and play directly in-game.
+]]></string>
+    <string name="terracotta_guest_tutorial_steps"><![CDATA[
+Guest tutorial:
+
+1. Open the Terracotta page, read the user notice, and tap "I understand".
+2. Confirm the "Enable multiplayer" switch is on.
+3. Enter the room code shared by the host (and an optional player name).
+4. Tap "Join a room" and wait for the connection to succeed.
+5. Once connected, connect to the host address in-game to play.
+]]></string>
+    <string name="main_setting">Settings</string>
+
+    <string name="ai_analyze_log">Analyze Launch Log</string>
+    <string name="ai_log_dialog_title">Analyze launch log</string>
+    <string name="ai_log_dialog_body">The launch log may contain device paths, account identifiers and network addresses. Sensitive information (tokens, API keys, UUIDs, usernames in paths) will be masked automatically. Continue sending it to the AI service?</string>
+    <string name="ai_log_dialog_confirm">Mask and send</string>
+    <string name="ai_log_analysis_prompt">Please analyze the following masked launch log. Summarize the likely cause and suggest concrete fix steps, including Java runtime, renderer or version settings when relevant:
+
+%1$s</string>
+    <string name="log_unavailable">No recent launch log found. You can paste a log manually.</string>
 </resources>
