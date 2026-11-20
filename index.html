@@ -116,6 +116,14 @@ section{padding:52px 0}
 .update-card ul{list-style:none;padding:0}
 .update-card li{font-size:13.5px;color:var(--mut);padding:5px 0 5px 22px;position:relative}
 .update-card li::before{content:"";position:absolute;left:4px;top:13px;width:6px;height:6px;border-radius:50%;background:var(--c2)}
+.upd-group{margin-top:12px}
+.upd-group h5{font-size:12px;font-weight:800;color:var(--c1);margin-bottom:5px;display:flex;align-items:center;gap:6px;letter-spacing:.3px}
+.upd-group h5 svg{width:14px;height:14px}
+.sign-warn{margin-top:14px;padding:11px 13px;border-radius:11px;border:1px solid rgba(255,159,67,.4);background:rgba(255,159,67,.09);font-size:12.5px;color:var(--mut);display:flex;gap:9px;align-items:flex-start}
+.sign-warn svg{width:16px;height:16px;color:var(--warn);margin-top:2px}
+.sign-warn b{color:var(--warn)}
+.sign-warn code{font-size:11px;color:var(--txt);word-break:break-all}
+.meta-line{font-size:11.5px;color:var(--mut);margin-top:12px;line-height:1.8}
 
 /* Bento */
 .bento{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
@@ -273,12 +281,29 @@ section,.metric,.card{content-visibility:auto;contain-intrinsic-size:auto 400px}
     <div class="update-box">
       <div class="update-card glass reveal">
         <div class="update-top"><span class="v">v1.0.3</span><span class="tag">Pre-release 测试版</span><span class="date">2026-11-20</span></div>
-        <ul>
-          <li>基于 Zalith Launcher 1 的 Jetpack Compose UI 持续打磨</li>
-          <li>统一发布单个 Release APK，安装更省心</li>
-          <li>陶瓦联机、Java 运行时管理、Vulkan 渲染等能力延续</li>
-          <li>官网同步升级 v1.3：新增透明玻璃与自定义背景</li>
-        </ul>
+        <p style="font-size:13px;color:var(--mut);margin-bottom:6px">基于 Zalith Launcher 1 原版底层重新开发，界面引擎 Jetpack Compose，视觉风格拟物沉浸风。</p>
+
+        <div class="upd-group"><h5><svg><use href="#i-bolt"/></svg>修复</h5><ul>
+          <li>修复用户须知协议门禁：此前协议界面定义了却从未在主界面启动时调用，未同意即可进入；现强制首次启动弹出，未同意不得使用下载、联机、AI 等功能</li>
+          <li>修复同意回调中的递归错乱，同意后正常关闭遮罩并继续初始化，拒绝则退出</li>
+          <li>修复用户须知中文缺失：新增简体/繁体协议本地化资源，中英文均可滚动阅读</li>
+        </ul></div>
+
+        <div class="upd-group"><h5><svg><use href="#i-bot"/></svg>新增功能</h5><ul>
+          <li>AI 助手「分析启动日志」专项：自动导入最近日志、脱敏（令牌/API Key/UUID/路径用户名）、摘要提取错误行，上传前弹窗告知并取得确认</li>
+          <li>AI 助手入口：主界面右上角功能区从右往左第 5 个位置，长按显示功能名称</li>
+          <li>设置页新增 AI 助手分组与「重新查看用户须知」入口</li>
+        </ul></div>
+
+        <div class="upd-group"><h5><svg><use href="#i-palette"/></svg>界面</h5><ul>
+          <li>主界面、设置、下载、用户须知、陶瓦联机、AI 助手统一拟物沉浸风设计 token</li>
+          <li>陶瓦联机：用户须知 / 房主教程 / 房客教程三标签，未读须知时锁定首标签</li>
+          <li>恢复 ZL1 原版布局与入口顺序，仅迁移 UI 引擎</li>
+        </ul></div>
+
+        <div class="sign-warn"><svg><use href="#i-warn"/></svg><span><b>签名变更提示：</b>本次构建使用全新独立签名证书 <code>Cubern Launcher</code>（SHA-256: <code>206009225b0a64d95228811adfc6b0635ae8bd16e136d901b92e9994e0240fcb</code>）。<b>更换签名后，已安装旧版的用户升级时必须先卸载旧版。</b></span></div>
+
+        <div class="meta-line">构建：Gradle 8.11.1 / JDK 17 / Android SDK 34 / NDK 25.2.9519653 · BUILD SUCCESSFUL（59 tasks） · APK 约 275.6 MB</div>
       </div>
       <div class="update-card glass reveal">
         <div class="update-top"><span class="v">v1.0.2</span><span class="tag">Pre-release 测试版</span><span class="date">2026-11-17</span></div>
