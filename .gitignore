@@ -10,3 +10,7 @@ local.properties
 /ZalithLauncher/src/main/assets/components/lwjgl3/
 /ZalithLauncher/release/
 /ZalithLauncher/movtery-key.jks
+
+# 签名私钥文件不得提交
+*.jks
+*.keystore

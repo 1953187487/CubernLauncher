@@ -56,9 +56,9 @@ android {
     signingConfigs {
         create("releaseBuild") {
             val pwd = System.getenv("MOVTERY_KEYSTORE_PASSWORD")
-            storeFile = file("movtery-key.jks")
+            storeFile = file("cubern-release.jks")
             storePassword = pwd
-            keyAlias = "mtp"
+            keyAlias = "cubern"
             keyPassword = pwd
         }
         create("customDebug") {
