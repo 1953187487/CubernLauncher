@@ -1,6 +1,7 @@
 /.gradle
 /build
 /*/build
+.kotlin/
 local.properties
 .idea/
 .vscode/
@@ -8,3 +9,4 @@ local.properties
 /ZalithLauncher/.cxx/
 /ZalithLauncher/src/main/assets/components/lwjgl3/
 /ZalithLauncher/release/
+/ZalithLauncher/movtery-key.jks

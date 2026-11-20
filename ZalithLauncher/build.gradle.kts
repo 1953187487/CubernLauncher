@@ -273,7 +273,9 @@ dependencies {
 
     // implementation("net.sourceforge.streamsupport:streamsupport-cfuture:1.7.0")
 
-    implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar", "*.aar"))))
+    implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar", "*.aar"), "excludes" to listOf("gson-2.8.6.jar"))))
+
+    implementation("com.google.code.gson:gson:2.8.9")
 
     implementation("com.squareup.okhttp3:okhttp:4.12.0")
     implementation("org.commonmark:commonmark:0.19.0")
