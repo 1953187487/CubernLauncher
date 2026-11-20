@@ -11,6 +11,12 @@
 </div>
 
 - <a href="/README_ZH_CN.md">简体中文</a>丨<a href="/README-ZH_TW.md">繁體中文</a>
+- **Cubern Launcher 1.0.3 (测试版 / Pre-release)** — 基于 Zalith Launcher 1 原版底层重新开发的 Minecraft Java 版启动器。
+  - 底层：Zalith Launcher 1 原版内核（启动核心、游戏兼容、Java 运行时、下载业务、联机底层）。
+  - 界面：Jetpack Compose，拟物沉浸风（深色背景、草方块与像素元素、柔和光效与拟物质感）。
+  - 布局：恢复 ZL1 原版布局；AI 助手入口位于主界面右上角功能区从右往左数第 5 个位置。
+  - 版本：1.0.3，状态：测试版 / Pre-release。
+  - 协议：GNU GPL-3.0。
 - Zalith Launcher is a Minecraft launcher based on [PojavLauncher](https://github.com/PojavLauncherTeam/PojavLauncher) that runs [Minecraft: Java Edition](https://www.minecraft.net/) on Android devices.
 - Zalith Launcher aims to enhance user experience by redesigning the app interface, adding more practical features, and lowering the barrier to entry, making it easier for more people to enjoy Minecraft.
 
