@@ -97,7 +97,7 @@ section{padding:52px 0}
 .reveal.in{opacity:1;transform:none}
 .timeline{position:relative;max-width:900px;margin:0 auto;padding-left:34px}
 .timeline::before{content:"";position:absolute;left:11px;top:8px;bottom:8px;width:2px;background:linear-gradient(var(--c1),var(--c2),var(--c3));opacity:.5}
-.timeline-scroll{max-height:min(72vh,720px);overflow-y:auto;padding-right:10px;scroll-behavior:smooth}
+.timeline-scroll{height:min(70vh,700px);min-height:320px;overflow-y:auto;overscroll-behavior:contain;padding-right:10px;scroll-behavior:smooth;-webkit-overflow-scrolling:touch}
 .timeline-scroll::-webkit-scrollbar{width:6px}
 .timeline-scroll::-webkit-scrollbar-thumb{background:var(--line-hi);border-radius:6px}
 .update-card{border-radius:18px;padding:24px;margin-bottom:18px;position:relative;opacity:0;transform:translateX(-20px);transition:opacity .6s,transform .6s}
@@ -193,15 +193,29 @@ footer{border-top:1px solid var(--line);padding:36px 0 24px;background:rgba(8,12
 .f-links a:hover{color:var(--c1);transform:translateX(2px)}
 .f-bot{text-align:center;color:var(--mut);font-size:11px;padding-top:18px;line-height:1.9}
 .f-bot .disc{max-width:720px;margin:0 auto 8px}
+.author-card{display:inline-flex;align-items:center;gap:13px;padding:13px 18px;border-radius:16px;margin-bottom:18px;text-align:left}
+.author-card img{width:56px;height:56px;border-radius:16px;object-fit:cover;border:2px solid var(--line-hi);box-shadow:0 6px 20px rgba(0,0,0,.3)}
+.author-card .an b{display:block;font-size:16px;font-weight:900}
+.author-card .an span{font-size:12px;color:var(--mut)}
 .toast{position:fixed;left:50%;bottom:28px;transform:translate(-50%,20px);padding:11px 20px;border-radius:11px;background:rgba(20,28,54,.96);border:1px solid var(--line-hi);font-size:13px;z-index:300;opacity:0;pointer-events:none;transition:.3s;max-width:88vw;text-align:center}
 .toast.show{opacity:1;transform:translate(-50%,0)}
+/* 加载动画 */
+#loader{position:fixed;inset:0;z-index:500;background:var(--bg);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;transition:opacity .6s}
+#loader.hide{opacity:0;pointer-events:none}
+#loader .logo{width:72px;height:72px;border-radius:20px;background:linear-gradient(135deg,var(--c1),var(--c2));display:grid;place-items:center;color:#fff;font-size:34px;box-shadow:0 10px 40px rgba(124,140,255,.5);animation:loadpulse 1.2s ease-in-out infinite}
+@keyframes loadpulse{0%,100%{transform:scale(1) rotate(0)}50%{transform:scale(1.12) rotate(6deg)}}
+#loader .bar{width:180px;height:5px;border-radius:5px;background:rgba(150,180,255,.18);overflow:hidden}
+#loader .bar i{display:block;height:100%;width:40%;background:linear-gradient(90deg,var(--c1),var(--c2));border-radius:5px;animation:loadbar 1.1s ease-in-out infinite}
+@keyframes loadbar{0%{margin-left:-40%}100%{margin-left:110%}}
+#loader .txt{font-size:12px;color:var(--mut)}
 @media(max-width:900px){header{padding-top:44px}.hero{grid-template-columns:1fr;text-align:center}.hero .lead{margin:0 auto}.btn-row,.hero-meta,.tagline{justify-content:center;margin-left:auto;margin-right:auto}.phone-stage{display:none}.bento{grid-template-columns:1fr 1fr}.card.wide{grid-column:span 2}.metrics{grid-template-columns:1fr 1fr}}
 @media(max-width:560px){.bento,.metrics{grid-template-columns:1fr}.card.wide{grid-column:span 1}.f-links{gap:24px}}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal,.metric,.update-card{opacity:1;transform:none}}
-section,.metric,.card{content-visibility:auto;contain-intrinsic-size:auto 400px}
+.metric,.card{content-visibility:auto;contain-intrinsic-size:auto 400px}
 </style>
 </head>
 <body>
+<div id="loader"><div class="logo"><svg style="width:34px;height:34px"><use href="#i-box"/></svg></div><div class="bar"><i></i></div><div class="txt" id="loaderTxt">正在加载 Cubern Launcher…</div></div>
 <div id="bgCustom"></div>
 <div id="bgLayer"><span class="orb a"></span><span class="orb b"></span><span class="orb c"></span></div>
 <div class="grid-bg"></div>
@@ -238,7 +252,7 @@ section,.metric,.card{content-visibility:auto;contain-intrinsic-size:auto 400px}
 </svg>
 
 <div class="notice" id="notice">
-  <div class="notice-in"><span class="pulse"></span><span class="txt"><b>声明：</b>本项目<b>基于 Zalith Launcher 1 进行二次开发（二改）</b>，非官方作品。<b>v1.0.3</b> 已发布，官网 <b>v1.3</b>。<a href="https://qun.qq.com/universal-share/share?ac=1&authKey=SwQb9TokqNswF95F7iPiZugcomKTgJOvB6uo%2BHiDMC18mRW0axxZHhmCc%2FvxeUqU&busi_data=eyJncm91cENvZGUiOiIxMTM0NTk3MTk3IiwidG9rZW4iOiJEQWxQMFExbGZveEVaWHdaeS9KdVJWM0RGT2o4a28yU3phTzI3YlgyenRFSWpCejBkeXRTczVkNDhkbjJOeEkrIiwidWluIjoiMjg2NTUyOTA1NyJ9&data=YkhhF1XEBl1JH8PELCFsIs-EcmqDaPYfYwnQGMgXRvH0-PwVJE2gAJvN5oBNpIjC8eomAfjNkaHxeQaVadKMZw&svctype=4&tempid=h5_group_info" target="_blank" rel="noopener">加入官方 QQ 群 1134597197</a>。</span><button class="close" id="noticeClose">×</button></div>
+  <div class="notice-in"><span class="pulse"></span><span class="txt"><b>声明：</b>本项目<b>基于 Zalith Launcher 1 进行二次开发（二改）</b>，非官方作品。<b>v1.0.4</b> 已发布，官网 <b>v1.4</b> · 协议 <b>v1.1</b>。<a href="https://qun.qq.com/universal-share/share?ac=1&authKey=SwQb9TokqNswF95F7iPiZugcomKTgJOvB6uo%2BHiDMC18mRW0axxZHhmCc%2FvxeUqU&busi_data=eyJncm91cENvZGUiOiIxMTM0NTk3MTk3IiwidG9rZW4iOiJEQWxQMFExbGZveEVaWHdaeS9KdVJWM0RGT2o4a28yU3phTzI3YlgyenRFSWpCejBkeXRTczVkNDhkbjJOeEkrIiwidWluIjoiMjg2NTUyOTA1NyJ9&data=YkhhF1XEBl1JH8PELCFsIs-EcmqDaPYfYwnQGMgXRvH0-PwVJE2gAJvN5oBNpIjC8eomAfjNkaHxeQaVadKMZw&svctype=4&tempid=h5_group_info" target="_blank" rel="noopener">加入官方 QQ 群 1134597197</a>。</span><button class="close" id="noticeClose">×</button></div>
 </div>
 
 <div class="toolbar">
@@ -256,11 +270,11 @@ section,.metric,.card{content-visibility:auto;contain-intrinsic-size:auto 400px}
   <div class="wrap">
     <div class="hero">
       <div>
-        <span class="tagline glass"><i></i> GPLv3 开源 · 完全免费 <span class="ver-badge">官网 v1.3 · 协议 v1.0</span></span>
+        <span class="tagline glass"><i></i> GPLv3 开源 · 完全免费 <span class="ver-badge">官网 v1.4 · 协议 v1.1</span></span>
         <h1>在手机上，<br><span class="grad">自由启动 Minecraft</span><br>Java 版</h1>
         <p class="lead">基于 Zalith Launcher 1 二改开发的 Android 启动器。陶瓦联机、MIUIX Compose 界面、AI 版本助手、Java 运行时自动管理与 Vulkan 渲染，一手掌握。</p>
         <div class="btn-row">
-          <a href="#download" class="btn p"><svg><use href="#i-down"/></svg>下载 v1.0.3</a>
+          <a href="#download" class="btn p"><svg><use href="#i-down"/></svg>下载 v1.0.4</a>
           <a href="https://github.com/1953187487/CubernLauncher" target="_blank" rel="noopener" class="btn g"><svg><use href="#i-star"/></svg>GitHub 仓库</a>
           <a href="https://qun.qq.com/universal-share/share?ac=1&authKey=SwQb9TokqNswF95F7iPiZugcomKTgJOvB6uo%2BHiDMC18mRW0axxZHhmCc%2FvxeUqU&busi_data=eyJncm91cENvZGUiOiIxMTM0NTk3MTk3IiwidG9rZW4iOiJEQWxQMFExbGZveEVaWHdaeS9KdVJWM0RGT2o4a28yU3phTzI3YlgyenRFSWpCejBkeXRTczVkNDhkbjJOeEkrIiwidWluIjoiMjg2NTUyOTA1NyJ9&data=YkhhF1XEBl1JH8PELCFsIs-EcmqDaPYfYwnQGMgXRvH0-PwVJE2gAJvN5oBNpIjC8eomAfjNkaHxeQaVadKMZw&svctype=4&tempid=h5_group_info" target="_blank" rel="noopener" class="btn g"><svg><use href="#i-qq"/></svg>官方 QQ 群</a>
         </div>
@@ -276,7 +290,7 @@ section,.metric,.card{content-visibility:auto;contain-intrinsic-size:auto 400px}
               <div class="navbar"><span>版本</span><span>下载</span><span>设置</span><b>联机</b></div>
             </div>
             <div class="ps-col">
-              <div class="cd"><b>当前版本</b>1.0.3 · Fabric · Java 21</div>
+              <div class="cd"><b>当前版本</b>1.0.4 · Fabric · Java 21</div>
               <div class="play">▶ 启动游戏</div>
               <div class="cd">⬇ 下载 · ⚙ 设置 · 📁 主目录</div>
               <div class="beta">⚠ 当前版本为测试版</div>
@@ -289,7 +303,7 @@ section,.metric,.card{content-visibility:auto;contain-intrinsic-size:auto 400px}
 </header>
 
 <div class="wrap"><div class="metrics">
-  <div class="metric glass"><div class="n">1.0.3</div><div class="l">最新版本</div></div>
+  <div class="metric glass"><div class="n">1.0.4</div><div class="l">最新版本</div></div>
   <div class="metric glass"><div class="n">26.2+</div><div class="l">运行环境</div></div>
   <div class="metric glass"><div class="n">4 种</div><div class="l">渲染模式</div></div>
   <div class="metric glass"><div class="n">GPLv3</div><div class="l">开源协议</div></div>
@@ -300,6 +314,23 @@ section,.metric,.card{content-visibility:auto;contain-intrinsic-size:auto 400px}
     <div class="sec-head reveal"><div class="eyebrow">Changelog</div><h2>更新公告</h2><p>向下滚动查看全部版本更新记录。</p></div>
     <div class="timeline">
       <div class="timeline-scroll" id="timelineScroll">
+
+        <article class="update-card glass">
+          <div class="update-top"><span class="v">v1.0.4</span><span class="tag">Pre-release 测试版</span><span class="date">2026-11-20</span></div>
+          <p style="font-size:13px;color:var(--mut);margin-bottom:6px">基于 Zalith Launcher 1 原版底层二次开发，Jetpack Compose + 拟物沉浸风 UI。</p>
+          <div class="upd-group"><h5><svg><use href="#i-bolt"/></svg>本次更新</h5><ul>
+            <li>包名改为 com.cubern.launcher（全新独立包名）</li>
+            <li>修复下载源：默认改用 BMCLAPI 镜像，国内可直接下载</li>
+            <li>重写关于启动器页（Compose 拟物沉浸风），作者：鸷鸟，删除旧贡献者列表，鸣谢 ZL1 / PojavLauncher / Terracotta</li>
+            <li>修复右上角「打开主目录」失效：改为内置文件管理器打开</li>
+            <li>删除左侧菜单冗余按钮，仅保留右上角功能区</li>
+            <li>游戏菜单新增「陶瓦联机」入口；陶瓦界面移除「当前连接模式」</li>
+            <li>关于与控制布局入口移至 设置-实验性设置</li>
+          </ul></div>
+          <div class="upd-group"><h5><svg><use href="#i-key"/></svg>签名</h5><ul>
+            <li>签名证书：CN=Cubern Launcher（SHA-256 20600922…），升级需先卸载旧版</li>
+          </ul></div>
+        </article>
 
         <article class="update-card glass">
           <div class="update-top"><span class="v">v1.0.3</span><span class="tag">Pre-release 测试版</span><span class="date">2026-11-20</span></div>
@@ -425,7 +456,7 @@ section,.metric,.card{content-visibility:auto;contain-intrinsic-size:auto 400px}
 
 <section id="download">
   <div class="wrap">
-    <div class="sec-head reveal"><div class="eyebrow">Download</div><h2>下载 v1.0.3</h2><p>点击即自动测速、选最快源并开始下载，无需手动操作。</p></div>
+    <div class="sec-head reveal"><div class="eyebrow">Download</div><h2>下载 v1.0.4</h2><p>点击即自动测速、选最快源并开始下载，无需手动操作。</p></div>
     <div class="dl-stage reveal">
       <button class="dl-btn" id="dlBtn"><svg><use href="#i-down"/></svg><span id="dlBtnText">一键下载 APK</span></button>
       <div class="dl-status glass" id="dlStatus">
@@ -433,7 +464,7 @@ section,.metric,.card{content-visibility:auto;contain-intrinsic-size:auto 400px}
         <div class="step" data-step="1"><svg><use href="#i-globe"/></svg>自动选择最快源</div>
         <div class="step" data-step="2"><svg><use href="#i-down"/></svg>开始下载</div>
       </div>
-      <div class="dl-file">CubernLauncher-1.0.3-release.apk · 约 275.6 MB · <b id="chosenSource">待测</b></div>
+      <div class="dl-file">CubernLauncher-1.0.4-release.apk · 约 275.6 MB · <b id="chosenSource">待测</b></div>
       <div class="dl-tip">签名已变更，升级前请先卸载旧版 · 若下载失败请换个网络重试</div>
     </div>
   </div>
@@ -442,7 +473,11 @@ section,.metric,.card{content-visibility:auto;contain-intrinsic-size:auto 400px}
 <footer>
   <div class="wrap">
     <div class="f-top">
-      <div><div class="brand"><span class="logo"><svg><use href="#i-box"/></svg></span> Cubern Launcher</div><p class="desc">基于 Zalith Launcher 1 二改开发的 Minecraft Java 版 Android 启动器，GPLv3 开源。官网 v1.3，协议 v1.0。</p></div>
+      <div>
+        <div class="brand"><span class="logo"><svg><use href="#i-box"/></svg></span> Cubern Launcher</div>
+        <div class="author-card glass"><img src="https://avatars.githubusercontent.com/u/277181438?v=4" alt="作者鸷鸟" onerror="this.style.display='none'"><div class="an"><b>鸷鸟</b><span>当前开发作者 · 负责本启动器</span></div></div>
+        <p class="desc">基于 Zalith Launcher 1 二改开发的 Minecraft Java 版 Android 启动器，GPLv3 开源。官网 v1.4，协议 v1.1。</p>
+      </div>
       <div class="f-links">
         <div><h5>项目</h5><a href="https://github.com/1953187487/CubernLauncher" target="_blank" rel="noopener">GitHub 仓库</a><a href="https://github.com/1953187487/CubernLauncher/releases" target="_blank" rel="noopener">Releases</a><a href="https://github.com/1953187487/CubernLauncher/issues" target="_blank" rel="noopener">Issues</a></div>
         <div><h5>资源</h5><a href="#updates">更新公告</a><a href="#features">核心功能</a><a href="#download">下载安装</a><a href="#" id="agreementLink">用户须知 / 隐私协议</a></div>
@@ -451,7 +486,7 @@ section,.metric,.card{content-visibility:auto;contain-intrinsic-size:auto 400px}
     </div>
     <div class="f-bot">
       <p class="disc">Cubern Launcher 基于 Zalith Launcher 1 二次开发，与 Mojang Studios、Microsoft、网易无隶属关系。Minecraft 是 Mojang Studios 的商标。本项目按 GNU GPL v3.0 开源。</p>
-      <p>© 2026 Cubern Launcher · Made with ⛏️ by 万古沧海 · 官网 v1.3 · 协议 v1.0</p>
+      <p>© 2026 Cubern Launcher · Made with ⛏️ by 鸷鸟 · 官网 v1.4 · 协议 v1.1</p>
     </div>
   </div>
 </footer>
@@ -471,7 +506,7 @@ section,.metric,.card{content-visibility:auto;contain-intrinsic-size:auto 400px}
 <div class="agreement" id="agreement">
   <div class="agreement-box">
     <h3><svg><use href="#i-doc"/></svg>协议与条款</h3>
-    <div class="ag-tabs"><div class="ag-tab on" data-tab="terms">用户须知协议</div><div class="ag-tab" data-tab="privacy">隐私协议</div></div>
+    <div class="ag-tabs"><div class="ag-tab on" data-tab="terms">用户须知 v1.1</div><div class="ag-tab" data-tab="privacy">隐私协议 v1.1</div><div class="ag-tab" data-tab="code">代码协议</div></div>
     <div class="ag-body" id="agBody"></div>
     <label class="ag-check"><input type="checkbox" id="agAgree"><span>我已阅读并同意《用户须知协议》与《隐私协议》，了解当前均为测试版。</span></label>
     <div class="ag-btns"><button class="btn g" id="agDecline">暂不使用</button><button class="btn p disabled" id="agAccept">同意并继续</button></div>
@@ -481,6 +516,11 @@ section,.metric,.card{content-visibility:auto;contain-intrinsic-size:auto 400px}
 
 <script>
 (function(){
+  /* 加载动画：页面就绪后淡出 */
+  var loader=document.getElementById('loader');
+  function hideLoader(){if(loader)loader.classList.add('hide')}
+  if(document.readyState==='complete'){setTimeout(hideLoader,400)}else{addEventListener('load',function(){setTimeout(hideLoader,500)})}
+  setTimeout(hideLoader,3500);
   var root=document.documentElement;
   var tb=document.getElementById('themeBtn');
   function applyTheme(t){root.dataset.theme=t;tb.innerHTML=t==='dark'?'<svg><use href="#i-moon"/></svg>':'<svg><use href="#i-sun"/></svg>'}
@@ -521,10 +561,17 @@ section,.metric,.card{content-visibility:auto;contain-intrinsic-size:auto 400px}
     '<h4>⑥ 儿童隐私</h4><p>本项目不面向 13 岁以下儿童，不会有意收集儿童的个人信息。</p>',
     '<h4>⑦ 政策更新</h4><p>隐私政策如有变更，会在官网更新公告中说明。继续使用即视为接受更新后的政策。</p>'
   ].join('');
-  var AG='cubern-agree-v1',agreed=false;
+  var CODE=[
+    '<h4>① 开源许可</h4><p>本项目源代码以 <b>GNU GPL v3.0</b> 许可发布，你可以自由使用、修改、分发，但必须：保留版权与许可声明、以相同许可开源你的修改版本。</p>',
+    '<h4>② 二改来源</h4><p>本项目基于 <b>Zalith Launcher 1</b> 二次开发。ZL1 原作者的权利受其原许可保护，相关归属见仓库 NOTICE / LICENSE。</p>',
+    '<h4>③ 第三方组件</h4><p>陶瓦联机（Terracotta）、EasyTier、PojavLauncher 等第三方组件各自保留原许可证，详见仓库各组件的 LICENSE 文件。</p>',
+    '<h4>④ 商标与品牌</h4><p>「Cubern Launcher」名称与图标为本项目自有；Minecraft 为 Mojang Studios 商标，本项目不拥有其任何权利。</p>',
+    '<h4>⑤ 贡献规范</h4><p>欢迎通过 Pull Request 贡献代码，提交即视为同意以 GPL v3.0 授权你的贡献。</p>'
+  ].join('');
+  var AG='cubern-agree-v1.1',agreed=false;
   try{agreed=localStorage.getItem(AG)==='1'}catch(e){}
   var agBox=document.getElementById('agreement'),agBody=document.getElementById('agBody'),agAgree=document.getElementById('agAgree'),agAccept=document.getElementById('agAccept');
-  function showTab(t){document.querySelectorAll('.ag-tab').forEach(function(x){x.classList.toggle('on',x.dataset.tab===t)});agBody.innerHTML=t==='terms'?TERMS:PRIVACY;agBody.scrollTop=0}
+  function showTab(t){document.querySelectorAll('.ag-tab').forEach(function(x){x.classList.toggle('on',x.dataset.tab===t)});agBody.innerHTML=t==='terms'?TERMS:(t==='privacy'?PRIVACY:CODE);agBody.scrollTop=0}
   function openAg(){agBox.classList.add('show');document.body.style.overflow='hidden';showTab('terms')}
   function closeAg(){agBox.classList.remove('show');document.body.style.overflow='';agAgree.checked=false;agAccept.classList.add('disabled')}
   document.querySelectorAll('.ag-tab').forEach(function(x){x.addEventListener('click',function(){showTab(x.dataset.tab)})});
@@ -534,7 +581,7 @@ section,.metric,.card{content-visibility:auto;contain-intrinsic-size:auto 400px}
   document.getElementById('agreementLink').addEventListener('click',function(e){e.preventDefault();openAg()});
   if(!agreed)setTimeout(openAg,700);
 
-  var APK='https://github.com/1953187487/CubernLauncher/releases/download/v1.0.3/CubernLauncher-1.0.3-release.apk';
+  var APK='https://github.com/1953187487/CubernLauncher/releases/download/v1.0.4/CubernLauncher-1.0.4-release.apk';
   var SOURCES=[
     {name:'GitHub 官方',url:APK},
     {name:'ghproxy.net',url:'https://ghproxy.net/'+APK},
@@ -573,7 +620,7 @@ section,.metric,.card{content-visibility:auto;contain-intrinsic-size:auto 400px}
     btnText.textContent='已选最快源，正在开始…';
     await new Promise(function(r){setTimeout(r,500)});
     steps[1].classList.add('done');setStep(2,'active');
-    var a=document.createElement('a');a.href=best.src.url;a.download='CubernLauncher-1.0.3-release.apk';document.body.appendChild(a);a.click();a.remove();
+    var a=document.createElement('a');a.href=best.src.url;a.download='CubernLauncher-1.0.4-release.apk';document.body.appendChild(a);a.click();a.remove();
     steps[2].classList.add('done');btnText.textContent='已开始下载 ✓';
     toast('已从最快源开始下载：'+best.src.name);
     setTimeout(function(){btn.disabled=false;btnText.textContent='一键下载 APK';steps.forEach(function(s){s.classList.remove('active','done')})},4000);
