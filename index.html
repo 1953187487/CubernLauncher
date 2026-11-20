@@ -7,12 +7,14 @@
 <meta name="description" content="Cubern Launcher 基于 Zalith Launcher 1 二改开发的 Minecraft Java 版 Android 启动器。陶瓦联机、MIUIX Compose、AI 版本助手、Vulkan 渲染，GPLv3 开源。">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⛏️</text></svg>">
 <style>
-:root{--bg:#080c18;--bg2:#0d1428;--panel:rgba(20,28,54,.58);--line:rgba(150,180,255,.14);--line-hi:rgba(150,180,255,.36);--txt:#eef2ff;--mut:#98a4d0;--c1:#7c8cff;--c2:#00e5b0;--c3:#ff6ec7;--gold:#ffcf5c;--warn:#ff9f43;--glass:blur(22px) saturate(160%);--sh:0 16px 44px rgba(0,0,0,.35);--alpha:0.58}
+:root{--bg:#080c18;--bg2:#0d1428;--panel:rgba(20,28,54,.58);--line:rgba(150,180,255,.14);--line-hi:rgba(150,180,255,.36);--txt:#eef2ff;--mut:#98a4d0;--c1:#7c8cff;--c2:#00e5b0;--c3:#ff6ec7;--gold:#ffcf5c;--warn:#ff9f43;--glass:blur(22px) saturate(160%);--sh:0 16px 44px rgba(0,0,0,.35)}
 html[data-theme=light]{--bg:#eef2ff;--bg2:#e2e9ff;--panel:rgba(255,255,255,.66);--line:rgba(40,60,130,.13);--line-hi:rgba(60,90,200,.32);--txt:#182046;--mut:#5c6998;--c1:#4f5fe0;--c2:#00a882;--c3:#d64ba6;--gold:#c89100;--sh:0 16px 44px rgba(40,60,130,.12)}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;background:transparent;color:var(--txt);line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden;transition:color .4s;position:relative;min-height:100vh}
-/* 自定背景层 */
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;background:transparent;color:var(--txt);line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden;position:relative;min-height:100vh}
+#bgCustom{position:fixed;inset:0;z-index:-4;background-size:cover;background-position:center;opacity:0;transition:opacity .5s}
+body.custom-bg #bgCustom{opacity:1}
+body.custom-bg #bgLayer{opacity:.35}
 #bgLayer{position:fixed;inset:0;z-index:-3;background:var(--bg);transition:background .4s}
 #bgLayer .orb{position:absolute;border-radius:50%;filter:blur(100px);opacity:.45;will-change:transform}
 .orb.a{width:52vw;height:52vw;min-width:380px;min-height:380px;background:radial-gradient(circle,var(--c1),transparent 68%);top:-16%;left:-12%;animation:f1 24s ease-in-out infinite}
@@ -21,17 +23,11 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Micr
 @keyframes f1{0%,100%{transform:translate(0,0)}33%{transform:translate(8vw,6vh)}66%{transform:translate(-5vw,10vh)}}
 @keyframes f2{0%,100%{transform:translate(0,0)}40%{transform:translate(-10vw,-8vh)}70%{transform:translate(4vw,5vh)}}
 @keyframes f3{0%,100%{transform:translate(0,0)}50%{transform:translate(-8vw,-10vh)}}
-#bgCustom{position:fixed;inset:0;z-index:-4;background-size:cover;background-position:center;background-repeat:no-repeat;opacity:0;transition:opacity .5s}
-body.custom-bg #bgCustom{opacity:1}
-body.custom-bg #bgLayer{opacity:.35}
 .grid-bg{position:fixed;inset:0;z-index:-2;pointer-events:none;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:52px 52px;mask-image:radial-gradient(ellipse at 50% 15%,#000,transparent 85%);opacity:.35}
-/* 自定义面板透明度：正文玻璃随 alpha 变化 */
 .glass{background:var(--panel);backdrop-filter:var(--glass);-webkit-backdrop-filter:var(--glass);border:1px solid var(--line)}
 .wrap{max-width:1140px;margin:0 auto;padding:0 20px}
 svg{width:1em;height:1em;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;vertical-align:-.15em;flex:none}
 a{color:inherit;text-decoration:none}
-
-/* 公告 */
 .notice{position:relative;overflow:hidden;border-bottom:1px solid rgba(124,140,255,.3);background:linear-gradient(90deg,rgba(124,140,255,.18),rgba(0,229,176,.12),rgba(255,110,199,.16))}
 .notice-in{max-width:1140px;margin:0 auto;padding:10px 20px;display:flex;align-items:center;gap:11px;font-size:12.5px}
 .notice .pulse{width:8px;height:8px;border-radius:50%;background:var(--c2);box-shadow:0 0 12px var(--c2);flex:none;animation:np 1.6s infinite}
@@ -39,8 +35,6 @@ a{color:inherit;text-decoration:none}
 .notice b{color:var(--c1)}.notice .txt{flex:1}
 .notice a{color:var(--c2);text-decoration:underline;text-underline-offset:2px}
 .notice .close{background:none;border:0;color:var(--mut);font-size:18px;cursor:pointer;line-height:1}
-
-/* 顶栏 */
 .toolbar{position:sticky;top:0;z-index:50;background:rgba(8,12,24,.5);backdrop-filter:var(--glass);border-bottom:1px solid var(--line)}
 html[data-theme=light] .toolbar{background:rgba(238,242,255,.55)}
 .toolbar-in{max-width:1140px;margin:0 auto;padding:0 20px;height:56px;display:flex;align-items:center;justify-content:space-between}
@@ -51,10 +45,8 @@ html[data-theme=light] .toolbar{background:rgba(238,242,255,.55)}
 .icon-btn{width:36px;height:36px;border-radius:10px;border:1px solid var(--line);background:var(--panel);color:var(--txt);cursor:pointer;display:grid;place-items:center;transition:.25s}
 .icon-btn svg{width:17px;height:17px}
 .icon-btn:hover{border-color:var(--c1);transform:translateY(-2px)}
-.btn-sm{padding:8px 15px;border-radius:10px;background:linear-gradient(135deg,var(--c1),#8a6cff);color:#fff;font-size:13px;font-weight:700;display:inline-flex;align-items:center;gap:6px;transition:.25s}
+.btn-sm{padding:8px 15px;border-radius:10px;background:linear-gradient(135deg,var(--c1),#8a6cff);color:#fff;font-size:13px;font-weight:700;display:inline-flex;align-items:center;gap:6px;cursor:pointer;transition:.25s}
 .btn-sm:hover{transform:translateY(-2px)}
-
-/* Hero */
 header{padding:60px 0 44px}
 .hero{display:grid;grid-template-columns:1.08fr .92fr;gap:40px;align-items:center}
 .tagline{display:inline-flex;align-items:center;gap:8px;padding:6px 14px;border-radius:999px;font-size:12px;color:var(--mut);width:fit-content;margin-bottom:20px}
@@ -74,28 +66,28 @@ header{padding:60px 0 44px}
 .btn.g{border-color:var(--line);background:var(--panel)}
 .btn.g:hover{border-color:var(--c1)}
 .hero-meta{display:flex;flex-wrap:wrap;gap:16px;font-size:12px;color:var(--mut)}
-.phone-stage{perspective:1100px;display:grid;place-items:center}
-.phone{width:248px;height:506px;border-radius:38px;background:linear-gradient(160deg,rgba(40,52,96,.9),rgba(14,20,40,.95));border:1px solid var(--line-hi);box-shadow:0 30px 70px rgba(0,0,0,.5),0 0 60px rgba(124,140,255,.2);position:relative;padding:12px;transform-style:preserve-3d;transition:transform .15s}
-.phone::before{content:"";position:absolute;inset:-2px;border-radius:40px;background:linear-gradient(135deg,var(--c1),transparent 40%,var(--c2) 70%,transparent);z-index:-1;filter:blur(9px);opacity:.6;animation:hue 6s linear infinite}
+.phone-stage{perspective:1400px;display:grid;place-items:center}
+.phone{width:440px;max-width:100%;height:262px;border-radius:26px;background:linear-gradient(160deg,rgba(40,52,96,.9),rgba(14,20,40,.95));border:1px solid var(--line-hi);box-shadow:0 30px 70px rgba(0,0,0,.5),0 0 60px rgba(124,140,255,.2);position:relative;padding:9px;transform-style:preserve-3d;transition:transform .15s}
+.phone::before{content:"";position:absolute;inset:-2px;border-radius:28px;background:linear-gradient(135deg,var(--c1),transparent 40%,var(--c2) 70%,transparent);z-index:-1;filter:blur(9px);opacity:.6;animation:hue 6s linear infinite}
 @keyframes hue{to{filter:blur(9px) hue-rotate(360deg)}}
-.phone .notch{position:absolute;top:9px;left:50%;transform:translateX(-50%);width:86px;height:19px;background:#050912;border-radius:0 0 14px 14px;z-index:3}
-.ps{border-radius:28px;height:100%;background:linear-gradient(180deg,#172041,#0b1024);padding:30px 10px 10px;display:flex;flex-direction:column;gap:8px;overflow:hidden}
-.ps .bar{display:flex;justify-content:space-between;font-size:8px;color:var(--mut)}
-.ps .cd{border-radius:12px;background:rgba(80,110,200,.28);border:1px solid var(--line);padding:10px;font-size:9px}
-.ps .cd b{font-size:11px;display:block;color:#fff}
-.ps .play{border-radius:12px;background:linear-gradient(135deg,var(--c1),var(--c2));text-align:center;padding:11px;font-weight:900;font-size:12px;color:#fff;box-shadow:0 6px 20px rgba(124,140,255,.45);animation:pb 3s infinite}
+.phone .notch{position:absolute;top:50%;left:6px;transform:translateY(-50%);width:12px;height:52px;background:#050912;border-radius:8px 0 0 8px;z-index:3}
+.ps{border-radius:19px;height:100%;background:linear-gradient(135deg,#172041,#0b1024);padding:12px 14px 12px 22px;display:grid;grid-template-columns:1fr 1.15fr;gap:12px;overflow:hidden}
+.ps-col{display:flex;flex-direction:column;gap:7px;min-width:0}
+.ps .brandbar{font-size:9px;color:var(--c2);font-weight:800;letter-spacing:.5px}
+.ps .cd{border-radius:9px;background:rgba(80,110,200,.24);border:1px solid var(--line);padding:8px;font-size:8px;color:var(--mut)}
+.ps .cd b{font-size:9px;display:block;color:#fff}
+.ps .menu{display:flex;flex-direction:column;gap:5px}
+.ps .menu span{border-radius:7px;background:rgba(124,140,255,.14);border:1px solid var(--line);padding:5px 8px;font-size:8px;color:var(--txt)}
+.ps .play{border-radius:10px;background:linear-gradient(135deg,var(--c1),var(--c2));text-align:center;padding:10px;font-weight:900;font-size:11px;color:#fff;box-shadow:0 6px 20px rgba(124,140,255,.45);animation:pb 3s infinite}
 @keyframes pb{0%,100%{box-shadow:0 6px 20px rgba(124,140,255,.45)}50%{box-shadow:0 8px 28px rgba(0,229,176,.6)}}
-.ps .row{display:flex;gap:7px}.ps .row .cd{flex:1;text-align:center;font-size:8px;padding:9px 3px}
-.ps .beta{font-size:8px;color:var(--warn);text-align:center;border:1px dashed rgba(255,159,67,.4);border-radius:8px;padding:4px}
-.ps .nav{margin-top:auto;display:flex;justify-content:space-around;font-size:8px;color:var(--mut);border-top:1px solid var(--line);padding-top:8px}
-.ps .nav b{color:var(--c2)}
+.ps .beta{font-size:7px;color:var(--warn);text-align:center;border:1px dashed rgba(255,159,67,.4);border-radius:7px;padding:3px}
+.ps .navbar{display:flex;justify-content:space-around;font-size:7px;color:var(--mut);border-top:1px solid var(--line);padding-top:6px;margin-top:auto}
+.ps .navbar b{color:var(--c2)}
 .metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:8px 0 0}
 .metric{border-radius:16px;padding:20px;text-align:center;opacity:0;transform:translateY(18px);transition:.7s}
 .metric.in{opacity:1;transform:none}
 .metric .n{font-size:28px;font-weight:900;background:linear-gradient(100deg,var(--c1),var(--c2));-webkit-background-clip:text;background-clip:text;color:transparent}
 .metric .l{font-size:12px;color:var(--mut);margin-top:3px}
-
-/* 区块 */
 section{padding:52px 0}
 .sec-head{text-align:center;margin-bottom:32px}
 .eyebrow{font-size:12px;font-weight:700;color:var(--c2);letter-spacing:2px;text-transform:uppercase;margin-bottom:8px}
@@ -103,29 +95,31 @@ section{padding:52px 0}
 .sec-head p{color:var(--mut);max-width:640px;margin:0 auto;font-size:14px}
 .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
 .reveal.in{opacity:1;transform:none}
-
-/* 更新公告卡 */
-.update-box{max-width:900px;margin:0 auto}
-.update-card{border-radius:18px;padding:26px;margin-bottom:14px;position:relative;overflow:hidden}
-.update-card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:linear-gradient(var(--c1),var(--c2))}
+.timeline{position:relative;max-width:900px;margin:0 auto;padding-left:34px}
+.timeline::before{content:"";position:absolute;left:11px;top:8px;bottom:8px;width:2px;background:linear-gradient(var(--c1),var(--c2),var(--c3));opacity:.5}
+.timeline-scroll{max-height:min(72vh,720px);overflow-y:auto;padding-right:10px;scroll-behavior:smooth}
+.timeline-scroll::-webkit-scrollbar{width:6px}
+.timeline-scroll::-webkit-scrollbar-thumb{background:var(--line-hi);border-radius:6px}
+.update-card{border-radius:18px;padding:24px;margin-bottom:18px;position:relative;opacity:0;transform:translateX(-20px);transition:opacity .6s,transform .6s}
+.update-card.in{opacity:1;transform:none}
+.update-card::before{content:"";position:absolute;left:-28px;top:26px;width:12px;height:12px;border-radius:50%;background:var(--c1);box-shadow:0 0 0 4px var(--bg2),0 0 14px var(--c1)}
+.update-card:nth-child(1)::before{background:var(--c1);box-shadow:0 0 0 4px var(--bg2),0 0 14px var(--c1)}
+.update-card:nth-child(2)::before{background:var(--c2);box-shadow:0 0 0 4px var(--bg2),0 0 14px var(--c2)}
+.update-card:nth-child(3)::before{background:var(--c3);box-shadow:0 0 0 4px var(--bg2),0 0 14px var(--c3)}
+.update-card:nth-child(4)::before{background:var(--gold);box-shadow:0 0 0 4px var(--bg2),0 0 14px var(--gold)}
 .update-top{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:12px}
 .update-top .v{font-size:17px;font-weight:900;color:var(--c1)}
 .update-top .tag{font-size:10px;padding:3px 9px;border-radius:999px;border:1px solid rgba(255,159,67,.4);color:var(--warn);background:rgba(255,159,67,.08)}
-.update-top .tag.stable{color:var(--c2);border-color:rgba(0,229,176,.4);background:rgba(0,229,176,.08)}
 .update-top .date{font-size:11px;color:var(--mut);margin-left:auto}
-.update-card ul{list-style:none;padding:0}
-.update-card li{font-size:13.5px;color:var(--mut);padding:5px 0 5px 22px;position:relative}
-.update-card li::before{content:"";position:absolute;left:4px;top:13px;width:6px;height:6px;border-radius:50%;background:var(--c2)}
 .upd-group{margin-top:12px}
-.upd-group h5{font-size:12px;font-weight:800;color:var(--c1);margin-bottom:5px;display:flex;align-items:center;gap:6px;letter-spacing:.3px}
+.upd-group h5{font-size:12px;font-weight:800;color:var(--c2);margin-bottom:5px;display:flex;align-items:center;gap:6px;letter-spacing:.3px}
 .upd-group h5 svg{width:14px;height:14px}
-.sign-warn{margin-top:14px;padding:11px 13px;border-radius:11px;border:1px solid rgba(255,159,67,.4);background:rgba(255,159,67,.09);font-size:12.5px;color:var(--mut);display:flex;gap:9px;align-items:flex-start}
-.sign-warn svg{width:16px;height:16px;color:var(--warn);margin-top:2px}
-.sign-warn b{color:var(--warn)}
-.sign-warn code{font-size:11px;color:var(--txt);word-break:break-all}
-.meta-line{font-size:11.5px;color:var(--mut);margin-top:12px;line-height:1.8}
-
-/* Bento */
+.upd-group ul{list-style:none;padding:0}
+.upd-group li{font-size:13px;color:var(--mut);padding:4px 0 4px 20px;position:relative;line-height:1.65}
+.upd-group li::before{content:"";position:absolute;left:3px;top:12px;width:5px;height:5px;border-radius:50%;background:var(--c2)}
+.scroll-hint{text-align:center;font-size:11px;color:var(--mut);margin-top:12px;display:flex;align-items:center;justify-content:center;gap:6px}
+.scroll-hint svg{width:14px;height:14px;animation:bob 1.5s ease-in-out infinite}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(4px)}}
 .bento{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 .card{border-radius:18px;padding:22px;position:relative;overflow:hidden;transition:transform .3s,border-color .3s,box-shadow .3s}
 .card:hover{transform:translateY(-6px);border-color:var(--line-hi);box-shadow:var(--sh)}
@@ -136,45 +130,21 @@ section{padding:52px 0}
 .card p{font-size:13px;color:var(--mut)}
 .card .ct{display:inline-block;margin-top:12px;font-size:11px;color:var(--c2);border:1px solid rgba(0,229,176,.32);border-radius:999px;padding:3px 10px}
 .card.wide{grid-column:span 2}
-
-/* 下载 */
-.dl-list{display:flex;flex-direction:column;gap:11px;max-width:820px;margin:0 auto}
-.dl-row{display:flex;align-items:center;gap:15px;border-radius:16px;padding:18px 20px;transition:.25s}
-.dl-row:hover{border-color:var(--c1);transform:translateX(4px)}
-.dl-row .di{width:48px;height:48px;border-radius:13px;background:linear-gradient(135deg,var(--c1),var(--c2));display:grid;place-items:center;color:#fff;flex:none}
-.dl-row .di svg{width:24px;height:24px}
-.dl-row .dn{flex:1;min-width:0}.dl-row .dn b{font-size:16px;display:block}.dl-row .dn span{font-size:12px;color:var(--mut)}
-.dl-row a{padding:10px 20px;border-radius:10px;background:linear-gradient(135deg,var(--c1),#8a6cff);color:#fff;font-size:13px;font-weight:700;transition:.25s;flex:none;display:inline-flex;align-items:center;gap:6px}
-.dl-row a svg{width:14px;height:14px}
-.dl-row a:hover{transform:translateY(-2px)}
-/* 智能多源下载 */
-.mirror-box{max-width:820px;margin:0 auto}
-.mirror-head{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-bottom:12px}
-.mirror-head .t{font-size:13px;color:var(--mut);display:flex;align-items:center;gap:7px}
-.mirror-head .t svg{width:16px;height:16px;color:var(--c2)}
-.retest{padding:7px 13px;border-radius:9px;border:1px solid var(--line);background:var(--panel);color:var(--txt);font-size:12px;cursor:pointer;display:inline-flex;align-items:center;gap:6px;transition:.25s}
-.retest svg{width:14px;height:14px}
-.retest:hover{border-color:var(--c1)}
-.retest:disabled{opacity:.5;cursor:wait}
-.mirror-list{display:flex;flex-direction:column;gap:8px}
-.mirror{border-radius:13px;padding:13px 15px;display:flex;align-items:center;gap:12px;cursor:pointer;transition:.25s;border:1px solid var(--line);background:var(--panel)}
-.mirror:hover{border-color:var(--c1)}
-.mirror.best{border-color:rgba(0,229,176,.5);background:rgba(0,229,176,.06)}
-.mirror .radio{width:17px;height:17px;border-radius:50%;border:2px solid var(--mut);flex:none;display:grid;place-items:center;transition:.2s}
-.mirror.on .radio{border-color:var(--c2)}
-.mirror.on .radio::after{content:"";width:8px;height:8px;border-radius:50%;background:var(--c2)}
-.mirror .mi{flex:1;min-width:0}
-.mirror .mi b{font-size:14px;display:flex;align-items:center;gap:7px;flex-wrap:wrap}
-.mirror .mi b .fast{font-size:10px;color:var(--c2);border:1px solid rgba(0,229,176,.4);border-radius:999px;padding:1px 7px;font-weight:600}
-.mirror .mi span{font-size:11px;color:var(--mut);display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.mirror .spd{font-size:12px;font-weight:700;color:var(--c1);flex:none;text-align:right}
-.mirror .spd small{display:block;font-weight:400;color:var(--mut);font-size:10px}
-.big-download{display:block;width:100%;max-width:820px;margin:16px auto 0;padding:15px;border-radius:14px;background:linear-gradient(135deg,var(--c1),#8a6cff);color:#fff;font-size:16px;font-weight:900;text-align:center;box-shadow:0 10px 28px rgba(124,140,255,.4);transition:.25s}
-.big-download:hover{transform:translateY(-3px)}
-.big-download svg{width:18px;height:18px}
-.mirror-note{font-size:11px;color:var(--mut);text-align:center;margin-top:10px;line-height:1.7}
-
-/* 背景设置面板 */
+.dl-stage{max-width:760px;margin:0 auto;text-align:center}
+.dl-btn{display:inline-flex;align-items:center;justify-content:center;gap:11px;width:100%;padding:20px;border-radius:16px;background:linear-gradient(135deg,var(--c1),#8a6cff);color:#fff;border:0;font-size:17px;font-weight:900;cursor:pointer;box-shadow:0 12px 32px rgba(124,140,255,.45);transition:.25s;position:relative;overflow:hidden}
+.dl-btn::after{content:"";position:absolute;inset:0;background:linear-gradient(100deg,transparent,rgba(255,255,255,.25),transparent);transform:translateX(-100%)}
+.dl-btn:hover:not(:disabled){transform:translateY(-3px)}
+.dl-btn:hover:not(:disabled)::after{transform:translateX(100%)}
+.dl-btn:disabled{opacity:.7;cursor:wait}
+.dl-btn svg{width:20px;height:20px}
+.dl-status{margin-top:16px;border-radius:14px;padding:16px 18px;text-align:left;font-size:13px;min-height:60px}
+.dl-status .step{display:flex;align-items:center;gap:9px;padding:5px 0;color:var(--mut);opacity:.45;transition:.3s}
+.dl-status .step.active{opacity:1;color:var(--txt)}
+.dl-status .step.done{opacity:1;color:var(--c2)}
+.dl-status .step svg{width:16px;height:16px}
+.dl-file{margin-top:14px;font-size:12px;color:var(--mut)}
+.dl-file b{color:var(--txt)}
+.dl-tip{font-size:11px;color:var(--mut);margin-top:12px;line-height:1.7}
 .bg-panel{position:fixed;right:18px;bottom:18px;z-index:70}
 .bg-fab{width:48px;height:48px;border-radius:14px;border:1px solid var(--line);background:var(--panel);backdrop-filter:var(--glass);color:var(--txt);cursor:pointer;display:grid;place-items:center;box-shadow:0 10px 30px rgba(0,0,0,.3);transition:.3s}
 .bg-fab svg{width:20px;height:20px}
@@ -196,22 +166,38 @@ section{padding:52px 0}
 .bg-url input:focus{border-color:var(--c1)}
 .bg-url button{padding:9px 13px;border-radius:10px;background:var(--c1);color:#fff;border:0;font-size:12px;font-weight:700;cursor:pointer}
 .bg-reset{margin-top:10px;width:100%;padding:8px;border-radius:9px;border:1px solid var(--line);background:none;color:var(--mut);font-size:11px;cursor:pointer}
-
-/* 页脚 */
+.agreement{position:fixed;inset:0;z-index:200;display:none;align-items:center;justify-content:center;padding:18px;background:rgba(3,6,16,.72);backdrop-filter:blur(6px)}
+.agreement.show{display:flex;animation:fade .25s}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+.agreement-box{width:100%;max-width:560px;max-height:86vh;display:flex;flex-direction:column;border-radius:20px;padding:24px;background:var(--bg2);border:1px solid var(--line-hi);box-shadow:0 24px 70px rgba(0,0,0,.55)}
+.agreement-box h3{font-size:19px;font-weight:900;margin-bottom:14px;display:flex;align-items:center;gap:8px}
+.agreement-box h3 svg{width:20px;height:20px;color:var(--c1)}
+.ag-tabs{display:flex;gap:6px;margin-bottom:14px;border-bottom:1px solid var(--line)}
+.ag-tab{padding:9px 16px;font-size:13px;color:var(--mut);cursor:pointer;border-bottom:2px solid transparent;transition:.2s}
+.ag-tab.on{color:var(--c1);border-color:var(--c1)}
+.ag-body{flex:1;overflow-y:auto;font-size:13px;color:var(--mut);line-height:1.85;padding-right:8px;min-height:180px;max-height:44vh}
+.ag-body h4{color:var(--txt);font-size:14px;margin:14px 0 5px}
+.ag-body h4:first-child{margin-top:0}
+.ag-body b{color:var(--gold)}
+.ag-check{display:flex;align-items:flex-start;gap:10px;padding:12px;border-radius:12px;background:rgba(124,140,255,.08);border:1px solid var(--line);cursor:pointer;margin:14px 0;font-size:13px}
+.ag-check input{margin-top:3px;width:17px;height:17px;accent-color:var(--c1);flex:none}
+.ag-btns{display:flex;gap:10px}
+.ag-btns .btn{flex:1;justify-content:center}
+.btn.disabled{opacity:.4;pointer-events:none}
 footer{border-top:1px solid var(--line);padding:36px 0 24px;background:rgba(8,12,24,.3)}
 .f-top{display:flex;justify-content:space-between;flex-wrap:wrap;gap:20px;padding-bottom:22px;border-bottom:1px solid var(--line)}
 .f-top .desc{color:var(--mut);font-size:13px;max-width:340px;margin-top:9px}
 .f-links{display:flex;gap:44px}
 .f-links h5{font-size:13px;margin-bottom:11px}
-.f-links a{display:block;color:var(--mut);font-size:12px;margin-bottom:8px;transition:.2s}
+.f-links a{display:block;color:var(--mut);font-size:12px;margin-bottom:8px;cursor:pointer;transition:.2s}
 .f-links a:hover{color:var(--c1);transform:translateX(2px)}
 .f-bot{text-align:center;color:var(--mut);font-size:11px;padding-top:18px;line-height:1.9}
 .f-bot .disc{max-width:720px;margin:0 auto 8px}
-.toast{position:fixed;left:50%;bottom:28px;transform:translate(-50%,20px);padding:11px 20px;border-radius:11px;background:rgba(20,28,54,.96);border:1px solid var(--line-hi);font-size:13px;z-index:100;opacity:0;pointer-events:none;transition:.3s;max-width:88vw;text-align:center}
+.toast{position:fixed;left:50%;bottom:28px;transform:translate(-50%,20px);padding:11px 20px;border-radius:11px;background:rgba(20,28,54,.96);border:1px solid var(--line-hi);font-size:13px;z-index:300;opacity:0;pointer-events:none;transition:.3s;max-width:88vw;text-align:center}
 .toast.show{opacity:1;transform:translate(-50%,0)}
-@media(max-width:900px){header{padding-top:44px}.hero{grid-template-columns:1fr;text-align:center}.hero .lead{margin:0 auto}.btn-row,.hero-meta,.tagline{justify-content:center;margin-left:auto;margin-right:auto}.phone-stage{display:none}.bento{grid-template-columns:1fr 1fr}.card.wide{grid-column:span 2}.metrics,.two-col,.about-grid{grid-template-columns:1fr 1fr}}
-@media(max-width:560px){.bento,.metrics,.about-grid{grid-template-columns:1fr}.card.wide{grid-column:span 1}.f-links{gap:24px}.dl-row{flex-wrap:wrap}.dl-row a{width:100%;justify-content:center}}
-@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal,.metric{opacity:1;transform:none}}
+@media(max-width:900px){header{padding-top:44px}.hero{grid-template-columns:1fr;text-align:center}.hero .lead{margin:0 auto}.btn-row,.hero-meta,.tagline{justify-content:center;margin-left:auto;margin-right:auto}.phone-stage{display:none}.bento{grid-template-columns:1fr 1fr}.card.wide{grid-column:span 2}.metrics{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.bento,.metrics{grid-template-columns:1fr}.card.wide{grid-column:span 1}.f-links{gap:24px}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal,.metric,.update-card{opacity:1;transform:none}}
 section,.metric,.card{content-visibility:auto;contain-intrinsic-size:auto 400px}
 </style>
 </head>
@@ -219,6 +205,7 @@ section,.metric,.card{content-visibility:auto;contain-intrinsic-size:auto 400px}
 <div id="bgCustom"></div>
 <div id="bgLayer"><span class="orb a"></span><span class="orb b"></span><span class="orb c"></span></div>
 <div class="grid-bg"></div>
+
 <svg style="display:none" xmlns="http://www.w3.org/2000/svg">
 <symbol id="i-home" viewBox="0 0 24 24"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/><path d="M9 21v-7h6v7"/></symbol>
 <symbol id="i-chat" viewBox="0 0 24 24"><path d="M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z"/></symbol>
@@ -247,10 +234,11 @@ section,.metric,.card{content-visibility:auto;contain-intrinsic-size:auto 400px}
 <symbol id="i-pen" viewBox="0 0 24 24"><path d="M12 20h9M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></symbol>
 <symbol id="i-warn" viewBox="0 0 24 24"><path d="M12 3 2 20h20L12 3z"/><path d="M12 9v5m0 3h.01"/></symbol>
 <symbol id="i-doc" viewBox="0 0 24 24"><path d="M6 2h8l5 5v15H6z"/><path d="M14 2v5h5M9 12h7M9 16h7"/></symbol>
+<symbol id="i-qq" viewBox="0 0 24 24"><path d="M12 2c-3.3 0-6 2.7-6 6 0 1.5.5 2.8 1.4 3.8C6.5 13 6 14.6 6 16.5 6 19.5 8.7 22 12 22s6-2.5 6-5.5c0-1.9-.5-3.5-1.4-4.7C16.5 11.8 17 10.5 17 9c0-1.8-.8-3.4-2-4.5"/><path d="M9 9h.01M15 9h.01M10 13c1.2 1 2.8 1 4 0"/></symbol>
 </svg>
 
 <div class="notice" id="notice">
-  <div class="notice-in"><span class="pulse"></span><span class="txt"><b>更新公告：</b><b>v1.0.3</b> 已发布（Pre-release），官网同步升级到 <b>v1.3</b>。新增透明玻璃效果与自定义背景，移除登录与宠物系统。欢迎 <a href="https://github.com/1953187487/CubernLauncher/issues" target="_blank" rel="noopener">反馈 Issue</a>。</span><button class="close" id="noticeClose">×</button></div>
+  <div class="notice-in"><span class="pulse"></span><span class="txt"><b>更新公告：</b><b>v1.0.3</b> 已发布，官网同步升级 <b>v1.3</b>。<a href="https://qun.qq.com/universal-share/share?ac=1&authKey=SwQb9TokqNswF95F7iPiZugcomKTgJOvB6uo%2BHiDMC18mRW0axxZHhmCc%2FvxeUqU&busi_data=eyJncm91cENvZGUiOiIxMTM0NTk3MTk3IiwidG9rZW4iOiJEQWxQMFExbGZveEVaWHdaeS9KdVJWM0RGT2o4a28yU3phTzI3YlgyenRFSWpCejBkeXRTczVkNDhkbjJOeEkrIiwidWluIjoiMjg2NTUyOTA1NyJ9&data=YkhhF1XEBl1JH8PELCFsIs-EcmqDaPYfYwnQGMgXRvH0-PwVJE2gAJvN5oBNpIjC8eomAfjNkaHxeQaVadKMZw&svctype=4&tempid=h5_group_info" target="_blank" rel="noopener">加入官方 QQ 群 1134597197</a> 一起交流。欢迎 <a href="https://github.com/1953187487/CubernLauncher/issues" target="_blank" rel="noopener">反馈 Issue</a>。</span><button class="close" id="noticeClose">×</button></div>
 </div>
 
 <div class="toolbar">
@@ -274,6 +262,7 @@ section,.metric,.card{content-visibility:auto;contain-intrinsic-size:auto 400px}
         <div class="btn-row">
           <a href="#download" class="btn p"><svg><use href="#i-down"/></svg>下载 v1.0.3</a>
           <a href="https://github.com/1953187487/CubernLauncher" target="_blank" rel="noopener" class="btn g"><svg><use href="#i-star"/></svg>GitHub 仓库</a>
+          <a href="https://qun.qq.com/universal-share/share?ac=1&authKey=SwQb9TokqNswF95F7iPiZugcomKTgJOvB6uo%2BHiDMC18mRW0axxZHhmCc%2FvxeUqU&busi_data=eyJncm91cENvZGUiOiIxMTM0NTk3MTk3IiwidG9rZW4iOiJEQWxQMFExbGZveEVaWHdaeS9KdVJWM0RGT2o4a28yU3phTzI3YlgyenRFSWpCejBkeXRTczVkNDhkbjJOeEkrIiwidWluIjoiMjg2NTUyOTA1NyJ9&data=YkhhF1XEBl1JH8PELCFsIs-EcmqDaPYfYwnQGMgXRvH0-PwVJE2gAJvN5oBNpIjC8eomAfjNkaHxeQaVadKMZw&svctype=4&tempid=h5_group_info" target="_blank" rel="noopener" class="btn g"><svg><use href="#i-qq"/></svg>官方 QQ 群</a>
         </div>
         <div class="hero-meta"><span>◈ Android 8.0+</span><span>◈ Kotlin / Compose</span><span>◈ 陶瓦联机</span><span>◈ 开源可审计</span></div>
       </div>
@@ -281,12 +270,17 @@ section,.metric,.card{content-visibility:auto;contain-intrinsic-size:auto 400px}
         <div class="phone" id="phone">
           <div class="notch"></div>
           <div class="ps">
-            <div class="bar"><span>Cubern Launcher</span><span>▮▮▮</span></div>
-            <div class="cd"><b>当前版本</b>1.0.3 · Fabric · Java 21</div>
-            <div class="play">▶ 启动游戏</div>
-            <div class="row"><div class="cd">版本管理</div><div class="cd">模组管理</div></div>
-            <div class="beta">⚠ 当前版本为测试版</div>
-            <div class="nav"><span>版本</span><span>下载</span><span>设置</span><b>联机</b></div>
+            <div class="ps-col">
+              <div class="brandbar">CUBERN LAUNCHER</div>
+              <div class="menu"><span>📦 版本管理</span><span>🧩 模组管理</span><span>📁 文件管理</span><span>⚙ 执行 JAR</span></div>
+              <div class="navbar"><span>版本</span><span>下载</span><span>设置</span><b>联机</b></div>
+            </div>
+            <div class="ps-col">
+              <div class="cd"><b>当前版本</b>1.0.3 · Fabric · Java 21</div>
+              <div class="play">▶ 启动游戏</div>
+              <div class="cd">⬇ 下载 · ⚙ 设置 · 📁 主目录</div>
+              <div class="beta">⚠ 当前版本为测试版</div>
+            </div>
           </div>
         </div>
       </div>
@@ -303,44 +297,115 @@ section,.metric,.card{content-visibility:auto;contain-intrinsic-size:auto 400px}
 
 <section id="updates">
   <div class="wrap">
-    <div class="sec-head reveal"><div class="eyebrow">Changelog</div><h2>更新公告</h2><p>版本更新与已知说明，第一时间掌握。</p></div>
-    <div class="update-box">
-      <div class="update-card glass reveal">
-        <div class="update-top"><span class="v">v1.0.3</span><span class="tag">Pre-release 测试版</span><span class="date">2026-11-20</span></div>
-        <p style="font-size:13px;color:var(--mut);margin-bottom:6px">基于 Zalith Launcher 1 原版底层重新开发，界面引擎 Jetpack Compose，视觉风格拟物沉浸风。</p>
+    <div class="sec-head reveal"><div class="eyebrow">Changelog</div><h2>更新公告</h2><p>向下滚动查看全部版本更新记录。</p></div>
+    <div class="timeline">
+      <div class="timeline-scroll" id="timelineScroll">
 
-        <div class="upd-group"><h5><svg><use href="#i-bolt"/></svg>修复</h5><ul>
-          <li>修复用户须知协议门禁：此前协议界面定义了却从未在主界面启动时调用，未同意即可进入；现强制首次启动弹出，未同意不得使用下载、联机、AI 等功能</li>
-          <li>修复同意回调中的递归错乱，同意后正常关闭遮罩并继续初始化，拒绝则退出</li>
-          <li>修复用户须知中文缺失：新增简体/繁体协议本地化资源，中英文均可滚动阅读</li>
-        </ul></div>
+        <article class="update-card glass">
+          <div class="update-top"><span class="v">v1.0.3</span><span class="tag">Pre-release 测试版</span><span class="date">2026-11-20</span></div>
+          <p style="font-size:13px;color:var(--mut);margin-bottom:6px">基于 Zalith Launcher 1 原版底层重新开发，界面引擎 Jetpack Compose，视觉风格拟物沉浸风。</p>
+          <div class="upd-group"><h5><svg><use href="#i-bolt"/></svg>修复</h5><ul>
+            <li>修复用户须知协议门禁：此前协议界面定义了却从未在主界面启动时调用，未同意即可进入主界面；现已强制首次启动弹出，未同意不得使用下载、联机、AI 等功能</li>
+            <li>修复同意回调中的递归错乱，同意后正常关闭遮罩并继续初始化，拒绝则退出</li>
+            <li>修复用户须知中文缺失：新增简体/繁体协议本地化资源，中英文均可滚动阅读</li>
+          </ul></div>
+          <div class="upd-group"><h5><svg><use href="#i-bot"/></svg>新增功能</h5><ul>
+            <li>AI 助手「分析启动日志」专项：自动导入最近日志、脱敏（令牌/API Key/UUID/路径用户名）、摘要提取错误行，上传前弹窗告知并取得确认</li>
+            <li>AI 助手入口：主界面右上角功能区从右往左第 5 个位置，长按显示功能名称</li>
+            <li>设置页新增 AI 助手分组与「重新查看用户须知」入口</li>
+          </ul></div>
+          <div class="upd-group"><h5><svg><use href="#i-palette"/></svg>界面</h5><ul>
+            <li>主界面、设置、下载、用户须知、陶瓦联机、AI 助手统一拟物沉浸风设计 token</li>
+            <li>陶瓦联机：用户须知 / 房主教程 / 房客教程三标签，未读须知时锁定首标签</li>
+            <li>恢复 ZL1 原版布局与入口顺序，仅迁移 UI 引擎</li>
+          </ul></div>
+          <div class="upd-group"><h5><svg><use href="#i-key"/></svg>签名</h5><ul>
+            <li>本次构建使用全新独立签名证书 Cubern Launcher（SHA-256: 206009225b0a64d95228811adfc6b0635ae8bd16e136d901b92e9994e0240fcb）</li>
+            <li style="color:var(--warn)">注意：更换签名后，已安装旧版的用户升级时必须先卸载旧版</li>
+          </ul></div>
+          <div class="upd-group"><h5><svg><use href="#i-cpu"/></svg>构建</h5><ul>
+            <li>Gradle 8.11.1 / JDK 17 / Android SDK 34 / NDK 25.2.9519653，BUILD SUCCESSFUL（59 tasks）</li>
+          </ul></div>
+        </article>
 
-        <div class="upd-group"><h5><svg><use href="#i-bot"/></svg>新增功能</h5><ul>
-          <li>AI 助手「分析启动日志」专项：自动导入最近日志、脱敏（令牌/API Key/UUID/路径用户名）、摘要提取错误行，上传前弹窗告知并取得确认</li>
-          <li>AI 助手入口：主界面右上角功能区从右往左第 5 个位置，长按显示功能名称</li>
-          <li>设置页新增 AI 助手分组与「重新查看用户须知」入口</li>
-        </ul></div>
+        <article class="update-card glass">
+          <div class="update-top"><span class="v">v1.0.2</span><span class="tag">Pre-release 测试版</span><span class="date">2026-11-17</span></div>
+          <div class="upd-group"><h5><svg><use href="#i-palette"/></svg>主界面还原 Zalith Launcher 1 布局</h5><ul>
+            <li>恢复原版双栏结构：左侧菜单栏（6.5 份）+ 右侧启动面板（3 份）</li>
+            <li>顶栏右侧四个图标：打开主目录、陶瓦联机、下载、设置</li>
+            <li>右侧面板最左侧新增启动器动画（呼吸缩放 + 旋转 + 渐变光晕）</li>
+            <li>左侧菜单保留版本管理、模组管理、文件管理、执行 JAR；UI 底层替换为 MIUIX Compose</li>
+          </ul></div>
+          <div class="upd-group"><h5><svg><use href="#i-cpu"/></svg>设置页导航重排</h5><ul>
+            <li>导航顺序：视频 → 游戏 → 启动器 → 实验性 → 控制布局 → 关于本启动器</li>
+            <li>控制布局位于倒数第二，关于本启动器位于最后；关于页保留介绍、开发者致谢与检查更新</li>
+          </ul></div>
+          <div class="upd-group"><h5><svg><use href="#i-globe"/></svg>陶瓦联机独立化</h5><ul>
+            <li>从设置中移除，成为独立功能；顶栏按钮与游戏内启动器菜单均可进入</li>
+            <li>新增 TerracottaActivity 独立承载联机界面</li>
+            <li>引入 Zalith Launcher 2 的完整陶瓦联机实现（Terracotta + EasyTier）</li>
+          </ul></div>
+          <div class="upd-group"><h5><svg><use href="#i-doc"/></svg>用户须知协议</h5><ul>
+            <li>首次启动时在安装运行时组件之前展示，需明确同意后才能继续</li>
+            <li>声明基于 Zalith Launcher 1 二改、非官方声明、网络与账号、本地存储、GPL v3.0、免责声明</li>
+          </ul></div>
+          <div class="upd-group"><h5><svg><use href="#i-bot"/></svg>AI 版本助手（第五个功能）</h5><ul>
+            <li>离线版本体检、运行时完整性校验与缺失文件提示、版本管理建议</li>
+            <li>设计参考 Amethyst-iOS 与 MyRemasteredAI，支持自备 USER_LLM_API_KEY</li>
+          </ul></div>
+          <div class="upd-group"><h5><svg><use href="#i-bolt"/></svg>其他优化</h5><ul>
+            <li>运行时按需安装：按版本号语义比较判断所需 Java 主版本，仅准备对应运行时</li>
+            <li>下载动画重写：TextProgressBar 改为平滑追赶动画，进度不回退</li>
+            <li>安装包按 ABI 拆分全部低于 200 MB（arm64 159MB / v7a 153MB / x86 144MB / x86_64 162MB）</li>
+          </ul></div>
+        </article>
 
-        <div class="upd-group"><h5><svg><use href="#i-palette"/></svg>界面</h5><ul>
-          <li>主界面、设置、下载、用户须知、陶瓦联机、AI 助手统一拟物沉浸风设计 token</li>
-          <li>陶瓦联机：用户须知 / 房主教程 / 房客教程三标签，未读须知时锁定首标签</li>
-          <li>恢复 ZL1 原版布局与入口顺序，仅迁移 UI 引擎</li>
-        </ul></div>
+        <article class="update-card glass">
+          <div class="update-top"><span class="v">v1.0.1</span><span class="tag">Pre-release 测试版</span><span class="date">2026-11-16</span></div>
+          <div class="upd-group"><h5><svg><use href="#i-globe"/></svg>陶瓦联机完整移植</h5><ul>
+            <li>从 Zalith Launcher 2 移植陶瓦联机（Terracotta）模块完整实现</li>
+            <li>原生桥接层 TerracottaAndroidAPI 与 libterracotta.so（四 ABI）</li>
+            <li>VPN 隧道服务 TerracottaVPNService 与独立前台通知渠道</li>
+            <li>EasyTier 节点拉取，支持自定义节点；房主/房客双模式、房间码生成与校验、完整状态机</li>
+            <li>联机日志采集与异常原因提示，中英文文案资源</li>
+          </ul></div>
+          <div class="upd-group"><h5><svg><use href="#i-palette"/></svg>MIUIX 主界面彻底重构</h5><ul>
+            <li>MIUIX Compose 界面完全替代原 View 布局，旧的 LauncherActivity 与 MainMenuFragment 已删除</li>
+            <li>右上角新增「打开主目录」与「陶瓦联机」入口</li>
+            <li>主界面布局与原版一致：当前版本卡片、启动游戏、版本选择、执行 JAR、设置入口</li>
+            <li>关于启动器与控制布局整合进设置界面</li>
+          </ul></div>
+          <div class="upd-group"><h5><svg><use href="#i-bolt"/></svg>其他修复</h5><ul>
+            <li>关于启动器文案更新为「基于 Zalith Launcher1 进行二改开发」，中英文同步</li>
+            <li>更新下载进度动画重写为平滑追赶式进度条，进度不会回退</li>
+            <li>下载平台修复：未配置 CurseForge API Key 时自动隐藏并回退到 Modrinth</li>
+            <li>下载源镜像路径映射验证与修复</li>
+          </ul></div>
+        </article>
 
-        <div class="sign-warn"><svg><use href="#i-warn"/></svg><span><b>签名变更提示：</b>本次构建使用全新独立签名证书 <code>Cubern Launcher</code>（SHA-256: <code>206009225b0a64d95228811adfc6b0635ae8bd16e136d901b92e9994e0240fcb</code>）。<b>更换签名后，已安装旧版的用户升级时必须先卸载旧版。</b></span></div>
+        <article class="update-card glass">
+          <div class="update-top"><span class="v">v1.0.0</span><span class="tag">首个测试版</span><span class="date">2026-11-16</span></div>
+          <div class="upd-group"><h5><svg><use href="#i-star"/></svg>本版本内容</h5><ul>
+            <li>26.2+ 运行环境支持：版本号语义比较，杜绝伪造或跳过版本号绕过限制</li>
+            <li>Java 运行时自动管理：自动识别、下载、校验并注入兼容运行时</li>
+            <li>陶瓦联机功能：入口位于主界面右上角</li>
+            <li>Vulkan 支持检测：核验 API、物理设备、1.2 能力、图形队列、表面扩展与原生库</li>
+            <li>四种渲染模式：跟随游戏、OpenGL、Vulkan、自动选择</li>
+          </ul></div>
+          <div class="upd-group"><h5><svg><use href="#i-palette"/></svg>界面与整合</h5><ul>
+            <li>MIUIX Compose UI：主界面与设置界面采用 MIUIX 框架重写布局</li>
+            <li>设置界面整合：原主界面的「关于启动器」与「管理控制」布局已合并进设置</li>
+          </ul></div>
+          <div class="upd-group"><h5><svg><use href="#i-cpu"/></svg>底层优化</h5><ul>
+            <li>依赖库去重：按 groupId:artifactId:version:classifier:abi 去重</li>
+            <li>安全回退：环境不满足时给出明确原因并回退到兼容渲染后端</li>
+            <li>兼容性：保留 26.2 之前正式版、快照、Forge / Fabric / NeoForge / Quilt 等自定义环境的启动能力</li>
+          </ul></div>
+        </article>
 
-        <div class="meta-line">构建：Gradle 8.11.1 / JDK 17 / Android SDK 34 / NDK 25.2.9519653 · BUILD SUCCESSFUL（59 tasks） · APK 约 275.6 MB</div>
-      </div>
-      <div class="update-card glass reveal">
-        <div class="update-top"><span class="v">v1.0.2</span><span class="tag">Pre-release 测试版</span><span class="date">2026-11-17</span></div>
-        <ul>
-          <li>主界面还原 Zalith Launcher 1 双栏布局，MIUIX Compose 重构</li>
-          <li>陶瓦联机独立化，新增 TerracottaActivity 独立界面</li>
-          <li>新增 AI 版本助手、用户须知协议、运行时按需安装</li>
-          <li>按 ABI 拆分打包，安装包全部低于 200 MB</li>
-        </ul>
       </div>
     </div>
+    <div class="scroll-hint"><svg><use href="#i-down"/></svg> 向下滑动查看更多版本</div>
   </div>
 </section>
 
@@ -348,9 +413,9 @@ section,.metric,.card{content-visibility:auto;contain-intrinsic-size:auto 400px}
   <div class="wrap">
     <div class="sec-head reveal"><div class="eyebrow">Features</div><h2>为手机端而生的启动体验</h2><p>从联机到渲染，从界面到运行时，每一项都为了让 Java 版在 Android 上跑得更顺、更自由。</p></div>
     <div class="bento">
-      <div class="card glass wide reveal"><div class="ci"><svg><use href="#i-globe"/></svg></div><h3>陶瓦联机完整移植</h3><p>移植 Terracotta + EasyTier 实现，房主/房客双模式、房间码校验、VPN 隧道与节点自选，手机也能和朋友联机。</p><span class="ct">Terracotta · EasyTier</span></div>
-      <div class="card glass reveal"><div class="ci"><svg><use href="#i-palette"/></svg></div><h3>MIUIX Compose 界面</h3><p>还原经典双栏布局，呼吸缩放、旋转、渐变光晕的启动动画。</p><span class="ct">MIUIX</span></div>
-      <div class="card glass reveal"><div class="ci"><svg><use href="#i-bot"/></svg></div><h3>AI 版本助手</h3><p>离线版本体检与运行时匹配校验，支持自备 API Key 问答。</p><span class="ct">离线体检</span></div>
+      <div class="card glass wide reveal"><div class="ci"><svg><use href="#i-globe"/></svg></div><h3>陶瓦联机完整移植</h3><p>移植 Terracotta + EasyTier 实现，房主/房客双模式、房间码校验、VPN 隧道与节点自选。</p><span class="ct">Terracotta · EasyTier</span></div>
+      <div class="card glass reveal"><div class="ci"><svg><use href="#i-palette"/></svg></div><h3>MIUIX Compose 界面</h3><p>还原经典双栏布局，呼吸缩放、旋转、渐变光晕的启动动画。</p><span class="ct">拟物沉浸风</span></div>
+      <div class="card glass reveal"><div class="ci"><svg><use href="#i-bot"/></svg></div><h3>AI 版本助手</h3><p>离线版本体检、运行时匹配校验，支持分析启动日志（脱敏后上传）。</p><span class="ct">AI 助手</span></div>
       <div class="card glass reveal"><div class="ci"><svg><use href="#i-coffee"/></svg></div><h3>Java 运行时管理</h3><p>语义比较版本、按需注入兼容运行时、架构与完整性校验。</p><span class="ct">按需安装</span></div>
       <div class="card glass reveal"><div class="ci"><svg><use href="#i-bolt"/></svg></div><h3>Vulkan 渲染</h3><p>四种渲染模式，能力检测与安全回退。</p><span class="ct">Vulkan 1.2</span></div>
       <div class="card glass wide reveal"><div class="ci"><svg><use href="#i-puzzle"/></svg></div><h3>自定义环境兼容</h3><p>支持 Forge / Fabric / NeoForge / Quilt，保留 26.2 之前正式版与快照的启动能力。</p><span class="ct">Forge · Fabric · Quilt</span></div>
@@ -360,40 +425,16 @@ section,.metric,.card{content-visibility:auto;contain-intrinsic-size:auto 400px}
 
 <section id="download">
   <div class="wrap">
-    <div class="sec-head reveal"><div class="eyebrow">Download</div><h2>下载 v1.0.3</h2><p>当前版本为测试版（Pre-release），单个 APK 通吃，需 Android 8.0 及以上。</p></div>
-    <div class="mirror-box">
-      <div class="mirror-head">
-        <div class="t"><svg><use href="#i-bolt"/></svg>多源加速 · 已实测速度（当前设备）</div>
-        <button class="retest" id="retestBtn"><svg><use href="#i-sync"/></svg>重新测速</button>
+    <div class="sec-head reveal"><div class="eyebrow">Download</div><h2>下载 v1.0.3</h2><p>点击即自动测速、选最快源并开始下载，无需手动操作。</p></div>
+    <div class="dl-stage reveal">
+      <button class="dl-btn" id="dlBtn"><svg><use href="#i-down"/></svg><span id="dlBtnText">一键下载 APK</span></button>
+      <div class="dl-status glass" id="dlStatus">
+        <div class="step" data-step="0"><svg><use href="#i-bolt"/></svg>正在测试下载源速度…</div>
+        <div class="step" data-step="1"><svg><use href="#i-globe"/></svg>自动选择最快源</div>
+        <div class="step" data-step="2"><svg><use href="#i-down"/></svg>开始下载</div>
       </div>
-      <div class="mirror-list" id="mirrorList"></div>
-      <a class="big-download" id="bigDownload" href="https://github.com/1953187487/CubernLauncher/releases/download/v1.0.3/CubernLauncher-1.0.3-release.apk" target="_blank" rel="noopener"><svg><use href="#i-down"/></svg>从最快源下载 APK</a>
-      <div class="mirror-note">速度为本机实测（512KB 分段），不同网络结果可能不同，点「重新测速」可刷新。<br>若某源下载失败，请切换其他源重试。</div>
-    </div>
-    <p class="sec-head" style="margin:18px 0 0;font-size:12px">更多历史版本见 <a href="https://github.com/1953187487/CubernLauncher/releases" target="_blank" rel="noopener" style="color:var(--c1)">GitHub Releases</a></p>
-  </div>
-</section>
-
-<section id="build">
-  <div class="wrap">
-    <div class="sec-head reveal"><div class="eyebrow">Build</div><h2>开源、透明、可自行构建</h2><p>基于 Zalith Launcher 1 二次开发，遵循 GNU GPL v3.0，代码公开可审计。</p></div>
-    <div class="two-col" style="grid-template-columns:1fr 1fr">
-      <div class="code glass reveal" id="codeBox"><button class="copyb" id="copyBtn"><svg><use href="#i-doc"/></svg> 复制</button>
-<span style="color:#7d8ab5"># local.properties</span>
-<span style="color:var(--gold)">sdk.dir</span>=/path/to/android-sdk
-
-<span style="color:#7d8ab5"># 构建 Release</span>
-./gradlew :CubernLauncher:<span style="color:var(--c1)">assembleRelease</span>
-      </div>
-      <div class="glass reveal" style="border-radius:16px;padding:20px">
-        <h3 style="font-size:16px;margin-bottom:15px;display:flex;align-items:center;gap:8px"><svg style="width:17px;height:17px;color:var(--c1)"><use href="#i-cpu"/></svg>构建环境</h3>
-        <ul style="list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:11px">
-          <li style="font-size:13px;display:flex;gap:9px"><svg style="width:15px;height:15px;color:var(--c2);margin-top:3px"><use href="#i-bolt"/></svg>Kotlin + Compose</li>
-          <li style="font-size:13px;display:flex;gap:9px"><svg style="width:15px;height:15px;color:var(--c2);margin-top:3px"><use href="#i-bolt"/></svg>Android SDK 34</li>
-          <li style="font-size:13px;display:flex;gap:9px"><svg style="width:15px;height:15px;color:var(--c2);margin-top:3px"><use href="#i-bolt"/></svg>JDK 8</li>
-          <li style="font-size:13px;display:flex;gap:9px"><svg style="width:15px;height:15px;color:var(--c2);margin-top:3px"><use href="#i-bolt"/></svg>NDK 25.2</li>
-        </ul>
-      </div>
+      <div class="dl-file">CubernLauncher-1.0.3-release.apk · 约 275.6 MB · <b id="chosenSource">待测</b></div>
+      <div class="dl-tip">签名已变更，升级前请先卸载旧版 · 若下载失败请换个网络重试</div>
     </div>
   </div>
 </section>
@@ -404,7 +445,8 @@ section,.metric,.card{content-visibility:auto;contain-intrinsic-size:auto 400px}
       <div><div class="brand"><span class="logo"><svg><use href="#i-box"/></svg></span> Cubern Launcher</div><p class="desc">基于 Zalith Launcher 1 二改开发的 Minecraft Java 版 Android 启动器，GPLv3 开源。官网 v1.3，协议 v1.0。</p></div>
       <div class="f-links">
         <div><h5>项目</h5><a href="https://github.com/1953187487/CubernLauncher" target="_blank" rel="noopener">GitHub 仓库</a><a href="https://github.com/1953187487/CubernLauncher/releases" target="_blank" rel="noopener">Releases</a><a href="https://github.com/1953187487/CubernLauncher/issues" target="_blank" rel="noopener">Issues</a></div>
-        <div><h5>资源</h5><a href="#updates">更新公告</a><a href="#features">核心功能</a><a href="#download">下载安装</a><a href="#build">源码构建</a></div>
+        <div><h5>资源</h5><a href="#updates">更新公告</a><a href="#features">核心功能</a><a href="#download">下载安装</a><a href="#" id="agreementLink">用户须知 / 隐私协议</a></div>
+        <div><h5>社区</h5><a href="https://qun.qq.com/universal-share/share?ac=1&authKey=SwQb9TokqNswF95F7iPiZugcomKTgJOvB6uo%2BHiDMC18mRW0axxZHhmCc%2FvxeUqU&busi_data=eyJncm91cENvZGUiOiIxMTM0NTk3MTk3IiwidG9rZW4iOiJEQWxQMFExbGZveEVaWHdaeS9KdVJWM0RGT2o4a28yU3phTzI3YlgyenRFSWpCejBkeXRTczVkNDhkbjJOeEkrIiwidWluIjoiMjg2NTUyOTA1NyJ9&data=YkhhF1XEBl1JH8PELCFsIs-EcmqDaPYfYwnQGMgXRvH0-PwVJE2gAJvN5oBNpIjC8eomAfjNkaHxeQaVadKMZw&svctype=4&tempid=h5_group_info" target="_blank" rel="noopener">官方 QQ 群 · 1134597197</a></div>
       </div>
     </div>
     <div class="f-bot">
@@ -414,7 +456,6 @@ section,.metric,.card{content-visibility:auto;contain-intrinsic-size:auto 400px}
   </div>
 </footer>
 
-<!-- 背景设置 -->
 <div class="bg-panel">
   <div class="bg-pop glass" id="bgPop">
     <h4><svg><use href="#i-palette"/></svg>外观设置</h4>
@@ -426,94 +467,120 @@ section,.metric,.card{content-visibility:auto;contain-intrinsic-size:auto 400px}
   </div>
   <button class="bg-fab" id="bgFab" title="外观设置"><svg><use href="#i-palette"/></svg></button>
 </div>
+
+<div class="agreement" id="agreement">
+  <div class="agreement-box">
+    <h3><svg><use href="#i-doc"/></svg>协议与条款</h3>
+    <div class="ag-tabs"><div class="ag-tab on" data-tab="terms">用户须知协议</div><div class="ag-tab" data-tab="privacy">隐私协议</div></div>
+    <div class="ag-body" id="agBody"></div>
+    <label class="ag-check"><input type="checkbox" id="agAgree"><span>我已阅读并同意《用户须知协议》与《隐私协议》，了解当前均为测试版。</span></label>
+    <div class="ag-btns"><button class="btn g" id="agDecline">暂不使用</button><button class="btn p disabled" id="agAccept">同意并继续</button></div>
+  </div>
+</div>
 <div class="toast" id="toast"></div>
 
 <script>
 (function(){
-  const root=document.documentElement;
-  /* 主题 */
-  const tb=document.getElementById('themeBtn'),saved=localStorage.getItem('cubern-theme'),sysDark=matchMedia('(prefers-color-scheme: dark)').matches;
-  const sun='<svg><use href="#i-sun"/></svg>',moon='<svg><use href="#i-moon"/></svg>';
-  function applyTheme(t){root.dataset.theme=t;tb.innerHTML=t==='dark'?moon:sun}
-  applyTheme(saved||(sysDark?'dark':'light'));
-  tb.addEventListener('click',()=>{const n=root.dataset.theme==='dark'?'light':'dark';applyTheme(n);localStorage.setItem('cubern-theme',n)});
+  var root=document.documentElement;
+  var tb=document.getElementById('themeBtn');
+  function applyTheme(t){root.dataset.theme=t;tb.innerHTML=t==='dark'?'<svg><use href="#i-moon"/></svg>':'<svg><use href="#i-sun"/></svg>'}
+  var saved=null;try{saved=localStorage.getItem('cubern-theme')}catch(e){}
+  applyTheme(saved||((matchMedia('(prefers-color-scheme: dark)').matches)?'dark':'light'));
+  tb.addEventListener('click',function(){var n=root.dataset.theme==='dark'?'light':'dark';applyTheme(n);try{localStorage.setItem('cubern-theme',n)}catch(e){}});
+  var el=document.getElementById('toast'),tt;
+  function toast(m){el.textContent=m;el.classList.add('show');clearTimeout(tt);tt=setTimeout(function(){el.classList.remove('show')},2400)}
+  document.getElementById('noticeClose').addEventListener('click',function(){document.getElementById('notice').style.display='none'});
 
-  /* Toast */
-  const el=document.getElementById('toast');let tt;
-  function toast(m){el.textContent=m;el.classList.add('show');clearTimeout(tt);tt=setTimeout(()=>el.classList.remove('show'),2000)}
-
-  /* ===== 多源下载 ===== */
-  const APK='https://github.com/1953187487/CubernLauncher/releases/download/v1.0.3/CubernLauncher-1.0.3-release.apk';
-  const MIRRORS=[
-    {id:'github',name:'GitHub 官方',url:APK,speed:1148,ms:292,ok:true},
-    {id:'ghproxy.net',name:'ghproxy.net',url:'https://ghproxy.net/'+APK,speed:191,ms:1404,ok:true},
-    {id:'gh-proxy.com',name:'gh-proxy.com',url:'https://gh-proxy.com/'+APK,speed:159,ms:1670,ok:true},
-    {id:'gh-proxy.org',name:'gh-proxy.org',url:'https://gh-proxy.org/'+APK,speed:81,ms:0,ok:true},
-    {id:'ghfast.top',name:'ghfast.top',url:'https://ghfast.top/'+APK,speed:0,ok:false},
-    {id:'moeyy',name:'github.moeyy.xyz',url:'https://github.moeyy.xyz/'+APK,speed:0,ok:false}
-  ];
-  let currentBest=MIRRORS[0].id;
-  const listEl=document.getElementById('mirrorList'),bigBtn=document.getElementById('bigDownload');
-  function fmtSpeed(s){return s>=1024?(s/1024).toFixed(1)+' MB/s':s+' KB/s'}
-  function sorted(){return [...MIRRORS].sort((a,b)=>(b.ok?b.speed:0)-(a.ok?a.speed:0))}
-  function pick(id){
-    const m=MIRRORS.find(x=>x.id===id);if(!m)return;
-    currentBest=id;bigBtn.href=m.url;
-    listEl.querySelectorAll('.mirror').forEach(el=>el.classList.toggle('on',el.dataset.id===id));
-    toast('已选择：'+m.name);
-  }
-  function renderMirrors(){
-    const arr=sorted();listEl.innerHTML='';
-    arr.forEach((m,i)=>{
-      const d=document.createElement('div');
-      d.className='mirror'+(m.id===currentBest?' on':'')+(i===0&&m.ok?' best':'');
-      d.dataset.id=m.id;
-      const spd=m.ok?fmtSpeed(m.speed):'不可用';
-      const sub=m.ok?(m.ms?m.ms+'ms 响应':'可用'):'连接失败';
-      d.innerHTML='<span class="radio"></span><span class="mi"><b>'+m.name+(i===0&&m.ok?'<span class="fast">⚡ 最快</span>':'')+'</b><span>'+m.url.replace('https://','')+'</span></span><span class="spd">'+spd+'<small>'+sub+'</small></span>';
-      d.addEventListener('click',()=>pick(m.id));
-      listEl.appendChild(d);
-    });
-    const top=arr.find(x=>x.ok);
-    if(top){currentBest=top.id;bigBtn.href=top.url;listEl.querySelectorAll('.mirror').forEach(el=>el.classList.toggle('on',el.dataset.id===top.id))}
-  }
-  renderMirrors();
-
-  /* 浏览器端重新测速（Range 请求，CORS 允许则测真实速度，否则回退到预置结果） */
-  document.getElementById('retestBtn').addEventListener('click',async function(){
-    const btn=this;btn.disabled=true;btn.innerHTML='测速中…';
-    const arr=MIRRORS.filter(m=>m.ok||m.speed>0);
-    for(const m of arr){
-      try{
-        const t0=performance.now();
-        const res=await fetch(m.url.startsWith('https:')?m.url:m.url,{headers:{Range:'bytes=0-262143'},cache:'no-store'});
-        if(!res.ok&&res.status!==206)throw new Error('http '+res.status);
-        const reader=res.body.getReader();let bytes=0,done=false;
-        while(!done){const r=await reader.read();if(r.done)break;bytes+=r.value.length;if(bytes>=131072){done=true;await reader.cancel()}}
-        const ms=Math.round(performance.now()-t0);
-        m.speed=Math.round(bytes/1024/(ms/1000));m.ms=ms;m.ok=m.speed>0;
-      }catch(e){m.ok=false;m.speed=0}
-    }
-    MIRRORS.sort((a,b)=>(b.ok?b.speed:0)-(a.ok?a.speed:0));
-    renderMirrors();btn.disabled=false;btn.innerHTML='<svg><use href="#i-sync"/></svg>重新测速';
-    const top=MIRRORS.find(x=>x.ok);toast(top?'测速完成，最快：'+top.name:'测速完成，均不可用，请检查网络');
-  });
-
-  document.getElementById('noticeClose').addEventListener('click',()=>document.getElementById('notice').style.display='none');
-
-  /* 手机 3D */
-  const phone=document.getElementById('phone');
+  var phone=document.getElementById('phone');
   if(!matchMedia('(prefers-reduced-motion: reduce)').matches&&matchMedia('(pointer:fine)').matches&&phone){
-    addEventListener('mousemove',e=>{const r=phone.getBoundingClientRect(),dx=(e.clientX-(r.left+r.width/2))/r.width,dy=(e.clientY-(r.top+r.height/2))/r.height;phone.style.transform='rotateY('+(dx*12)+'deg) rotateX('+(-dy*12)+'deg)'});
-    addEventListener('mouseleave',()=>phone.style.transform='');
+    addEventListener('mousemove',function(e){var r=phone.getBoundingClientRect(),dx=(e.clientX-(r.left+r.width/2))/r.width,dy=(e.clientY-(r.top+r.height/2))/r.height;phone.style.transform='rotateY('+(dx*10)+'deg) rotateX('+(-dy*10)+'deg)'});
+    addEventListener('mouseleave',function(){phone.style.transform=''});
   }
-  const io=new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target)}}),{threshold:.1});
-  document.querySelectorAll('.reveal,.metric').forEach(x=>io.observe(x));
 
-  document.getElementById('copyBtn').addEventListener('click',()=>{if(navigator.clipboard)navigator.clipboard.writeText('./gradlew :CubernLauncher:assembleRelease').then(()=>toast('构建命令已复制 ✓')).catch(()=>{})});
+  var io=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target)}})},{threshold:.1});
+  document.querySelectorAll('.reveal,.metric').forEach(function(x){io.observe(x)});
+  var cards=[].slice.call(document.querySelectorAll('.update-card'));
+  var scroller=document.getElementById('timelineScroll');
+  scroller.addEventListener('scroll',function(){cards.forEach(function(c){var r=c.getBoundingClientRect(),s=scroller.getBoundingClientRect();if(r.top<s.bottom+40&&r.bottom>s.top-40)c.classList.add('in')})},{passive:true});
+  setTimeout(function(){cards.forEach(function(c){c.classList.add('in')})},400);
 
-  /* ===== 外观设置：透明 + 自定义背景 ===== */
-  const BGS=[
+  var TERMS=[
+    '<h4>① 关于本项目</h4><p>Cubern Launcher 基于 <b>Zalith Launcher 1</b> 二次开发，遵循 <b>GNU GPL v3.0</b> 开源协议。当前版本为测试版。</p>',
+    '<h4>② 非官方声明</h4><p>本项目与 <b>Mojang Studios、Microsoft、网易</b> 无任何隶属、授权或合作关系。Minecraft 是 Mojang Studios 的商标。</p>',
+    '<h4>③ 测试版提示</h4><p>当前所有版本均为测试版（Pre-release），可能存在未完善功能或已知问题，请自行承担使用风险。</p>',
+    '<h4>④ 网络与账号</h4><p>部分功能（版本下载、陶瓦联机、AI 助手等）需要网络访问；如使用自备 API Key，密钥仅保存在本机。</p>',
+    '<h4>⑤ 本地存储</h4><p>游戏文件、配置与运行时均存储在你的设备本地。卸载或清理数据前请自行备份。</p>',
+    '<h4>⑥ 开源与免责</h4><p>本项目按 GPL v3.0 开源，按“现状”提供，不作任何担保，作者不承担使用损失责任。</p>'
+  ].join('');
+  var PRIVACY=[
+    '<h4>① 信息收集</h4><p>本启动器<b>不收集</b>你的个人身份信息、联系方式或位置信息。所有游戏数据、配置均保存在你的设备本地。</p>',
+    '<h4>② AI 助手与日志</h4><p>使用「分析启动日志」功能时，日志会在<b>上传前</b>经过脱敏处理（令牌、API Key、UUID、路径用户名等），并弹窗告知、取得你的确认后才上传。</p>',
+    '<h4>③ 陶瓦联机</h4><p>联机功能会使用 EasyTier 节点建立 P2P 隧道，节点地址由你选择或来自公开节点列表；房间码仅用于建立连接。</p>',
+    '<h4>④ 第三方服务</h4><p>版本下载可能访问 Modrinth、CurseForge 等公开平台；这些平台有各自的隐私政策，本项目不控制其内容。</p>',
+    '<h4>⑤ 数据存储位置</h4><p>所有本地数据存储于 Android 应用私有目录，其他应用无法读取。卸载应用会一并清除。</p>',
+    '<h4>⑥ 儿童隐私</h4><p>本项目不面向 13 岁以下儿童，不会有意收集儿童的个人信息。</p>',
+    '<h4>⑦ 政策更新</h4><p>隐私政策如有变更，会在官网更新公告中说明。继续使用即视为接受更新后的政策。</p>'
+  ].join('');
+  var AG='cubern-agree-v1',agreed=false;
+  try{agreed=localStorage.getItem(AG)==='1'}catch(e){}
+  var agBox=document.getElementById('agreement'),agBody=document.getElementById('agBody'),agAgree=document.getElementById('agAgree'),agAccept=document.getElementById('agAccept');
+  function showTab(t){document.querySelectorAll('.ag-tab').forEach(function(x){x.classList.toggle('on',x.dataset.tab===t)});agBody.innerHTML=t==='terms'?TERMS:PRIVACY;agBody.scrollTop=0}
+  function openAg(){agBox.classList.add('show');document.body.style.overflow='hidden';showTab('terms')}
+  function closeAg(){agBox.classList.remove('show');document.body.style.overflow='';agAgree.checked=false;agAccept.classList.add('disabled')}
+  document.querySelectorAll('.ag-tab').forEach(function(x){x.addEventListener('click',function(){showTab(x.dataset.tab)})});
+  agAgree.addEventListener('change',function(){agAccept.classList.toggle('disabled',!agAgree.checked)});
+  agAccept.addEventListener('click',function(){if(!agAgree.checked)return;agreed=true;try{localStorage.setItem(AG,'1')}catch(e){}closeAg();toast('感谢你的理解，祝游玩愉快 ⛏️')});
+  document.getElementById('agDecline').addEventListener('click',closeAg);
+  document.getElementById('agreementLink').addEventListener('click',function(e){e.preventDefault();openAg()});
+  if(!agreed)setTimeout(openAg,700);
+
+  var APK='https://github.com/1953187487/CubernLauncher/releases/download/v1.0.3/CubernLauncher-1.0.3-release.apk';
+  var SOURCES=[
+    {name:'GitHub 官方',url:APK},
+    {name:'ghproxy.net',url:'https://ghproxy.net/'+APK},
+    {name:'gh-proxy.com',url:'https://gh-proxy.com/'+APK},
+    {name:'gh-proxy.org',url:'https://gh-proxy.org/'+APK}
+  ];
+  var btn=document.getElementById('dlBtn'),btnText=document.getElementById('dlBtnText'),chosen=document.getElementById('chosenSource');
+  var steps=[].slice.call(document.querySelectorAll('#dlStatus .step'));
+  function setStep(i,state){steps.forEach(function(s,k){s.classList.toggle('active',k===i);if(state==='done'&&k<i)s.classList.add('done')})}
+  function measure(src){
+    return new Promise(function(res){
+      var t0=performance.now(),done=false;
+      function finish(ok,speed){if(done)return;done=true;res({src:src,ok:ok,speed:speed})}
+      try{
+        fetch(src.url,{headers:{Range:'bytes=0-262143'},cache:'no-store'}).then(function(r){
+          if(!r.ok&&r.status!==206)return finish(false,0);
+          var reader=r.body.getReader(),bytes=0;
+          function loop(){reader.read().then(function(o){
+            if(o.done||bytes>=131072){try{reader.cancel()}catch(e){};var ms=performance.now()-t0;return finish(true,Math.round(bytes/1024/(ms/1000)))}
+            bytes+=o.value.length;loop();
+          })}
+          loop();
+        }).catch(function(){finish(false,0)});
+      }catch(e){finish(false,0)}
+      setTimeout(function(){finish(false,0)},7000);
+    });
+  }
+  async function startDownload(){
+    if(!agreed){openAg();toast('请先阅读并同意协议');return}
+    btn.disabled=true;btnText.textContent='正在测速…';setStep(0,'active');
+    var results=await Promise.all(SOURCES.map(measure));
+    var ok=results.filter(function(r){return r.ok}).sort(function(a,b){return b.speed-a.speed});
+    var best=ok.length?ok[0]:{src:SOURCES[0],speed:0};
+    steps[0].classList.add('done');setStep(1,'active');
+    chosen.textContent=best.src.name+(best.speed?' · '+best.speed+' KB/s':'');
+    btnText.textContent='已选最快源，正在开始…';
+    await new Promise(function(r){setTimeout(r,500)});
+    steps[1].classList.add('done');setStep(2,'active');
+    var a=document.createElement('a');a.href=best.src.url;a.download='CubernLauncher-1.0.3-release.apk';document.body.appendChild(a);a.click();a.remove();
+    steps[2].classList.add('done');btnText.textContent='已开始下载 ✓';
+    toast('已从最快源开始下载：'+best.src.name);
+    setTimeout(function(){btn.disabled=false;btnText.textContent='一键下载 APK';steps.forEach(function(s){s.classList.remove('active','done')})},4000);
+  }
+  btn.addEventListener('click',startDownload);
+
+  var BGS=[
     {id:'default',name:'默认',css:''},
     {id:'aurora',name:'极光',css:'linear-gradient(135deg,#0b1020 0%,#16204a 40%,#0d2b3a 70%,#1a1030 100%)'},
     {id:'ocean',name:'深海',css:'linear-gradient(160deg,#041428 0%,#0a2a4a 50%,#062038 100%)'},
@@ -521,26 +588,24 @@ section,.metric,.card{content-visibility:auto;contain-intrinsic-size:auto 400px}
     {id:'forest',name:'森野',css:'linear-gradient(160deg,#0a1a14 0%,#143a2a 55%,#0d2a20 100%)'},
     {id:'nebula',name:'星云',css:'radial-gradient(circle at 30% 20%,#3a1a5a,transparent 55%),radial-gradient(circle at 70% 80%,#0a3a5a,transparent 55%),#0a0a18'}
   ];
-  const bgCustom=document.getElementById('bgCustom'),bgLayer=document.getElementById('bgLayer'),bgOpts=document.getElementById('bgOpts'),alphaRange=document.getElementById('alphaRange'),alphaVal=document.getElementById('alphaVal'),bgUrl=document.getElementById('bgUrl');
-  function setAlpha(v){root.style.setProperty('--alpha',v);const a=v/100;root.style.setProperty('--panel',root.dataset.theme==='dark'?'rgba(20,28,54,'+a+')':'rgba(255,255,255,'+Math.min(.9,a+.08)+')');alphaVal.textContent=v+'%';localStorage.setItem('cubern-alpha',v)}
+  var bgCustom=document.getElementById('bgCustom'),bgLayer=document.getElementById('bgLayer'),bgOpts=document.getElementById('bgOpts'),alphaRange=document.getElementById('alphaRange'),alphaVal=document.getElementById('alphaVal'),bgUrl=document.getElementById('bgUrl');
+  function setAlpha(v){root.style.setProperty('--panel',root.dataset.theme==='dark'?'rgba(20,28,54,'+(v/100)+')':'rgba(255,255,255,'+Math.min(.9,v/100+.08)+')');alphaVal.textContent=v+'%';try{localStorage.setItem('cubern-alpha',v)}catch(e){}}
   function setBg(id){
-    const b=BGS.find(x=>x.id===id)||BGS[0];
-    bgOpts.querySelectorAll('.bg-opt').forEach(o=>o.classList.toggle('on',o.dataset.id===id));
-    if(b.id==='default'){document.body.classList.remove('custom-bg');bgCustom.style.backgroundImage='';bgLayer.style.opacity='';localStorage.removeItem('cubern-bg')}
-    else{bgCustom.style.background=b.css;document.body.classList.add('custom-bg');bgLayer.style.opacity='.3';localStorage.setItem('cubern-bg',id)}
+    var b=BGS.filter(function(x){return x.id===id})[0]||BGS[0];
+    bgOpts.querySelectorAll('.bg-opt').forEach(function(o){o.classList.toggle('on',o.dataset.id===id)});
+    if(b.id==='default'){document.body.classList.remove('custom-bg');bgCustom.style.backgroundImage='';bgLayer.style.opacity='';try{localStorage.removeItem('cubern-bg')}catch(e){}}
+    else{bgCustom.style.background=b.css;document.body.classList.add('custom-bg');bgLayer.style.opacity='.3';try{localStorage.setItem('cubern-bg',id)}catch(e){}}
   }
-  BGS.forEach(b=>{const d=document.createElement('div');d.className='bg-opt';d.dataset.id=b.id;d.title=b.name;if(b.css)d.style.background=b.css;else d.style.background='linear-gradient(135deg,#1a2344,#0b1024)';d.innerHTML='<span>'+b.name+'</span>';d.addEventListener('click',()=>{setBg(b.id);toast('已切换：'+b.name)});bgOpts.appendChild(d)});
-  const savedBg=localStorage.getItem('cubern-bg');setBg(savedBg||'default');
-  const savedAlpha=localStorage.getItem('cubern-alpha');setAlpha(savedAlpha||58);
-  alphaRange.addEventListener('input',()=>setAlpha(alphaRange.value));
-  document.getElementById('bgApply').addEventListener('click',()=>{const u=bgUrl.value.trim();if(!u){toast('请先粘贴图片网址');return}bgCustom.style.background='url("'+u+'") center/cover no-repeat';document.body.classList.add('custom-bg');bgLayer.style.opacity='.3';localStorage.setItem('cubern-bg-url',u);bgOpts.querySelectorAll('.bg-opt').forEach(o=>o.classList.remove('on'));toast('自定义背景已应用 ✓')});
-  const savedUrl=localStorage.getItem('cubern-bg-url');if(savedUrl&&!savedBg){bgUrl.value=savedUrl;bgCustom.style.background='url("'+savedUrl+'") center/cover no-repeat';document.body.classList.add('custom-bg');bgLayer.style.opacity='.3'}
-  document.getElementById('bgReset').addEventListener('click',()=>{['cubern-bg','cubern-bg-url','cubern-alpha'].forEach(k=>localStorage.removeItem(k));bgUrl.value='';setBg('default');setAlpha(58);toast('已恢复默认外观')});
-
-  /* 面板开关 */
-  const bgFab=document.getElementById('bgFab'),bgPop=document.getElementById('bgPop');
-  bgFab.addEventListener('click',e=>{e.stopPropagation();bgPop.classList.toggle('show')});
-  document.addEventListener('click',e=>{if(!bgPop.contains(e.target)&&e.target!==bgFab)bgPop.classList.remove('show')});
+  BGS.forEach(function(b){var d=document.createElement('div');d.className='bg-opt';d.dataset.id=b.id;d.title=b.name;d.style.background=b.css||'linear-gradient(135deg,#1a2344,#0b1024)';d.innerHTML='<span>'+b.name+'</span>';d.addEventListener('click',function(){setBg(b.id);toast('已切换：'+b.name)});bgOpts.appendChild(d)});
+  var sb=null,sa=null,su=null;try{sb=localStorage.getItem('cubern-bg');sa=localStorage.getItem('cubern-alpha');su=localStorage.getItem('cubern-bg-url')}catch(e){}
+  setBg(sb||'default');setAlpha(sa||58);
+  alphaRange.addEventListener('input',function(){setAlpha(alphaRange.value)});
+  document.getElementById('bgApply').addEventListener('click',function(){var u=bgUrl.value.trim();if(!u){toast('请先粘贴图片网址');return}bgCustom.style.background='url("'+u+'") center/cover no-repeat';document.body.classList.add('custom-bg');bgLayer.style.opacity='.3';try{localStorage.setItem('cubern-bg-url',u)}catch(e){};bgOpts.querySelectorAll('.bg-opt').forEach(function(o){o.classList.remove('on')});toast('自定义背景已应用 ✓')});
+  if(su&&!sb){bgUrl.value=su;bgCustom.style.background='url("'+su+'") center/cover no-repeat';document.body.classList.add('custom-bg');bgLayer.style.opacity='.3'}
+  document.getElementById('bgReset').addEventListener('click',function(){['cubern-bg','cubern-bg-url','cubern-alpha'].forEach(function(k){try{localStorage.removeItem(k)}catch(e){}});bgUrl.value='';setBg('default');setAlpha(58);toast('已恢复默认外观')});
+  var bgFab=document.getElementById('bgFab'),bgPop=document.getElementById('bgPop');
+  bgFab.addEventListener('click',function(e){e.stopPropagation();bgPop.classList.toggle('show')});
+  document.addEventListener('click',function(e){if(!bgPop.contains(e.target)&&e.target!==bgFab)bgPop.classList.remove('show')});
 })();
 </script>
 </body>
