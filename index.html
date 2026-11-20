@@ -3,65 +3,63 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Cubern Launcher — 手机上自由启动 Minecraft Java 版</title>
-<meta name="description" content="Cubern Launcher 是基于 Zalith Launcher 1 二改开发的 Minecraft Java 版 Android 启动器。陶瓦联机、MIUIX 界面、AI 版本助手、Vulkan 渲染，GPLv3 开源，当前均为测试版。">
+<title>Cubern Launcher 官网 — 在手机上自由启动 Minecraft Java 版</title>
+<meta name="description" content="Cubern Launcher 基于 Zalith Launcher 1 二改开发的 Minecraft Java 版 Android 启动器。陶瓦联机、MIUIX Compose、AI 版本助手、Vulkan 渲染，GPLv3 开源。">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⛏️</text></svg>">
 <style>
-:root{--bg:#080c18;--bg2:#0d1428;--panel:rgba(20,28,54,.58);--line:rgba(150,180,255,.14);--line-hi:rgba(150,180,255,.36);--txt:#eef2ff;--mut:#98a4d0;--c1:#7c8cff;--c2:#00e5b0;--c3:#ff6ec7;--gold:#ffcf5c;--warn:#ff9f43;--glass:blur(22px) saturate(160%);--sh:0 16px 44px rgba(0,0,0,.35)}
+:root{--bg:#080c18;--bg2:#0d1428;--panel:rgba(20,28,54,.58);--line:rgba(150,180,255,.14);--line-hi:rgba(150,180,255,.36);--txt:#eef2ff;--mut:#98a4d0;--c1:#7c8cff;--c2:#00e5b0;--c3:#ff6ec7;--gold:#ffcf5c;--warn:#ff9f43;--glass:blur(22px) saturate(160%);--sh:0 16px 44px rgba(0,0,0,.35);--alpha:0.58}
 html[data-theme=light]{--bg:#eef2ff;--bg2:#e2e9ff;--panel:rgba(255,255,255,.66);--line:rgba(40,60,130,.13);--line-hi:rgba(60,90,200,.32);--txt:#182046;--mut:#5c6998;--c1:#4f5fe0;--c2:#00a882;--c3:#d64ba6;--gold:#c89100;--sh:0 16px 44px rgba(40,60,130,.12)}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--txt);line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden;padding-bottom:calc(72px + env(safe-area-inset-bottom));transition:background .4s,color .4s}
-a{color:inherit;text-decoration:none}
-svg{width:1em;height:1em;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;vertical-align:-.15em;flex:none}
-.glass{background:var(--panel);backdrop-filter:var(--glass);-webkit-backdrop-filter:var(--glass);border:1px solid var(--line)}
-.wrap{max-width:1140px;margin:0 auto;padding:0 20px}
-
-/* 动态背景 */
-.aurora{position:fixed;inset:0;z-index:-2;overflow:hidden;background:var(--bg)}
-.orb{position:absolute;border-radius:50%;filter:blur(100px);opacity:.45;will-change:transform}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;background:transparent;color:var(--txt);line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden;transition:color .4s;position:relative;min-height:100vh}
+/* 自定背景层 */
+#bgLayer{position:fixed;inset:0;z-index:-3;background:var(--bg);transition:background .4s}
+#bgLayer .orb{position:absolute;border-radius:50%;filter:blur(100px);opacity:.45;will-change:transform}
 .orb.a{width:52vw;height:52vw;min-width:380px;min-height:380px;background:radial-gradient(circle,var(--c1),transparent 68%);top:-16%;left:-12%;animation:f1 24s ease-in-out infinite}
 .orb.b{width:44vw;height:44vw;min-width:340px;min-height:340px;background:radial-gradient(circle,var(--c2),transparent 68%);bottom:-14%;right:-10%;animation:f2 28s ease-in-out infinite}
 .orb.c{width:40vw;height:40vw;min-width:300px;min-height:300px;background:radial-gradient(circle,var(--c3),transparent 70%);top:42%;left:42%;opacity:.24;animation:f3 32s ease-in-out infinite}
 @keyframes f1{0%,100%{transform:translate(0,0)}33%{transform:translate(8vw,6vh)}66%{transform:translate(-5vw,10vh)}}
 @keyframes f2{0%,100%{transform:translate(0,0)}40%{transform:translate(-10vw,-8vh)}70%{transform:translate(4vw,5vh)}}
 @keyframes f3{0%,100%{transform:translate(0,0)}50%{transform:translate(-8vw,-10vh)}}
-.grid-bg{position:fixed;inset:0;z-index:-1;pointer-events:none;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:52px 52px;mask-image:radial-gradient(ellipse at 50% 15%,#000,transparent 85%);opacity:.35}
+#bgCustom{position:fixed;inset:0;z-index:-4;background-size:cover;background-position:center;background-repeat:no-repeat;opacity:0;transition:opacity .5s}
+body.custom-bg #bgCustom{opacity:1}
+body.custom-bg #bgLayer{opacity:.35}
+.grid-bg{position:fixed;inset:0;z-index:-2;pointer-events:none;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:52px 52px;mask-image:radial-gradient(ellipse at 50% 15%,#000,transparent 85%);opacity:.35}
+/* 自定义面板透明度：正文玻璃随 alpha 变化 */
+.glass{background:var(--panel);backdrop-filter:var(--glass);-webkit-backdrop-filter:var(--glass);border:1px solid var(--line)}
+.wrap{max-width:1140px;margin:0 auto;padding:0 20px}
+svg{width:1em;height:1em;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;vertical-align:-.15em;flex:none}
+a{color:inherit;text-decoration:none}
 
 /* 公告 */
-.notice{position:relative;overflow:hidden;background:linear-gradient(90deg,rgba(255,159,67,.16),rgba(255,207,92,.1),rgba(255,159,67,.16));border-bottom:1px solid rgba(255,159,67,.35)}
+.notice{position:relative;overflow:hidden;border-bottom:1px solid rgba(124,140,255,.3);background:linear-gradient(90deg,rgba(124,140,255,.18),rgba(0,229,176,.12),rgba(255,110,199,.16))}
 .notice-in{max-width:1140px;margin:0 auto;padding:10px 20px;display:flex;align-items:center;gap:11px;font-size:12.5px}
-.notice .pulse{width:8px;height:8px;border-radius:50%;background:var(--warn);box-shadow:0 0 12px var(--warn);flex:none;animation:np 1.6s infinite}
+.notice .pulse{width:8px;height:8px;border-radius:50%;background:var(--c2);box-shadow:0 0 12px var(--c2);flex:none;animation:np 1.6s infinite}
 @keyframes np{0%,100%{opacity:1}50%{opacity:.4}}
-.notice b{color:var(--warn)}.notice .txt{flex:1}
-.notice .txt a{color:var(--gold);text-decoration:underline;text-underline-offset:2px}
+.notice b{color:var(--c1)}.notice .txt{flex:1}
+.notice a{color:var(--c2);text-decoration:underline;text-underline-offset:2px}
 .notice .close{background:none;border:0;color:var(--mut);font-size:18px;cursor:pointer;line-height:1}
 
-/* 顶部小工具条（非导航，仅主题/仓库/下载） */
-.toolbar{position:sticky;top:0;z-index:50;background:rgba(8,12,24,.55);backdrop-filter:var(--glass);-webkit-backdrop-filter:var(--glass);border-bottom:1px solid var(--line)}
-html[data-theme=light] .toolbar{background:rgba(238,242,255,.6)}
+/* 顶栏 */
+.toolbar{position:sticky;top:0;z-index:50;background:rgba(8,12,24,.5);backdrop-filter:var(--glass);border-bottom:1px solid var(--line)}
+html[data-theme=light] .toolbar{background:rgba(238,242,255,.55)}
 .toolbar-in{max-width:1140px;margin:0 auto;padding:0 20px;height:56px;display:flex;align-items:center;justify-content:space-between}
 .brand{display:flex;align-items:center;gap:10px;font-weight:900;font-size:17px}
 .brand .logo{width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,var(--c1),var(--c2));display:grid;place-items:center;color:#fff;font-size:18px;box-shadow:0 4px 18px rgba(124,140,255,.5);animation:breathe 5s ease-in-out infinite}
 @keyframes breathe{0%,100%{transform:rotate(0) scale(1)}50%{transform:rotate(9deg) scale(1.08)}}
 .tools{display:flex;gap:8px;align-items:center}
-.icon-btn{width:36px;height:36px;border-radius:10px;border:1px solid var(--line);background:var(--panel);color:var(--txt);font-size:16px;cursor:pointer;display:grid;place-items:center;transition:.25s}
+.icon-btn{width:36px;height:36px;border-radius:10px;border:1px solid var(--line);background:var(--panel);color:var(--txt);cursor:pointer;display:grid;place-items:center;transition:.25s}
 .icon-btn svg{width:17px;height:17px}
 .icon-btn:hover{border-color:var(--c1);transform:translateY(-2px)}
 .btn-sm{padding:8px 15px;border-radius:10px;background:linear-gradient(135deg,var(--c1),#8a6cff);color:#fff;font-size:13px;font-weight:700;display:inline-flex;align-items:center;gap:6px;transition:.25s}
 .btn-sm:hover{transform:translateY(-2px)}
 
-/* 视图 */
-.view{display:none;animation:fade .35s}
-.view.on{display:block}
-@keyframes fade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
-
 /* Hero */
-header{padding:64px 0 46px}
+header{padding:60px 0 44px}
 .hero{display:grid;grid-template-columns:1.08fr .92fr;gap:40px;align-items:center}
 .tagline{display:inline-flex;align-items:center;gap:8px;padding:6px 14px;border-radius:999px;font-size:12px;color:var(--mut);width:fit-content;margin-bottom:20px}
 .tagline i{width:7px;height:7px;border-radius:50%;background:var(--c2);box-shadow:0 0 10px var(--c2)}
-.badge-beta{padding:3px 9px;border-radius:999px;font-size:11px;color:var(--warn);border:1px solid rgba(255,159,67,.4);background:rgba(255,159,67,.08);margin-left:4px}
+.ver-badge{padding:3px 9px;border-radius:999px;font-size:11px;color:var(--c1);border:1px solid rgba(124,140,255,.4);background:rgba(124,140,255,.1);margin-left:4px}
 .hero h1{font-size:clamp(32px,5vw,54px);line-height:1.14;font-weight:900;letter-spacing:-1.2px;margin-bottom:16px}
 .grad{background:linear-gradient(100deg,var(--c1),var(--c2),var(--c3),var(--c1));background-size:300% auto;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shine 7s linear infinite}
 @keyframes shine{to{background-position:300% center}}
@@ -76,10 +74,8 @@ header{padding:64px 0 46px}
 .btn.g{border-color:var(--line);background:var(--panel)}
 .btn.g:hover{border-color:var(--c1)}
 .hero-meta{display:flex;flex-wrap:wrap;gap:16px;font-size:12px;color:var(--mut)}
-
-/* 手机 mockup */
 .phone-stage{perspective:1100px;display:grid;place-items:center}
-.phone{width:248px;height:506px;border-radius:38px;background:linear-gradient(160deg,rgba(40,52,96,.9),rgba(14,20,40,.95));border:1px solid var(--line-hi);box-shadow:0 30px 70px rgba(0,0,0,.5),0 0 60px rgba(124,140,255,.2);position:relative;padding:12px;transform-style:preserve-3d;transition:transform .15s;will-change:transform}
+.phone{width:248px;height:506px;border-radius:38px;background:linear-gradient(160deg,rgba(40,52,96,.9),rgba(14,20,40,.95));border:1px solid var(--line-hi);box-shadow:0 30px 70px rgba(0,0,0,.5),0 0 60px rgba(124,140,255,.2);position:relative;padding:12px;transform-style:preserve-3d;transition:transform .15s}
 .phone::before{content:"";position:absolute;inset:-2px;border-radius:40px;background:linear-gradient(135deg,var(--c1),transparent 40%,var(--c2) 70%,transparent);z-index:-1;filter:blur(9px);opacity:.6;animation:hue 6s linear infinite}
 @keyframes hue{to{filter:blur(9px) hue-rotate(360deg)}}
 .phone .notch{position:absolute;top:9px;left:50%;transform:translateX(-50%);width:86px;height:19px;background:#050912;border-radius:0 0 14px 14px;z-index:3}
@@ -93,8 +89,6 @@ header{padding:64px 0 46px}
 .ps .beta{font-size:8px;color:var(--warn);text-align:center;border:1px dashed rgba(255,159,67,.4);border-radius:8px;padding:4px}
 .ps .nav{margin-top:auto;display:flex;justify-content:space-around;font-size:8px;color:var(--mut);border-top:1px solid var(--line);padding-top:8px}
 .ps .nav b{color:var(--c2)}
-
-/* 数据条 */
 .metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:8px 0 0}
 .metric{border-radius:16px;padding:20px;text-align:center;opacity:0;transform:translateY(18px);transition:.7s}
 .metric.in{opacity:1;transform:none}
@@ -110,7 +104,20 @@ section{padding:52px 0}
 .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
 .reveal.in{opacity:1;transform:none}
 
-/* Bento 功能卡 */
+/* 更新公告卡 */
+.update-box{max-width:900px;margin:0 auto}
+.update-card{border-radius:18px;padding:26px;margin-bottom:14px;position:relative;overflow:hidden}
+.update-card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:linear-gradient(var(--c1),var(--c2))}
+.update-top{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:12px}
+.update-top .v{font-size:17px;font-weight:900;color:var(--c1)}
+.update-top .tag{font-size:10px;padding:3px 9px;border-radius:999px;border:1px solid rgba(255,159,67,.4);color:var(--warn);background:rgba(255,159,67,.08)}
+.update-top .tag.stable{color:var(--c2);border-color:rgba(0,229,176,.4);background:rgba(0,229,176,.08)}
+.update-top .date{font-size:11px;color:var(--mut);margin-left:auto}
+.update-card ul{list-style:none;padding:0}
+.update-card li{font-size:13.5px;color:var(--mut);padding:5px 0 5px 22px;position:relative}
+.update-card li::before{content:"";position:absolute;left:4px;top:13px;width:6px;height:6px;border-radius:50%;background:var(--c2)}
+
+/* Bento */
 .bento{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 .card{border-radius:18px;padding:22px;position:relative;overflow:hidden;transition:transform .3s,border-color .3s,box-shadow .3s}
 .card:hover{transform:translateY(-6px);border-color:var(--line-hi);box-shadow:var(--sh)}
@@ -123,34 +130,41 @@ section{padding:52px 0}
 .card.wide{grid-column:span 2}
 
 /* 下载 */
-.dl-list{display:flex;flex-direction:column;gap:11px}
-.dl-row{display:flex;align-items:center;gap:15px;border-radius:16px;padding:16px 18px;transition:.25s}
+.dl-list{display:flex;flex-direction:column;gap:11px;max-width:820px;margin:0 auto}
+.dl-row{display:flex;align-items:center;gap:15px;border-radius:16px;padding:18px 20px;transition:.25s}
 .dl-row:hover{border-color:var(--c1);transform:translateX(4px)}
-.dl-row .di{width:44px;height:44px;border-radius:12px;background:rgba(124,140,255,.14);color:var(--c1);display:grid;place-items:center;flex:none}
-.dl-row .di svg{width:22px;height:22px}
-.dl-row .dn{flex:1;min-width:0}.dl-row .dn b{font-size:15px;display:block}.dl-row .dn span{font-size:12px;color:var(--mut)}
-.dl-row .rec{font-size:11px;color:var(--c2);border:1px solid rgba(0,229,176,.32);border-radius:999px;padding:3px 9px}
-.dl-row a{padding:9px 17px;border-radius:10px;background:linear-gradient(135deg,var(--c1),#8a6cff);color:#fff;font-size:13px;font-weight:700;transition:.25s;flex:none;display:inline-flex;align-items:center;gap:6px}
+.dl-row .di{width:48px;height:48px;border-radius:13px;background:linear-gradient(135deg,var(--c1),var(--c2));display:grid;place-items:center;color:#fff;flex:none}
+.dl-row .di svg{width:24px;height:24px}
+.dl-row .dn{flex:1;min-width:0}.dl-row .dn b{font-size:16px;display:block}.dl-row .dn span{font-size:12px;color:var(--mut)}
+.dl-row a{padding:10px 20px;border-radius:10px;background:linear-gradient(135deg,var(--c1),#8a6cff);color:#fff;font-size:13px;font-weight:700;transition:.25s;flex:none;display:inline-flex;align-items:center;gap:6px}
 .dl-row a svg{width:14px;height:14px}
 .dl-row a:hover{transform:translateY(-2px)}
-.dl-notice{border-radius:14px;padding:14px 16px;margin-bottom:18px;font-size:13px;display:flex;gap:11px;align-items:flex-start;border-color:rgba(255,159,67,.35);background:rgba(255,159,67,.08)}
-.dl-notice svg{width:18px;height:18px;color:var(--warn)}
 
-/* 源码区 */
-.two-col{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-.code{border-radius:16px;padding:20px;font-family:"SF Mono",Consolas,monospace;font-size:12.5px;line-height:1.9;overflow-x:auto;position:relative}
-.code .c{color:#7d8ab5}.code .k{color:var(--c1)}.code .s{color:var(--gold)}
-.copyb{position:absolute;top:11px;right:11px;font-size:11px;padding:5px 10px;border-radius:8px;border:1px solid var(--line);background:var(--panel);color:var(--mut);cursor:pointer}
-.chk{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:11px}
-.chk li{font-size:13px;display:flex;gap:9px}.chk li svg{width:15px;height:15px;color:var(--c2);margin-top:3px}
-.about-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-.person{border-radius:16px;padding:20px;text-align:center;transition:transform .3s}
-.person:hover{transform:translateY(-4px)}
-.person .av{width:50px;height:50px;border-radius:50%;background:linear-gradient(135deg,var(--c1),var(--c2));margin:0 auto 11px;display:grid;place-items:center;font-size:20px;font-weight:900;color:#fff}
-.person h4{font-size:15px;margin-bottom:4px}.person p{font-size:12px;color:var(--mut)}
+/* 背景设置面板 */
+.bg-panel{position:fixed;right:18px;bottom:18px;z-index:70}
+.bg-fab{width:48px;height:48px;border-radius:14px;border:1px solid var(--line);background:var(--panel);backdrop-filter:var(--glass);color:var(--txt);cursor:pointer;display:grid;place-items:center;box-shadow:0 10px 30px rgba(0,0,0,.3);transition:.3s}
+.bg-fab svg{width:20px;height:20px}
+.bg-fab:hover{border-color:var(--c1);transform:translateY(-3px) rotate(20deg)}
+.bg-pop{position:absolute;right:0;bottom:60px;width:300px;max-width:calc(100vw - 36px);border-radius:18px;padding:18px;opacity:0;pointer-events:none;transform:translateY(12px);transition:.3s}
+.bg-pop.show{opacity:1;pointer-events:auto;transform:none}
+.bg-pop h4{font-size:15px;margin-bottom:4px;display:flex;align-items:center;gap:7px}
+.bg-pop h4 svg{width:16px;height:16px;color:var(--c1)}
+.bg-pop .sub{font-size:11px;color:var(--mut);margin-bottom:14px}
+.bg-opts{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
+.bg-opt{width:52px;height:52px;border-radius:12px;border:2px solid transparent;cursor:pointer;position:relative;overflow:hidden;transition:.2s}
+.bg-opt:hover{transform:scale(1.06)}
+.bg-opt.on{border-color:var(--c1);box-shadow:0 0 0 2px rgba(124,140,255,.25)}
+.bg-opt span{position:absolute;bottom:2px;left:0;right:0;text-align:center;font-size:8px;color:#fff;text-shadow:0 1px 3px #000}
+.bg-slider{display:flex;align-items:center;gap:10px;font-size:12px;color:var(--mut);margin-bottom:10px}
+.bg-slider input{flex:1;accent-color:var(--c1)}
+.bg-url{display:flex;gap:7px}
+.bg-url input{flex:1;min-width:0;padding:9px 11px;border-radius:10px;border:1px solid var(--line);background:rgba(255,255,255,.05);color:var(--txt);font-size:12px;outline:none}
+.bg-url input:focus{border-color:var(--c1)}
+.bg-url button{padding:9px 13px;border-radius:10px;background:var(--c1);color:#fff;border:0;font-size:12px;font-weight:700;cursor:pointer}
+.bg-reset{margin-top:10px;width:100%;padding:8px;border-radius:9px;border:1px solid var(--line);background:none;color:var(--mut);font-size:11px;cursor:pointer}
 
 /* 页脚 */
-footer{border-top:1px solid var(--line);padding:36px 0 24px}
+footer{border-top:1px solid var(--line);padding:36px 0 24px;background:rgba(8,12,24,.3)}
 .f-top{display:flex;justify-content:space-between;flex-wrap:wrap;gap:20px;padding-bottom:22px;border-bottom:1px solid var(--line)}
 .f-top .desc{color:var(--mut);font-size:13px;max-width:340px;margin-top:9px}
 .f-links{display:flex;gap:44px}
@@ -159,138 +173,18 @@ footer{border-top:1px solid var(--line);padding:36px 0 24px}
 .f-links a:hover{color:var(--c1);transform:translateX(2px)}
 .f-bot{text-align:center;color:var(--mut);font-size:11px;padding-top:18px;line-height:1.9}
 .f-bot .disc{max-width:720px;margin:0 auto 8px}
-
-/* ===== 底部三导航 ===== */
-.bottom-nav{position:fixed;left:0;right:0;bottom:0;z-index:80;display:flex;justify-content:space-around;align-items:center;height:calc(62px + env(safe-area-inset-bottom));padding-bottom:env(safe-area-inset-bottom);background:rgba(8,12,24,.94);backdrop-filter:var(--glass);-webkit-backdrop-filter:var(--glass);border-top:1px solid var(--line)}
-html[data-theme=light] .bottom-nav{background:rgba(238,242,255,.96)}
-.bottom-nav a{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;color:var(--mut);font-size:11px;cursor:pointer;transition:.25s;padding:6px 0}
-.bottom-nav a .ic{width:22px;height:22px;transition:.25s}
-.bottom-nav a .ic svg{width:22px;height:22px}
-.bottom-nav a.on{color:var(--c2)}
-.bottom-nav a.on .ic{transform:translateY(-2px) scale(1.12)}
-
-/* 功能区 */
-.app-panel{max-width:1140px;margin:0 auto;padding:26px 20px 40px}
-.app-panel .ph{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px;margin-bottom:20px}
-.app-panel .ph h2{font-size:23px;font-weight:900;display:flex;align-items:center;gap:9px}
-.app-panel .ph h2 svg{width:23px;height:23px;color:var(--c1)}
-.app-panel .ph .sub{font-size:13px;color:var(--mut);margin-top:3px}
-.mode-tag{font-size:11px;padding:5px 11px;border-radius:999px;border:1px solid var(--line);color:var(--mut)}
-.mode-tag.live{color:var(--c2);border-color:rgba(0,229,176,.4)}
-.mode-tag.demo{color:var(--warn);border-color:rgba(255,159,67,.4)}
-
-.login-gate{border-radius:20px;padding:44px 24px;text-align:center;max-width:460px;margin:0 auto}
-.login-gate .gate-ic{width:64px;height:64px;border-radius:18px;background:var(--panel);display:grid;place-items:center;margin:0 auto 18px;color:var(--c1)}
-.login-gate .gate-ic svg{width:34px;height:34px}
-.login-gate h3{font-size:20px;margin-bottom:8px}
-.login-gate p{font-size:13px;color:var(--mut);margin-bottom:22px;line-height:1.7}
-.login-btn{width:100%;max-width:300px;padding:13px;border-radius:12px;background:#24292f;color:#fff;border:0;font-size:14px;font-weight:800;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:8px;transition:.25s}
-.login-btn svg{width:18px;height:18px}
-.login-btn:hover{transform:translateY(-2px);opacity:.9}
-.user-chip{display:flex;align-items:center;gap:12px;padding:14px;border-radius:14px;max-width:460px;margin:0 auto 20px}
-.user-chip img{width:46px;height:46px;border-radius:50%;object-fit:cover;background:var(--line)}
-.user-chip .un{flex:1;min-width:0}.user-chip .un b{display:block;font-size:14px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.user-chip .un span{font-size:12px;color:var(--mut)}
-.user-chip button{padding:7px 12px;border-radius:9px;border:1px solid var(--line);background:none;color:var(--mut);font-size:12px;cursor:pointer;flex:none}
-
-.chat-box{border-radius:18px;overflow:hidden;display:flex;flex-direction:column;height:min(560px,68vh)}
-.chat-head{padding:13px 17px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:9px;font-weight:800}
-.chat-head svg{width:17px;height:17px;color:var(--c2)}
-.chat-head .cnt{margin-left:auto;font-size:12px;color:var(--mut);font-weight:400}
-.chat-list{flex:1;overflow-y:auto;padding:17px;display:flex;flex-direction:column;gap:13px}
-.chat-msg{display:flex;gap:11px;align-items:flex-start}
-.chat-msg .av{width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,var(--c1),var(--c2));display:grid;place-items:center;font-size:13px;font-weight:800;flex:none;color:#fff}
-.chat-msg .meta b{font-size:13px}.chat-msg .meta .t{font-size:10px;color:var(--mut);margin-left:7px}
-.chat-msg .meta p{font-size:13px;margin-top:3px;word-break:break-word}
-.chat-empty{margin:auto;color:var(--mut);font-size:13px;text-align:center}
-.chat-input{padding:13px;border-top:1px solid var(--line);display:flex;gap:9px}
-.chat-input input{flex:1;padding:11px 13px;border-radius:11px;border:1px solid var(--line);background:rgba(255,255,255,.04);color:var(--txt);font-size:14px;outline:none}
-.chat-input input:focus{border-color:var(--c1)}
-.chat-input button{padding:11px 18px;border-radius:11px;background:linear-gradient(135deg,var(--c1),#8a6cff);color:#fff;border:0;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:6px}
-.chat-input button svg{width:15px;height:15px}
-
-.repo-card{border-radius:16px;padding:19px;margin-bottom:18px;max-width:720px}
-.repo-card h4{font-size:15px;margin-bottom:14px;display:flex;align-items:center;gap:8px}
-.repo-card h4 svg{width:17px;height:17px;color:var(--c1)}
-.repo-stat{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
-.repo-stat .s{text-align:center;padding:12px 6px;border-radius:12px;background:rgba(124,140,255,.08)}
-.repo-stat .s b{display:block;font-size:20px;font-weight:900;color:var(--c1)}
-.repo-stat .s span{font-size:11px;color:var(--mut)}
-.repo-desc{font-size:12px;color:var(--mut);margin-top:12px;line-height:1.6}
-.sync-btn{margin-top:14px;padding:10px 18px;border-radius:11px;background:linear-gradient(135deg,var(--c1),#8a6cff);color:#fff;border:0;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;gap:7px}
-.sync-btn svg{width:15px;height:15px}
-
-.pet-stage{border-radius:22px;padding:28px 20px;max-width:560px;margin:0 auto;position:relative;overflow:hidden;text-align:center}
-.pet-stage::before{content:"";position:absolute;width:280px;height:280px;border-radius:50%;background:radial-gradient(circle,rgba(124,140,255,.22),transparent 65%);top:-60px;left:50%;transform:translateX(-50%)}
-.pet-creature{font-size:76px;line-height:1;margin:10px 0 13px;display:inline-block;animation:petfloat 3s ease-in-out infinite;filter:drop-shadow(0 10px 20px rgba(0,0,0,.3));position:relative}
-@keyframes petfloat{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-12px) rotate(3deg)}}
-.pet-name{font-size:20px;font-weight:900;margin-bottom:4px;position:relative}
-.pet-lv{font-size:12px;color:var(--c2);margin-bottom:18px;position:relative}
-.pet-bars{display:flex;flex-direction:column;gap:11px;max-width:340px;margin:0 auto 20px;text-align:left;position:relative}
-.pet-bar .lb{display:flex;justify-content:space-between;font-size:12px;color:var(--mut);margin-bottom:5px}
-.pet-bar .track{height:9px;border-radius:9px;background:rgba(150,180,255,.16);overflow:hidden}
-.pet-bar .fill{height:100%;border-radius:9px;transition:width .5s}
-.pet-actions{display:flex;gap:9px;justify-content:center;flex-wrap:wrap;position:relative}
-.pet-actions button{padding:10px 16px;border-radius:12px;border:1px solid var(--line);background:var(--panel);color:var(--txt);font-size:13px;font-weight:700;cursor:pointer;transition:.25s;display:inline-flex;align-items:center;gap:6px}
-.pet-actions button svg{width:15px;height:15px}
-.pet-actions button:hover:not(:disabled){border-color:var(--c1);transform:translateY(-2px)}
-.pet-actions button:disabled{opacity:.45;cursor:not-allowed}
-.pet-msg{font-size:12px;color:var(--mut);min-height:20px;margin-top:14px;position:relative}
-
-/* 用户协议弹窗 */
-.agreement{position:fixed;inset:0;z-index:200;display:none;align-items:center;justify-content:center;padding:18px;background:rgba(3,6,16,.72);backdrop-filter:blur(6px)}
-.agreement.show{display:flex;animation:fade .25s}
-.agreement-box{width:100%;max-width:540px;max-height:86vh;overflow-y:auto;border-radius:20px;padding:26px;background:var(--bg2);border:1px solid var(--line-hi);box-shadow:0 24px 70px rgba(0,0,0,.55)}
-.agreement-box .ag-ic{width:48px;height:48px;border-radius:14px;background:rgba(255,159,67,.14);border:1px solid rgba(255,159,67,.35);display:grid;place-items:center;color:var(--warn);margin-bottom:14px}
-.agreement-box .ag-ic svg{width:24px;height:24px}
-.agreement-box h3{font-size:19px;font-weight:900;margin-bottom:6px}
-.agreement-box .ag-sub{font-size:12px;color:var(--mut);margin-bottom:16px}
-.agreement-box .ag-body{font-size:13px;color:var(--mut);line-height:1.85;max-height:42vh;overflow-y:auto;padding-right:8px;margin-bottom:16px}
-.agreement-box .ag-body h4{color:var(--txt);font-size:14px;margin:14px 0 5px}
-.agreement-box .ag-body h4:first-child{margin-top:0}
-.agreement-box .ag-body b{color:var(--gold)}
-.agreement-box .ag-check{display:flex;align-items:flex-start;gap:10px;padding:12px;border-radius:12px;background:rgba(124,140,255,.08);border:1px solid var(--line);cursor:pointer;margin-bottom:15px;font-size:13px}
-.agreement-box .ag-check input{margin-top:3px;width:17px;height:17px;accent-color:var(--c1);flex:none}
-.agreement-box .ag-btns{display:flex;gap:10px}
-.agreement-box .ag-btns .btn{flex:1;justify-content:center}
-.agreement-box .btn.disabled{opacity:.4;pointer-events:none}
-
-/* 地址面板 */
-.addr-fab{position:fixed;right:18px;bottom:calc(78px + env(safe-area-inset-bottom));width:44px;height:44px;border-radius:13px;border:1px solid var(--line);background:var(--panel);backdrop-filter:var(--glass);color:var(--txt);cursor:pointer;z-index:70;display:grid;place-items:center;transition:.3s;box-shadow:0 10px 30px rgba(0,0,0,.3)}
-.addr-fab svg{width:19px;height:19px}
-.addr-fab:hover{border-color:var(--c1);transform:translateY(-3px)}
-.addr-panel{position:fixed;right:18px;bottom:calc(132px + env(safe-area-inset-bottom));width:320px;max-width:calc(100vw - 36px);border-radius:18px;padding:17px;z-index:71;opacity:0;pointer-events:none;transform:translateY(12px);transition:.3s}
-.addr-panel.show{opacity:1;pointer-events:auto;transform:none}
-.addr-panel h4{font-size:15px;margin-bottom:5px;display:flex;align-items:center;gap:7px}
-.addr-panel h4 svg{width:16px;height:16px;color:var(--c1)}
-.addr-panel .hint{font-size:12px;color:var(--mut);margin-bottom:12px;line-height:1.5}
-.addr-item{display:flex;align-items:center;gap:10px;padding:11px;border-radius:12px;border:1px solid rgba(0,229,176,.35);background:rgba(0,229,176,.06);cursor:pointer}
-.addr-item .ic{width:33px;height:33px;border-radius:9px;background:rgba(124,140,255,.15);display:grid;place-items:center;color:var(--c1);flex:none}
-.addr-item .ic svg{width:17px;height:17px}
-.addr-item .info{flex:1;min-width:0}.addr-item .info b{font-size:13px;display:block}.addr-item .info code{font-size:11px;color:var(--mut);display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.addr-item .badge{font-size:10px;color:var(--c2);border:1px solid rgba(0,229,176,.35);border-radius:999px;padding:2px 7px;flex:none}
-.toast{position:fixed;left:50%;bottom:calc(84px + env(safe-area-inset-bottom));transform:translate(-50%,20px);padding:11px 20px;border-radius:11px;background:rgba(20,28,54,.96);border:1px solid var(--line-hi);font-size:13px;z-index:100;opacity:0;pointer-events:none;transition:.3s;max-width:88vw;text-align:center}
+.toast{position:fixed;left:50%;bottom:28px;transform:translate(-50%,20px);padding:11px 20px;border-radius:11px;background:rgba(20,28,54,.96);border:1px solid var(--line-hi);font-size:13px;z-index:100;opacity:0;pointer-events:none;transition:.3s;max-width:88vw;text-align:center}
 .toast.show{opacity:1;transform:translate(-50%,0)}
-
-@media(max-width:900px){
-  header{padding-top:44px}
-  .hero{grid-template-columns:1fr;text-align:center}
-  .hero .lead{margin:0 auto}.btn-row,.hero-meta,.tagline{justify-content:center;margin-left:auto;margin-right:auto}
-  .phone-stage{display:none}
-  .bento{grid-template-columns:1fr 1fr}.card.wide{grid-column:span 2}
-  .two-col,.metrics,.about-grid,.chk{grid-template-columns:1fr}
-}
-@media(max-width:560px){.bento{grid-template-columns:1fr}.card.wide{grid-column:span 1}.f-links{gap:24px}.dl-row{flex-wrap:wrap}.dl-row a{width:100%;justify-content:center}}
+@media(max-width:900px){header{padding-top:44px}.hero{grid-template-columns:1fr;text-align:center}.hero .lead{margin:0 auto}.btn-row,.hero-meta,.tagline{justify-content:center;margin-left:auto;margin-right:auto}.phone-stage{display:none}.bento{grid-template-columns:1fr 1fr}.card.wide{grid-column:span 2}.metrics,.two-col,.about-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.bento,.metrics,.about-grid{grid-template-columns:1fr}.card.wide{grid-column:span 1}.f-links{gap:24px}.dl-row{flex-wrap:wrap}.dl-row a{width:100%;justify-content:center}}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal,.metric{opacity:1;transform:none}}
-/* 性能降级 */
-@media(max-width:900px){:root{--glass:none}.glass,.addr-panel,.agreement{background:rgba(16,23,44,.94)}html[data-theme=light] .glass,html[data-theme=light] .addr-panel,html[data-theme=light] .agreement{background:rgba(255,255,255,.95)}.orb{filter:blur(60px);opacity:.3}}
 section,.metric,.card{content-visibility:auto;contain-intrinsic-size:auto 400px}
 </style>
 </head>
 <body>
-<div class="aurora"><span class="orb a"></span><span class="orb b"></span><span class="orb c"></span></div>
+<div id="bgCustom"></div>
+<div id="bgLayer"><span class="orb a"></span><span class="orb b"></span><span class="orb c"></span></div>
 <div class="grid-bg"></div>
-
-<!-- SVG 图标库 -->
 <svg style="display:none" xmlns="http://www.w3.org/2000/svg">
 <symbol id="i-home" viewBox="0 0 24 24"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/><path d="M9 21v-7h6v7"/></symbol>
 <symbol id="i-chat" viewBox="0 0 24 24"><path d="M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z"/></symbol>
@@ -321,48 +215,40 @@ section,.metric,.card{content-visibility:auto;contain-intrinsic-size:auto 400px}
 <symbol id="i-doc" viewBox="0 0 24 24"><path d="M6 2h8l5 5v15H6z"/><path d="M14 2v5h5M9 12h7M9 16h7"/></symbol>
 </svg>
 
-<!-- 公告 -->
 <div class="notice" id="notice">
-  <div class="notice-in">
-    <span class="pulse"></span>
-    <span class="txt"><b>公告：</b>由于 1.0.2 版本尚未完成，当前所有版本均为<b>测试版（Pre-release）</b>，可能存在未完善功能。欢迎试用并 <a href="https://github.com/1953187487/CubernLauncher/issues" target="_blank" rel="noopener">提交 Issue</a>。</span>
-    <button class="close" id="noticeClose" title="关闭">×</button>
-  </div>
+  <div class="notice-in"><span class="pulse"></span><span class="txt"><b>更新公告：</b><b>v1.0.3</b> 已发布（Pre-release），官网同步升级到 <b>v1.3</b>。新增透明玻璃效果与自定义背景，移除登录与宠物系统。欢迎 <a href="https://github.com/1953187487/CubernLauncher/issues" target="_blank" rel="noopener">反馈 Issue</a>。</span><button class="close" id="noticeClose">×</button></div>
 </div>
 
-<!-- 顶部工具条（非导航） -->
 <div class="toolbar">
   <div class="toolbar-in">
-    <a class="brand" href="#"><span class="logo"><svg><use href="#i-box"/></svg></span> Cubern Launcher</a>
+    <a class="brand" href="#top"><span class="logo"><svg><use href="#i-box"/></svg></span> Cubern Launcher</a>
     <div class="tools">
       <button class="icon-btn" id="themeBtn" title="切换主题"><svg><use href="#i-moon"/></svg></button>
       <a class="icon-btn" href="https://github.com/1953187487/CubernLauncher" target="_blank" rel="noopener" title="GitHub"><svg><use href="#i-github"/></svg></a>
-      <a href="#download" class="btn-sm"><svg><use href="#i-down"/></svg> 下载</a>
+      <a href="#download" class="btn-sm"><svg><use href="#i-down"/></svg>下载</a>
     </div>
   </div>
 </div>
 
-<!-- ========== 首页 ========== -->
-<div id="view-home" class="view on">
-<header>
+<header id="top">
   <div class="wrap">
     <div class="hero">
       <div>
-        <span class="tagline glass"><i></i> GPLv3 开源 · 完全免费 <span class="badge-beta">测试版</span></span>
+        <span class="tagline glass"><i></i> GPLv3 开源 · 完全免费 <span class="ver-badge">官网 v1.3 · 协议 v1.0</span></span>
         <h1>在手机上，<br><span class="grad">自由启动 Minecraft</span><br>Java 版</h1>
         <p class="lead">基于 Zalith Launcher 1 二改开发的 Android 启动器。陶瓦联机、MIUIX Compose 界面、AI 版本助手、Java 运行时自动管理与 Vulkan 渲染，一手掌握。</p>
         <div class="btn-row">
-          <a href="#download" class="btn p"><svg><use href="#i-down"/></svg> 下载测试版</a>
-          <a href="https://github.com/1953187487/CubernLauncher" target="_blank" rel="noopener" class="btn g"><svg><use href="#i-star"/></svg> GitHub 仓库</a>
+          <a href="#download" class="btn p"><svg><use href="#i-down"/></svg>下载 v1.0.3</a>
+          <a href="https://github.com/1953187487/CubernLauncher" target="_blank" rel="noopener" class="btn g"><svg><use href="#i-star"/></svg>GitHub 仓库</a>
         </div>
-        <div class="hero-meta"><span>◈ Android 8.0+</span><span>◈ Kotlin / Compose</span><span>◈ 四种 ABI</span><span>◈ 开源可审计</span></div>
+        <div class="hero-meta"><span>◈ Android 8.0+</span><span>◈ Kotlin / Compose</span><span>◈ 陶瓦联机</span><span>◈ 开源可审计</span></div>
       </div>
       <div class="phone-stage">
         <div class="phone" id="phone">
           <div class="notch"></div>
           <div class="ps">
             <div class="bar"><span>Cubern Launcher</span><span>▮▮▮</span></div>
-            <div class="cd"><b>当前版本</b>1.0.2 · Fabric · Java 21</div>
+            <div class="cd"><b>当前版本</b>1.0.3 · Fabric · Java 21</div>
             <div class="play">▶ 启动游戏</div>
             <div class="row"><div class="cd">版本管理</div><div class="cd">模组管理</div></div>
             <div class="beta">⚠ 当前版本为测试版</div>
@@ -374,77 +260,83 @@ section,.metric,.card{content-visibility:auto;contain-intrinsic-size:auto 400px}
   </div>
 </header>
 
-<div class="wrap">
-  <div class="metrics">
-    <div class="metric glass"><div class="n">4</div><div class="l">ABI 架构</div></div>
-    <div class="metric glass"><div class="n">26.2+</div><div class="l">运行环境</div></div>
-    <div class="metric glass"><div class="n">4 种</div><div class="l">渲染模式</div></div>
-    <div class="metric glass"><div class="n">GPLv3</div><div class="l">开源协议</div></div>
-  </div>
-</div>
+<div class="wrap"><div class="metrics">
+  <div class="metric glass"><div class="n">1.0.3</div><div class="l">最新版本</div></div>
+  <div class="metric glass"><div class="n">26.2+</div><div class="l">运行环境</div></div>
+  <div class="metric glass"><div class="n">4 种</div><div class="l">渲染模式</div></div>
+  <div class="metric glass"><div class="n">GPLv3</div><div class="l">开源协议</div></div>
+</div></div>
 
-<section id="features">
+<section id="updates">
   <div class="wrap">
-    <div class="sec-head reveal"><div class="eyebrow">Features</div><h2>为手机端而生的启动体验</h2><p>从联机到渲染，从界面到运行时，每一项都为了让 Java 版在 Android 上跑得更顺、更自由。</p></div>
-    <div class="bento">
-      <div class="card glass wide reveal"><div class="ci"><svg><use href="#i-globe"/></svg></div><h3>陶瓦联机完整移植</h3><p>移植 Zalith Launcher 2 的 Terracotta + EasyTier 实现，房主/房客双模式、房间码校验、VPN 隧道与节点自选。</p><span class="ct">Terracotta · EasyTier</span></div>
-      <div class="card glass reveal"><div class="ci"><svg><use href="#i-palette"/></svg></div><h3>MIUIX Compose 界面</h3><p>还原经典双栏布局，呼吸缩放、旋转、渐变光晕的启动动画。</p><span class="ct">MIUIX</span></div>
-      <div class="card glass reveal"><div class="ci"><svg><use href="#i-bot"/></svg></div><h3>AI 版本助手</h3><p>离线版本体检与运行时匹配校验，支持自备 API Key 问答。</p><span class="ct">离线体检</span></div>
-      <div class="card glass reveal"><div class="ci"><svg><use href="#i-coffee"/></svg></div><h3>Java 运行时管理</h3><p>语义比较版本、按需注入兼容运行时、架构与完整性校验。</p><span class="ct">按需安装</span></div>
-      <div class="card glass reveal"><div class="ci"><svg><use href="#i-bolt"/></svg></div><h3>Vulkan 渲染</h3><p>四种渲染模式，能力检测与安全回退，不满足时回退兼容后端。</p><span class="ct">Vulkan 1.2</span></div>
-      <div class="card glass wide reveal"><div class="ci"><svg><use href="#i-puzzle"/></svg></div><h3>自定义环境兼容</h3><p>支持 Forge / Fabric / NeoForge / Quilt，保留 26.2 之前正式版与快照的启动能力，版本、模组、文件管理一站搞定。</p><span class="ct">Forge · Fabric · Quilt</span></div>
-    </div>
-  </div>
-</section>
-
-<section id="download">
-  <div class="wrap">
-    <div class="sec-head reveal"><div class="eyebrow">Download</div><h2>选择你的设备架构</h2><p>按 ABI 拆分打包，全部低于 200 MB。不确定？现代手机选 arm64-v8a。</p></div>
-    <div class="dl-notice glass reveal"><svg><use href="#i-warn"/></svg><span><b>测试版提示：</b>1.0.2 尚未完成，当前所有版本均为测试版，可能有问题。欢迎通过 <a href="https://github.com/1953187487/CubernLauncher/issues" target="_blank" rel="noopener" style="color:var(--gold)">Issue</a> 反馈。</span></div>
-    <div class="dl-list">
-      <div class="dl-row glass reveal"><div class="di"><svg><use href="#i-phone"/></svg></div><div class="dn"><b>arm64-v8a</b><span>约 159 MB · 64 位 ARM · 绝大多数现代手机</span></div><span class="rec">推荐</span><a href="https://github.com/1953187487/CubernLauncher/releases/download/v1.0.2/com.movtery.cubernlauncher-1.0.2-arm64-v8a.apk" target="_blank" rel="noopener"><svg><use href="#i-down"/></svg>下载</a></div>
-      <div class="dl-row glass reveal"><div class="di"><svg><use href="#i-phone"/></svg></div><div class="dn"><b>armeabi-v7a</b><span>约 153 MB · 32 位 ARM</span></div><a href="https://github.com/1953187487/CubernLauncher/releases/download/v1.0.2/com.movtery.cubernlauncher-1.0.2-armeabi-v7a.apk" target="_blank" rel="noopener"><svg><use href="#i-down"/></svg>下载</a></div>
-      <div class="dl-row glass reveal"><div class="di"><svg><use href="#i-cpu"/></svg></div><div class="dn"><b>x86</b><span>约 144 MB · 32 位 x86 · 模拟器</span></div><a href="https://github.com/1953187487/CubernLauncher/releases/download/v1.0.2/com.movtery.cubernlauncher-1.0.2-x86.apk" target="_blank" rel="noopener"><svg><use href="#i-down"/></svg>下载</a></div>
-      <div class="dl-row glass reveal"><div class="di"><svg><use href="#i-cpu"/></svg></div><div class="dn"><b>x86_64</b><span>约 162 MB · 64 位 x86 · 模拟器 / Intel</span></div><a href="https://github.com/1953187487/CubernLauncher/releases/download/v1.0.2/com.movtery.cubernlauncher-1.0.2-x86_64.apk" target="_blank" rel="noopener"><svg><use href="#i-down"/></svg>下载</a></div>
-    </div>
-    <p class="sec-head" style="margin:18px 0 0;font-size:12px">需 Android 8.0（API 26）+ · 更多见 <a href="https://github.com/1953187487/CubernLauncher/releases" target="_blank" rel="noopener" style="color:var(--c1)">GitHub Releases</a></p>
-  </div>
-</section>
-
-<section id="build">
-  <div class="wrap">
-    <div class="sec-head reveal"><div class="eyebrow">Build</div><h2>开源、透明、可自行构建</h2><p>基于 Zalith Launcher 1 二次开发，遵循 GNU GPL v3.0，代码公开可审计。</p></div>
-    <div class="two-col">
-      <div class="code glass reveal"><button class="copyb" id="copyBtn"><svg><use href="#i-doc"/></svg> 复制</button>
-<span class="c"># local.properties</span>
-<span class="s">sdk.dir</span>=/path/to/android-sdk
-
-<span class="c"># 构建 Release</span>
-./gradlew :CubernLauncher:<span class="k">assembleRelease</span>
-
-<span class="c"># 按 ABI 打包</span>
-./gradlew :CubernLauncher:<span class="k">assembleRelease</span> -Darch=arm64
+    <div class="sec-head reveal"><div class="eyebrow">Changelog</div><h2>更新公告</h2><p>版本更新与已知说明，第一时间掌握。</p></div>
+    <div class="update-box">
+      <div class="update-card glass reveal">
+        <div class="update-top"><span class="v">v1.0.3</span><span class="tag">Pre-release 测试版</span><span class="date">2026-11-20</span></div>
+        <ul>
+          <li>基于 Zalith Launcher 1 的 Jetpack Compose UI 持续打磨</li>
+          <li>统一发布单个 Release APK，安装更省心</li>
+          <li>陶瓦联机、Java 运行时管理、Vulkan 渲染等能力延续</li>
+          <li>官网同步升级 v1.3：新增透明玻璃与自定义背景</li>
+        </ul>
       </div>
-      <div class="glass reveal" style="border-radius:16px;padding:20px">
-        <h3 style="font-size:16px;margin-bottom:15px;display:flex;align-items:center;gap:8px"><svg style="width:17px;height:17px;color:var(--c1)"><use href="#i-cpu"/></svg>构建环境</h3>
-        <ul class="chk">
-          <li><svg><use href="#i-bolt"/></svg>Kotlin + Compose</li><li><svg><use href="#i-bolt"/></svg>Android SDK 34</li>
-          <li><svg><use href="#i-bolt"/></svg>Build-Tools 34.0.0</li><li><svg><use href="#i-bolt"/></svg>JDK 8</li>
-          <li><svg><use href="#i-bolt"/></svg>NDK 25.2.9519653</li><li><svg><use href="#i-bolt"/></svg>Gradle Wrapper</li>
-          <li><svg><use href="#i-bolt"/></svg>中英文双语言</li><li><svg><use href="#i-bolt"/></svg>浅/深主题</li>
+      <div class="update-card glass reveal">
+        <div class="update-top"><span class="v">v1.0.2</span><span class="tag">Pre-release 测试版</span><span class="date">2026-11-17</span></div>
+        <ul>
+          <li>主界面还原 Zalith Launcher 1 双栏布局，MIUIX Compose 重构</li>
+          <li>陶瓦联机独立化，新增 TerracottaActivity 独立界面</li>
+          <li>新增 AI 版本助手、用户须知协议、运行时按需安装</li>
+          <li>按 ABI 拆分打包，安装包全部低于 200 MB</li>
         </ul>
       </div>
     </div>
   </div>
 </section>
 
-<section id="about">
+<section id="features">
   <div class="wrap">
-    <div class="sec-head reveal"><div class="eyebrow">Credits</div><h2>站在巨人的肩膀上</h2><p>感谢所有开源项目贡献者，让手机上运行 Java 版 Minecraft 成为可能。</p></div>
-    <div class="about-grid">
-      <div class="person glass reveal"><div class="av">万</div><h4>万古沧海</h4><p>当前启动器作者 · 二改开发</p></div>
-      <div class="person glass reveal"><div class="av">Z</div><h4>Zalith Launcher 1</h4><p>原作者 · 开发基础</p></div>
-      <div class="person glass reveal"><div class="av">T</div><h4>Terracotta / EasyTier</h4><p>陶瓦联机模块来源</p></div>
+    <div class="sec-head reveal"><div class="eyebrow">Features</div><h2>为手机端而生的启动体验</h2><p>从联机到渲染，从界面到运行时，每一项都为了让 Java 版在 Android 上跑得更顺、更自由。</p></div>
+    <div class="bento">
+      <div class="card glass wide reveal"><div class="ci"><svg><use href="#i-globe"/></svg></div><h3>陶瓦联机完整移植</h3><p>移植 Terracotta + EasyTier 实现，房主/房客双模式、房间码校验、VPN 隧道与节点自选，手机也能和朋友联机。</p><span class="ct">Terracotta · EasyTier</span></div>
+      <div class="card glass reveal"><div class="ci"><svg><use href="#i-palette"/></svg></div><h3>MIUIX Compose 界面</h3><p>还原经典双栏布局，呼吸缩放、旋转、渐变光晕的启动动画。</p><span class="ct">MIUIX</span></div>
+      <div class="card glass reveal"><div class="ci"><svg><use href="#i-bot"/></svg></div><h3>AI 版本助手</h3><p>离线版本体检与运行时匹配校验，支持自备 API Key 问答。</p><span class="ct">离线体检</span></div>
+      <div class="card glass reveal"><div class="ci"><svg><use href="#i-coffee"/></svg></div><h3>Java 运行时管理</h3><p>语义比较版本、按需注入兼容运行时、架构与完整性校验。</p><span class="ct">按需安装</span></div>
+      <div class="card glass reveal"><div class="ci"><svg><use href="#i-bolt"/></svg></div><h3>Vulkan 渲染</h3><p>四种渲染模式，能力检测与安全回退。</p><span class="ct">Vulkan 1.2</span></div>
+      <div class="card glass wide reveal"><div class="ci"><svg><use href="#i-puzzle"/></svg></div><h3>自定义环境兼容</h3><p>支持 Forge / Fabric / NeoForge / Quilt，保留 26.2 之前正式版与快照的启动能力。</p><span class="ct">Forge · Fabric · Quilt</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="download">
+  <div class="wrap">
+    <div class="sec-head reveal"><div class="eyebrow">Download</div><h2>下载 v1.0.3</h2><p>当前版本为测试版（Pre-release），单个 APK 通吃，需 Android 8.0 及以上。</p></div>
+    <div class="dl-list">
+      <div class="dl-row glass reveal"><div class="di"><svg><use href="#i-down"/></svg></div><div class="dn"><b>CubernLauncher-1.0.3-release.apk</b><span>统一 Release 版本 · Android 8.0+ · 测试版</span></div><a href="https://github.com/1953187487/CubernLauncher/releases/download/v1.0.3/CubernLauncher-1.0.3-release.apk" target="_blank" rel="noopener"><svg><use href="#i-down"/></svg>下载 APK</a></div>
+    </div>
+    <p class="sec-head" style="margin:18px 0 0;font-size:12px">更多历史版本见 <a href="https://github.com/1953187487/CubernLauncher/releases" target="_blank" rel="noopener" style="color:var(--c1)">GitHub Releases</a></p>
+  </div>
+</section>
+
+<section id="build">
+  <div class="wrap">
+    <div class="sec-head reveal"><div class="eyebrow">Build</div><h2>开源、透明、可自行构建</h2><p>基于 Zalith Launcher 1 二次开发，遵循 GNU GPL v3.0，代码公开可审计。</p></div>
+    <div class="two-col" style="grid-template-columns:1fr 1fr">
+      <div class="code glass reveal" id="codeBox"><button class="copyb" id="copyBtn"><svg><use href="#i-doc"/></svg> 复制</button>
+<span style="color:#7d8ab5"># local.properties</span>
+<span style="color:var(--gold)">sdk.dir</span>=/path/to/android-sdk
+
+<span style="color:#7d8ab5"># 构建 Release</span>
+./gradlew :CubernLauncher:<span style="color:var(--c1)">assembleRelease</span>
+      </div>
+      <div class="glass reveal" style="border-radius:16px;padding:20px">
+        <h3 style="font-size:16px;margin-bottom:15px;display:flex;align-items:center;gap:8px"><svg style="width:17px;height:17px;color:var(--c1)"><use href="#i-cpu"/></svg>构建环境</h3>
+        <ul style="list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:11px">
+          <li style="font-size:13px;display:flex;gap:9px"><svg style="width:15px;height:15px;color:var(--c2);margin-top:3px"><use href="#i-bolt"/></svg>Kotlin + Compose</li>
+          <li style="font-size:13px;display:flex;gap:9px"><svg style="width:15px;height:15px;color:var(--c2);margin-top:3px"><use href="#i-bolt"/></svg>Android SDK 34</li>
+          <li style="font-size:13px;display:flex;gap:9px"><svg style="width:15px;height:15px;color:var(--c2);margin-top:3px"><use href="#i-bolt"/></svg>JDK 8</li>
+          <li style="font-size:13px;display:flex;gap:9px"><svg style="width:15px;height:15px;color:var(--c2);margin-top:3px"><use href="#i-bolt"/></svg>NDK 25.2</li>
+        </ul>
+      </div>
     </div>
   </div>
 </section>
@@ -452,276 +344,89 @@ section,.metric,.card{content-visibility:auto;contain-intrinsic-size:auto 400px}
 <footer>
   <div class="wrap">
     <div class="f-top">
-      <div><div class="brand"><span class="logo"><svg><use href="#i-box"/></svg></span> Cubern Launcher</div><p class="desc">基于 Zalith Launcher 1 二改开发的 Minecraft Java 版 Android 启动器，GPLv3 开源。当前所有版本均为测试版。</p></div>
+      <div><div class="brand"><span class="logo"><svg><use href="#i-box"/></svg></span> Cubern Launcher</div><p class="desc">基于 Zalith Launcher 1 二改开发的 Minecraft Java 版 Android 启动器，GPLv3 开源。官网 v1.3，协议 v1.0。</p></div>
       <div class="f-links">
         <div><h5>项目</h5><a href="https://github.com/1953187487/CubernLauncher" target="_blank" rel="noopener">GitHub 仓库</a><a href="https://github.com/1953187487/CubernLauncher/releases" target="_blank" rel="noopener">Releases</a><a href="https://github.com/1953187487/CubernLauncher/issues" target="_blank" rel="noopener">Issues</a></div>
-        <div><h5>资源</h5><a href="#features">核心功能</a><a href="#download">下载安装</a><a href="#build">源码构建</a><a href="#" id="agreementLink">用户须知协议</a></div>
+        <div><h5>资源</h5><a href="#updates">更新公告</a><a href="#features">核心功能</a><a href="#download">下载安装</a><a href="#build">源码构建</a></div>
       </div>
     </div>
     <div class="f-bot">
       <p class="disc">Cubern Launcher 基于 Zalith Launcher 1 二次开发，与 Mojang Studios、Microsoft、网易无隶属关系。Minecraft 是 Mojang Studios 的商标。本项目按 GNU GPL v3.0 开源。</p>
-      <p>© 2026 Cubern Launcher · Made with ⛏️ by 万古沧海</p>
+      <p>© 2026 Cubern Launcher · Made with ⛏️ by 万古沧海 · 官网 v1.3 · 协议 v1.0</p>
     </div>
   </div>
 </footer>
-</div><!-- /view-home -->
 
-<!-- ========== 世界频道 ========== -->
-<div id="view-chat" class="view">
-  <div class="app-panel">
-    <div class="ph"><div><h2><svg><use href="#i-chat"/></svg>世界频道</h2><div class="sub">所有登录玩家的公共聊天室</div></div><span class="mode-tag demo" id="chatMode">演示模式</span></div>
-    <div id="chatGate"></div>
-    <div id="chatContent" style="display:none">
-      <div class="chat-box glass">
-        <div class="chat-head"><svg><use href="#i-chat"/></svg> 世界频道 <span class="cnt" id="chatCount">0 条消息</span></div>
-        <div class="chat-list" id="chatList"><div class="chat-empty">还没有消息，来发第一条吧～</div></div>
-        <div class="chat-input"><input id="chatInput" maxlength="300" placeholder="说点什么…"><button id="chatSend"><svg><use href="#i-send"/></svg>发送</button></div>
-      </div>
-    </div>
+<!-- 背景设置 -->
+<div class="bg-panel">
+  <div class="bg-pop glass" id="bgPop">
+    <h4><svg><use href="#i-palette"/></svg>外观设置</h4>
+    <div class="sub">透明玻璃 + 自定义背景，选择后自动保存</div>
+    <div class="bg-opts" id="bgOpts"></div>
+    <div class="bg-slider"><span>透明</span><input type="range" id="alphaRange" min="10" max="95" value="58"><span id="alphaVal">58%</span></div>
+    <div class="bg-url"><input id="bgUrl" placeholder="粘贴图片网址作背景…"><button id="bgApply">应用</button></div>
+    <button class="bg-reset" id="bgReset">恢复默认</button>
   </div>
-</div>
-
-<!-- ========== 我的 ========== -->
-<div id="view-me" class="view">
-  <div class="app-panel">
-    <div class="ph"><div><h2><svg><use href="#i-user"/></svg>我的</h2><div class="sub">GitHub 登录、仓库同步、我的宠物</div></div><span class="mode-tag demo" id="meMode">演示模式</span></div>
-    <div id="loginArea"></div>
-    <div id="meContent" style="display:none">
-      <div class="repo-card glass">
-        <h4><svg><use href="#i-github"/></svg>我的开源仓库</h4>
-        <div class="repo-stat">
-          <div class="s"><b id="repoStars">—</b><span>Stars</span></div>
-          <div class="s"><b id="repoForks">—</b><span>Forks</span></div>
-          <div class="s"><b id="repoIssues">—</b><span>Issues</span></div>
-        </div>
-        <div class="repo-desc" id="repoDesc">点击同步，自动拉取你的 CubernLauncher 仓库信息。</div>
-        <button class="sync-btn" id="syncRepo"><svg><use href="#i-sync"/></svg>立即同步仓库</button>
-      </div>
-      <div class="ph" style="margin-top:24px"><div><h2 style="font-size:18px"><svg style="width:18px;height:18px"><use href="#i-bolt"/></svg>我的宠物</h2></div></div>
-      <div class="pet-stage glass">
-        <div class="pet-creature" id="petEmoji">🐋</div>
-        <div class="pet-name" id="petName">Cubern 幼崽</div>
-        <div class="pet-lv" id="petLv">Lv.1 · 0/50 经验</div>
-        <div class="pet-bars">
-          <div class="pet-bar"><div class="lb"><span>🍖 饱食度</span><span id="hungerVal">80%</span></div><div class="track"><div class="fill" id="hungerBar" style="width:80%;background:linear-gradient(90deg,#ff9f43,#ffcf5c)"></div></div></div>
-          <div class="pet-bar"><div class="lb"><span>😊 心情值</span><span id="moodVal">80%</span></div><div class="track"><div class="fill" id="moodBar" style="width:80%;background:linear-gradient(90deg,#ff6ec7,#c084fc)"></div></div></div>
-        </div>
-        <div class="pet-actions"><button id="petFeed"><svg><use href="#i-feed"/></svg>喂食</button><button id="petPlay"><svg><use href="#i-play"/></svg>玩耍</button><button id="petRename"><svg><use href="#i-pen"/></svg>改名</button></div>
-        <div class="pet-msg" id="petMsg">喂食/玩耍每 30 秒一次，等级上限 10 级。</div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- 底部三导航 -->
-<nav class="bottom-nav" id="bottomNav">
-  <a data-view="home" class="on"><span class="ic"><svg><use href="#i-home"/></svg></span>首页</a>
-  <a data-view="chat"><span class="ic"><svg><use href="#i-chat"/></svg></span>世界频道</a>
-  <a data-view="me"><span class="ic"><svg><use href="#i-user"/></svg></span>我的</a>
-</nav>
-
-<!-- 用户须知协议 -->
-<div class="agreement" id="agreement">
-  <div class="agreement-box" role="dialog" aria-modal="true">
-    <div class="ag-ic"><svg><use href="#i-doc"/></svg></div>
-    <h3>用户须知协议</h3>
-    <div class="ag-sub">首次使用前，请务必阅读并同意以下条款</div>
-    <div class="ag-body">
-      <h4>① 关于本项目</h4><p>Cubern Launcher 基于 <b>Zalith Launcher 1</b> 二次开发，遵循 <b>GNU GPL v3.0</b> 协议。</p>
-      <h4>② 非官方声明</h4><p>本项目与 <b>Mojang Studios、Microsoft、网易</b> 无任何隶属或授权关系。</p>
-      <h4>③ 测试版提示</h4><p>由于 <b>1.0.2 尚未完成</b>，当前所有版本均为测试版，可能存在未完善功能，请自行承担使用风险。</p>
-      <h4>④ 网络与账号</h4><p>部分功能需联网；使用 GitHub 登录仅用于身份识别，自备 API Key 仅存本机。</p>
-      <h4>⑤ 本地存储</h4><p>游戏文件、配置与宠物数据存本机，卸载或清理前请自行备份。</p>
-      <h4>⑥ 开源与免责</h4><p>本项目按"现状"提供，不作任何担保，作者不承担使用损失责任。</p>
-    </div>
-    <label class="ag-check"><input type="checkbox" id="agAgree"><span>我已阅读并同意上述《用户须知协议》，了解当前均为测试版。</span></label>
-    <div class="ag-btns"><button class="btn g" id="agDecline">暂不使用</button><button class="btn p disabled" id="agAccept">同意并继续</button></div>
-  </div>
-</div>
-
-<button class="addr-fab" id="addrFab" title="访问地址"><svg><use href="#i-link"/></svg></button>
-<div class="addr-panel glass" id="addrPanel">
-  <h4><svg><use href="#i-link"/></svg>当前访问地址</h4>
-  <div class="hint">点一下复制网址，分享给朋友。</div>
-  <div class="addr-item" id="addrItem"><span class="ic"><svg><use href="#i-globe"/></svg></span><span class="info"><b>官网地址</b><code id="addrCode">—</code></span><span class="badge">当前</span></div>
+  <button class="bg-fab" id="bgFab" title="外观设置"><svg><use href="#i-palette"/></svg></button>
 </div>
 <div class="toast" id="toast"></div>
 
 <script>
 (function(){
-  const root=document.documentElement,reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
-  /* ===== 后端地址：部署 Cloudflare Workers 后填这里，即可启用真实 GitHub 登录；留空=演示模式（功能仍可完整体验） ===== */
-  const BACKEND_URL='';
-  function backend(){return BACKEND_URL.replace(/\/$/,'')}
-
+  const root=document.documentElement;
   /* 主题 */
   const tb=document.getElementById('themeBtn'),saved=localStorage.getItem('cubern-theme'),sysDark=matchMedia('(prefers-color-scheme: dark)').matches;
   const sun='<svg><use href="#i-sun"/></svg>',moon='<svg><use href="#i-moon"/></svg>';
-  function apply(t){root.dataset.theme=t;if(tb)tb.innerHTML=t==='dark'?moon:sun}
-  apply(saved||(sysDark?'dark':'light'));
-  tb.addEventListener('click',()=>{const n=root.dataset.theme==='dark'?'light':'dark';apply(n);localStorage.setItem('cubern-theme',n);toast(n==='dark'?'深色模式 🌙':'浅色模式 ☀️')});
-
-  /* 协议 */
-  const agBox=document.getElementById('agreement'),agAgree=document.getElementById('agAgree'),agAccept=document.getElementById('agAccept');
-  const AG='cubern-agreement-v1';
-  function agreed(){try{return localStorage.getItem(AG)==='1'}catch(e){return false}}
-  function openAg(){agBox.classList.add('show');document.body.style.overflow='hidden'}
-  function closeAg(){agBox.classList.remove('show');document.body.style.overflow='';agAgree.checked=false;agAccept.classList.add('disabled')}
-  agAgree.addEventListener('change',()=>agAccept.classList.toggle('disabled',!agAgree.checked));
-  agAccept.addEventListener('click',()=>{if(!agAgree.checked)return;try{localStorage.setItem(AG,'1')}catch(e){}closeAg();toast('感谢理解，祝游玩愉快 ⛏️')});
-  document.getElementById('agDecline').addEventListener('click',closeAg);
-  document.getElementById('agreementLink').addEventListener('click',e=>{e.preventDefault();openAg()});
-  if(!agreed())setTimeout(openAg,600);
-  document.querySelectorAll('a[href$=".apk"]').forEach(a=>a.addEventListener('click',e=>{if(!agreed()){e.preventDefault();openAg();toast('请先同意用户须知协议')}}));
-  document.getElementById('noticeClose').addEventListener('click',()=>document.getElementById('notice').style.display='none');
-
-  /* 手机 3D + 卡片光晕 */
-  const phone=document.getElementById('phone');
-  if(!reduced&&matchMedia('(pointer:fine)').matches&&phone){
-    addEventListener('mousemove',e=>{const r=phone.getBoundingClientRect(),dx=(e.clientX-(r.left+r.width/2))/r.width,dy=(e.clientY-(r.top+r.height/2))/r.height;phone.style.transform='rotateY('+(dx*13)+'deg) rotateX('+(-dy*13)+'deg)'});
-    addEventListener('mouseleave',()=>phone.style.transform='');
-  }
-  const io=new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target)}}),{threshold:.1});
-  document.querySelectorAll('.reveal,.metric').forEach(el=>io.observe(el));
+  function applyTheme(t){root.dataset.theme=t;tb.innerHTML=t==='dark'?moon:sun}
+  applyTheme(saved||(sysDark?'dark':'light'));
+  tb.addEventListener('click',()=>{const n=root.dataset.theme==='dark'?'light':'dark';applyTheme(n);localStorage.setItem('cubern-theme',n)});
 
   /* Toast */
   const el=document.getElementById('toast');let tt;
-  function toast(m){el.textContent=m;el.classList.add('show');clearTimeout(tt);tt=setTimeout(()=>el.classList.remove('show'),2200)}
+  function toast(m){el.textContent=m;el.classList.add('show');clearTimeout(tt);tt=setTimeout(()=>el.classList.remove('show'),2000)}
 
-  /* 地址面板 */
-  const cur=location.href.split('?')[0].split('#')[0];
-  document.getElementById('addrCode').textContent=cur;
-  const fab=document.getElementById('addrFab'),panel=document.getElementById('addrPanel');
-  fab.addEventListener('click',e=>{e.stopPropagation();panel.classList.toggle('show')});
-  document.getElementById('addrItem').addEventListener('click',()=>{if(navigator.clipboard)navigator.clipboard.writeText(cur).then(()=>toast('网址已复制 ✓')).catch(()=>{})});
-  document.addEventListener('click',e=>{if(!panel.contains(e.target)&&e.target!==fab)panel.classList.remove('show')});
+  document.getElementById('noticeClose').addEventListener('click',()=>document.getElementById('notice').style.display='none');
+
+  /* 手机 3D */
+  const phone=document.getElementById('phone');
+  if(!matchMedia('(prefers-reduced-motion: reduce)').matches&&matchMedia('(pointer:fine)').matches&&phone){
+    addEventListener('mousemove',e=>{const r=phone.getBoundingClientRect(),dx=(e.clientX-(r.left+r.width/2))/r.width,dy=(e.clientY-(r.top+r.height/2))/r.height;phone.style.transform='rotateY('+(dx*12)+'deg) rotateX('+(-dy*12)+'deg)'});
+    addEventListener('mouseleave',()=>phone.style.transform='');
+  }
+  const io=new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target)}}),{threshold:.1});
+  document.querySelectorAll('.reveal,.metric').forEach(x=>io.observe(x));
+
   document.getElementById('copyBtn').addEventListener('click',()=>{if(navigator.clipboard)navigator.clipboard.writeText('./gradlew :CubernLauncher:assembleRelease').then(()=>toast('构建命令已复制 ✓')).catch(()=>{})});
 
-  /* ===== 底部导航 ===== */
-  function switchView(v){
-    ['home','chat','me'].forEach(x=>document.getElementById('view-'+x).classList.toggle('on',x===v));
-    document.querySelectorAll('#bottomNav a').forEach(a=>a.classList.toggle('on',a.dataset.view===v));
-    scrollTo({top:0,behavior:'auto'});
-    if(v==='chat')renderChatView();
-    if(v==='me')renderMe();
+  /* ===== 外观设置：透明 + 自定义背景 ===== */
+  const BGS=[
+    {id:'default',name:'默认',css:''},
+    {id:'aurora',name:'极光',css:'linear-gradient(135deg,#0b1020 0%,#16204a 40%,#0d2b3a 70%,#1a1030 100%)'},
+    {id:'ocean',name:'深海',css:'linear-gradient(160deg,#041428 0%,#0a2a4a 50%,#062038 100%)'},
+    {id:'sunset',name:'晚霞',css:'linear-gradient(135deg,#2a1040 0%,#6a2a5a 45%,#c96a4a 100%)'},
+    {id:'forest',name:'森野',css:'linear-gradient(160deg,#0a1a14 0%,#143a2a 55%,#0d2a20 100%)'},
+    {id:'nebula',name:'星云',css:'radial-gradient(circle at 30% 20%,#3a1a5a,transparent 55%),radial-gradient(circle at 70% 80%,#0a3a5a,transparent 55%),#0a0a18'}
+  ];
+  const bgCustom=document.getElementById('bgCustom'),bgLayer=document.getElementById('bgLayer'),bgOpts=document.getElementById('bgOpts'),alphaRange=document.getElementById('alphaRange'),alphaVal=document.getElementById('alphaVal'),bgUrl=document.getElementById('bgUrl');
+  function setAlpha(v){root.style.setProperty('--alpha',v);const a=v/100;root.style.setProperty('--panel',root.dataset.theme==='dark'?'rgba(20,28,54,'+a+')':'rgba(255,255,255,'+Math.min(.9,a+.08)+')');alphaVal.textContent=v+'%';localStorage.setItem('cubern-alpha',v)}
+  function setBg(id){
+    const b=BGS.find(x=>x.id===id)||BGS[0];
+    bgOpts.querySelectorAll('.bg-opt').forEach(o=>o.classList.toggle('on',o.dataset.id===id));
+    if(b.id==='default'){document.body.classList.remove('custom-bg');bgCustom.style.backgroundImage='';bgLayer.style.opacity='';localStorage.removeItem('cubern-bg')}
+    else{bgCustom.style.background=b.css;document.body.classList.add('custom-bg');bgLayer.style.opacity='.3';localStorage.setItem('cubern-bg',id)}
   }
-  document.querySelectorAll('#bottomNav a').forEach(a=>a.addEventListener('click',()=>switchView(a.dataset.view)));
+  BGS.forEach(b=>{const d=document.createElement('div');d.className='bg-opt';d.dataset.id=b.id;d.title=b.name;if(b.css)d.style.background=b.css;else d.style.background='linear-gradient(135deg,#1a2344,#0b1024)';d.innerHTML='<span>'+b.name+'</span>';d.addEventListener('click',()=>{setBg(b.id);toast('已切换：'+b.name)});bgOpts.appendChild(d)});
+  const savedBg=localStorage.getItem('cubern-bg');setBg(savedBg||'default');
+  const savedAlpha=localStorage.getItem('cubern-alpha');setAlpha(savedAlpha||58);
+  alphaRange.addEventListener('input',()=>setAlpha(alphaRange.value));
+  document.getElementById('bgApply').addEventListener('click',()=>{const u=bgUrl.value.trim();if(!u){toast('请先粘贴图片网址');return}bgCustom.style.background='url("'+u+'") center/cover no-repeat';document.body.classList.add('custom-bg');bgLayer.style.opacity='.3';localStorage.setItem('cubern-bg-url',u);bgOpts.querySelectorAll('.bg-opt').forEach(o=>o.classList.remove('on'));toast('自定义背景已应用 ✓')});
+  const savedUrl=localStorage.getItem('cubern-bg-url');if(savedUrl&&!savedBg){bgUrl.value=savedUrl;bgCustom.style.background='url("'+savedUrl+'") center/cover no-repeat';document.body.classList.add('custom-bg');bgLayer.style.opacity='.3'}
+  document.getElementById('bgReset').addEventListener('click',()=>{['cubern-bg','cubern-bg-url','cubern-alpha'].forEach(k=>localStorage.removeItem(k));bgUrl.value='';setBg('default');setAlpha(58);toast('已恢复默认外观')});
 
-  /* 登录态：支持真实 OAuth 回调 + 演示登录 */
-  try{
-    if(location.hash.includes('login=')){
-      const p=new URLSearchParams(location.hash.slice(1));
-      const tk=p.get('login'),nm=p.get('name'),face=p.get('face'),gh=p.get('gh');
-      if(tk){['cubern_token','cubern_name','cubern_face','cubern_gh'].forEach(k=>{try{localStorage.removeItem(k)}catch(e){}});
-        localStorage.setItem('cubern_token',tk);if(nm)localStorage.setItem('cubern_name',nm);if(face)localStorage.setItem('cubern_face',face);if(gh)localStorage.setItem('cubern_gh',gh);
-        toast('GitHub 登录成功，欢迎 '+(nm||'玩家')+' 🎉');history.replaceState(null,'',location.pathname);
-      }
-    }
-  }catch(e){}
-  function token(){try{return localStorage.getItem('cubern_token')||''}catch(e){return ''}}
-  function uname(){try{return localStorage.getItem('cubern_name')||'演示玩家'}catch(e){return '演示玩家'}}
-  function uface(){try{return localStorage.getItem('cubern_face')||''}catch(e){return ''}}
-  function ghToken(){try{return localStorage.getItem('cubern_gh')||''}catch(e){return ''}}
-  function api(path,opts){return fetch(backend()+path,opts)}
-  function modeTag(){const live=!!backend();['chatMode','meMode'].forEach(id=>{const e=document.getElementById(id);if(e){e.textContent=live?'联网模式':'演示模式';e.className='mode-tag '+(live?'live':'demo')}})}
-  modeTag();
-
-  const GIT='<svg><use href="#i-github"/></svg>';
-  window._cubernLogin=function(){
-    if(backend()){location.href=backend()+'/api/login';return}
-    /* 演示登录：直接放行全部功能，数据存本机 */
-    try{localStorage.setItem('cubern_token','demo-token');localStorage.setItem('cubern_name','演示玩家');localStorage.setItem('cubern_face','')}catch(e){}
-    toast('已以演示账号登录，全部功能可用 ✓');renderMe();if(document.getElementById('view-chat').classList.contains('on'))renderChatView();
-  };
-  function gateHtml(){return '<div class="login-gate glass"><div class="gate-ic"><svg><use href="#i-user"/></svg></div><h3>登录后解锁全部功能</h3><p>使用 GitHub 开源账号登录，即可进入世界频道、同步仓库、养成宠物。<br>未部署后端时可用演示账号完整体验。</p><button class="login-btn" onclick="window._cubernLogin()">'+GIT+' 使用 GitHub 登录</button></div>'}
-
-  /* ===== 世界频道 ===== */
-  function renderChatView(){
-    const gate=document.getElementById('chatGate'),content=document.getElementById('chatContent');
-    if(!token()){gate.innerHTML=gateHtml();content.style.display='none';return}
-    gate.innerHTML='';content.style.display='';loadChat();
-  }
-  function esc(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
-  function renderChatMsgs(list){
-    const box=document.getElementById('chatList');
-    if(!list||!list.length){box.innerHTML='<div class="chat-empty">还没有消息，来发第一条吧～</div>';document.getElementById('chatCount').textContent='0 条消息';return}
-    box.innerHTML=list.map(m=>{const t=m.at?new Date(m.at).toLocaleTimeString('zh-CN',{hour:'2-digit',minute:'2-digit'}):'';return '<div class="chat-msg"><div class="av">'+esc((m.name||'?').slice(0,1))+'</div><div class="meta"><b>'+esc(m.name||'匿名')+'</b><span class="t">'+t+'</span><p>'+esc(m.text)+'</p></div></div>'}).join('');
-    document.getElementById('chatCount').textContent=list.length+' 条消息';box.scrollTop=box.scrollHeight;
-  }
-  function loadChat(){
-    if(backend())api('/api/chat').then(r=>r.json()).then(j=>renderChatMsgs(j.list||[])).catch(()=>toast('连接后端失败'));
-    else{let l=[];try{l=JSON.parse(localStorage.getItem('cubern_chat')||'[]')}catch(e){}renderChatMsgs(l)}
-  }
-  document.getElementById('chatSend').addEventListener('click',sendChat);
-  document.getElementById('chatInput').addEventListener('keydown',e=>{if(e.key==='Enter')sendChat()});
-  function sendChat(){
-    if(!token()){toast('请先登录');return}
-    const inp=document.getElementById('chatInput'),text=inp.value.trim();if(!text)return;
-    if(backend()){
-      api('/api/chat/send',{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer '+token()},body:JSON.stringify({text})}).then(r=>r.json()).then(j=>{if(j.ok){inp.value='';loadChat()}else toast(j.error||'发送失败')}).catch(()=>toast('发送失败'));
-    }else{
-      let l=[];try{l=JSON.parse(localStorage.getItem('cubern_chat')||'[]')}catch(e){}
-      l.push({name:uname(),text,at:Date.now()});try{localStorage.setItem('cubern_chat',JSON.stringify(l.slice(-100)))}catch(e){}
-      inp.value='';renderChatMsgs(l);
-    }
-  }
-
-  /* ===== 我的 ===== */
-  function renderMe(){
-    const area=document.getElementById('loginArea'),content=document.getElementById('meContent');
-    if(!token()){
-      area.innerHTML=gateHtml();content.style.display='none';return;
-    }
-    area.innerHTML='<div class="user-chip glass"><img src="'+esc(uface())+'" alt="" onerror="this.style.display=\'none\'"><div class="un"><b>'+esc(uname())+'</b><span>'+(backend()?'已通过 GitHub 登录':'演示账号登录')+'</span></div><button id="logoutBtn">退出</button></div>';
-    document.getElementById('logoutBtn').addEventListener('click',()=>{['cubern_token','cubern_name','cubern_face','cubern_gh'].forEach(k=>{try{localStorage.removeItem(k)}catch(e){}});toast('已退出');renderMe()});
-    content.style.display='';loadRepo();loadPet();
-  }
-  function showRepo(i){document.getElementById('repoStars').textContent=i.stars??'—';document.getElementById('repoForks').textContent=i.forks??'—';document.getElementById('repoIssues').textContent=i.open_issues??'—';document.getElementById('repoDesc').textContent=(i.description||'Cubern Launcher')+(i.syncedAt?' · 同步于 '+new Date(i.syncedAt).toLocaleTimeString('zh-CN'):'')}
-  function loadRepo(){if(backend())api('/api/repo').then(r=>r.json()).then(j=>{if(j.repo)showRepo(j.repo)}).catch(()=>{})}
-  document.getElementById('syncRepo').addEventListener('click',function(){
-    if(!token()){toast('请先登录');return}
-    if(!backend()){showRepo({stars:12,forks:3,open_issues:0,description:'Cubern Launcher（演示数据，部署后端后显示真实数据）',syncedAt:Date.now()});toast('演示数据已显示');return}
-    const b=this;b.textContent='同步中…';
-    api('/api/repo/sync',{method:'POST',headers:{'Content-Type':'application/json','X-GitHub-Token':ghToken()},body:JSON.stringify({repo:'1953187487/CubernLauncher'})}).then(r=>r.json()).then(j=>{if(j.repo){showRepo({...j.repo,syncedAt:Date.now()});toast('仓库已同步 ✓')}else toast(j.error||'同步失败')}).catch(()=>toast('同步失败')).finally(()=>b.innerHTML='<svg><use href="#i-sync"/></svg>立即同步仓库');
-  });
-
-  /* ===== 宠物（登录门槛 + 30s 冷却 + 上限）===== */
-  function petDefault(){return {name:'Cubern 幼崽',level:1,exp:0,hunger:80,mood:80,lastFeed:0,lastPlay:0}}
-  const CD=30000;
-  function renderPet(p){
-    p=p||petDefault();const emojis=['🐋','🐬','🐳','🐟','🐠'];
-    document.getElementById('petEmoji').textContent=emojis[Math.min((p.level||1)-1,emojis.length-1)];
-    document.getElementById('petName').textContent=p.name||'Cubern 幼崽';
-    document.getElementById('petLv').textContent='Lv.'+(p.level||1)+' · '+((p.exp||0)%50)+'/50 经验';
-    const hg=p.hunger??80,md=p.mood??80;
-    document.getElementById('hungerVal').textContent=hg+'%';document.getElementById('hungerBar').style.width=hg+'%';
-    document.getElementById('moodVal').textContent=md+'%';document.getElementById('moodBar').style.width=md+'%';
-    const now=Date.now(),f=document.getElementById('petFeed'),pl=document.getElementById('petPlay');
-    const fc=Math.max(0,CD-(now-(p.lastFeed||0))),pc=Math.max(0,CD-(now-(p.lastPlay||0)));
-    f.disabled=fc>0||hg>=100;pl.disabled=pc>0||md>=100;
-    f.innerHTML='<svg><use href="#i-feed"/></svg>'+(fc>0?Math.ceil(fc/1000)+'s':'喂食');
-    pl.innerHTML='<svg><use href="#i-play"/></svg>'+(pc>0?Math.ceil(pc/1000)+'s':'玩耍');
-  }
-  function getLocalPet(){let p=null;try{p=JSON.parse(localStorage.getItem('cubern_pet')||'null')}catch(e){}return p||petDefault()}
-  function loadPet(){if(!token())return;if(backend())api('/api/pet?token='+encodeURIComponent(token())).then(r=>r.json()).then(j=>{if(j.pet)renderPet(j.pet)}).catch(()=>{});else renderPet(getLocalPet())}
-  function petAction(a){
-    if(!token()){toast('请先登录');return}
-    const msg=document.getElementById('petMsg');
-    if(backend()){
-      api('/api/pet/action',{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer '+token()},body:JSON.stringify({action:a})}).then(r=>r.json()).then(j=>{if(j.pet){renderPet(j.pet);msg.textContent=petTip(a)}else{toast(j.error||'操作失败');if(j.pet)renderPet(j.pet)}}).catch(()=>toast('操作失败'));
-    }else{
-      const now=Date.now(),p=getLocalPet();
-      if(a==='feed'){if(now-(p.lastFeed||0)<CD){toast('喂食冷却中');return}if((p.hunger??80)>=100){toast('已经吃饱了');return}p.hunger=Math.min(100,(p.hunger??80)+20);p.exp=(p.exp||0)+5;p.lastFeed=now}
-      else if(a==='play'){if(now-(p.lastPlay||0)<CD){toast('玩耍冷却中');return}if((p.mood??80)>=100){toast('心情已满');return}p.mood=Math.min(100,(p.mood??80)+20);p.exp=(p.exp||0)+5;p.lastPlay=now}
-      p.level=Math.min(10,1+Math.floor((p.exp||0)/50));try{localStorage.setItem('cubern_pet',JSON.stringify(p))}catch(e){}
-      renderPet(p);msg.textContent=petTip(a);
-    }
-  }
-  function petTip(a){return a==='feed'?'🍖 好好吃，饱食度 +20，经验 +5':a==='play'?'🎮 玩得开心，心情 +20，经验 +5':'已更新'}
-  document.getElementById('petFeed').addEventListener('click',()=>petAction('feed'));
-  document.getElementById('petPlay').addEventListener('click',()=>petAction('play'));
-  document.getElementById('petRename').addEventListener('click',()=>{if(!token()){toast('请先登录');return}const n=prompt('给宠物起个名字：',document.getElementById('petName').textContent);if(!n)return;const p=getLocalPet();p.name=n.slice(0,20);try{localStorage.setItem('cubern_pet',JSON.stringify(p))}catch(e){}renderPet(p);document.getElementById('petMsg').textContent='✏️ 新名字：'+n});
-  setInterval(()=>{if(token()&&document.getElementById('view-me').classList.contains('on')&&!backend())renderPet(getLocalPet())},1000);
+  /* 面板开关 */
+  const bgFab=document.getElementById('bgFab'),bgPop=document.getElementById('bgPop');
+  bgFab.addEventListener('click',e=>{e.stopPropagation();bgPop.classList.toggle('show')});
+  document.addEventListener('click',e=>{if(!bgPop.contains(e.target)&&e.target!==bgFab)bgPop.classList.remove('show')});
 })();
 </script>
 </body>
