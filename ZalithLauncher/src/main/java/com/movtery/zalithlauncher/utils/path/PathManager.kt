@@ -27,6 +27,8 @@ class PathManager {
         lateinit var DIR_APP_CACHE: File
         lateinit var DIR_USER_SKIN: File
         lateinit var DIR_INSTALLED_RENDERER_PLUGIN: File
+        lateinit var DIR_TERRACOTTA: File
+        lateinit var FILE_TERRACOTTA_LOG: File
 
         lateinit var FILE_SETTINGS: File
         lateinit var FILE_PROFILE_PATH: File
@@ -55,6 +57,8 @@ class PathManager {
             DIR_RUNTIME_MOD = context.getDir("runtime_mod", 0)?.also {
                 it.mkdirs()
             }
+            DIR_TERRACOTTA = File(DIR_GAME_HOME, "terracotta").also { it.mkdirs() }
+            FILE_TERRACOTTA_LOG = File(DIR_TERRACOTTA, "terracotta.log")
 
             FILE_PROFILE_PATH = File(DIR_DATA, "/profile_path.json")
             FILE_CTRLDEF_FILE = "$DIR_GAME_HOME/controlmap/default.json"

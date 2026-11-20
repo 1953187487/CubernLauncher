@@ -673,6 +673,38 @@
                     android:layout_centerVertical="true" />
             </com.movtery.zalithlauncher.ui.layout.AnimRelativeLayout>
 
+            <com.movtery.zalithlauncher.ui.layout.AnimRelativeLayout
+                android:id="@+id/user_notice_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?android:attr/selectableItemBackground"
+                android:padding="@dimen/_12sdp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:text="@string/user_notice_reopen"
+                    android:textColor="@color/black_or_white" />
+            </com.movtery.zalithlauncher.ui.layout.AnimRelativeLayout>
+
+            <com.movtery.zalithlauncher.ui.layout.AnimRelativeLayout
+                android:id="@+id/ai_settings_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?android:attr/selectableItemBackground"
+                android:padding="@dimen/_12sdp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:text="@string/ai_settings_title"
+                    android:textColor="@color/black_or_white" />
+            </com.movtery.zalithlauncher.ui.layout.AnimRelativeLayout>
+
         </androidx.appcompat.widget.LinearLayoutCompat>
 
     </androidx.appcompat.widget.LinearLayoutCompat>

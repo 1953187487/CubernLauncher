@@ -31,6 +31,19 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageButton
+            android:id="@+id/setting_button"
+            android:layout_width="@dimen/_40sdp"
+            android:layout_height="0dp"
+            android:layout_marginEnd="@dimen/_8sdp"
+            android:layout_marginVertical="@dimen/_3sdp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_menu_settings"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
             android:id="@+id/download_button"
             android:layout_width="@dimen/_40sdp"
             android:layout_height="0dp"
@@ -47,17 +60,49 @@
             app:tint="#FFF" />
 
         <ImageButton
-            android:id="@+id/setting_button"
+            android:id="@+id/terracotta_button"
             android:layout_width="@dimen/_40sdp"
             android:layout_height="0dp"
             android:layout_marginEnd="@dimen/_8sdp"
             android:layout_marginVertical="@dimen/_3sdp"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:scaleType="fitCenter"
-            android:src="@drawable/ic_menu_settings"
+            android:src="@drawable/ic_terracotta"
+            android:contentDescription="@string/terracotta_menu"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintEnd_toStartOf="@id/download_button"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="#FFF" />
+
+        <ImageButton
+            android:id="@+id/open_dir_button"
+            android:layout_width="@dimen/_40sdp"
+            android:layout_height="0dp"
+            android:layout_marginEnd="@dimen/_8sdp"
+            android:layout_marginVertical="@dimen/_3sdp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_folder"
+            android:contentDescription="@string/main_open_main_dir"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/terracotta_button"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="#FFF" />
+
+        <ImageButton
+            android:id="@+id/ai_button"
+            android:layout_width="@dimen/_40sdp"
+            android:layout_height="0dp"
+            android:layout_marginEnd="@dimen/_8sdp"
+            android:layout_marginVertical="@dimen/_3sdp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_ai"
+            android:contentDescription="@string/ai_feature_title"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/open_dir_button"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="#FFF" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

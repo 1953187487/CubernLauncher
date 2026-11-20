@@ -6,13 +6,16 @@ import static net.kdt.pojavlaunch.Tools.currentDisplayMetrics;
 import android.Manifest;
 import android.app.NotificationManager;
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.method.LinkMovementMethod;
 import android.text.util.Linkify;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Toast;
 
 import androidx.activity.OnBackPressedCallback;
@@ -57,6 +60,7 @@ import com.movtery.zalithlauncher.feature.mod.modpack.install.ModPackInfo;
 import com.movtery.zalithlauncher.feature.mod.modpack.install.ModPackUtils;
 import com.movtery.zalithlauncher.feature.notice.CheckNewNotice;
 import com.movtery.zalithlauncher.feature.notice.NoticeInfo;
+import com.movtery.zalithlauncher.feature.notice.UserAgreementStore;
 import com.movtery.zalithlauncher.feature.update.UpdateUtils;
 import com.movtery.zalithlauncher.feature.version.Version;
 import com.movtery.zalithlauncher.feature.version.VersionsManager;
@@ -69,6 +73,7 @@ import com.movtery.zalithlauncher.task.Task;
 import com.movtery.zalithlauncher.task.TaskExecutors;
 import com.movtery.zalithlauncher.ui.activity.BaseActivity;
 import com.movtery.zalithlauncher.ui.activity.ErrorActivity;
+import com.movtery.zalithlauncher.ui.compose.CubernComposeHost;
 import com.movtery.zalithlauncher.ui.dialog.EditTextDialog;
 import com.movtery.zalithlauncher.ui.dialog.TipDialog;
 import com.movtery.zalithlauncher.ui.fragment.AccountFragment;
@@ -84,8 +89,10 @@ import com.movtery.zalithlauncher.utils.ZHTools;
 import com.movtery.zalithlauncher.utils.anim.ViewAnimUtils;
 import com.movtery.zalithlauncher.utils.file.FileTools;
 import com.movtery.zalithlauncher.utils.image.ImageUtils;
+import com.movtery.zalithlauncher.utils.path.PathManager;
 import com.movtery.zalithlauncher.utils.stringutils.ShiftDirection;
 import com.movtery.zalithlauncher.utils.stringutils.StringUtils;
+
 
 import net.kdt.pojavlaunch.authenticator.microsoft.MicrosoftBackgroundLogin;
 import net.kdt.pojavlaunch.contracts.OpenDocumentWithExtension;
@@ -124,6 +131,7 @@ public class LauncherActivity extends BaseActivity {
     private ProgressServiceKeeper mProgressServiceKeeper;
     private NotificationManager mNotificationManager;
     private Future<?> checkNotice;
+    private View composeOverlay;
 
     /* Allows to switch from one button "type" to another */
     private final FragmentManager.FragmentLifecycleCallbacks mFragmentCallbackListener = new FragmentManager.FragmentLifecycleCallbacks() {
@@ -356,6 +364,9 @@ public class LauncherActivity extends BaseActivity {
         processFragment();
         processViews();
 
+        // 首次启动强制展示用户须知协议，未同意前不得使用下载/联机/AI 等功能
+        checkUserAgreement();
+
         mRequestNotificationPermissionLauncher = registerForActivityResult(
                 new ActivityResultContracts.RequestPermission(),
                 isAllowed -> {
@@ -439,7 +450,22 @@ public class LauncherActivity extends BaseActivity {
                 Tools.backToMainMenu(this);
             }
         });
-        binding.appTitleText.setText(InfoDistributor.APP_NAME);
+        binding.terracottaButton.setOnClickListener(v -> {
+            ViewAnimUtils.setViewAnim(binding.terracottaButton, Animations.Pulse);
+            showComposeOverlay(CubernComposeHost.INSTANCE.createTerracottaView(this, this::dismissComposeOverlay));
+        });
+        binding.openDirButton.setOnClickListener(v -> {
+            ViewAnimUtils.setViewAnim(binding.openDirButton, Animations.Pulse);
+            openMainDirectory();
+        });
+        binding.aiButton.setOnClickListener(v -> {
+            ViewAnimUtils.setViewAnim(binding.aiButton, Animations.Pulse);
+            showComposeOverlay(CubernComposeHost.INSTANCE.createAiAssistantView(this, this::dismissComposeOverlay,
+                    () -> {
+                        dismissComposeOverlay();
+                        showComposeOverlay(CubernComposeHost.INSTANCE.createAiSettingsView(this, this::dismissComposeOverlay));
+                    }));
+        });        binding.appTitleText.setText(InfoDistributor.APP_NAME);
         binding.appTitleText.setOnClickListener(v -> {
             String shiftedString = StringUtils.shiftString(binding.appTitleText.getText().toString(), ShiftDirection.RIGHT, 1);
             if (new Random().nextInt(100) < 20 && shiftedString.equals(InfoDistributor.APP_NAME)) {
@@ -687,5 +713,65 @@ public class LauncherActivity extends BaseActivity {
                 : BigDecimal.ONE;
 
         binding.topLayout.setAlpha(adjustedOpacity.floatValue());
+    }
+
+    /**
+     * 展示一个全屏 Compose 覆盖层（AI 助手、陶瓦联机等）。
+     */
+    private void showComposeOverlay(View content) {
+        if (composeOverlay != null) return;
+        composeOverlay = content;
+        addContentView(content, new android.widget.FrameLayout.LayoutParams(
+                android.widget.FrameLayout.LayoutParams.MATCH_PARENT,
+                android.widget.FrameLayout.LayoutParams.MATCH_PARENT
+        ));
+    }
+
+    private void dismissComposeOverlay() {
+        if (composeOverlay != null) {
+            ViewGroup parent = (ViewGroup) composeOverlay.getParent();
+            if (parent != null) parent.removeView(composeOverlay);
+            composeOverlay = null;
+        }
+    }
+
+    private void openMainDirectory() {
+        try {
+            Intent intent = new Intent(Intent.ACTION_VIEW);
+            intent.setDataAndType(Uri.parse("file://" + PathManager.DIR_GAME_HOME + "/"), "resource/folder");
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+        } catch (Throwable e) {
+            Toast.makeText(this, R.string.main_open_main_dir, Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    /**
+     * 首次启动时强制显示用户须知协议；未同意前不得进入主界面。
+     */
+    private void checkUserAgreement() {
+        if (UserAgreementStore.INSTANCE.isAccepted(this)) return;
+        showComposeOverlay(CubernComposeHost.INSTANCE.createUserNoticeView(this,
+                () -> {
+                    // 用户已阅读并同意：状态已由 UserNoticeScreen 保存，关闭遮罩继续进入主界面
+                    dismissComposeOverlay();
+                    checkNotice();
+                },
+                () -> {
+                    // 拒绝协议：直接退出启动器
+                    finish();
+                }));
+    }
+
+    /** 设置页"重新查看用户须知"入口调用。 */
+    public void showUserAgreementAgain() {
+        showComposeOverlay(CubernComposeHost.INSTANCE.createUserNoticeView(this,
+                this::dismissComposeOverlay,
+                this::dismissComposeOverlay));
+    }
+
+    /** 设置页"AI 助手"入口调用。 */
+    public void showAiSettings() {
+        showComposeOverlay(CubernComposeHost.INSTANCE.createAiSettingsView(this, this::dismissComposeOverlay));
     }
 }

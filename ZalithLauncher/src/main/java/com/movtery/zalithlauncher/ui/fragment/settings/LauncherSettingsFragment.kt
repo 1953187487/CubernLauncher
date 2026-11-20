@@ -186,6 +186,22 @@ class LauncherSettingsFragment() : AbstractSettingsFragment(R.layout.settings_fr
             binding.notificationPermissionRequest
         )
         setupNotificationRequestPreference(notificationPermissionRequest)
+
+        BaseSettingsWrapper(
+            context,
+            binding.userNoticeLayout
+        ) {
+            val activity = activity as? LauncherActivity
+            activity?.showUserAgreementAgain()
+        }
+
+        BaseSettingsWrapper(
+            context,
+            binding.aiSettingsLayout
+        ) {
+            val activity = activity as? LauncherActivity
+            activity?.showAiSettings()
+        }
     }
 
     override fun slideIn(animPlayer: AnimPlayer) {
