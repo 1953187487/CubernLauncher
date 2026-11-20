@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="user_notice_title">用户须知与服务协议</string>
+    <string name="user_notice_version_info">应用：%1$s  %2$s（测试版 / Pre-release）</string>
+    <string name="user_notice_accept">我已阅读并同意</string>
+    <string name="user_notice_decline">拒绝并退出</string>
+    <string name="user_notice_checkbox">我已完整阅读并理解上述内容</string>
+    <string name="user_notice_reopen">重新查看用户须知</string>
+    <string name="user_notice_body"><![CDATA[
+1. 应用与状态
+- 应用名称：Cubern Launcher
+- 版本：1.0.3（测试版 / Pre-release）
+- 当前作者：万古沧海
+- 原作者：Zalith Launcher 1 启动器作者
+
+2. 开源协议（GPL-3.0）
+- 本项目基于 GNU GPL-3.0 开源协议发布。你可以依据 GPL-3.0 的条款使用、修改与分发本软件及其源代码。
+- 基于本项目的修改版本在分发时同样必须遵循 GPL-3.0，并向接收者提供相应的源代码与协议文本。
+
+3. 第三方致谢
+- 本启动器基于 Zalith Launcher 1 原版底层开发，参考或使用了以下项目与资源：Zalith Launcher 1 / Zalith Launcher 2、PojavLauncher、FoldCraftLauncher、Amethyst-iOS、MyRemasteredAI、MIUIX（设计参考）、EasyTier、HMCL、CommonMark、AndroidViewAnimations、TapTargetView、MC 百科，以及各项目贡献者与社区作者。
+- 各第三方项目的商标、代码与资源归各自权利人所有，并遵循其各自的许可协议。
+
+4. 用户使用须知
+- 本启动器仅为 Minecraft: Java Edition 的启动与管理工具，不提供游戏本体。你应通过合法渠道获取和使用游戏内容及相关账号。
+- 请勿将本软件用于任何非法活动，包括但不限于侵犯他人权利、扰乱网络秩序或传播恶意内容。
+- 请自行备份重要的存档与数据。因设备环境、模组兼容性、第三方服务故障等原因造成的损失，需由你自行评估并承担。
+
+5. 隐私说明
+- 启动器会在本地保存提供基本功能所必需的配置信息（如版本设置、协议同意状态与时间、AI 服务配置项等）。
+- 联机、下载与登录功能会与相应服务通信；除实现功能所必需的信息外，启动器不会主动上传与你的游戏内容无关的隐私数据。
+- 若你启用 AI 助手并配置第三方服务，相关对话内容将按你的配置发送至所选服务；请勿在对话中输入密码、正版账号令牌、支付信息或其他敏感数据。
+
+6. AI 功能说明与免责声明
+- 内置 AI 助手仅用于离线辅助：命令解释与纠错、启动失败日志分析、崩溃原因初步诊断、Java / 渲染器设置建议、模组 / 数据包 / 资源包使用说明、陶瓦联机常见问题、游戏玩法与攻略查询等。
+- AI 回复可能不准确或过时，不构成官方客服、法律、账号安全或支付建议。请自行核实关键结论，并谨慎进行账号与安全相关操作。
+
+7. 陶瓦联机说明
+- 陶瓦联机基于 P2P 技术。连接成功后，参与设备将尽可能直接互联；通常情况下游戏流量不经第三方服务器转发（节点发现 / 协调等必要信令除外）。
+- 使用联机功能时，你应遵守所在地的法律法规与网络使用规范，不得将联机用于违法活动。
+
+8. Minecraft 正版账号与版权声明
+- “Minecraft”及相关名称与标识为 Mojang Studios / Microsoft 的商标或版权内容。本项目与 Mojang、Microsoft、网易无任何隶属、合作或官方背书关系。
+- 本启动器不提供绕过正版验证、分发盗版内容或破解的能力。请支持正版并遵守相关服务条款。
+
+9. 免责声明
+- 本软件按“现状”提供，开发者不对适销性、稳定性或特定用途适用性作任何明示或暗示的保证。
+- 在法律允许的范围内，开发者与贡献者对因使用或无法使用本软件而产生的任何直接或间接损失不承担责任。
+
+协议版本：1.0.3-agreement-1
+]]></string>
+</resources>

@@ -790,55 +790,6 @@
     <string name="terracotta_status_exception_desc_ping_server_rst">与 ping 服务器的连接被重置。</string>
     <string name="terracotta_status_exception_desc_scaffolding_invalid_response">收到无效的脚手架响应。</string>
     <!-- Cubern Launcher: User notice -->
-    <string name="user_notice_title">用户须知与服务协议</string>
-    <string name="user_notice_version_info">应用：%1$s  %2$s（测试版 / Pre-release）</string>
-    <string name="user_notice_accept">我已阅读并同意</string>
-    <string name="user_notice_decline">拒绝并退出</string>
-    <string name="user_notice_checkbox">我已完整阅读并理解以上内容</string>
-    <string name="user_notice_reopen">重新查看用户须知</string>
-    <string name="user_notice_body"><![CDATA[
-1. 应用与状态
-- 应用名称：Cubern Launcher
-- 版本：1.0.3（测试版 / Pre-release）
-- 当前作者：万古沧海
-- 原作者：Zalith Launcher 1 启动器作者
-
-2. 开源协议（GPL-3.0）
-- 本项目遵循 GNU GPL-3.0 开源协议发布。你可以在遵守 GPL-3.0 条款的前提下使用、修改与分发本软件及其源代码。
-- 基于本项目的修改版本在分发时应同样遵循 GPL-3.0，并向接收者提供对应的源代码与许可证文本。
-
-3. 第三方项目致谢
-- 本启动器基于 Zalith Launcher 1 原版底层开发，并参考或使用以下项目与资源：Zalith Launcher 1/Zalith Launcher 2、PojavLauncher、FoldCraftLauncher、Amethyst-iOS、MyRemasteredAI、MIUIX（设计参考）、EasyTier、HMCL、CommonMark、AndroidViewAnimations、TapTargetView、MC 百科等，以及项目贡献者与社区作者。
-- 各第三方项目的商标、代码与资源归其各自权利人所有，受其各自许可证约束。
-
-4. 用户使用须知
-- 本启动器仅作为 Minecraft: Java Edition 的启动与管理工具，不提供任何游戏本体。你应通过合法渠道获取并使用游戏内容及相关账号。
-- 请勿将本软件用于违法违规活动，包括但不限于侵害他人权益、破坏网络秩序或传播恶意内容。
-- 使用过程中请自行备份重要存档与数据；因设备环境、模组兼容性、第三方服务异常等造成的损失需由你自行评估与承担。
-
-5. 隐私说明
-- 启动器会在本地保存必要的配置信息（如版本设置、已同意协议的状态与时间、AI 服务配置项等），以提供基础功能。
-- 联机、下载、登录等功能会与对应服务通信；除实现功能所必需的信息外，启动器不主动上传与你游戏内容无关的个人隐私数据。
-- 若你启用 AI 助手并配置第三方服务，相关对话内容将按你的配置发送至所选服务；请勿在对话中输入密码、正版账号令牌、支付信息等敏感数据。
-
-6. AI 功能说明与免责声明
-- 启动器内置 AI 助手仅用于离线辅助：命令解释与纠错、启动失败日志分析、崩溃原因初步诊断、Java/渲染设置建议、模组/数据包/资源包说明、陶瓦联机常见问题、玩法与攻略查询等。
-- AI 回复可能存在不准确或过时内容，不构成官方客服、法律、账号安全或付费建议。请自行核实关键结论，涉及账号与安全操作时谨慎处理。
-
-7. 陶瓦联机说明
-- 陶瓦联机（Terracotta）基于 P2P 技术。联机成功后，参与设备之间尽可能直接连接，正常情况下不通过第三方服务器中转游戏流量（节点发现/协调等必要信令除外，具体以实现为准）。
-- 使用联机功能时，你应遵守所在地法律法规及网络使用规范，不得利用联机功能从事违法活动。
-
-8. Minecraft 正版账号与版权声明
-- “Minecraft” 及相关名称、标识为 Mojang Studios/Microsoft 的商标或版权内容。本项目与 Mojang、Microsoft、网易公司无隶属、合作或官方背书关系。
-- 启动器不提供绕过正版验证、盗版分发或破解能力。请支持正版并遵守相关服务条款。
-
-9. 免责声明
-- 本软件按“现状”提供，开发者不对其适用性、稳定性或特定目的的适配性作明示或暗示担保。
-- 在法律允许范围内，因使用或无法使用本软件产生的任何直接或间接损失，开发者与贡献者不承担责任。
-
-协议版本：1.0.3-agreement-1
-]]></string>
 
     <!-- Cubern Launcher: Terracotta UI -->
     <string name="terracotta_tab_notice">用户须知</string>
@@ -899,7 +850,6 @@
     <string name="ai_settings_clear_history">清除对话记录</string>
     <string name="ai_settings_cleared">对话记录已清除。</string>
     <string name="ai_settings_notice">隐私说明</string>
-    <string name="user_notice_ai_excerpt">对话内容会按你的配置发送至所选服务。请勿输入密码、正版账号令牌或支付信息。AI 回复仅供参考，不构成权威结论。</string>
 
     <string name="main_setting">设置</string>
 

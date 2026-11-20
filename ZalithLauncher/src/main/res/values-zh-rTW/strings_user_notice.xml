@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="user_notice_title">使用者須知與服務協議</string>
+    <string name="user_notice_version_info">應用程式：%1$s  %2$s（測試版 / Pre-release）</string>
+    <string name="user_notice_accept">我已閱讀並同意</string>
+    <string name="user_notice_decline">拒絕並退出</string>
+    <string name="user_notice_checkbox">我已完整閱讀並理解上述內容</string>
+    <string name="user_notice_reopen">重新檢視使用者須知</string>
+    <string name="user_notice_body"><![CDATA[
+1. 應用程式與狀態
+- 應用程式名稱：Cubern Launcher
+- 版本：1.0.3（測試版 / Pre-release）
+- 當前作者：萬古滄海
+- 原作者：Zalith Launcher 1 啟動器作者
+
+2. 開源協議（GPL-3.0）
+- 本專案基於 GNU GPL-3.0 開源協議發布。你可依 GPL-3.0 條款使用、修改與分發本軟體及其原始碼。
+- 基於本專案的修改版本在分發時同樣必須遵循 GPL-3.0，並向接收者提供相應的原始碼與協議文字。
+
+3. 第三方致謝
+- 本啟動器基於 Zalith Launcher 1 原版底層開發，參考或使用了以下專案與資源：Zalith Launcher 1 / Zalith Launcher 2、PojavLauncher、FoldCraftLauncher、Amethyst-iOS、MyRemasteredAI、MIUIX（設計參考）、EasyTier、HMCL、CommonMark、AndroidViewAnimations、TapTargetView、MC 百科，以及各專案貢獻者與社群作者。
+- 各第三方專案的商標、程式碼與資源歸各自權利人所有，並遵循其各自的授權協議。
+
+4. 使用者使用須知
+- 本啟動器僅為 Minecraft: Java Edition 的啟動與管理工具，不提供遊戲本體。你應透過合法管道取得與使用遊戲內容及相關帳號。
+- 請勿將本軟體用於任何非法活動，包括但不限於侵犯他人權利、擾亂網路秩序或散播惡意內容。
+- 請自行備份重要的存檔與資料。因裝置環境、模組相容性、第三方服務故障等原因造成的損失，需由你自行評估並承擔。
+
+5. 隱私說明
+- 啟動器會在本機保存提供基本功能所必要的設定資訊（如版本設定、協議同意狀態與時間、AI 服務設定項等）。
+- 連線、下載與登入功能會與相應服務通訊；除實作功能所必要的資訊外，啟動器不會主動上傳與你的遊戲內容無關的隱私資料。
+- 若你啟用 AI 助理並設定第三方服務，相關對話內容將依你的設定傳送至所選服務；請勿在對話中輸入密碼、正版帳號權杖、付款資訊或其他敏感資料。
+
+6. AI 功能說明與免責聲明
+- 內建 AI 助理僅用於離線輔助：指令解釋與糾錯、啟動失敗日誌分析、崩潰原因初步診斷、Java / 渲染器設定建議、模組 / 資料包 / 資源包使用說明、陶瓦連線常見問題、遊戲玩法與攻略查詢等。
+- AI 回覆可能不準確或過時，不構成官方客服、法律、帳號安全或付款建議。請自行查證關鍵結論，並謹慎進行帳號與安全相關操作。
+
+7. 陶瓦連線說明
+- 陶瓦連線基於 P2P 技術。連線成功後，參與裝置將盡可能直接互聯；通常情況下遊戲流量不經第三方伺服器轉發（節點發現 / 協調等必要訊號除外）。
+- 使用連線功能時，你應遵守所在地的法律法規與網路使用規範，不得將連線用於違法活動。
+
+8. Minecraft 正版帳號與版權聲明
+- 「Minecraft」及相關名稱與標識為 Mojang Studios / Microsoft 的商標或版權內容。本專案與 Mojang、Microsoft、網易無任何隸屬、合作或官方背書關係。
+- 本啟動器不提供繞過正版驗證、散發盜版內容或破解的能力。請支持正版並遵守相關服務條款。
+
+9. 免責聲明
+- 本軟體按「現狀」提供，開發者不對適銷性、穩定性或特定用途適用性作任何明示或暗示的保證。
+- 在法律允許的範圍內，開發者與貢獻者對因使用或無法使用本軟體而產生的任何直接或間接損失不承擔責任。
+
+協議版本：1.0.3-agreement-1
+]]></string>
+</resources>
