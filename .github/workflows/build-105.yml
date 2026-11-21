@@ -23,12 +23,21 @@ jobs:
           distribution: temurin
           java-version: "8"
       - name: Install NDK
-        run: echo "y" | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager "ndk;25.2.9519653"
+        env:
+          ANDROID_HOME: /usr/local/lib/android/sdk
+        run: |
+          echo "ANDROID_HOME=$ANDROID_HOME"
+          SDKMGR=$(find $ANDROID_HOME/cmdline-tools -name sdkmanager -type f | head -1)
+          echo "sdkmanager=$SDKMGR"
+          if [ -n "$SDKMGR" ]; then echo "y" | $SDKMGR "ndk;25.2.9519653"; fi
+          ls $ANDROID_HOME/ndk/ 2>/dev/null || true
       - name: Make gradlew executable
         run: chmod +x gradlew
       - name: Build Release APK
         env:
           CUBERN_KEYSTORE_PASSWORD: "Cubern@103!"
+          ANDROID_HOME: /usr/local/lib/android/sdk
+          ANDROID_SDK_ROOT: /usr/local/lib/android/sdk
         run: ./gradlew :CubernLauncher:assembleRelease --no-daemon --max-workers=2 -Dorg.gradle.jvmargs=-Xmx2048M
       - name: Create Release with APK
         env:
