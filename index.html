@@ -235,8 +235,70 @@ footer{border-top:1px solid var(--line);padding:36px 0 24px;background:rgba(8,12
 #loader .bar i{display:block;height:100%;width:40%;background:linear-gradient(90deg,var(--c1),var(--c2));border-radius:5px;animation:loadbar 1.1s ease-in-out infinite}
 @keyframes loadbar{0%{margin-left:-40%}100%{margin-left:110%}}
 #loader .txt{font-size:12px;color:var(--mut)}
-@media(max-width:900px){header{padding-top:44px}.hero{grid-template-columns:1fr;text-align:center}.hero .lead{margin:0 auto}.btn-row,.hero-meta,.tagline{justify-content:center;margin-left:auto;margin-right:auto}.phone-stage{display:none}.bento{grid-template-columns:1fr 1fr}.card.wide{grid-column:span 2}.metrics{grid-template-columns:1fr 1fr}}
-@media(max-width:560px){.bento,.metrics{grid-template-columns:1fr}.card.wide{grid-column:span 1}.f-links{gap:24px}}
+/* ============ 响应式：电脑 / 平板 / 手机分档 ============ */
+/* 平板（≤1024px）：收紧留白，双栏改单栏预览隐藏 */
+@media(max-width:1024px){
+  .hero{grid-template-columns:1fr;gap:28px}
+  .hero h1{font-size:clamp(30px,6vw,46px)}
+  .phone-stage{display:none}
+  .bento{grid-template-columns:1fr 1fr}
+}
+
+/* 手机（≤720px）：自然滚动、去嵌套、减轻动画 */
+@media(max-width:720px){
+  header{padding:32px 0 28px}
+  .hero{text-align:left}
+  .hero .lead{margin:0}
+  .btn-row,.hero-meta,.tagline{justify-content:flex-start;margin-left:0;margin-right:auto}
+  .btn{flex:1;justify-content:center;min-width:130px}
+  .metrics{grid-template-columns:1fr 1fr;gap:10px}
+  .metric{padding:16px 10px}
+  .metric .n{font-size:23px}
+  section{padding:38px 0}
+  .bento{grid-template-columns:1fr}
+  .card.wide{grid-column:span 1}
+  /* 关键：取消固定高度内嵌滚动，改为自然展开，避免滚动嵌套卡顿 */
+  .timeline-scroll{height:auto!important;max-height:none!important;min-height:0;overflow:visible;padding-right:0}
+  .timeline::before{display:none}
+  .update-card{padding:20px;transform:none}
+  .scroll-hint{display:none}
+  /* 协议弹窗在手机上贴底，留出安全区 */
+  .agreement{align-items:flex-end;padding:0}
+  .agreement-box{max-height:92vh;border-radius:20px 20px 0 0;padding-bottom:calc(20px + env(safe-area-inset-bottom))}
+  .ag-body{max-height:38vh}
+  /* 手机端降负载：关掉流动高光与卡片光晕动画 */
+  .glass::after{display:none}
+  .orb{filter:blur(60px);opacity:.3}
+  .orb.c{display:none}
+  .grid-bg{opacity:.2}
+  /* 地址按钮、背景按钮避开底部 */
+  .bg-panel{right:14px;bottom:calc(14px + env(safe-area-inset-bottom))}
+  .f-links{display:block}
+  .f-links>div{margin-bottom:18px}
+}
+
+/* 超小屏（≤400px） */
+@media(max-width:400px){
+  .toolbar-in{padding:0 14px}
+  .brand{font-size:15px}
+  .btn-sm{padding:7px 11px;font-size:12px}
+  .icon-btn{width:32px;height:32px}
+  .ver-badge{display:none}
+  .sitelog{grid-template-columns:1fr}
+}
+
+/* 电脑端（≥1200px）：更宽松的呼吸感 */
+@media(min-width:1200px){
+  .wrap{max-width:1200px}
+  .hero h1{font-size:58px}
+  .bento{gap:18px}
+}
+
+/* 触屏设备：隐藏 3D 悬停相关（由 JS 判断 pointer 类型兜底） */
+@media(hover:none){
+  .card:hover,.sitelog-item:hover{transform:none}
+}
+
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal,.metric,.update-card{opacity:1;transform:none}}
 .metric,.card{content-visibility:auto;contain-intrinsic-size:auto 400px}
 </style>
@@ -609,38 +671,40 @@ footer{border-top:1px solid var(--line);padding:36px 0 24px;background:rgba(8,12
     addEventListener('mouseleave',function(){phone.style.transform=''});
   }
 
-  var io=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target)}})},{threshold:.1});
-  document.querySelectorAll('.reveal,.metric').forEach(function(x){io.observe(x)});
-  var cards=[].slice.call(document.querySelectorAll('.update-card'));
-  var scroller=document.getElementById('timelineScroll');
-  scroller.addEventListener('scroll',function(){cards.forEach(function(c){var r=c.getBoundingClientRect(),s=scroller.getBoundingClientRect();if(r.top<s.bottom+40&&r.bottom>s.top-40)c.classList.add('in')})},{passive:true});
-  setTimeout(function(){cards.forEach(function(c){c.classList.add('in')})},400);
+  var io=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target)}})},{threshold:.08,rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.reveal,.metric,.update-card').forEach(function(x){io.observe(x)});
+  /* 兜底：极少数环境 IO 不触发时，1.2 秒后强制显示全部，避免空白 */
+  setTimeout(function(){document.querySelectorAll('.reveal,.metric,.update-card').forEach(function(x){x.classList.add('in')})},1200);
 
+  /* ===== 协议 v1.2 —— 与官网 v1.3 / 启动器 v1.0.4 同步 ===== */
   var TERMS=[
-    '<h4>① 关于本项目</h4><p>Cubern Launcher 基于 <b>Zalith Launcher 1</b> 二次开发，遵循 <b>GNU GPL v3.0</b> 开源协议。当前版本为测试版。</p>',
-    '<h4>② 非官方声明</h4><p>本项目与 <b>Mojang Studios、Microsoft、网易</b> 无任何隶属、授权或合作关系。Minecraft 是 Mojang Studios 的商标。</p>',
-    '<h4>③ 测试版提示</h4><p>当前所有版本均为测试版（Pre-release），可能存在未完善功能或已知问题，请自行承担使用风险。</p>',
-    '<h4>④ 网络与账号</h4><p>部分功能（版本下载、陶瓦联机、AI 助手等）需要网络访问；如使用自备 API Key，密钥仅保存在本机。</p>',
-    '<h4>⑤ 本地存储</h4><p>游戏文件、配置与运行时均存储在你的设备本地。卸载或清理数据前请自行备份。</p>',
-    '<h4>⑥ 开源与免责</h4><p>本项目按 GPL v3.0 开源，按“现状”提供，不作任何担保，作者不承担使用损失责任。</p>'
+    '<h4>① 关于本项目</h4><p>Cubern Launcher 是一款基于 <b>Zalith Launcher 1</b> 二次开发的 Minecraft Java 版 Android 启动器，遵循 <b>GNU GPL v3.0</b> 开源协议。当前开发作者：<b>鹙鸟</b>。当前软件版本 <b>v1.0.4（Pre-release 测试版）</b>。</p>',
+    '<h4>② 非官方声明</h4><p>本项目与 <b>Mojang Studios、Microsoft、网易、Zalith Launcher 官方</b> 均无隶属、授权或合作关系。Minecraft 是 Mojang Studios 的商标。本项目为独立的非官方二改作品。</p>',
+    '<h4>③ 测试版提示</h4><p>当前所有版本均为测试版（Pre-release），功能仍在持续开发，可能存在未完善功能或已知问题。v1.0.4 已更换包名与新签名证书，升级旧版前<b>必须先卸载旧版</b>。</p>',
+    '<h4>④ 功能说明</h4><p>本项目提供：陶瓦联机（Terracotta + EasyTier）、AI 版本助手（含启动日志分析）、Java 运行时自动管理、Vulkan 渲染检测、Forge / Fabric / NeoForge / Quilt 自定义环境支持等。部分功能需联网。</p>',
+    '<h4>⑤ 网络与账号</h4><p>版本下载默认使用 <b>BMCLAPI 镜像</b>，联机使用 EasyTier 节点。如使用自备 API Key 启用 AI 问答，密钥仅保存在你的设备本地，不会上传。请自行遵守所在地区网络规定。</p>',
+    '<h4>⑥ 本地存储与权限</h4><p>游戏文件、配置、运行时与宠物/日志数据均存储在你的设备本地应用私有目录。卸载或清理数据前请自行备份。「打开主目录」使用内置文件管理器实现。</p>',
+    '<h4>⑦ 开源与免责</h4><p>本项目按 <b>GPL v3.0</b> 开源，按“现状”提供，不作任何明示或暗示担保。因使用本软件造成的任何损失，作者与贡献者不承担法律责任。</p>'
   ].join('');
   var PRIVACY=[
-    '<h4>① 信息收集</h4><p>本启动器<b>不收集</b>你的个人身份信息、联系方式或位置信息。所有游戏数据、配置均保存在你的设备本地。</p>',
-    '<h4>② AI 助手与日志</h4><p>使用「分析启动日志」功能时，日志会在<b>上传前</b>经过脱敏处理（令牌、API Key、UUID、路径用户名等），并弹窗告知、取得你的确认后才上传。</p>',
-    '<h4>③ 陶瓦联机</h4><p>联机功能会使用 EasyTier 节点建立 P2P 隧道，节点地址由你选择或来自公开节点列表；房间码仅用于建立连接。</p>',
-    '<h4>④ 第三方服务</h4><p>版本下载可能访问 Modrinth、CurseForge 等公开平台；这些平台有各自的隐私政策，本项目不控制其内容。</p>',
-    '<h4>⑤ 数据存储位置</h4><p>所有本地数据存储于 Android 应用私有目录，其他应用无法读取。卸载应用会一并清除。</p>',
-    '<h4>⑥ 儿童隐私</h4><p>本项目不面向 13 岁以下儿童，不会有意收集儿童的个人信息。</p>',
-    '<h4>⑦ 政策更新</h4><p>隐私政策如有变更，会在官网更新公告中说明。继续使用即视为接受更新后的政策。</p>'
+    '<h4>① 信息收集原则</h4><p>本启动器<b>不收集</b>你的个人身份信息、联系方式、位置信息或设备标识符。我们不需要、也不要求你注册账号。所有游戏数据、配置与本地状态均保存在你的设备本地。</p>',
+    '<h4>② AI 助手与启动日志</h4><p>使用「分析启动日志」功能时，日志会先经过<b>本地脱敏</b>（令牌、API Key、UUID、路径用户名等），并通过弹窗明确告知、取得你的确认后才上传。你完全可以拒绝，不影响其他功能。</p>',
+    '<h4>③ 自备 API Key</h4><p>如你选择填写 USER_LLM_API_KEY，该密钥仅在本机存储并直接用于向所选服务发起请求，本项目的官网与作者服务器不会保存或中转你的密钥。</p>',
+    '<h4>④ 陶瓦联机与 P2P</h4><p>联机功能通过 EasyTier 建立 P2P 隧道，节点地址由你选择或来自公开节点列表。房间码仅用于建立连接；联机过程中产生的连接日志保存在本机。请自行评估在公开网络联机的隐私风险。</p>',
+    '<h4>⑤ 第三方服务</h4><p>版本与模组下载可能访问 BMCLAPI、Modrinth、CurseForge 等公开服务；这些服务有各自的隐私政策，本项目不控制其内容，也不向其提供你的个人信息。</p>',
+    '<h4>⑥ 官网与本地存储</h4><p>官网（本页）为纯静态页面，不含追踪脚本、统计 Cookie 或第三方广告。主题、背景、协议同意状态等仅存于你浏览器的 localStorage，随时可清除。清除后首次访问会重新弹出协议。</p>',
+    '<h4>⑦ 儿童隐私</h4><p>本项目不面向 13 岁以下儿童，不会有意收集儿童的个人信息。</p>',
+    '<h4>⑧ 政策更新</h4><p>本隐私协议版本为 <b>v1.2</b>。如有变更，会在官网「网站更新日志」中说明并更新版本号。继续使用即视为接受更新后的政策。</p>'
   ].join('');
   var CODE=[
-    '<h4>① 开源许可</h4><p>本项目源代码以 <b>GNU GPL v3.0</b> 许可发布，你可以自由使用、修改、分发，但必须：保留版权与许可声明、以相同许可开源你的修改版本。</p>',
-    '<h4>② 二改来源</h4><p>本项目基于 <b>Zalith Launcher 1</b> 二次开发。ZL1 原作者的权利受其原许可保护，相关归属见仓库 NOTICE / LICENSE。</p>',
-    '<h4>③ 第三方组件</h4><p>陶瓦联机（Terracotta）、EasyTier、PojavLauncher 等第三方组件各自保留原许可证，详见仓库各组件的 LICENSE 文件。</p>',
-    '<h4>④ 商标与品牌</h4><p>「Cubern Launcher」名称与图标为本项目自有；Minecraft 为 Mojang Studios 商标，本项目不拥有其任何权利。</p>',
-    '<h4>⑤ 贡献规范</h4><p>欢迎通过 Pull Request 贡献代码，提交即视为同意以 GPL v3.0 授权你的贡献。</p>'
+    '<h4>① 开源许可</h4><p>本项目源代码以 <b>GNU GPL v3.0</b> 许可发布：你可自由使用、修改、分发，但须保留版权与许可声明，并以相同许可开源你的修改版本，且不得附加额外限制。</p>',
+    '<h4>② 二改来源与署名</h4><p>本项目基于 <b>Zalith Launcher 1</b> 二次开发，并移植了 Zalith Launcher 2 的陶瓦联机实现。原作者权利受其原许可保护，相关归属见仓库 LICENSE / NOTICE。当前开发作者为 <b>鹙鸟</b>。</p>',
+    '<h4>③ 第三方组件</h4><p>Terracotta、EasyTier、PojavLauncher 等第三方组件各自保留原许可证，详见仓库各组件目录的 LICENSE 文件。任何第三方商标权归各自所有者。</p>',
+    '<h4>④ 商标与品牌</h4><p>「Cubern Launcher」名称、图标与视觉设计为本项目自有；Minecraft 为 Mojang Studios 商标，Microsoft、网易等名称归各自所有者，本项目不拥有其任何权利。</p>',
+    '<h4>⑤ 包名与签名</h4><p>自 v1.0.4 起，应用包名变更为 <b>com.cubern.launcher</b>，并使用独立签名证书（CN=Cubern Launcher）。因签名变更，旧版用户升级前必须卸载旧版。</p>',
+    '<h4>⑥ 贡献规范</h4><p>欢迎通过 Issue 与 Pull Request 参与贡献。提交即视为同意以 GPL v3.0 授权你的贡献，并同意不提交任何你没有权利开源的代码。</p>'
   ].join('');
-  var AG='cubern-agree-v1.1',agreed=false;
+  var AG='cubern-agree-v1.2',agreed=false;
   try{agreed=localStorage.getItem(AG)==='1'}catch(e){}
   var agBox=document.getElementById('agreement'),agBody=document.getElementById('agBody'),agAgree=document.getElementById('agAgree'),agAccept=document.getElementById('agAccept');
   function showTab(t){document.querySelectorAll('.ag-tab').forEach(function(x){x.classList.toggle('on',x.dataset.tab===t)});agBody.innerHTML=t==='terms'?TERMS:(t==='privacy'?PRIVACY:CODE);agBody.scrollTop=0}
