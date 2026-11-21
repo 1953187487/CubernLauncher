@@ -6,7 +6,7 @@
     <string name="user_notice_intro">欢迎使用 %s。在继续之前，请阅读以下用户须知。本启动器是一款非官方的社区开源项目，与 Mojang、Microsoft 及网易公司无任何从属或合作关系。</string>
 
     <string name="user_notice_origin_title">一、项目来源</string>
-    <string name="user_notice_origin_content">本启动器基于 Zalith Launcher 1 进行开发并二改，保留了原项目的启动内核与兼容性，并在其基础上重构了界面层、引入陶瓦联机、Java 运行时自动管理、Vulkan 渲染支持等新特性。原项目作者为 Zalith Launcher1 启动器作者，本启动器当前作者为万古沧海。</string>
+    <string name="user_notice_origin_content">本启动器基于 Zalith Launcher 1 进行开发并二改，保留了原项目的启动内核与兼容性，并在其基础上重构了界面层、引入陶瓦联机、Java 运行时自动管理、Vulkan 渲染支持等新特性。原项目作者为 Zalith Launcher1 启动器作者，本启动器当前作者为鹙鸟。</string>
 
     <string name="user_notice_non_official_title">二、非官方声明</string>
     <string name="user_notice_non_official_content">%s 是非官方版本，不隶属于也不代表 Mojang Studios、Microsoft 或网易公司。Minecraft 是 Mojang Studios 的商标，本项目仅用于在 Android 设备上运行 Minecraft: Java Edition，不会分发任何游戏本体内容。</string>
