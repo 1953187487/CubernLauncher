@@ -68,4 +68,33 @@ object AfdianApi {
             Result.success(out)
         } catch (e: Exception) { Result.failure(e) }
     }
+
+    // ===== 1.0.7：赞助者每日 0 点自动刷新 + 本地持久化缓存 =====
+    private const val PREF = "cubern_afdian"
+    private const val KEY_SPONSORS = "sponsors_json"
+    private const val KEY_REFRESH_TIME = "refresh_time"
+
+    fun getCachedSponsors(context: android.content.Context): List<Sponsor> {
+        val sp = context.getSharedPreferences(PREF, android.content.Context.MODE_PRIVATE)
+        val json = sp.getString(KEY_SPONSORS, "[]") ?: "[]"
+        val out = mutableListOf<Sponsor>()
+        try {
+            val arr = org.json.JSONArray(json)
+            for (i in 0 until arr.length()) {
+                val o = arr.getJSONObject(i)
+                out.add(Sponsor(o.optString("name",""), o.optString("avatar",""), o.optString("amount",""), o.optInt("month",0), o.optString("remark","")))
+            }
+        } catch (_: Exception) {}
+        return out
+    }
+
+    fun saveSponsors(context: android.content.Context, list: List<Sponsor>) {
+        val arr = org.json.JSONArray()
+        list.forEach { s -> arr.put(org.json.JSONObject().put("name", s.name).put("avatar", s.avatar).put("amount", s.amount).put("month", s.month).put("remark", s.remark)) }
+        val sp = context.getSharedPreferences(PREF, android.content.Context.MODE_PRIVATE)
+        sp.edit().putString(KEY_SPONSORS, arr.toString()).putLong(KEY_REFRESH_TIME, System.currentTimeMillis()).apply()
+    }
+
+    fun getLastRefreshTime(context: android.content.Context): Long =
+        context.getSharedPreferences(PREF, android.content.Context.MODE_PRIVATE).getLong(KEY_REFRESH_TIME, 0L)
 }

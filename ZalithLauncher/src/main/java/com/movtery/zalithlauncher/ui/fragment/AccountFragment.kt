@@ -482,6 +482,15 @@ class AccountFragment : FragmentWithAnim(R.layout.fragment_account), View.OnClic
         }
     }
 
+        // 1.0.7：3D 皮肤预览入口（skinview3d 真 3D）
+        binding.skinPreviewButton.setOnClickListener {
+            val account = AccountsManager.currentAccount
+            val intent = android.content.Intent(requireActivity(), com.movtery.zalithlauncher.ui.activity.SkinPreviewActivity::class.java)
+            intent.putExtra("skin_name", account?.username ?: "角色皮肤")
+            intent.putExtra("skin_uuid", account?.uniqueUUID ?: "")
+            startActivity(intent)
+        }
+
     override fun onStart() {
         super.onStart()
         EventBus.getDefault().register(this)

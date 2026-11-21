@@ -66,6 +66,8 @@ public class PojavApplication extends Application {
 		
 		try {
 			super.onCreate();
+        // 1.0.7：每日 0 点自动刷新赞助者列表
+        try { com.movtery.zalithlauncher.feature.afdian.SponsorRefreshReceiver.Companion.scheduleDaily(this); com.movtery.zalithlauncher.feature.afdian.SponsorRefreshReceiver.Companion.refreshNow(this); } catch (Throwable ignored) {}
 			PathManager.DIR_DATA = getDir("files", MODE_PRIVATE).getParent();
 			PathManager.DIR_CACHE = getCacheDir();
 			PathManager.DIR_ACCOUNT_NEW = PathManager.DIR_DATA + "/accounts";

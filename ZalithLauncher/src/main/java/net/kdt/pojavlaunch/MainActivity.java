@@ -679,10 +679,10 @@ this.binding.forceClose.setOnClickListener(this);
 
         @Override public void onClick(View v) {
             if (v == binding.terracottaButton) {
-            // 从游戏菜单打开陶瓦联机：返回启动器并直接显示联机界面
+            // 1.0.7：从游戏菜单打开陶瓦联机，不清除游戏 Activity 栈，避免退回主页
             android.content.Intent intent = new android.content.Intent(MainActivity.this, LauncherActivity.class);
             intent.putExtra("open_terracotta", true);
-            intent.addFlags(android.content.Intent.FLAG_ACTIVITY_CLEAR_TOP | android.content.Intent.FLAG_ACTIVITY_SINGLE_TOP);
+            intent.addFlags(android.content.Intent.FLAG_ACTIVITY_SINGLE_TOP);
             startActivity(intent);
         }
         else if (v == binding.forceClose) {

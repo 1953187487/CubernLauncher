@@ -69,7 +69,12 @@ fun AboutLauncherScreen(onBack: () -> Unit, onCheckUpdate: (() -> Unit)? = null)
 
     LaunchedEffect(Unit) {
         visible = true
-        AfdianApi.querySponsors().onSuccess { sponsors = it }
+        // 1.0.7：优先读取本地缓存（每日0点自动刷新），再异步拉取最新
+        sponsors = AfdianApi.getCachedSponsors(context)
+        AfdianApi.querySponsors().onSuccess { list ->
+            sponsors = list
+            AfdianApi.saveSponsors(context, list)
+        }
         delay(300)
         loading = false
     }
@@ -149,6 +154,16 @@ fun AboutLauncherScreen(onBack: () -> Unit, onCheckUpdate: (() -> Unit)? = null)
                     }
                 }
 
+                // 账号注册 / 登录入口（1.0.7）
+                AboutCard("账号") {
+                    AboutLine("登录 Microsoft 账号以游玩正版 Minecraft")
+                    Spacer(Modifier.height(8.dp))
+                    Button(onClick = { onBack() }, Modifier.fillMaxWidth(),
+                        colors = ButtonDefaults.buttonColors(containerColor = CubernColors.Accent, contentColor = CubernColors.TextPrimary)) {
+                        Text("前往账号登录")
+                    }
+                }
+
                 // 检查更新
                 AboutCard("检查更新") {
                     AboutLine("当前版本：v" + BuildConfig.VERSION_NAME)
@@ -159,12 +174,15 @@ fun AboutLauncherScreen(onBack: () -> Unit, onCheckUpdate: (() -> Unit)? = null)
 
                 // 贡献者与鸣谢（重写）
                 AboutCard("贡献者与鸣谢") {
-                    AboutLine("Zalith Launcher 1 —— 原作启动器，奠定本项目底层架构")
-                    AboutLine("PojavLauncher 开发团队 —— 开源 Android Minecraft 启动核心")
-                    AboutLine("Terracotta / EasyTier —— P2P 联机方案")
-                    AboutLine("MC 百科（mcmod.cn）—— Mod 与整合包中文翻译")
-                    AboutLine("FoldCraftLauncher / Zalith Launcher 2 —— UI 与功能参考")
-                    AboutLine("所有提交 Issue、反馈问题与支持的玩家")
+                    AboutLine("Zalith Launcher 1 · 作者：ZalithLauncher —— github.com/ZalithLauncher/ZalithLauncher（原作底层）")
+                    AboutLine("PojavLauncher · 作者：PojavLauncherTeam —— github.com/PojavLauncherTeam/PojavLauncher（启动内核）")
+                    AboutLine("Terracotta · 作者：BurningTNT —— github.com/burningtnt/terracotta（P2P 联机）")
+                    AboutLine("EasyTier · 作者：EasyTier 团队 —— github.com/EasyTier/EasyTier（组网底层）")
+                    AboutLine("FoldCraftLauncher · 作者：FCL-Team —— github.com/FCL-Team/FoldCraftLauncher（UI 参考）")
+                    AboutLine("Zalith Launcher 2 · 作者：ZalithLauncher —— github.com/ZalithLauncher/ZalithLauncher2（功能参考）")
+                    AboutLine("MC 百科 · mcmod.cn —— Mod 与整合包中文翻译")
+                    AboutLine("skinview3d · 作者：bs-community —— github.com/bs-community/skinview3d（3D 皮肤渲染）")
+                    AboutLine("本项目作者：鹙鸟（B站同名）· github.com/1953187487")
                 }
 
                 Text("Cubern Launcher · 为 Android 上的 Minecraft Java 版而生",

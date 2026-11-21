@@ -154,6 +154,19 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/shadowView">
 
+            <!-- 1.0.7：3D 皮肤预览入口（skinview3d 真 3D 渲染） -->
+            <com.movtery.zalithlauncher.ui.view.AnimButton
+                android:id="@+id/skin_preview_button"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_8sdp"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:text="3D 皮肤预览"
+                app:layout_constraintBottom_toTopOf="@id/return_button"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:ignore="MissingConstraints" />
+
             <com.movtery.zalithlauncher.ui.view.AnimButton
                 android:id="@+id/return_button"
                 android:layout_width="0dp"
@@ -172,7 +185,7 @@
                 layout="@layout/view_account"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintBottom_toTopOf="@id/return_button"
+                app:layout_constraintBottom_toTopOf="@id/skin_preview_button"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
