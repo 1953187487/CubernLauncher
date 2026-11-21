@@ -23,6 +23,7 @@ jobs:
           distribution: temurin
           java-version: "8"
       - name: Install NDK
+        continue-on-error: true
         env:
           ANDROID_HOME: /usr/local/lib/android/sdk
         run: |
