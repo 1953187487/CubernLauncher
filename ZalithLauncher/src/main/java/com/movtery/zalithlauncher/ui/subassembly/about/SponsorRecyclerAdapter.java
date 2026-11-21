@@ -56,18 +56,15 @@ public class SponsorRecyclerAdapter extends RecyclerView.Adapter<SponsorRecycler
                     .load(sponsor.getAvatar())
                     .into(binding.avatarView);
 
+            // 1.0.5：赞助金额分级配色
             Drawable background = itemView.getBackground();
-            if (amount >= 12.0f) {
-                int color;
-                if (amount >= 18.0f) {
-                    color = ContextCompat.getColor(itemView.getContext(), R.color.background_sponsor_advanced);
-                } else {
-                    color = ContextCompat.getColor(itemView.getContext(), R.color.background_sponsor_intermediate);
-                }
-                background.setTint(color);
-            } else {
-                background.setTintList(null);
-            }
+            int tierColor;
+            if (amount >= 100.0f) tierColor = ContextCompat.getColor(itemView.getContext(), R.color.sponsor_tier_taiji);
+            else if (amount >= 10.0f) tierColor = ContextCompat.getColor(itemView.getContext(), R.color.sponsor_tier_pink);
+            else if (amount >= 1.0f) tierColor = ContextCompat.getColor(itemView.getContext(), R.color.sponsor_tier_red);
+            else if (amount >= 0.1f) tierColor = ContextCompat.getColor(itemView.getContext(), R.color.sponsor_tier_yellow);
+            else tierColor = ContextCompat.getColor(itemView.getContext(), R.color.sponsor_tier_cyan);
+            background.setTint(tierColor);
         }
     }
 }
