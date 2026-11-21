@@ -3,6 +3,7 @@ package com.movtery.zalithlauncher.ui.compose
 import android.content.Context
 import android.view.View
 import androidx.compose.ui.platform.ComposeView
+import com.movtery.zalithlauncher.ui.compose.screens.AboutLauncherScreen
 import com.movtery.zalithlauncher.ui.compose.screens.AiAssistantScreen
 import com.movtery.zalithlauncher.ui.compose.screens.AiSettingsScreen
 import com.movtery.zalithlauncher.ui.compose.screens.TerracottaScreen
@@ -37,6 +38,13 @@ object CubernComposeHost {
         onBack: Runnable
     ): View = createView(context) {
         TerracottaScreen(onBack = onBack::run)
+    }
+
+    fun createAboutLauncherView(
+        context: Context,
+        onBack: Runnable
+    ): View = createView(context) {
+        AboutLauncherScreen(onBack = onBack::run)
     }
 
     fun createAiSettingsView(

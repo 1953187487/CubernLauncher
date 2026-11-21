@@ -826,4 +826,19 @@ Guest tutorial:
 
 %1$s</string>
     <string name="log_unavailable">No recent launch log found. You can paste a log manually.</string>
+
+    <string name="about_title">About Launcher</string>
+    <string name="about_version">Version: %1$s</string>
+    <string name="about_author_cubern">Author: Zhiniao (鹙鸟)</string>
+    <string name="about_status_beta">Status: Beta / Pre-release</string>
+    <string name="about_base_title">Based on</string>
+    <string name="about_base_zl1">A community modification of Zalith Launcher 1</string>
+    <string name="about_engine_compose">UI engine: Jetpack Compose</string>
+    <string name="about_style_immersive">Visual style: immersive skeuomorphism</string>
+    <string name="about_license_title">License</string>
+    <string name="about_license_gpl">GNU GPL-3.0</string>
+    <string name="about_ack_title">Acknowledgements</string>
+    <string name="about_ack_zl1">Zalith Launcher 1 - original base and launcher core</string>
+    <string name="about_ack_pojav">PojavLauncher - Android Minecraft launcher core</string>
+    <string name="about_ack_terracotta">Terracotta / EasyTier - multiplayer</string>
 </resources>

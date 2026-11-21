@@ -29,6 +29,7 @@ val getBuildType = {
 }
 
 val nameId = "com.movtery.zalithlauncher"
+val appId = "com.cubern.launcher" // 1.0.4: 安装包名改为 Cubern 自有包名
 val generatedZalithDir = file("$buildDir/generated/source/zalith/java")
 val launcherAPPName = project.findProperty("launcher_app_name") as? String ?: error("The \"launcher_app_name\" property is not set in gradle.properties.")
 val launcherName = project.findProperty("launcher_name") as? String ?: error("The \"launcher_name\" property is not set in gradle.properties.")
@@ -70,7 +71,7 @@ android {
     }
 
     defaultConfig {
-        applicationId = nameId
+        applicationId = appId
         minSdk = 26
         targetSdk = 34
         versionCode = launcherVersionCode
@@ -80,7 +81,7 @@ android {
     }
 
     buildTypes {
-        val storageProviderId = "$nameId.storage_provider"
+        val storageProviderId = "$appId.storage_provider"
 
         getByName("debug") {
             applicationIdSuffix = ".debug"

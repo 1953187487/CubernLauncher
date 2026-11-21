@@ -200,6 +200,64 @@
                     android:textColor="@color/black_or_white" />
             </com.movtery.zalithlauncher.ui.layout.AnimRelativeLayout>
 
+            <!-- 1.0.5：实验性设置下方的独立入口：管理控制布局 -->
+            <com.movtery.zalithlauncher.ui.layout.AnimRelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/_8sdp"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <ImageView
+                    android:id="@+id/control_layout_image"
+                    android:layout_width="@dimen/_28sdp"
+                    android:layout_height="@dimen/_28sdp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="@dimen/_6sdp"
+                    android:background="@android:color/transparent"
+                    android:contentDescription="@string/custom_control_title"
+                    android:scaleType="fitCenter"
+                    app:srcCompat="@drawable/ic_menu_custom_controls" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="@dimen/_8sdp"
+                    android:layout_toEndOf="@+id/control_layout_image"
+                    android:text="@string/custom_control_title"
+                    android:textColor="@color/black_or_white" />
+            </com.movtery.zalithlauncher.ui.layout.AnimRelativeLayout>
+
+            <!-- 1.0.5：实验性设置下方的独立入口：关于 -->
+            <com.movtery.zalithlauncher.ui.layout.AnimRelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/_8sdp"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <ImageView
+                    android:id="@+id/about_image"
+                    android:layout_width="@dimen/_28sdp"
+                    android:layout_height="@dimen/_28sdp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="@dimen/_6sdp"
+                    android:background="@android:color/transparent"
+                    android:contentDescription="@string/about_tab"
+                    android:scaleType="fitCenter"
+                    app:srcCompat="@drawable/ic_ai" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="@dimen/_8sdp"
+                    android:layout_toEndOf="@+id/about_image"
+                    android:text="@string/about_tab"
+                    android:textColor="@color/black_or_white" />
+            </com.movtery.zalithlauncher.ui.layout.AnimRelativeLayout>
+
         </com.angcyo.tablayout.DslTabLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

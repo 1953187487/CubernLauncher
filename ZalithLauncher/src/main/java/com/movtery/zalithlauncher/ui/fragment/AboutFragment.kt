@@ -62,6 +62,7 @@ class AboutFragment : FragmentWithAnim(R.layout.fragment_about) {
             adapter = ViewPagerAdapter(requireActivity(), this)
             orientation = ViewPager2.ORIENTATION_HORIZONTAL
             offscreenPageLimit = 1
+            isUserInputEnabled = false // 1.0.5：禁用左右滑，防止回到原作贡献者与鸣谢页
         }
     }
 
@@ -79,11 +80,11 @@ class AboutFragment : FragmentWithAnim(R.layout.fragment_about) {
         fragmentActivity: FragmentActivity,
         private val viewPager: ViewPager2
     ): FragmentStateAdapter(fragmentActivity) {
-        override fun getItemCount(): Int = 2
+        override fun getItemCount(): Int = 1
         override fun createFragment(position: Int): Fragment {
             return when(position) {
                 0 -> AboutInfoPageFragment(viewPager)
-                else -> AboutSponsorPageFragment()
+                else -> AboutInfoPageFragment(viewPager)
             }
         }
     }

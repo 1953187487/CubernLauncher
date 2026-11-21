@@ -3,20 +3,24 @@ package com.movtery.zalithlauncher.ui.activity
 import android.Manifest
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.widget.FrameLayout
 import android.os.Build
 import android.os.Bundle
+import androidx.compose.ui.platform.ComposeView
 import androidx.core.app.ActivityCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.movtery.zalithlauncher.InfoCenter
 import com.movtery.zalithlauncher.InfoDistributor
 import com.movtery.zalithlauncher.R
 import com.movtery.zalithlauncher.databinding.ActivitySplashBinding
+import com.movtery.zalithlauncher.feature.notice.UserAgreementStore
 import com.movtery.zalithlauncher.feature.unpack.Components
 import com.movtery.zalithlauncher.feature.unpack.Jre
 import com.movtery.zalithlauncher.feature.unpack.UnpackComponentsTask
 import com.movtery.zalithlauncher.feature.unpack.UnpackJreTask
 import com.movtery.zalithlauncher.feature.unpack.UnpackSingleFilesTask
 import com.movtery.zalithlauncher.task.Task
+import com.movtery.zalithlauncher.ui.compose.CubernComposeHost
 import com.movtery.zalithlauncher.ui.dialog.TipDialog
 import com.movtery.zalithlauncher.utils.StoragePermissionsUtils
 import net.kdt.pojavlaunch.LauncherActivity
@@ -37,6 +41,20 @@ class SplashActivity : BaseActivity() {
 
         binding = ActivitySplashBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        // 1.0.5：首次进入即全屏展示用户须知协议，同意后才开始解压并安装
+        if (!UserAgreementStore.isAccepted(this)) {
+            lateinit var noticeView: android.view.View
+            noticeView = CubernComposeHost.createUserNoticeView(this,
+                { // 同意：状态已由 UserNoticeScreen 保存，关闭遮罩开始解压安装
+                    (noticeView.parent as? android.view.ViewGroup)?.removeView(noticeView)
+                    checkEnd()
+                },
+                { finish() } // 拒绝：退出
+            )
+            addContentView(noticeView, FrameLayout.LayoutParams(
+                FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.MATCH_PARENT))
+        }
 
         binding.titleText.text = InfoDistributor.APP_NAME
         binding.recyclerView.apply {

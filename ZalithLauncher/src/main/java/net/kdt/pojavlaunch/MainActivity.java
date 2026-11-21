@@ -566,7 +566,8 @@ public class MainActivity extends BaseActivity implements ControlButtonMenuListe
             refreshLayoutVisible(this.binding.gyroLayout, AllSettings.getEnableGyro().getValue());
 
             //初始化点击事件
-            this.binding.forceClose.setOnClickListener(this);
+            this.binding.terracottaButton.setOnClickListener(this);
+this.binding.forceClose.setOnClickListener(this);
             this.binding.logOutput.setOnClickListener(this);
             this.binding.sendCustomKey.setOnClickListener(this);
             this.binding.openMemoryInfo.setOnCheckedChangeListener(this);
@@ -675,7 +676,14 @@ public class MainActivity extends BaseActivity implements ControlButtonMenuListe
         }
 
         @Override public void onClick(View v) {
-            if (v == binding.forceClose) ZHTools.dialogForceClose(MainActivity.this);
+            if (v == binding.terracottaButton) {
+            // 从游戏菜单打开陶瓦联机：返回启动器并直接显示联机界面
+            android.content.Intent intent = new android.content.Intent(MainActivity.this, LauncherActivity.class);
+            intent.putExtra("open_terracotta", true);
+            intent.addFlags(android.content.Intent.FLAG_ACTIVITY_CLEAR_TOP | android.content.Intent.FLAG_ACTIVITY_SINGLE_TOP);
+            startActivity(intent);
+        }
+        else if (v == binding.forceClose) ZHTools.dialogForceClose(MainActivity.this);
             else if (v == binding.logOutput) MainActivity.binding.mainLoggerView.toggleViewWithAnim();
             else if (v == binding.sendCustomKey) dialogSendCustomKey();
             else if (v == binding.openMemoryInfoLayout) MenuUtils.toggleSwitchState(binding.openMemoryInfo);

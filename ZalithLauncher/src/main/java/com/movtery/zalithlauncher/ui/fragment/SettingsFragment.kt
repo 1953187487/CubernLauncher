@@ -19,6 +19,8 @@ import com.movtery.zalithlauncher.ui.fragment.settings.ExperimentalSettingsFragm
 import com.movtery.zalithlauncher.ui.fragment.settings.GameSettingsFragment
 import com.movtery.zalithlauncher.ui.fragment.settings.LauncherSettingsFragment
 import com.movtery.zalithlauncher.ui.fragment.settings.VideoSettingsFragment
+import com.movtery.zalithlauncher.ui.fragment.ControlButtonFragment
+import com.movtery.zalithlauncher.ui.fragment.about.AboutInfoPageFragment
 import org.greenrobot.eventbus.EventBus
 
 class SettingsFragment : FragmentWithAnim(R.layout.fragment_settings) {
@@ -82,13 +84,15 @@ class SettingsFragment : FragmentWithAnim(R.layout.fragment_settings) {
     }
 
     private class ViewPagerAdapter(val fragment: FragmentWithAnim): FragmentStateAdapter(fragment.requireActivity()) {
-        override fun getItemCount(): Int = 5
+        override fun getItemCount(): Int = 7
         override fun createFragment(position: Int): Fragment {
             return when(position) {
                 1 -> ControlSettingsFragment(fragment)
                 2 -> GameSettingsFragment()
                 3 -> LauncherSettingsFragment(fragment)
                 4 -> ExperimentalSettingsFragment()
+                5 -> ControlButtonFragment()
+                6 -> AboutInfoPageFragment()
                 else -> VideoSettingsFragment()
             }
         }

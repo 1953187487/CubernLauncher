@@ -10,7 +10,7 @@ object UserAgreementStore {
     private const val KEY_ACCEPTED = "accepted"
     private const val KEY_VERSION = "version"
     private const val KEY_TIME = "time"
-    const val CURRENT_VERSION = "1.0.3"
+    const val CURRENT_VERSION = "1.0.5"
     const val APP_NAME = "Cubern Launcher"
 
     fun isAccepted(context: Context): Boolean {

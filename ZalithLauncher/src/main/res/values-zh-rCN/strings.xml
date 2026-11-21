@@ -861,4 +861,19 @@
 
 %1$s</string>
     <string name="log_unavailable">未找到最近的启动日志，你可以手动粘贴日志内容。</string>
+
+    <string name="about_title">关于启动器</string>
+    <string name="about_version">版本：%1$s</string>
+    <string name="about_author_cubern">作者：鹙鸟</string>
+    <string name="about_status_beta">状态：测试版 / Pre-release</string>
+    <string name="about_base_title">开发基础</string>
+    <string name="about_base_zl1">基于 Zalith Launcher 1 原版二改</string>
+    <string name="about_engine_compose">界面引擎：Jetpack Compose</string>
+    <string name="about_style_immersive">视觉风格：拟物沉浸风</string>
+    <string name="about_license_title">开源协议</string>
+    <string name="about_license_gpl">GNU GPL-3.0</string>
+    <string name="about_ack_title">鸣谢</string>
+    <string name="about_ack_zl1">Zalith Launcher 1 —— 原版底层与启动核心</string>
+    <string name="about_ack_pojav">PojavLauncher —— Android 端 Minecraft 启动核心</string>
+    <string name="about_ack_terracotta">Terracotta / EasyTier —— 多人联机</string>
 </resources>

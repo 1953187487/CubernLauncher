@@ -79,6 +79,7 @@ import com.movtery.zalithlauncher.ui.dialog.TipDialog;
 import com.movtery.zalithlauncher.ui.fragment.AccountFragment;
 import com.movtery.zalithlauncher.ui.fragment.BaseFragment;
 import com.movtery.zalithlauncher.ui.fragment.DownloadFragment;
+import com.movtery.zalithlauncher.ui.fragment.FilesFragment;
 import com.movtery.zalithlauncher.ui.fragment.DownloadModFragment;
 import com.movtery.zalithlauncher.ui.fragment.SettingsFragment;
 import com.movtery.zalithlauncher.ui.subassembly.settingsbutton.ButtonType;
@@ -366,6 +367,12 @@ public class LauncherActivity extends BaseActivity {
 
         // 首次启动强制展示用户须知协议，未同意前不得使用下载/联机/AI 等功能
         checkUserAgreement();
+
+        // 游戏菜单「陶瓦联机」入口：从游戏内跳转回来时直接打开陶瓦联机界面
+        if (getIntent() != null && getIntent().getBooleanExtra("open_terracotta", false)) {
+            showComposeOverlay(CubernComposeHost.INSTANCE.createTerracottaView(this, this::dismissComposeOverlay));
+            getIntent().removeExtra("open_terracotta");
+        }
 
         mRequestNotificationPermissionLauncher = registerForActivityResult(
                 new ActivityResultContracts.RequestPermission(),
@@ -736,14 +743,12 @@ public class LauncherActivity extends BaseActivity {
     }
 
     private void openMainDirectory() {
-        try {
-            Intent intent = new Intent(Intent.ACTION_VIEW);
-            intent.setDataAndType(Uri.parse("file://" + PathManager.DIR_GAME_HOME + "/"), "resource/folder");
-            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            startActivity(intent);
-        } catch (Throwable e) {
-            Toast.makeText(this, R.string.main_open_main_dir, Toast.LENGTH_SHORT).show();
-        }
+        // 使用启动器内置文件管理器打开主目录，与左侧入口保持一致，避免外部 Intent 无应用响应
+        Fragment currentFragment = getCurrentFragment();
+        if (currentFragment == null) return;
+        Bundle bundle = new Bundle();
+        bundle.putString(FilesFragment.BUNDLE_LIST_PATH, PathManager.DIR_GAME_HOME);
+        ZHTools.swapFragmentWithAnim(currentFragment, FilesFragment.class, FilesFragment.TAG, bundle);
     }
 
     /**

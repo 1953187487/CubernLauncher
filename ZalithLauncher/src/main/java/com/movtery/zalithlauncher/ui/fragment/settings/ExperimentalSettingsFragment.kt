@@ -9,6 +9,10 @@ import com.movtery.anim.animations.Animations
 import com.movtery.zalithlauncher.R
 import com.movtery.zalithlauncher.databinding.SettingsFragmentExperimentalBinding
 import com.movtery.zalithlauncher.setting.AllSettings
+import com.movtery.zalithlauncher.ui.fragment.AboutFragment
+import com.movtery.zalithlauncher.ui.fragment.ControlButtonFragment
+import com.movtery.zalithlauncher.utils.ZHTools
+import com.movtery.zalithlauncher.ui.fragment.settings.wrapper.BaseSettingsWrapper
 import com.movtery.zalithlauncher.ui.fragment.settings.wrapper.SeekBarSettingsWrapper
 import com.movtery.zalithlauncher.ui.fragment.settings.wrapper.SwitchSettingsWrapper
 
@@ -52,6 +56,14 @@ class ExperimentalSettingsFragment :
             binding.tcVibrateDuration,
             "ms"
         )
+
+        // 1.0.4：关于启动器与控制布局入口移动到实验性设置下
+        BaseSettingsWrapper(context, binding.aboutLauncherLayout) {
+            ZHTools.swapFragmentWithAnim(this, AboutFragment::class.java, AboutFragment.TAG, null)
+        }
+        BaseSettingsWrapper(context, binding.controlLayoutLayout) {
+            ZHTools.swapFragmentWithAnim(this, ControlButtonFragment::class.java, ControlButtonFragment.TAG, null)
+        }
     }
 
     override fun slideIn(animPlayer: AnimPlayer) {

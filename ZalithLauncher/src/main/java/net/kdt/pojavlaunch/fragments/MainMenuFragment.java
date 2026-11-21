@@ -62,20 +62,7 @@ public class MainMenuFragment extends FragmentWithAnim {
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        binding.aboutText.setText(InfoCenter.replaceName(requireActivity(), R.string.about_tab));
-        binding.aboutButton.setOnClickListener(v -> ZHTools.swapFragmentWithAnim(this, AboutFragment.class, AboutFragment.TAG, null));
-        binding.customControlButton.setOnClickListener(v -> ZHTools.swapFragmentWithAnim(this, ControlButtonFragment.class, ControlButtonFragment.TAG, null));
-        binding.openMainDirButton.setOnClickListener(v -> {
-            Bundle bundle = new Bundle();
-            bundle.putString(FilesFragment.BUNDLE_LIST_PATH, PathManager.DIR_GAME_HOME);
-            ZHTools.swapFragmentWithAnim(this, FilesFragment.class, FilesFragment.TAG, bundle);
-        });
-        binding.installJarButton.setOnClickListener(v -> runInstallerWithConfirmation(false));
-        binding.installJarButton.setOnLongClickListener(v -> {
-            runInstallerWithConfirmation(true);
-            return true;
-        });
-        binding.shareLogsButton.setOnClickListener(v -> ZHTools.shareLogs(requireActivity()));
+        // 1.0.4：左侧功能按钮已移除，仅保留右上角功能区入口（关于/控制布局移入设置，执行JAR并入主目录，分享日志在崩溃时生成）
 
         binding.version.setOnClickListener(v -> {
             if (!isTaskRunning()) {

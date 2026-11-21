@@ -31,6 +31,7 @@ import androidx.compose.material3.Switch
 import androidx.compose.material3.SwitchDefaults
 import androidx.compose.material3.Tab
 import androidx.compose.material3.TabRow
+import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
@@ -327,6 +328,37 @@ private fun NoticeTab(
                 Spacer(Modifier.height(8.dp))
             }
 
+            // 1.0.5：显示联机状态（原先从未渲染，点房主/房客后无任何反馈）
+            if (state != null) {
+                Surface(
+                    modifier = Modifier.fillMaxWidth(),
+                    color = CubernColors.SurfaceInset,
+                    shape = MaterialTheme.shapes.large
+                ) {
+                    Column(Modifier.padding(12.dp)) {
+                        StateContent(state)
+                    }
+                }
+                Spacer(Modifier.height(12.dp))
+            }
+
+            // 1.0.5：玩家名与房间码输入（原先未渲染，房客无法输入房间码）
+            OutlinedTextField(
+                value = playerName,
+                onValueChange = onPlayerNameChange,
+                label = { Text(context.getString(R.string.terracotta_player_name_hint)) },
+                singleLine = true,
+                modifier = Modifier.fillMaxWidth()
+            )
+            Spacer(Modifier.height(8.dp))
+            OutlinedTextField(
+                value = roomCode,
+                onValueChange = onRoomCodeChange,
+                label = { Text(context.getString(R.string.terracotta_room_code)) },
+                singleLine = true,
+                modifier = Modifier.fillMaxWidth()
+            )
+
             SectionTitle(context.getString(R.string.terracotta_nodes))
             Text(
                 text = nodeText.ifBlank { context.getString(R.string.terracotta_waiting) },
@@ -337,9 +369,6 @@ private fun NoticeTab(
             Spacer(Modifier.height(12.dp))
 
             if (enableMultiplayer && !initFailed) {
-                SectionTitle(context.getString(R.string.terracotta_connection_mode))
-                StateContent(state)
-                Spacer(Modifier.height(8.dp))
                 OutlinedAction(context.getString(R.string.terracotta_host_mode), onHost)
                 OutlinedAction(context.getString(R.string.terracotta_guest_mode), onGuest)
                 OutlinedAction(context.getString(R.string.terracotta_reset), onReset)
