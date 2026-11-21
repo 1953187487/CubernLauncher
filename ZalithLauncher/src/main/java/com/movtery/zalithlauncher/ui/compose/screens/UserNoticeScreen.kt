@@ -160,7 +160,6 @@ fun UserNoticeScreen(
                         ) { Text(stringResource(id = R.string.user_notice_accept)) }
                     }
                 }
-            }
             1 -> {
                 // 解压并更新
                 LaunchedEffect(Unit) {
@@ -251,6 +250,7 @@ fun UserNoticeScreen(
             }
         }
     }
+}
 }
 
 @Composable
