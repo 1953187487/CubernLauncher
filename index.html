@@ -713,6 +713,18 @@ footer{border-top:1px solid var(--line);padding:36px 0 24px;background:rgba(8,12
   try{
     var vp=document.querySelector('meta[name="viewport"]');
     if(vp)vp.setAttribute('content','width=device-width,initial-scale=1.0,maximum-scale=5.0,viewport-fit=cover');
+    /* 某些 WebView 初始 CSS 视口只有物理宽度的一半，页面内容塌在左半边。
+       用 rAF 在布局稳定后校正一次：把根宽度锁到 innerWidth。 */
+    requestAnimationFrame(function(){
+      requestAnimationFrame(function(){
+        var iw=window.innerWidth||0;
+        var cw=document.documentElement.clientWidth||0;
+        if(iw&&cw&&iw>cw*1.5){
+          document.documentElement.style.width=iw+'px';
+          document.body.style.width=iw+'px';
+        }
+      });
+    });
   }catch(e){}
   /* 加载动画：页面就绪后淡出 */
   var loader=document.getElementById('loader');
