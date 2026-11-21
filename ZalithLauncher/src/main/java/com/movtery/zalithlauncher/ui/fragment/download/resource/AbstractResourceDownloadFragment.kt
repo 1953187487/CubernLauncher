@@ -204,6 +204,21 @@ abstract class AbstractResourceDownloadFragment(
             sortSpinner.selectItemByIndex(0)
             categorySpinner.selectItemByIndex(0)
             if (showModloader) modloaderSpinner.selectItemByIndex(0)
+
+            // 1.0.7：世界资源没有可用的在线平台（Modrinth 不提供存档，CurseForge 需要 API Key），
+            // 隐藏在线搜索相关控件，仅保留本地 ZIP 导入，避免"搜索平台只有一个/搜不到"的 bug
+            if (classify == Classify.WORLD) {
+                searchTitle.visibility = android.view.View.GONE
+                nameEdit.visibility = android.view.View.GONE
+                searchView.visibility = android.view.View.GONE
+                platformLayout.visibility = android.view.View.GONE
+                sortLayout.visibility = android.view.View.GONE
+                categoryLayout.visibility = android.view.View.GONE
+                statusText.visibility = android.view.View.VISIBLE
+                statusText.text = "世界资源请点击下方「导入」按钮，选择本地 .zip 存档文件"
+                setLoadingLayout(false)
+                setRecyclerView(false)
+            }
         }
     }
 
