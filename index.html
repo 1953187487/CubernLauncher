@@ -7,7 +7,7 @@
 <meta name="description" content="Cubern Launcher 基于 Zalith Launcher 1 二改开发的 Minecraft Java 版 Android 启动器。陶瓦联机、MIUIX Compose、AI 版本助手、Vulkan 渲染，GPLv3 开源。">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⛏️</text></svg>">
 <style>
-:root{--bg:#080c18;--bg2:#0d1428;--panel:rgba(20,28,54,.58);--line:rgba(150,180,255,.14);--line-hi:rgba(150,180,255,.36);--txt:#eef2ff;--mut:#98a4d0;--c1:#7c8cff;--c2:#00e5b0;--c3:#ff6ec7;--gold:#ffcf5c;--warn:#ff9f43;--glass:blur(22px) saturate(160%);--sh:0 16px 44px rgba(0,0,0,.35)}
+:root{--bg:#080c18;--bg2:#0d1428;--panel:rgba(20,28,54,.58);--line:rgba(150,180,255,.14);--line-hi:rgba(150,180,255,.36);--txt:#eef2ff;--mut:#98a4d0;--c1:#7c8cff;--c2:#00e5b0;--c3:#ff6ec7;--gold:#ffcf5c;--warn:#ff9f43;--glass:blur(28px) saturate(180%);--sh:0 16px 44px rgba(0,0,0,.35)}
 html[data-theme=light]{--bg:#eef2ff;--bg2:#e2e9ff;--panel:rgba(255,255,255,.66);--line:rgba(40,60,130,.13);--line-hi:rgba(60,90,200,.32);--txt:#182046;--mut:#5c6998;--c1:#4f5fe0;--c2:#00a882;--c3:#d64ba6;--gold:#c89100;--sh:0 16px 44px rgba(40,60,130,.12)}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
@@ -24,7 +24,21 @@ body.custom-bg #bgLayer{opacity:.35}
 @keyframes f2{0%,100%{transform:translate(0,0)}40%{transform:translate(-10vw,-8vh)}70%{transform:translate(4vw,5vh)}}
 @keyframes f3{0%,100%{transform:translate(0,0)}50%{transform:translate(-8vw,-10vh)}}
 .grid-bg{position:fixed;inset:0;z-index:-2;pointer-events:none;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:52px 52px;mask-image:radial-gradient(ellipse at 50% 15%,#000,transparent 85%);opacity:.35}
-.glass{background:var(--panel);backdrop-filter:var(--glass);-webkit-backdrop-filter:var(--glass);border:1px solid var(--line)}
+/* 液态玻璃：模糊 + 饱和 + 顶部高光描边 + 内层柔光 */
+.glass{
+  background:linear-gradient(135deg,rgba(255,255,255,.10),rgba(255,255,255,.02) 45%,rgba(124,140,255,.05)),var(--panel);
+  backdrop-filter:var(--glass);-webkit-backdrop-filter:var(--glass);
+  border:1px solid var(--line-hi);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.22),inset 0 -1px 0 rgba(124,140,255,.10),var(--sh);
+  position:relative;
+}
+html[data-theme=light] .glass{
+  background:linear-gradient(135deg,rgba(255,255,255,.75),rgba(255,255,255,.4)),var(--panel);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.95),inset 0 -1px 0 rgba(80,110,200,.08),var(--sh);
+}
+/* 玻璃表面流动高光 */
+.glass::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;background:linear-gradient(115deg,transparent 25%,rgba(255,255,255,.08) 45%,transparent 60%);background-size:250% 100%;animation:glassSheen 8s ease-in-out infinite}
+@keyframes glassSheen{0%,55%{background-position:180% 0}100%{background-position:-80% 0}}
 .wrap{max-width:1140px;margin:0 auto;padding:0 20px}
 svg{width:1em;height:1em;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;vertical-align:-.15em;flex:none}
 a{color:inherit;text-decoration:none}
@@ -35,7 +49,7 @@ a{color:inherit;text-decoration:none}
 .notice b{color:var(--c1)}.notice .txt{flex:1}
 .notice a{color:var(--c2);text-decoration:underline;text-underline-offset:2px}
 .notice .close{background:none;border:0;color:var(--mut);font-size:18px;cursor:pointer;line-height:1}
-.toolbar{position:sticky;top:0;z-index:50;background:rgba(8,12,24,.5);backdrop-filter:var(--glass);border-bottom:1px solid var(--line)}
+.toolbar{position:sticky;top:0;z-index:50;background:linear-gradient(180deg,rgba(20,28,54,.72),rgba(8,12,24,.55));backdrop-filter:var(--glass);-webkit-backdrop-filter:var(--glass);border-bottom:1px solid var(--line-hi);box-shadow:0 6px 24px rgba(0,0,0,.2),inset 0 1px 0 rgba(255,255,255,.1)}
 html[data-theme=light] .toolbar{background:rgba(238,242,255,.55)}
 .toolbar-in{max-width:1140px;margin:0 auto;padding:0 20px;height:56px;display:flex;align-items:center;justify-content:space-between}
 .brand{display:flex;align-items:center;gap:10px;font-weight:900;font-size:17px}
@@ -193,7 +207,8 @@ footer{border-top:1px solid var(--line);padding:36px 0 24px;background:rgba(8,12
 .f-links a:hover{color:var(--c1);transform:translateX(2px)}
 .f-bot{text-align:center;color:var(--mut);font-size:11px;padding-top:18px;line-height:1.9}
 .f-bot .disc{max-width:720px;margin:0 auto 8px}
-.author-card{display:inline-flex;align-items:center;gap:13px;padding:13px 18px;border-radius:16px;margin-bottom:18px;text-align:left}
+.author-card{display:inline-flex;align-items:center;gap:13px;padding:13px 18px;border-radius:16px;margin-bottom:18px;text-align:left;transition:transform .25s,border-color .25s}
+.author-card:hover{transform:translateY(-3px);border-color:var(--c1)}
 .author-card img{width:56px;height:56px;border-radius:16px;object-fit:cover;border:2px solid var(--line-hi);box-shadow:0 6px 20px rgba(0,0,0,.3)}
 .author-card .an b{display:block;font-size:16px;font-weight:900}
 .author-card .an span{font-size:12px;color:var(--mut)}
@@ -321,7 +336,7 @@ footer{border-top:1px solid var(--line);padding:36px 0 24px;background:rgba(8,12
           <div class="upd-group"><h5><svg><use href="#i-bolt"/></svg>本次更新</h5><ul>
             <li>包名改为 com.cubern.launcher（全新独立包名）</li>
             <li>修复下载源：默认改用 BMCLAPI 镜像，国内可直接下载</li>
-            <li>重写关于启动器页（Compose 拟物沉浸风），作者：鸷鸟，删除旧贡献者列表，鸣谢 ZL1 / PojavLauncher / Terracotta</li>
+            <li>重写关于启动器页（Compose 拟物沉浸风），作者：鹙鸟，删除旧贡献者列表，鸣谢 ZL1 / PojavLauncher / Terracotta</li>
             <li>修复右上角「打开主目录」失效：改为内置文件管理器打开</li>
             <li>删除左侧菜单冗余按钮，仅保留右上角功能区</li>
             <li>游戏菜单新增「陶瓦联机」入口；陶瓦界面移除「当前连接模式」</li>
@@ -475,7 +490,7 @@ footer{border-top:1px solid var(--line);padding:36px 0 24px;background:rgba(8,12
     <div class="f-top">
       <div>
         <div class="brand"><span class="logo"><svg><use href="#i-box"/></svg></span> Cubern Launcher</div>
-        <div class="author-card glass"><img src="https://avatars.githubusercontent.com/u/277181438?v=4" alt="作者鸷鸟" onerror="this.style.display='none'"><div class="an"><b>鸷鸟</b><span>当前开发作者 · 负责本启动器</span></div></div>
+        <a class="author-card glass" href="https://b23.tv/mrWamRX" target="_blank" rel="noopener" title="访问鹙鸟的 B 站空间"><img src="avatar.jpg" alt="作者鹙鸟" onerror="this.style.display='none'"><div class="an"><b>鹙鸟</b><span>当前开发作者 · 负责本启动器 · B站空间 ↗</span></div></a>
         <p class="desc">基于 Zalith Launcher 1 二改开发的 Minecraft Java 版 Android 启动器，GPLv3 开源。官网 v1.4，协议 v1.1。</p>
       </div>
       <div class="f-links">
@@ -486,7 +501,7 @@ footer{border-top:1px solid var(--line);padding:36px 0 24px;background:rgba(8,12
     </div>
     <div class="f-bot">
       <p class="disc">Cubern Launcher 基于 Zalith Launcher 1 二次开发，与 Mojang Studios、Microsoft、网易无隶属关系。Minecraft 是 Mojang Studios 的商标。本项目按 GNU GPL v3.0 开源。</p>
-      <p>© 2026 Cubern Launcher · Made with ⛏️ by 鸷鸟 · 官网 v1.4 · 协议 v1.1</p>
+      <p>© 2026 Cubern Launcher · Made with ⛏️ by 鹙鸟 · 官网 v1.4 · 协议 v1.1</p>
     </div>
   </div>
 </footer>
