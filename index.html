@@ -360,7 +360,7 @@ footer{border-top:1px solid var(--line);padding:36px 0 24px;background:rgba(8,12
 </svg>
 
 <div class="notice" id="notice">
-  <div class="notice-in"><span class="pulse"></span><span class="txt"><b>声明：</b>本项目<b>基于 Zalith Launcher 1 进行二次开发（二改）</b>，非官方作品。<b>v1.0.5</b> 已发布，官网 <b>v1.4</b> · 协议 <b>v1.2</b>。<a href="https://qun.qq.com/universal-share/share?ac=1&authKey=SwQb9TokqNswF95F7iPiZugcomKTgJOvB6uo%2BHiDMC18mRW0axxZHhmCc%2FvxeUqU&busi_data=eyJncm91cENvZGUiOiIxMTM0NTk3MTk3IiwidG9rZW4iOiJEQWxQMFExbGZveEVaWHdaeS9KdVJWM0RGT2o4a28yU3phTzI3YlgyenRFSWpCejBkeXRTczVkNDhkbjJOeEkrIiwidWluIjoiMjg2NTUyOTA1NyJ9&data=YkhhF1XEBl1JH8PELCFsIs-EcmqDaPYfYwnQGMgXRvH0-PwVJE2gAJvN5oBNpIjC8eomAfjNkaHxeQaVadKMZw&svctype=4&tempid=h5_group_info" target="_blank" rel="noopener">加入官方 QQ 群 1134597197</a>。</span><button class="close" id="noticeClose">×</button></div>
+  <div class="notice-in"><span class="pulse"></span><span class="txt"><b>重要公告：</b>此前 <b>v1.0.5</b> 因基于 1.0.1 旧底层构建（APK 回到原版）已作废，现<b>基于 1.0.4 基准重新发布</b>。官网 <b>v1.4</b> · 协议 <b>v1.2</b>。<a href="https://qun.qq.com/universal-share/share?ac=1&authKey=SwQb9TokqNswF95F7iPiZugcomKTgJOvB6uo%2BHiDMC18mRW0axxZHhmCc%2FvxeUqU&busi_data=eyJncm91cENvZGUiOiIxMTM0NTk3MTk3IiwidG9rZW4iOiJEQWxQMFExbGZveEVaWHdaeS9KdVJWM0RGT2o4a28yU3phTzI3YlgyenRFSWpCejBkeXRTczVkNDhkbjJOeEkrIiwidWluIjoiMjg2NTUyOTA1NyJ9&data=YkhhF1XEBl1JH8PELCFsIs-EcmqDaPYfYwnQGMgXRvH0-PwVJE2gAJvN5oBNpIjC8eomAfjNkaHxeQaVadKMZw&svctype=4&tempid=h5_group_info" target="_blank" rel="noopener">官方 QQ 群 1134597197</a>。</span><button class="close" id="noticeClose">×</button></div>
 </div>
 
 <div class="toolbar">
@@ -424,16 +424,16 @@ footer{border-top:1px solid var(--line);padding:36px 0 24px;background:rgba(8,12
       <div class="timeline-scroll" id="timelineScroll">
 
         <article class="update-card glass">
-          <div class="update-top"><span class="v">v1.0.5</span><span class="tag">Pre-release 测试版</span><span class="date">2026-11-21</span></div>
+          <div class="update-top"><span class="v">v1.0.5</span><span class="tag">重新发布 · Pre-release</span><span class="date">2026-11-21</span></div>
+          <div class="sign-warn" style="margin-top:0;margin-bottom:14px"><svg><use href="#i-warn"/></svg><span><b>重要说明：</b>此前发布的 1.0.5 存在一个严重问题——它是<b>基于 1.0.1 的底层代码</b>修改而来，导致打包出的 APK 实际回到原版、并非真正的 1.0.4 基准。现已从<b>真正的 1.0.4 代码基准重建并重新发布</b>本版本，请使用重新发布的 APK。</span></div>
+          <p style="font-size:13px;color:var(--mut);margin-bottom:6px">基于 Zalith Launcher 1 原版底层二次开发，从 1.0.4 代码基准重建（版本号 1.0.5，code 6）。</p>
           <div class="upd-group"><h5><svg><use href="#i-bolt"/></svg>本次更新</h5><ul>
-            <li>首次启动改为全屏用户须知协议，同意后才解压并安装</li>
-            <li>关于页重写：爱发电赞助、开发基础、贡献者鸣谢、检查更新</li>
-            <li>对接爱发电 Open API 赞助者列表</li>
-            <li>修复搜索平台（默认 Modrinth，CurseForge 自动回退）</li>
-            <li>修复陶瓦联机状态与房间码输入显示</li>
-            <li>修复更新与下载地址指向 CubernLauncher 仓库</li>
-            <li>AI 助手 UI 现代化重写</li>
-            <li>设置：实验性下管理控制布局与关于</li>
+            <li>关于页重写为 Cubern 自主内容：开发基础 / 作者鹙鸟 / 贡献者鸣谢 / 检查更新</li>
+            <li>对接爱发电 Open API，赞助地址改为鹙鸟主页 afdian.com/@KZjewnk</li>
+            <li>赞助者金额分级配色：&lt;0.1 青绿、0.1-1 黄、1-10 红、10-100 粉红、≥100 太极色</li>
+            <li>修复搜索平台：默认 Modrinth，CurseForge 失败自动回退</li>
+            <li>修复更新与下载地址指向 1953187487/CubernLauncher 仓库</li>
+            <li>设置侧栏保留实验性下方独立的管理控制布局与关于入口</li>
           </ul></div>
           <div class="upd-group"><h5><svg><use href="#i-user"/></svg>作者与赞助</h5><ul>
             <li>作者：鹙鸟（B 站同名）</li>
@@ -571,6 +571,16 @@ footer{border-top:1px solid var(--line);padding:36px 0 24px;background:rgba(8,12
     <div class="sec-head reveal"><div class="eyebrow">Site Changelog</div><h2>网站更新日志</h2><p>记录官网本身的每一次迭代，与启动器版本更新相互独立。</p></div>
     <div class="sitelog">
       <div class="sitelog-item glass reveal cur">
+        <div class="sl-top"><span class="sl-v">v1.4</span><span class="sl-date">2026-11-21</span></div>
+        <ul>
+          <li>官网升级正式版 v1.4，重新发布 1.0.5 详细信息（基于 1.0.4 基准重建）</li>
+          <li>公告重写：说明旧版基于 1.0.1 底层构建的严重问题</li>
+          <li>官方资源站并入下载区，新增历史版本折叠列表</li>
+          <li>下载升级为 12 节点分批测速、自动选最快源</li>
+          <li>修复移动端宽度适配与 WebView 半屏问题</li>
+        </ul>
+      </div>
+      <div class="sitelog-item glass reveal">
         <div class="sl-top"><span class="sl-v">v1.3</span><span class="sl-date">2026-11-21</span></div>
         <ul>
           <li>网站版本调整为 v1.3，协议升级至 v1.2</li>
@@ -635,7 +645,7 @@ footer{border-top:1px solid var(--line);padding:36px 0 24px;background:rgba(8,12
         <div class="step" data-step="1"><svg><use href="#i-globe"/></svg>自动选择最快源</div>
         <div class="step" data-step="2"><svg><use href="#i-down"/></svg>开始下载</div>
       </div>
-      <div class="dl-file">CubernLauncher-1.0.5.apk · 约 275.6 MB · <b id="chosenSource">待测</b></div>
+      <div class="dl-file">com.movtery.cubernlauncher-1.0.5.apk · 约 275.2 MB · <b id="chosenSource">待测</b></div>
       <div class="dl-tip">签名已变更，升级前请先卸载旧版 · 若下载失败请换个网络重试</div>
     </div>
 
@@ -788,7 +798,7 @@ footer{border-top:1px solid var(--line);padding:36px 0 24px;background:rgba(8,12
   document.getElementById('agreementLink').addEventListener('click',function(e){e.preventDefault();openAg()});
   if(!agreed)setTimeout(openAg,700);
 
-  var APK='https://github.com/1953187487/CubernLauncher/releases/download/v1.0.5/CubernLauncher-1.0.5.apk';
+  var APK='https://github.com/1953187487/CubernLauncher/releases/download/v1.0.5/com.movtery.cubernlauncher-1.0.5.apk';
   /* 加速节点池：官方 + 多个公共镜像，测速后自动选最快 */
   var SOURCES=[
     {name:'GitHub 官方',url:APK},
@@ -847,7 +857,7 @@ footer{border-top:1px solid var(--line);padding:36px 0 24px;background:rgba(8,12
     btnText.textContent='已选最快源，正在开始…';
     await new Promise(function(r){setTimeout(r,500)});
     steps[1].classList.add('done');setStep(2,'active');
-    var a=document.createElement('a');a.href=best.src.url;a.download='CubernLauncher-1.0.5.apk';document.body.appendChild(a);a.click();a.remove();
+    var a=document.createElement('a');a.href=best.src.url;a.download='com.movtery.cubernlauncher-1.0.5.apk';document.body.appendChild(a);a.click();a.remove();
     steps[2].classList.add('done');btnText.textContent='已开始下载 ✓';
     toast('已从最快源开始下载：'+best.src.name);
     setTimeout(function(){btn.disabled=false;btnText.textContent='一键下载 APK';steps.forEach(function(s){s.classList.remove('active','done')})},4000);
