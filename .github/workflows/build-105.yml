@@ -1,0 +1,39 @@
+name: Build & Release Cubern Launcher 1.0.5
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: 1.0.5
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+      - name: Install NDK
+        continue-on-error: true
+        env:
+          ANDROID_HOME: /usr/local/lib/android/sdk
+        run: echo "y" | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager "ndk;25.2.9519653"
+      - name: Make gradlew executable
+        run: chmod +x gradlew
+      - name: Build Release APK
+        env:
+          MOVTERY_KEYSTORE_PASSWORD: "Cubern@103!"
+          ANDROID_HOME: /usr/local/lib/android/sdk
+          ANDROID_SDK_ROOT: /usr/local/lib/android/sdk
+        run: ./gradlew :ZalithLauncher:assembleRelease --no-daemon --max-workers=2 -Dorg.gradle.jvmargs=-Xmx2048M
+      - name: Create Release with APK
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          APK=$(find ZalithLauncher/build/outputs/apk/release -name "*.apk" | head -1)
+          printf "%s\n" "## Cubern Launcher 1.0.5（基于 1.0.4 Compose 架构重建）" "" "> 本次从真正的 1.0.4 底层重建，修复此前 APK 回到原版的问题。" "" "- 首次启动全屏用户须知协议，同意后解压并安装" "- 关于页重写：爱发电赞助、开发基础、贡献者鸣谢、检查更新" "- 爱发电 Open API 对接（afdian.com/@KZjewnk）" "- 赞助者金额分级配色：<0.1 青绿、0.1-1 黄、1-10 红、10-100 粉红、>=100 太极色" "- 设置侧栏：实验性下方独立的管理控制布局与关于入口" "- 修复搜索平台、更新与下载地址、AI 助手 UI、陶瓦联机" "- 版本号 1.0.5 (code 6)" "" "作者：鹙鸟（B站同名） · 爱发电：https://afdian.com/@KZjewnk" > notes.md
+          gh release create v1.0.5 "$APK" --title "Cubern Launcher 1.0.5 (Pre-release)" --notes-file notes.md --prerelease
