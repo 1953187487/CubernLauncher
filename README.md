@@ -1,3 +1,5 @@
+
+> 🌐 **官方网站 / 资源下载站：** [https://1953187487.github.io/CubernLauncher/](https://1953187487.github.io/CubernLauncher/)  
 <div align="center">
 
 # Cubern Launcher
