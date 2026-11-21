@@ -17,6 +17,11 @@ jobs:
         with:
           distribution: temurin
           java-version: "17"
+      - name: Set up JDK 8 (for jre_lwjgl3glfw toolchain)
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "8"
       - name: Install NDK
         run: echo "y" | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager "ndk;25.2.9519653"
       - name: Make gradlew executable
