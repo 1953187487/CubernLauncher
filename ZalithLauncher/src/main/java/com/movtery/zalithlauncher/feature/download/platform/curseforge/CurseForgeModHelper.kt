@@ -36,10 +36,6 @@ class CurseForgeModHelper {
                 throw PlatformNotSupportedException("The platform does not support the ${filters.category} category!")
             }
 
-            PlatformUtils.searchModLikeWithChinese(filters, type == CurseForgeCommonUtils.CURSEFORGE_MOD_CLASS_ID)?.let {
-                filters.name = it
-            }
-
             val params = HashMap<String, Any>()
             CurseForgeCommonUtils.putDefaultParams(params, filters, lastResult.previousCount)
             params["classId"] = type

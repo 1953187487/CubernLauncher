@@ -50,6 +50,7 @@ class VersionManagerFragment : FragmentWithAnim(R.layout.fragment_version_manage
             versionRename.setOnClickListener(fragment)
             versionCopy.setOnClickListener(fragment)
             versionDelete.setOnClickListener(fragment)
+            versionUpdateModpack.setOnClickListener(fragment)
         }
     }
 
@@ -99,6 +100,28 @@ class VersionManagerFragment : FragmentWithAnim(R.layout.fragment_version_manage
                     }
                 }
                 versionCopy -> VersionsManager.openCopyDialog(activity, version)
+                versionUpdateModpack -> {
+                    // 1.0.6：更新整合包入口。读取版本内的 modpack 元数据，跳转到对应平台项目页
+                    val modpackMeta = File(version.getGameDir(), "modpack.json")
+                    val platformUrl = if (modpackMeta.exists()) {
+                        runCatching {
+                            val json = org.json.JSONObject(modpackMeta.readText())
+                            json.optString("url", "")
+                        }.getOrDefault("")
+                    } else ""
+                    if (platformUrl.isNotBlank()) {
+                        TipDialog.Builder(activity)
+                            .setTitle("更新整合包")
+                            .setMessage("检测到该整合包来自平台，是否打开项目页面下载最新版本？下载后请使用“导入整合包”更新。")
+                            .setConfirmClickListener { ZHTools.openLink(activity, platformUrl) }
+                            .showDialog()
+                    } else {
+                        TipDialog.Builder(activity)
+                            .setTitle("更新整合包")
+                            .setMessage("当前版本不是从平台安装的整合包，无法自动更新。请重新下载整合包并导入。")
+                            .showDialog()
+                    }
+                }
                 versionDelete -> {
                     TipDialog.Builder(activity)
                         .setTitle(R.string.generic_warning)

@@ -370,6 +370,9 @@ public class LauncherActivity extends BaseActivity {
 
         // 游戏菜单「陶瓦联机」入口：从游戏内跳转回来时直接打开陶瓦联机界面
         if (getIntent() != null && getIntent().getBooleanExtra("open_terracotta", false)) {
+            // 1.0.6：从游戏菜单进入陶瓦联机时，先清除可能存在的遮罩，再直接展示联机界面，
+            // 避免停留在启动器主界面右上角入口的错觉
+            dismissComposeOverlay();
             showComposeOverlay(CubernComposeHost.INSTANCE.createTerracottaView(this, this::dismissComposeOverlay));
             getIntent().removeExtra("open_terracotta");
         }

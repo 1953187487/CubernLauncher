@@ -61,7 +61,7 @@
     <string name="option_category_debug">Debug</string>
     <string name="option_category_control">Control</string>
     <string name="option_category_hotbar">Hotbar Detection Box</string>
-    <string name="option_force_close">Force Close</string>
+    <string name="option_force_close">Back to Launcher</string>
     <string name="option_log_out">Log Output</string>
     <string name="option_send_custom_key">Send Custom Key Code</string>
     <string name="option_edit_controls">Edit Control Layout</string>
@@ -650,7 +650,7 @@
     <string name="splash_screen_jre25">Java 25 environment, Minecraft 26.1+ depends on Java 25.</string>
     <string name="splash_screen_apply">Agree and Install</string>
     <!-- About -->
-    <string name="about_tab">About %s</string>
+    <string name="about_tab">About Launcher</string>
     <string name="about_dec1">%s is a Minecraft launcher based on PojavLauncher that allows Minecraft: Java Edition to run on Android devices.</string>
     <string name="about_dec2">%s focuses on optimizing user experience, redesigning the application interface, and adding more practical features, aiming to lower the barriers to play and let more people enjoy the fun of Minecraft easily.</string>
     <string name="about_dec3">%s uses the GPL 3.0 open-source license, which is "viral." Any code that uses, modifies, or derives from GPL libraries or software must also adopt the GPL license for open sourcing. If you intend to distribute this software, please comply with the relevant provisions of the GPL 3.0 open-source license.</string>
@@ -841,4 +841,5 @@ Guest tutorial:
     <string name="about_ack_zl1">Zalith Launcher 1 - original base and launcher core</string>
     <string name="about_ack_pojav">PojavLauncher - Android Minecraft launcher core</string>
     <string name="about_ack_terracotta">Terracotta / EasyTier - multiplayer</string>
+    <string name="version_manager_update_modpack">Update Modpack</string>
 </resources>

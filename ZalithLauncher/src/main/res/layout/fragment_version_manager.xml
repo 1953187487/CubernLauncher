@@ -345,7 +345,19 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/delete_version_icon"
                 app:layout_constraintTop_toBottomOf="@+id/version_copy" />
-            
+
+            <!-- 1.0.6：更新整合包入口 -->
+            <com.movtery.zalithlauncher.ui.view.AnimButton
+                android:id="@+id/version_update_modpack"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/padding_heavy"
+                android:layout_marginTop="@dimen/_4sdp"
+                android:text="@string/version_manager_update_modpack"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/version_delete" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 

@@ -8,6 +8,7 @@ import com.movtery.zalithlauncher.ui.compose.screens.AiAssistantScreen
 import com.movtery.zalithlauncher.ui.compose.screens.AiSettingsScreen
 import com.movtery.zalithlauncher.ui.compose.screens.TerracottaScreen
 import com.movtery.zalithlauncher.ui.compose.screens.UserNoticeScreen
+import com.movtery.zalithlauncher.ui.compose.screens.SkinPreviewScreen
 
 /**
  * Compose 承载桥。
@@ -52,6 +53,16 @@ object CubernComposeHost {
         onBack: Runnable
     ): View = createView(context) {
         AiSettingsScreen(onBack = onBack::run)
+    }
+
+    /** 1.0.6：皮肤 3D 预览（含旋转、动作、跳舞） */
+    @JvmStatic
+    fun createSkinPreviewView(
+        context: Context,
+        skinName: String,
+        onBack: Runnable
+    ): View = createView(context) {
+        SkinPreviewScreen(skinName = skinName, onBack = onBack::run)
     }
 
     private fun createView(context: Context, content: @androidx.compose.runtime.Composable () -> Unit): View {

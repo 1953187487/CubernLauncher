@@ -6,6 +6,7 @@ import com.kdt.mcgui.ProgressLayout
 import com.movtery.zalithlauncher.R
 import com.movtery.zalithlauncher.context.ContextExecutor
 import com.movtery.zalithlauncher.feature.download.Filters
+import com.movtery.zalithlauncher.feature.download.utils.PlatformUtils
 import com.movtery.zalithlauncher.feature.download.enums.Classify
 import com.movtery.zalithlauncher.feature.download.item.InfoItem
 import com.movtery.zalithlauncher.feature.download.item.ModLoaderWrapper
@@ -32,13 +33,17 @@ import java.io.File
 abstract class AbstractPlatformHelper(val api: ApiHandler) {
     @Throws(Throwable::class)
     fun search(classify: Classify, filters: Filters, lastResult: SearchResult): SearchResult? {
+        // 1.0.6：中文搜索自动转换为英文请求词，但不修改用户输入的 Filters（UI 保持中文）
+        val requestFilters = if (classify == Classify.MOD || classify == Classify.MODPACK) {
+            PlatformUtils.searchModLikeWithChinese(filters, classify == Classify.MOD)?.let { filters.copy(name = it) } ?: filters
+        } else filters
         return when (classify) {
             Classify.ALL -> throw IllegalArgumentException("Cannot be the enum value ${Classify.ALL}")
-            Classify.MOD -> searchMod(filters, lastResult)
-            Classify.MODPACK -> searchModPack(filters, lastResult)
-            Classify.RESOURCE_PACK -> searchResourcePack(filters, lastResult)
-            Classify.WORLD -> searchWorld(filters, lastResult)
-            Classify.SHADER_PACK -> searchShaderPack(filters, lastResult)
+            Classify.MOD -> searchMod(requestFilters, lastResult)
+            Classify.MODPACK -> searchModPack(requestFilters, lastResult)
+            Classify.RESOURCE_PACK -> searchResourcePack(requestFilters, lastResult)
+            Classify.WORLD -> searchWorld(requestFilters, lastResult)
+            Classify.SHADER_PACK -> searchShaderPack(requestFilters, lastResult)
         }
     }
 

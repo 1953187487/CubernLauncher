@@ -129,6 +129,8 @@ public class MainActivity extends BaseActivity implements ControlButtonMenuListe
         }
 
         Intent gameServiceIntent = new Intent(this, GameService.class);
+        // 1.0.6：后台清除后重开时，重置游戏服务状态，避免残留状态导致直接进入游戏并播放音乐
+        GameService.setActive(false);
         // Start the service a bit early
         ContextCompat.startForegroundService(this, gameServiceIntent);
         initLayout();
@@ -683,7 +685,13 @@ this.binding.forceClose.setOnClickListener(this);
             intent.addFlags(android.content.Intent.FLAG_ACTIVITY_CLEAR_TOP | android.content.Intent.FLAG_ACTIVITY_SINGLE_TOP);
             startActivity(intent);
         }
-        else if (v == binding.forceClose) ZHTools.dialogForceClose(MainActivity.this);
+        else if (v == binding.forceClose) {
+                // 1.0.6：强制退出按钮改为回到启动器主页（不退出软件）
+                android.content.Intent home = new android.content.Intent(MainActivity.this, LauncherActivity.class);
+                home.addFlags(android.content.Intent.FLAG_ACTIVITY_CLEAR_TOP | android.content.Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                startActivity(home);
+                finish();
+            }
             else if (v == binding.logOutput) MainActivity.binding.mainLoggerView.toggleViewWithAnim();
             else if (v == binding.sendCustomKey) dialogSendCustomKey();
             else if (v == binding.openMemoryInfoLayout) MenuUtils.toggleSwitchState(binding.openMemoryInfo);
