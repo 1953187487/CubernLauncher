@@ -22,7 +22,7 @@ Cubern Launcher 面向 Android 设备，让 **Minecraft: Java Edition** 在手�
 
 | 项目 | 信息 |
 | --- | --- |
-| 当前版本 | **1.0.2**（测试版 / Pre-release） |
+| 当前版本 | **1.0.6**（测试版 / Pre-release） |
 | 当前作者 | **鹙鸟** |
 | 原项目作者 | **Zalith Launcher 1 启动器作者** |
 | 开源协议 | **GNU General Public License v3.0** |
@@ -95,10 +95,7 @@ Cubern Launcher 面向 Android 设备，让 **Minecraft: Java Edition** 在手�
 
 | 架构 | 适用设备 | 安装包 |
 | --- | --- | --- |
-| `arm64-v8a` | 绝大多数现代手机 | `com.movtery.cubernlauncher-1.0.2-arm64-v8a.apk` |
-| `armeabi-v7a` | 32 位 ARM 设备 | `com.movtery.cubernlauncher-1.0.2-armeabi-v7a.apk` |
-| `x86_64` | 64 位模拟器 | `com.movtery.cubernlauncher-1.0.2-x86_64.apk` |
-| `x86` | 32 位模拟器 | `com.movtery.cubernlauncher-1.0.2-x86.apk` |
+| 通用 APK | Android 8.0+ | `CubernLauncher-1.0.6.apk`（统一包，约 275 MB） |
 
 ---
 
