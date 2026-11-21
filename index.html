@@ -114,7 +114,7 @@ section{padding:52px 0}
 .timeline-scroll{height:min(70vh,700px);min-height:320px;overflow-y:auto;overscroll-behavior:contain;padding-right:10px;scroll-behavior:smooth;-webkit-overflow-scrolling:touch}
 .timeline-scroll::-webkit-scrollbar{width:6px}
 .timeline-scroll::-webkit-scrollbar-thumb{background:var(--line-hi);border-radius:6px}
-.update-card{border-radius:18px;padding:24px;margin-bottom:18px;position:relative;opacity:0;transform:translateX(-20px);transition:opacity .6s,transform .6s}
+.update-card{border-radius:18px;padding:24px;margin-bottom:18px;position:relative;opacity:1;transform:none;transition:opacity .5s,transform .5s}
 .update-card.in{opacity:1;transform:none}
 .update-card::before{content:"";position:absolute;left:-28px;top:26px;width:12px;height:12px;border-radius:50%;background:var(--c1);box-shadow:0 0 0 4px var(--bg2),0 0 14px var(--c1)}
 .update-card:nth-child(1)::before{background:var(--c1);box-shadow:0 0 0 4px var(--bg2),0 0 14px var(--c1)}
@@ -170,6 +170,27 @@ section{padding:52px 0}
 .dl-status .step svg{width:16px;height:16px}
 .dl-file{margin-top:14px;font-size:12px;color:var(--mut)}
 .dl-file b{color:var(--txt)}
+/* 官方资源中心 */
+.res-center{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px;max-width:1100px;margin:0 auto}
+.res-card{border-radius:16px;padding:18px;position:relative;overflow:hidden;transition:transform .3s,border-color .3s}
+.res-card:hover{transform:translateY(-4px);border-color:var(--line-hi)}
+.res-card.latest{border-color:rgba(0,229,176,.45)}
+.res-card .rh{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.res-card .rv{font-size:16px;font-weight:900;color:var(--c1)}
+.res-card .rtag{font-size:10px;padding:2px 8px;border-radius:999px;color:var(--c2);border:1px solid rgba(0,229,176,.4)}
+.res-card .rdate{font-size:11px;color:var(--mut);margin-bottom:10px}
+.res-file{display:flex;align-items:center;gap:9px;padding:9px 11px;border-radius:10px;border:1px solid var(--line);margin-bottom:8px;transition:.2s}
+.res-file:hover{border-color:var(--c1);background:rgba(124,140,255,.06)}
+.res-file svg{width:15px;height:15px;color:var(--c1);flex:none}
+.res-file .rf{flex:1;min-width:0}
+.res-file .rf b{font-size:11.5px;display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.res-file .rf span{font-size:10px;color:var(--mut)}
+.res-file>svg.arrow{color:var(--mut);width:13px;height:13px}
+.res-note{text-align:center;font-size:11px;color:var(--mut);margin-top:16px;line-height:1.8}
+.res-links{display:flex;justify-content:center;gap:24px;flex-wrap:wrap;margin-top:14px}
+.res-links a{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--c2);padding:8px 14px;border-radius:10px;border:1px solid rgba(0,229,176,.3);transition:.25s}
+.res-links a:hover{background:rgba(0,229,176,.1);transform:translateY(-2px)}
+.res-links a svg{width:15px;height:15px}
 .dl-tip{font-size:11px;color:var(--mut);margin-top:12px;line-height:1.7}
 .bg-panel{position:fixed;right:18px;bottom:18px;z-index:70}
 .bg-fab{width:48px;height:48px;border-radius:14px;border:1px solid var(--line);background:var(--panel);backdrop-filter:var(--glass);color:var(--txt);cursor:pointer;display:grid;place-items:center;box-shadow:0 10px 30px rgba(0,0,0,.3);transition:.3s}
@@ -341,7 +362,7 @@ footer{border-top:1px solid var(--line);padding:36px 0 24px;background:rgba(8,12
 </svg>
 
 <div class="notice" id="notice">
-  <div class="notice-in"><span class="pulse"></span><span class="txt"><b>声明：</b>本项目<b>基于 Zalith Launcher 1 进行二次开发（二改）</b>，非官方作品。<b>v1.0.4</b> 已发布，官网 <b>v1.3</b> · 协议 <b>v1.2</b>。<a href="https://qun.qq.com/universal-share/share?ac=1&authKey=SwQb9TokqNswF95F7iPiZugcomKTgJOvB6uo%2BHiDMC18mRW0axxZHhmCc%2FvxeUqU&busi_data=eyJncm91cENvZGUiOiIxMTM0NTk3MTk3IiwidG9rZW4iOiJEQWxQMFExbGZveEVaWHdaeS9KdVJWM0RGT2o4a28yU3phTzI3YlgyenRFSWpCejBkeXRTczVkNDhkbjJOeEkrIiwidWluIjoiMjg2NTUyOTA1NyJ9&data=YkhhF1XEBl1JH8PELCFsIs-EcmqDaPYfYwnQGMgXRvH0-PwVJE2gAJvN5oBNpIjC8eomAfjNkaHxeQaVadKMZw&svctype=4&tempid=h5_group_info" target="_blank" rel="noopener">加入官方 QQ 群 1134597197</a>。</span><button class="close" id="noticeClose">×</button></div>
+  <div class="notice-in"><span class="pulse"></span><span class="txt"><b>声明：</b>本项目<b>基于 Zalith Launcher 1 进行二次开发（二改）</b>，非官方作品。<b>v1.0.5</b> 已发布，官网 <b>v1.4</b> · 协议 <b>v1.2</b>。<a href="https://qun.qq.com/universal-share/share?ac=1&authKey=SwQb9TokqNswF95F7iPiZugcomKTgJOvB6uo%2BHiDMC18mRW0axxZHhmCc%2FvxeUqU&busi_data=eyJncm91cENvZGUiOiIxMTM0NTk3MTk3IiwidG9rZW4iOiJEQWxQMFExbGZveEVaWHdaeS9KdVJWM0RGT2o4a28yU3phTzI3YlgyenRFSWpCejBkeXRTczVkNDhkbjJOeEkrIiwidWluIjoiMjg2NTUyOTA1NyJ9&data=YkhhF1XEBl1JH8PELCFsIs-EcmqDaPYfYwnQGMgXRvH0-PwVJE2gAJvN5oBNpIjC8eomAfjNkaHxeQaVadKMZw&svctype=4&tempid=h5_group_info" target="_blank" rel="noopener">加入官方 QQ 群 1134597197</a>。</span><button class="close" id="noticeClose">×</button></div>
 </div>
 
 <div class="toolbar">
@@ -359,11 +380,11 @@ footer{border-top:1px solid var(--line);padding:36px 0 24px;background:rgba(8,12
   <div class="wrap">
     <div class="hero">
       <div>
-        <span class="tagline glass"><i></i> GPLv3 开源 · 完全免费 <span class="ver-badge">官网 v1.3 · 协议 v1.2</span></span>
+        <span class="tagline glass"><i></i> GPLv3 开源 · 完全免费 <span class="ver-badge">官网 v1.4 · 协议 v1.2</span></span>
         <h1>在手机上，<br><span class="grad">自由启动 Minecraft</span><br>Java 版</h1>
         <p class="lead">基于 Zalith Launcher 1 二改开发的 Android 启动器。陶瓦联机、MIUIX Compose 界面、AI 版本助手、Java 运行时自动管理与 Vulkan 渲染，一手掌握。</p>
         <div class="btn-row">
-          <a href="#download" class="btn p"><svg><use href="#i-down"/></svg>下载 v1.0.4</a>
+          <a href="#download" class="btn p"><svg><use href="#i-down"/></svg>下载 v1.0.5</a>
           <a href="https://github.com/1953187487/CubernLauncher" target="_blank" rel="noopener" class="btn g"><svg><use href="#i-star"/></svg>GitHub 仓库</a>
           <a href="https://qun.qq.com/universal-share/share?ac=1&authKey=SwQb9TokqNswF95F7iPiZugcomKTgJOvB6uo%2BHiDMC18mRW0axxZHhmCc%2FvxeUqU&busi_data=eyJncm91cENvZGUiOiIxMTM0NTk3MTk3IiwidG9rZW4iOiJEQWxQMFExbGZveEVaWHdaeS9KdVJWM0RGT2o4a28yU3phTzI3YlgyenRFSWpCejBkeXRTczVkNDhkbjJOeEkrIiwidWluIjoiMjg2NTUyOTA1NyJ9&data=YkhhF1XEBl1JH8PELCFsIs-EcmqDaPYfYwnQGMgXRvH0-PwVJE2gAJvN5oBNpIjC8eomAfjNkaHxeQaVadKMZw&svctype=4&tempid=h5_group_info" target="_blank" rel="noopener" class="btn g"><svg><use href="#i-qq"/></svg>官方 QQ 群</a>
         </div>
@@ -379,7 +400,7 @@ footer{border-top:1px solid var(--line);padding:36px 0 24px;background:rgba(8,12
               <div class="navbar"><span>版本</span><span>下载</span><span>设置</span><b>联机</b></div>
             </div>
             <div class="ps-col">
-              <div class="cd"><b>当前版本</b>1.0.4 · Fabric · Java 21</div>
+              <div class="cd"><b>当前版本</b>1.0.5 · Fabric · Java 21</div>
               <div class="play">▶ 启动游戏</div>
               <div class="cd">⬇ 下载 · ⚙ 设置 · 📁 主目录</div>
               <div class="beta">⚠ 当前版本为测试版</div>
@@ -392,7 +413,7 @@ footer{border-top:1px solid var(--line);padding:36px 0 24px;background:rgba(8,12
 </header>
 
 <div class="wrap"><div class="metrics">
-  <div class="metric glass"><div class="n">1.0.4</div><div class="l">最新版本</div></div>
+  <div class="metric glass"><div class="n">1.0.5</div><div class="l">最新版本</div></div>
   <div class="metric glass"><div class="n">26.2+</div><div class="l">运行环境</div></div>
   <div class="metric glass"><div class="n">4 种</div><div class="l">渲染模式</div></div>
   <div class="metric glass"><div class="n">GPLv3</div><div class="l">开源协议</div></div>
@@ -403,6 +424,24 @@ footer{border-top:1px solid var(--line);padding:36px 0 24px;background:rgba(8,12
     <div class="sec-head reveal"><div class="eyebrow">Changelog</div><h2>更新公告</h2><p>向下滚动查看全部版本更新记录。</p></div>
     <div class="timeline">
       <div class="timeline-scroll" id="timelineScroll">
+
+        <article class="update-card glass">
+          <div class="update-top"><span class="v">v1.0.5</span><span class="tag">Pre-release 测试版</span><span class="date">2026-11-21</span></div>
+          <div class="upd-group"><h5><svg><use href="#i-bolt"/></svg>本次更新</h5><ul>
+            <li>首次启动改为全屏用户须知协议，同意后才解压并安装</li>
+            <li>关于页重写：爱发电赞助、开发基础、贡献者鸣谢、检查更新</li>
+            <li>对接爱发电 Open API 赞助者列表</li>
+            <li>修复搜索平台（默认 Modrinth，CurseForge 自动回退）</li>
+            <li>修复陶瓦联机状态与房间码输入显示</li>
+            <li>修复更新与下载地址指向 CubernLauncher 仓库</li>
+            <li>AI 助手 UI 现代化重写</li>
+            <li>设置：实验性下管理控制布局与关于</li>
+          </ul></div>
+          <div class="upd-group"><h5><svg><use href="#i-user"/></svg>作者与赞助</h5><ul>
+            <li>作者：鹙鸟（B 站同名）</li>
+            <li>爱发电：<a href="https://afdian.com/@KZjewnk" target="_blank" rel="noopener" style="color:var(--c1)">afdian.com/@KZjewnk</a></li>
+          </ul></div>
+        </article>
 
         <article class="update-card glass">
           <div class="update-top"><span class="v">v1.0.4</span><span class="tag">Pre-release 测试版</span><span class="date">2026-11-20</span></div>
@@ -590,7 +629,7 @@ footer{border-top:1px solid var(--line);padding:36px 0 24px;background:rgba(8,12
 
 <section id="download">
   <div class="wrap">
-    <div class="sec-head reveal"><div class="eyebrow">Download</div><h2>下载 v1.0.4</h2><p>点击即自动测速、选最快源并开始下载，无需手动操作。</p></div>
+    <div class="sec-head reveal"><div class="eyebrow">Download</div><h2>下载 v1.0.5</h2><p>点击即自动测速、选最快源并开始下载，无需手动操作。</p></div>
     <div class="dl-stage reveal">
       <button class="dl-btn" id="dlBtn"><svg><use href="#i-down"/></svg><span id="dlBtnText">一键下载 APK</span></button>
       <div class="dl-status glass" id="dlStatus">
@@ -598,9 +637,53 @@ footer{border-top:1px solid var(--line);padding:36px 0 24px;background:rgba(8,12
         <div class="step" data-step="1"><svg><use href="#i-globe"/></svg>自动选择最快源</div>
         <div class="step" data-step="2"><svg><use href="#i-down"/></svg>开始下载</div>
       </div>
-      <div class="dl-file">CubernLauncher-1.0.4-release.apk · 约 275.6 MB · <b id="chosenSource">待测</b></div>
+      <div class="dl-file">CubernLauncher-1.0.5.apk · 约 275.6 MB · <b id="chosenSource">待测</b></div>
       <div class="dl-tip">签名已变更，升级前请先卸载旧版 · 若下载失败请换个网络重试</div>
     </div>
+  </div>
+</section>
+
+<section id="resources">
+  <div class="wrap">
+    <div class="sec-head reveal"><div class="eyebrow">Resources</div><h2>官方资源中心</h2><p>Cubern Launcher 所有版本的官方下载地址，均来自 GitHub Releases。这里是唯一的官方资源入口。</p></div>
+    <div class="res-center">
+      <div class="res-card glass latest reveal">
+        <div class="rh"><span class="rv">v1.0.5</span><span class="rtag">最新</span></div>
+        <div class="rdate">2026-11-21 · Pre-release</div>
+        <a class="res-file" href="https://github.com/1953187487/CubernLauncher/releases/download/v1.0.5/CubernLauncher-1.0.5.apk" target="_blank" rel="noopener"><svg><use href="#i-down"/></svg><span class="rf"><b>CubernLauncher-1.0.5.apk</b><span>275.6 MB · 统一 APK</span></span><svg class="arrow"><use href="#i-link"/></svg></a>
+      </div>
+      <div class="res-card glass reveal">
+        <div class="rh"><span class="rv">v1.0.4</span></div>
+        <div class="rdate">2026-11-20 · Pre-release</div>
+        <a class="res-file" href="https://github.com/1953187487/CubernLauncher/releases/download/v1.0.4/CubernLauncher-1.0.4-release.apk" target="_blank" rel="noopener"><svg><use href="#i-down"/></svg><span class="rf"><b>CubernLauncher-1.0.4-release.apk</b><span>275.6 MB</span></span><svg class="arrow"><use href="#i-link"/></svg></a>
+      </div>
+      <div class="res-card glass reveal">
+        <div class="rh"><span class="rv">v1.0.3</span></div>
+        <div class="rdate">2026-11-20 · Pre-release</div>
+        <a class="res-file" href="https://github.com/1953187487/CubernLauncher/releases/download/v1.0.3/CubernLauncher-1.0.3-release.apk" target="_blank" rel="noopener"><svg><use href="#i-down"/></svg><span class="rf"><b>CubernLauncher-1.0.3-release.apk</b><span>275.6 MB</span></span><svg class="arrow"><use href="#i-link"/></svg></a>
+      </div>
+      <div class="res-card glass reveal">
+        <div class="rh"><span class="rv">v1.0.2</span></div>
+        <div class="rdate">2026-11-17 · 按 ABI 分包</div>
+        <a class="res-file" href="https://github.com/1953187487/CubernLauncher/releases/download/v1.0.2/com.movtery.cubernlauncher-1.0.2-arm64-v8a.apk" target="_blank" rel="noopener"><svg><use href="#i-down"/></svg><span class="rf"><b>arm64-v8a.apk</b><span>158.0 MB · 64 位 ARM</span></span><svg class="arrow"><use href="#i-link"/></svg></a>
+        <a class="res-file" href="https://github.com/1953187487/CubernLauncher/releases/download/v1.0.2/com.movtery.cubernlauncher-1.0.2-armeabi-v7a.apk" target="_blank" rel="noopener"><svg><use href="#i-down"/></svg><span class="rf"><b>armeabi-v7a.apk</b><span>152.9 MB · 32 位 ARM</span></span><svg class="arrow"><use href="#i-link"/></svg></a>
+        <a class="res-file" href="https://github.com/1953187487/CubernLauncher/releases/download/v1.0.2/com.movtery.cubernlauncher-1.0.2-x86_64.apk" target="_blank" rel="noopener"><svg><use href="#i-down"/></svg><span class="rf"><b>x86_64.apk</b><span>161.7 MB · 64 位 x86</span></span><svg class="arrow"><use href="#i-link"/></svg></a>
+        <a class="res-file" href="https://github.com/1953187487/CubernLauncher/releases/download/v1.0.2/com.movtery.cubernlauncher-1.0.2-x86.apk" target="_blank" rel="noopener"><svg><use href="#i-down"/></svg><span class="rf"><b>x86.apk</b><span>143.7 MB · 32 位 x86</span></span><svg class="arrow"><use href="#i-link"/></svg></a>
+      </div>
+      <div class="res-card glass reveal">
+        <div class="rh"><span class="rv">v1.0.1 / v1.0.0</span></div>
+        <div class="rdate">2026-11-16 · 早期版本</div>
+        <a class="res-file" href="https://github.com/1953187487/CubernLauncher/releases/download/v1.0.1/com.movtery.cubernlauncher-1.0.1.apk" target="_blank" rel="noopener"><svg><use href="#i-down"/></svg><span class="rf"><b>CubernLauncher-1.0.1.apk</b><span>275.1 MB</span></span><svg class="arrow"><use href="#i-link"/></svg></a>
+        <a class="res-file" href="https://github.com/1953187487/CubernLauncher/releases/download/v1.0.0/com.movtery.cubernlauncher-1.0.0.apk" target="_blank" rel="noopener"><svg><use href="#i-down"/></svg><span class="rf"><b>CubernLauncher-1.0.0.apk</b><span>260.1 MB</span></span><svg class="arrow"><use href="#i-link"/></svg></a>
+      </div>
+    </div>
+    <div class="res-links">
+      <a href="https://github.com/1953187487/CubernLauncher/releases" target="_blank" rel="noopener"><svg><use href="#i-github"/></svg>GitHub Releases</a>
+      <a href="https://github.com/1953187487/CubernLauncher" target="_blank" rel="noopener"><svg><use href="#i-star"/></svg>项目仓库</a>
+      <a href="https://afdian.com/@KZjewnk" target="_blank" rel="noopener"><svg><use href="#i-feed"/></svg>爱发电赞助</a>
+      <a href="https://b23.tv/mrWamRX" target="_blank" rel="noopener"><svg><use href="#i-play"/></svg>作者 B 站</a>
+    </div>
+    <div class="res-note">本资源站为 Cubern Launcher 唯一官方下载入口，所有文件托管于 GitHub Releases。<br>请仅从此处下载，勿使用第三方修改版。</div>
   </div>
 </section>
 
@@ -610,7 +693,7 @@ footer{border-top:1px solid var(--line);padding:36px 0 24px;background:rgba(8,12
       <div>
         <div class="brand"><span class="logo"><svg><use href="#i-box"/></svg></span> Cubern Launcher</div>
         <a class="author-card glass" href="https://b23.tv/mrWamRX" target="_blank" rel="noopener" title="访问鹙鸟的 B 站空间"><img src="avatar.jpg" alt="作者鹙鸟" onerror="this.style.display='none'"><div class="an"><b>鹙鸟</b><span>当前开发作者 · 负责本启动器 · B站空间 ↗</span></div></a>
-        <p class="desc">基于 Zalith Launcher 1 二改开发的 Minecraft Java 版 Android 启动器，GPLv3 开源。官网 v1.3，协议 v1.2。</p>
+        <p class="desc">基于 Zalith Launcher 1 二改开发的 Minecraft Java 版 Android 启动器，GPLv3 开源。官网 v1.4，协议 v1.2。</p>
       </div>
       <div class="f-links">
         <div><h5>项目</h5><a href="https://github.com/1953187487/CubernLauncher" target="_blank" rel="noopener">GitHub 仓库</a><a href="https://github.com/1953187487/CubernLauncher/releases" target="_blank" rel="noopener">Releases</a><a href="https://github.com/1953187487/CubernLauncher/issues" target="_blank" rel="noopener">Issues</a></div>
@@ -620,7 +703,7 @@ footer{border-top:1px solid var(--line);padding:36px 0 24px;background:rgba(8,12
     </div>
     <div class="f-bot">
       <p class="disc">Cubern Launcher 基于 Zalith Launcher 1 二次开发，与 Mojang Studios、Microsoft、网易无隶属关系。Minecraft 是 Mojang Studios 的商标。本项目按 GNU GPL v3.0 开源。</p>
-      <p>© 2026 Cubern Launcher · Made with ⛏️ by 鹙鸟 · 官网 v1.3 · 协议 v1.2</p>
+      <p>© 2026 Cubern Launcher · Made with ⛏️ by 鹙鸟 · 官网 v1.4 · 协议 v1.2</p>
     </div>
   </div>
 </footer>
@@ -676,33 +759,28 @@ footer{border-top:1px solid var(--line);padding:36px 0 24px;background:rgba(8,12
   /* 兜底：极少数环境 IO 不触发时，1.2 秒后强制显示全部，避免空白 */
   setTimeout(function(){document.querySelectorAll('.reveal,.metric,.update-card').forEach(function(x){x.classList.add('in')})},1200);
 
-  /* ===== 协议 v1.2 —— 与官网 v1.3 / 启动器 v1.0.4 同步 ===== */
+  /* ===== 协议 v1.2（合并去重版）—— 与官网 v1.4 / 启动器 v1.0.5 同步
+     三份协议各司其职：用户须知=项目与风险；隐私=数据；代码=授权。重复条款只保留一处。 */
   var TERMS=[
-    '<h4>① 关于本项目</h4><p>Cubern Launcher 是一款基于 <b>Zalith Launcher 1</b> 二次开发的 Minecraft Java 版 Android 启动器，遵循 <b>GNU GPL v3.0</b> 开源协议。当前开发作者：<b>鹙鸟</b>。当前软件版本 <b>v1.0.4（Pre-release 测试版）</b>。</p>',
-    '<h4>② 非官方声明</h4><p>本项目与 <b>Mojang Studios、Microsoft、网易、Zalith Launcher 官方</b> 均无隶属、授权或合作关系。Minecraft 是 Mojang Studios 的商标。本项目为独立的非官方二改作品。</p>',
-    '<h4>③ 测试版提示</h4><p>当前所有版本均为测试版（Pre-release），功能仍在持续开发，可能存在未完善功能或已知问题。v1.0.4 已更换包名与新签名证书，升级旧版前<b>必须先卸载旧版</b>。</p>',
-    '<h4>④ 功能说明</h4><p>本项目提供：陶瓦联机（Terracotta + EasyTier）、AI 版本助手（含启动日志分析）、Java 运行时自动管理、Vulkan 渲染检测、Forge / Fabric / NeoForge / Quilt 自定义环境支持等。部分功能需联网。</p>',
-    '<h4>⑤ 网络与账号</h4><p>版本下载默认使用 <b>BMCLAPI 镜像</b>，联机使用 EasyTier 节点。如使用自备 API Key 启用 AI 问答，密钥仅保存在你的设备本地，不会上传。请自行遵守所在地区网络规定。</p>',
-    '<h4>⑥ 本地存储与权限</h4><p>游戏文件、配置、运行时与宠物/日志数据均存储在你的设备本地应用私有目录。卸载或清理数据前请自行备份。「打开主目录」使用内置文件管理器实现。</p>',
-    '<h4>⑦ 开源与免责</h4><p>本项目按 <b>GPL v3.0</b> 开源，按“现状”提供，不作任何明示或暗示担保。因使用本软件造成的任何损失，作者与贡献者不承担法律责任。</p>'
+    '<h4>① 关于本项目</h4><p>Cubern Launcher 是一款基于 <b>Zalith Launcher 1</b> 二次开发的 Minecraft Java 版 Android 启动器，遵循 <b>GNU GPL v3.0</b>。当前开发作者：<b>鹙鸟</b>，软件版本 <b>v1.0.5（Pre-release 测试版）</b>。本项目为非官方作品，与 Mojang、Microsoft、网易及 Zalith Launcher 官方均无隶属关系（商标归属见「代码协议」）。</p>',
+    '<h4>② 测试版与升级提示</h4><p>当前所有版本均为测试版，功能持续开发中，可能存在未完善或已知问题。自 v1.0.4 起更换包名（com.cubern.launcher）与签名证书，升级旧版前<b>必须先卸载旧版</b>，否则无法安装。</p>',
+    '<h4>③ 功能与网络</h4><p>本项目提供陶瓦联机、AI 版本助手、Java 运行时自动管理、Vulkan 渲染检测、Forge / Fabric / NeoForge / Quilt 环境支持等。版本下载默认使用 <b>BMCLAPI 镜像</b>，联机使用 EasyTier 节点，部分功能需联网。请自行遵守所在地区网络规定。</p>',
+    '<h4>④ 数据与存储</h4><p>游戏文件、配置与运行时均保存在你的设备本地。关于个人数据的收集与使用，详见《隐私协议》；本地状态与权限说明不在此重复。</p>',
+    '<h4>⑤ 免责声明</h4><p>本项目按“现状”提供，不作任何明示或暗示担保。因使用本软件造成的任何损失，作者与贡献者不承担法律责任。</p>'
   ].join('');
   var PRIVACY=[
-    '<h4>① 信息收集原则</h4><p>本启动器<b>不收集</b>你的个人身份信息、联系方式、位置信息或设备标识符。我们不需要、也不要求你注册账号。所有游戏数据、配置与本地状态均保存在你的设备本地。</p>',
-    '<h4>② AI 助手与启动日志</h4><p>使用「分析启动日志」功能时，日志会先经过<b>本地脱敏</b>（令牌、API Key、UUID、路径用户名等），并通过弹窗明确告知、取得你的确认后才上传。你完全可以拒绝，不影响其他功能。</p>',
-    '<h4>③ 自备 API Key</h4><p>如你选择填写 USER_LLM_API_KEY，该密钥仅在本机存储并直接用于向所选服务发起请求，本项目的官网与作者服务器不会保存或中转你的密钥。</p>',
-    '<h4>④ 陶瓦联机与 P2P</h4><p>联机功能通过 EasyTier 建立 P2P 隧道，节点地址由你选择或来自公开节点列表。房间码仅用于建立连接；联机过程中产生的连接日志保存在本机。请自行评估在公开网络联机的隐私风险。</p>',
-    '<h4>⑤ 第三方服务</h4><p>版本与模组下载可能访问 BMCLAPI、Modrinth、CurseForge 等公开服务；这些服务有各自的隐私政策，本项目不控制其内容，也不向其提供你的个人信息。</p>',
-    '<h4>⑥ 官网与本地存储</h4><p>官网（本页）为纯静态页面，不含追踪脚本、统计 Cookie 或第三方广告。主题、背景、协议同意状态等仅存于你浏览器的 localStorage，随时可清除。清除后首次访问会重新弹出协议。</p>',
-    '<h4>⑦ 儿童隐私</h4><p>本项目不面向 13 岁以下儿童，不会有意收集儿童的个人信息。</p>',
-    '<h4>⑧ 政策更新</h4><p>本隐私协议版本为 <b>v1.2</b>。如有变更，会在官网「网站更新日志」中说明并更新版本号。继续使用即视为接受更新后的政策。</p>'
+    '<h4>① 信息收集原则</h4><p>本启动器<b>不收集</b>你的个人身份、联系方式、位置或设备标识符，不要求注册账号。所有游戏数据与本地状态均存于你的设备。</p>',
+    '<h4>② 本地存储（含官网）</h4><p>游戏配置、日志、运行时存于 Android 应用私有目录，其他应用无法读取，卸载即清除。官网（本页）为纯静态页面，<b>无追踪脚本、统计 Cookie 或第三方广告</b>；主题、背景、协议同意状态仅存于浏览器 localStorage，随时可清除，清除后首次访问会重新弹出协议。</p>',
+    '<h4>③ AI 助手与自备 API Key</h4><p>使用「分析启动日志」时会先<b>本地脱敏</b>（令牌、API Key、UUID、路径用户名等），弹窗告知并确认后才上传，可拒绝且不影响其他功能。若填写 USER_LLM_API_KEY，密钥仅在本机存储并直连所选服务，本项目官网与作者服务器不保存、不中转。</p>',
+    '<h4>④ 陶瓦联机与第三方服务</h4><p>联机通过 EasyTier 建立 P2P 隧道，节点由你选择或来自公开列表，房间码仅用于建连，连接日志存于本机，请自行评估公开网络联机风险。下载可能访问 BMCLAPI、Modrinth、CurseForge 等公开服务，它们各有隐私政策，本项目不向其提供你的个人信息。</p>',
+    '<h4>⑤ 儿童隐私与政策更新</h4><p>本项目不面向 13 岁以下儿童。本协议版本 <b>v1.2</b>，如有变更将在官网「网站更新日志」说明并更新版本号，继续使用即视为接受更新后的政策。</p>'
   ].join('');
   var CODE=[
-    '<h4>① 开源许可</h4><p>本项目源代码以 <b>GNU GPL v3.0</b> 许可发布：你可自由使用、修改、分发，但须保留版权与许可声明，并以相同许可开源你的修改版本，且不得附加额外限制。</p>',
-    '<h4>② 二改来源与署名</h4><p>本项目基于 <b>Zalith Launcher 1</b> 二次开发，并移植了 Zalith Launcher 2 的陶瓦联机实现。原作者权利受其原许可保护，相关归属见仓库 LICENSE / NOTICE。当前开发作者为 <b>鹙鸟</b>。</p>',
-    '<h4>③ 第三方组件</h4><p>Terracotta、EasyTier、PojavLauncher 等第三方组件各自保留原许可证，详见仓库各组件目录的 LICENSE 文件。任何第三方商标权归各自所有者。</p>',
-    '<h4>④ 商标与品牌</h4><p>「Cubern Launcher」名称、图标与视觉设计为本项目自有；Minecraft 为 Mojang Studios 商标，Microsoft、网易等名称归各自所有者，本项目不拥有其任何权利。</p>',
-    '<h4>⑤ 包名与签名</h4><p>自 v1.0.4 起，应用包名变更为 <b>com.cubern.launcher</b>，并使用独立签名证书（CN=Cubern Launcher）。因签名变更，旧版用户升级前必须卸载旧版。</p>',
-    '<h4>⑥ 贡献规范</h4><p>欢迎通过 Issue 与 Pull Request 参与贡献。提交即视为同意以 GPL v3.0 授权你的贡献，并同意不提交任何你没有权利开源的代码。</p>'
+    '<h4>① 开源许可</h4><p>本项目源代码以 <b>GNU GPL v3.0</b> 许可发布：可自由使用、修改、分发，但须保留版权与许可声明、以相同许可开源修改版，不得附加额外限制。</p>',
+    '<h4>② 二改来源与署名</h4><p>本项目基于 <b>Zalith Launcher 1</b> 二次开发，并移植 Zalith Launcher 2 的陶瓦联机实现。原作者权利受原许可保护，归属见仓库 LICENSE / NOTICE。当前开发作者：<b>鹙鸟</b>。</p>',
+    '<h4>③ 第三方组件</h4><p>Terracotta、EasyTier、PojavLauncher 等各自保留原许可证，详见仓库各组件 LICENSE 文件。</p>',
+    '<h4>④ 商标与品牌</h4><p>「Cubern Launcher」名称与图标为本项目自有；Minecraft 为 Mojang Studios 商标，Microsoft、网易等名称归各自所有者，本项目不拥有其权利（非官方声明见《用户须知》）。</p>',
+    '<h4>⑤ 包名、签名与贡献</h4><p>自 v1.0.4 起包名变更为 <b>com.cubern.launcher</b>，使用独立签名证书（CN=Cubern Launcher）。欢迎通过 Issue / PR 贡献，提交即视为同意以 GPL v3.0 授权你的贡献，且不提交无权开源的代码。</p>'
   ].join('');
   var AG='cubern-agree-v1.2',agreed=false;
   try{agreed=localStorage.getItem(AG)==='1'}catch(e){}
@@ -717,7 +795,7 @@ footer{border-top:1px solid var(--line);padding:36px 0 24px;background:rgba(8,12
   document.getElementById('agreementLink').addEventListener('click',function(e){e.preventDefault();openAg()});
   if(!agreed)setTimeout(openAg,700);
 
-  var APK='https://github.com/1953187487/CubernLauncher/releases/download/v1.0.4/CubernLauncher-1.0.4-release.apk';
+  var APK='https://github.com/1953187487/CubernLauncher/releases/download/v1.0.5/CubernLauncher-1.0.5.apk';
   var SOURCES=[
     {name:'GitHub 官方',url:APK},
     {name:'ghproxy.net',url:'https://ghproxy.net/'+APK},
@@ -756,7 +834,7 @@ footer{border-top:1px solid var(--line);padding:36px 0 24px;background:rgba(8,12
     btnText.textContent='已选最快源，正在开始…';
     await new Promise(function(r){setTimeout(r,500)});
     steps[1].classList.add('done');setStep(2,'active');
-    var a=document.createElement('a');a.href=best.src.url;a.download='CubernLauncher-1.0.4-release.apk';document.body.appendChild(a);a.click();a.remove();
+    var a=document.createElement('a');a.href=best.src.url;a.download='CubernLauncher-1.0.5.apk';document.body.appendChild(a);a.click();a.remove();
     steps[2].classList.add('done');btnText.textContent='已开始下载 ✓';
     toast('已从最快源开始下载：'+best.src.name);
     setTimeout(function(){btn.disabled=false;btnText.textContent='一键下载 APK';steps.forEach(function(s){s.classList.remove('active','done')})},4000);
