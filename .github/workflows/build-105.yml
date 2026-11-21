@@ -1,4 +1,4 @@
-name: Build & Release Cubern Launcher 1.0.6
+name: Build & Release Cubern Launcher 1.0.7
 on:
   workflow_dispatch:
 
@@ -11,7 +11,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: 1.0.6
+          ref: 1.0.7
       - name: Set up JDK 17
         uses: actions/setup-java@v4
         with:
@@ -35,5 +35,5 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           APK=$(find ZalithLauncher/build/outputs/apk/release -name "*.apk" | head -1)
-          printf "%s\n" "## Cubern Launcher 1.0.6" "" "- 重写关于界面+动画UI+赞助者，重写贡献者鸣谢，修复关于字样" "- 修复陶瓦联机入口/后台重开误启动游戏/强制退出改回主页" "- 中文搜索自动转英文且不修改输入，修复搜索页" "- 整合包更新入口与版本管理，新增3D皮肤预览(旋转/动作/跳舞)" "" "作者：鹙鸟 · 爱发电：https://afdian.com/@KZjewnk" > notes.md
-          gh release create v1.0.6 "$APK" --title "Cubern Launcher 1.0.6 (Pre-release)" --notes-file notes.md --prerelease
+          printf "%s\n" "## Cubern Launcher 1.0.7" "" "- 引入 skinview3d 真 3D 皮肤渲染（Three.js）：站立/行走/奔跑/挥手/跳舞/自动旋转" "- 账户页新增 3D 皮肤预览入口" "- 每日 0 点自动刷新赞助者列表并本地缓存（离线可见）" "- 彻底修复游戏菜单陶瓦联机回主页问题" "- 关于页重写统一风格、账号入口、更新动画，贡献者鸣谢载入真实仓库与作者名" "- 绑定爱发电赞助者凭据" "" "作者：鹙鸟 · 爱发电：https://afdian.com/@KZjewnk" > notes.md
+          gh release create v1.0.7 "$APK" --title "Cubern Launcher 1.0.7 (Pre-release)" --notes-file notes.md --prerelease
