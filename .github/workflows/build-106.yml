@@ -1,0 +1,39 @@
+name: Build & Release Cubern Launcher 1.0.6
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: 1.0.6
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+      - name: Install NDK
+        continue-on-error: true
+        env:
+          ANDROID_HOME: /usr/local/lib/android/sdk
+        run: echo "y" | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager "ndk;25.2.9519653"
+      - name: Make gradlew executable
+        run: chmod +x gradlew
+      - name: Build Release APK
+        env:
+          MOVTERY_KEYSTORE_PASSWORD: "Cubern@103!"
+          ANDROID_HOME: /usr/local/lib/android/sdk
+          ANDROID_SDK_ROOT: /usr/local/lib/android/sdk
+        run: ./gradlew :ZalithLauncher:assembleRelease --no-daemon --max-workers=2 -Dorg.gradle.jvmargs=-Xmx2048M
+      - name: Create Release with APK
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          APK=$(find ZalithLauncher/build/outputs/apk/release -name "*.apk" | head -1)
+          printf "%s\n" "## Cubern Launcher 1.0.6" "" "> 基于 1.0.5 全面升级，主要更新与修复内容：" "" "### 界面与 UI" "- 重写关于界面并重新排版，加入更新动画 UI" "- 重写贡献者与鸣谢，在关于界面添加赞助者" "- 修复设置中「关于」字样显示问题" "" "### 游戏与启动器" "- 修复游戏菜单打开陶瓦联机回到主界面的问题" "- 修复后台删除后重开仍自动启动游戏并播放音乐的问题" "- 游戏菜单「强制退出」改为直接回到启动器主页" "" "### 资源与平台" "- 删除进入软件时新增的资源加载" "- 修复 Minecraft 与其他资源平台不一致问题" "" "### 模组与整合包" "- 模组搜索支持中文，自动转换英文请求词且不修改用户输入" "- 修复搜索页" "- 添加更新整合包功能与版本管理入口" "" "### 账户与皮肤" "- 新增角色皮肤 3D 预览（旋转/站立/行走/挥手/跳舞动作）" "" "作者：鹙鸟（B站同名） · 爱发电：https://afdian.com/@KZjewnk" > notes.md
+          gh release create v1.0.6 "$APK" --title "Cubern Launcher 1.0.6 (Pre-release)" --notes-file notes.md --prerelease
