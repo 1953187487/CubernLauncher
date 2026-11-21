@@ -12,7 +12,9 @@ html[data-theme=light]{--bg:#eef2ff;--bg2:#e2e9ff;--panel:rgba(255,255,255,.66);
 *{box-sizing:border-box;margin:0;padding:0}
 html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
 html{scroll-behavior:smooth}
-body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;background:transparent;color:var(--txt);line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden;position:relative;min-height:100vh}
+html,body{width:100%;max-width:100%;margin:0;padding:0}
+html{overflow-x:hidden}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;background:transparent;color:var(--txt);line-height:1.65;-webkit-font-smoothing:antialiased;position:relative;min-height:100vh;max-width:100vw;overflow-x:clip}
 #bgCustom{position:fixed;inset:0;z-index:-4;background-size:cover;background-position:center;opacity:0;transition:opacity .5s}
 body.custom-bg #bgCustom{opacity:1}
 body.custom-bg #bgLayer{opacity:.35}
@@ -40,11 +42,11 @@ html[data-theme=light] .glass{
 /* 玻璃表面流动高光 */
 .glass::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;background:linear-gradient(115deg,transparent 25%,rgba(255,255,255,.08) 45%,transparent 60%);background-size:250% 100%;animation:glassSheen 8s ease-in-out infinite}
 @keyframes glassSheen{0%,55%{background-position:180% 0}100%{background-position:-80% 0}}
-.wrap{max-width:1140px;margin:0 auto;padding:0 20px}
+.wrap{width:100%;max-width:1140px;margin:0 auto;padding:0 20px}
 svg{width:1em;height:1em;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;vertical-align:-.15em;flex:none}
 a{color:inherit;text-decoration:none}
 .notice{position:relative;overflow:hidden;border-bottom:1px solid rgba(124,140,255,.3);background:linear-gradient(90deg,rgba(124,140,255,.18),rgba(0,229,176,.12),rgba(255,110,199,.16))}
-.notice-in{max-width:1140px;margin:0 auto;padding:10px 20px;display:flex;align-items:center;gap:11px;font-size:12.5px}
+.notice-in{width:100%;max-width:1140px;margin:0 auto;padding:10px 20px;display:flex;align-items:center;gap:11px;font-size:12.5px}
 .notice .pulse{width:8px;height:8px;border-radius:50%;background:var(--c2);box-shadow:0 0 12px var(--c2);flex:none;animation:np 1.6s infinite}
 @keyframes np{0%,100%{opacity:1}50%{opacity:.4}}
 .notice b{color:var(--c1)}.notice .txt{flex:1}
@@ -52,7 +54,7 @@ a{color:inherit;text-decoration:none}
 .notice .close{background:none;border:0;color:var(--mut);font-size:18px;cursor:pointer;line-height:1}
 .toolbar{position:sticky;top:0;z-index:50;background:linear-gradient(180deg,rgba(20,28,54,.72),rgba(8,12,24,.55));backdrop-filter:var(--glass);-webkit-backdrop-filter:var(--glass);border-bottom:1px solid var(--line-hi);box-shadow:0 6px 24px rgba(0,0,0,.2),inset 0 1px 0 rgba(255,255,255,.1)}
 html[data-theme=light] .toolbar{background:rgba(238,242,255,.55)}
-.toolbar-in{max-width:1140px;margin:0 auto;padding:0 20px;height:56px;display:flex;align-items:center;justify-content:space-between}
+.toolbar-in{width:100%;max-width:1140px;margin:0 auto;padding:0 20px;height:56px;display:flex;align-items:center;justify-content:space-between}
 .brand{display:flex;align-items:center;gap:10px;font-weight:900;font-size:17px}
 .brand .logo{width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,var(--c1),var(--c2));display:grid;place-items:center;color:#fff;font-size:18px;box-shadow:0 4px 18px rgba(124,140,255,.5);animation:breathe 5s ease-in-out infinite}
 @keyframes breathe{0%,100%{transform:rotate(0) scale(1)}50%{transform:rotate(9deg) scale(1.08)}}
@@ -316,7 +318,8 @@ footer{border-top:1px solid var(--line);padding:36px 0 24px;background:rgba(8,12
 }
 
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal,.metric,.update-card{opacity:1;transform:none}}
-.metric,.card{content-visibility:auto;contain-intrinsic-size:auto 400px}
+/* content-visibility 仅在宽屏启用，移动端关闭避免 WebView 布局异常 */
+@media(min-width:721px){.metric,.card{content-visibility:auto;contain-intrinsic-size:auto 400px}}
 </style>
 </head>
 <body>
@@ -706,6 +709,11 @@ footer{border-top:1px solid var(--line);padding:36px 0 24px;background:rgba(8,12
 
 <script>
 (function(){
+  /* 视口兜底：确保 WebView 按设备宽度渲染，不自动放大 */
+  try{
+    var vp=document.querySelector('meta[name="viewport"]');
+    if(vp)vp.setAttribute('content','width=device-width,initial-scale=1.0,maximum-scale=5.0,viewport-fit=cover');
+  }catch(e){}
   /* 加载动画：页面就绪后淡出 */
   var loader=document.getElementById('loader');
   function hideLoader(){if(loader)loader.classList.add('hide')}
