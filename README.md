@@ -21,7 +21,7 @@ Cubern Launcher 面向 Android 设备，让 **Minecraft: Java Edition** 在手�
 | 项目 | 信息 |
 | --- | --- |
 | 当前版本 | **1.0.2**（测试版 / Pre-release） |
-| 当前作者 | **万古沧海** |
+| 当前作者 | **鹙鸟** |
 | 原项目作者 | **Zalith Launcher 1 启动器作者** |
 | 开源协议 | **GNU General Public License v3.0** |
 | 包名 | `com.movtery.cubernlauncher` |
@@ -172,7 +172,7 @@ Cubern Launcher 建立在众多开发者的开源成果之上，向以下项目�
 ### 开发者与社区
 
 - **墨北MovTery** —— Zalith Launcher 系列项目主要作者
-- **万古沧海** —— Cubern Launcher 当前作者与维护者
+- **鹙鸟** —— Cubern Launcher 当前作者与维护者
 - **Vera-Firefly** —— Pojav-Glow-Worm 相关修复贡献
 - **柃木湫竹** —— 原项目功能与代码贡献
 - **ShirosakiMio** —— 原项目功能与代码贡献
