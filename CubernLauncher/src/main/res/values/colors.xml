@@ -39,4 +39,10 @@
     <color name="icon_color">#151515</color>
 
     <color name="primary_text">#0E0E0E</color>
+    <!-- 1.0.5 赞助者金额分级配色 -->
+    <color name="sponsor_tier_cyan">#CC4DD0E1</color>
+    <color name="sponsor_tier_yellow">#CCFFD54F</color>
+    <color name="sponsor_tier_red">#CCE57373</color>
+    <color name="sponsor_tier_pink">#CCF48FB1</color>
+    <color name="sponsor_tier_taiji">#CC212121</color>
 </resources>

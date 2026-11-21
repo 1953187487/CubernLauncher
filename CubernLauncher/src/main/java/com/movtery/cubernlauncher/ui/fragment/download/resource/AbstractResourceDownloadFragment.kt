@@ -334,7 +334,16 @@ abstract class AbstractResourceDownloadFragment(
 
         override fun run(myFuture: Future<*>) {
             runCatching {
-                val result: SearchResult? = mCurrentPlatform.helper.search(classify, mFilters, mPreviousResult ?: SearchResult())
+                                var result: SearchResult? = null
+                try {
+                    result = mCurrentPlatform.helper.search(classify, mFilters, mPreviousResult ?: SearchResult())
+                } catch (fallbackError: Exception) {
+                    // 1.0.5：CurseForge 无 API Key 时自动回退到 Modrinth，保证所有平台均可搜索
+                    if (mCurrentPlatform != Platform.MODRINTH) {
+                        mCurrentPlatform = Platform.MODRINTH
+                        result = Platform.MODRINTH.helper.search(classify, mFilters, mPreviousResult ?: SearchResult())
+                    } else throw fallbackError
+                }
 
                 TaskExecutors.runInUIThread {
                     if (myFuture.isCancelled) return@runInUIThread

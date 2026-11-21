@@ -13,6 +13,7 @@ import com.movtery.cubernlauncher.InfoCenter
 import com.movtery.cubernlauncher.InfoDistributor
 import com.movtery.cubernlauncher.R
 import com.movtery.cubernlauncher.databinding.FragmentAboutInfoPageBinding
+import com.movtery.cubernlauncher.feature.afdian.AfdianApi
 import com.movtery.cubernlauncher.feature.update.UpdateUtils
 import com.movtery.cubernlauncher.ui.dialog.TipDialog
 import com.movtery.cubernlauncher.ui.subassembly.about.AboutItemBean
@@ -87,169 +88,37 @@ class AboutInfoPageFragment() : Fragment(R.layout.fragment_about_info_page) {
     private fun loadAboutData(resources: Resources) {
         mAboutData.clear()
 
-        mAboutData.add(
-            AboutItemBean(
-                resources.getDrawable(R.drawable.ic_pojav_full, requireContext().theme),
-                "PojavLauncherTeam",
-                getString(R.string.about_PojavLauncher_desc),
-                AboutItemButtonBean(requireActivity(), "Github", "https://github.com/PojavLauncherTeam/PojavLauncher")
-            )
-        )
-        mAboutData.add(
-            AboutItemBean(
-                resources.getDrawable(R.drawable.image_about_movtery, requireContext().theme),
-                "墨北MovTery",
-                getString(R.string.about_MovTery_desc),
-                AboutItemButtonBean(
-                    requireActivity(),
-                    getString(R.string.about_access_space),
-                    "https://space.bilibili.com/2008204513"
-                )
-            )
-        )
-        mAboutData.add(
-            AboutItemBean(
-                resources.getDrawable(R.drawable.image_about_movtery, requireContext().theme),
-                "万古沧海",
-                getString(R.string.about_WanGuCangHai_desc),
-                AboutItemButtonBean(
-                    requireActivity(),
-                    getString(R.string.about_access_space),
-                    "https://github.com/1953187487"
-                )
-            )
-        )
-        mAboutData.add(
-            AboutItemBean(
-                resources.getDrawable(R.drawable.image_about_movtery, requireContext().theme),
-                "Zalith Launcher1 启动器作者",
-                getString(R.string.about_ZalithLauncher1_desc),
-                AboutItemButtonBean(
-                    requireActivity(),
-                    getString(R.string.about_access_space),
-                    "https://github.com/ZalithLauncher"
-                )
-            )
-        )
-        mAboutData.add(
-            AboutItemBean(
-                resources.getDrawable(R.drawable.image_about_mcmod, requireContext().theme),
-                "MC 百科",
-                getString(R.string.about_mcmod_desc),
-                AboutItemButtonBean(
-                    requireActivity(),
-                    getString(R.string.about_access_link),
-                    UrlManager.URL_MCMOD)
-            )
-        )
-        mAboutData.add(
-            AboutItemBean(
-                resources.getDrawable(R.drawable.image_about_verafirefly, requireContext().theme),
-                "Vera-Firefly",
-                getString(R.string.about_VeraFirefly_desc),
-                AboutItemButtonBean(
-                    requireActivity(),
-                    getString(R.string.about_access_space),
-                    "https://space.bilibili.com/1412062866"
-                )
-            )
-        )
-        mAboutData.add(
-            AboutItemBean(
-                resources.getDrawable(R.drawable.image_about_lingmuqiuzhu, requireContext().theme),
-                "柃木湫竹",
-                getString(R.string.about_LingMuQiuZhu_desc),
-                AboutItemButtonBean(
-                    requireActivity(),
-                    getString(R.string.about_access_space),
-                    "https://space.bilibili.com/515165764"
-                )
-            )
-        )
-        mAboutData.add(
-            AboutItemBean(
-                resources.getDrawable(R.drawable.image_about_shirosakimio, requireContext().theme),
-                "ShirosakiMio",
-                getString(R.string.about_ShirosakiMio_desc),
-                AboutItemButtonBean(
-                    requireActivity(),
-                    getString(R.string.about_access_space),
-                    "https://space.bilibili.com/35801833"
-                )
-            )
-        )
-        mAboutData.add(
-            AboutItemBean(
-                resources.getDrawable(R.drawable.image_about_bangbang93, requireContext().theme),
-                "bangbang93",
-                getString(R.string.about_bangbang93_desc),
-                AboutItemButtonBean(
-                    requireActivity(),
-                    getString(R.string.about_button_support_development),
-                    "https://afdian.com/a/bangbang93"
-                )
-            )
-        )
-        mAboutData.add(
-            AboutItemBean(
-                resources.getDrawable(R.drawable.ic_pojav_full, requireContext().theme),
-                "Zalith Launcher 2",
-                getString(R.string.about_ZalithLauncher2_desc),
-                AboutItemButtonBean(
-                    requireActivity(),
-                    "Github",
-                    "https://github.com/ZalithLauncher/ZalithLauncher2"
-                )
-            )
-        )
-        mAboutData.add(
-            AboutItemBean(
-                resources.getDrawable(R.drawable.ic_pojav_full, requireContext().theme),
-                "FoldCraftLauncher",
-                getString(R.string.about_FoldCraftLauncher_desc),
-                AboutItemButtonBean(
-                    requireActivity(),
-                    "Github",
-                    "https://github.com/FCL-Team/FoldCraftLauncher"
-                )
-            )
-        )
-        mAboutData.add(
-            AboutItemBean(
-                resources.getDrawable(R.drawable.ic_pojav_full, requireContext().theme),
-                "herbrine8403 / Amethyst-iOS",
-                getString(R.string.about_Amethyst_desc),
-                AboutItemButtonBean(
-                    requireActivity(),
-                    "Github",
-                    "https://github.com/herbrine8403/Amethyst-iOS"
-                )
-            )
-        )
-        mAboutData.add(
-            AboutItemBean(
-                resources.getDrawable(R.drawable.ic_pojav_full, requireContext().theme),
-                "MyRemasteredAI",
-                getString(R.string.about_MyRemasteredAI_desc),
-                AboutItemButtonBean(
-                    requireActivity(),
-                    "Github",
-                    "https://github.com/MyRemasteredAI/MyRemasteredAI"
-                )
-            )
-        )
-        mAboutData.add(
-            AboutItemBean(
-                resources.getDrawable(R.drawable.ic_pojav_full, requireContext().theme),
-                "MIUIX",
-                getString(R.string.about_MIUIX_desc),
-                AboutItemButtonBean(
-                    requireActivity(),
-                    "Github",
-                    "https://github.com/compose-miuix-ui/miuix"
-                )
-            )
-        )
+        // 1.0.5：关于页重写为 Cubern Launcher 自主内容（开发基础 / 作者 / 贡献者鸣谢 / 检查更新）
+        mAboutData.add(AboutItemBean(
+            resources.getDrawable(R.drawable.ic_pojav_full, requireContext().theme),
+            "Cubern Launcher",
+            "基于 Zalith Launcher 1 深度二改的 Minecraft Java 版 Android 启动器。启动内核：PojavLauncher；界面：Jetpack Compose + Material 3；风格：拟物沉浸风；协议：GPL-3.0。",
+            null))
+        mAboutData.add(AboutItemBean(
+            resources.getDrawable(R.drawable.image_about_movtery, requireContext().theme),
+            "鹙鸟（B站同名）",
+            "Cubern Launcher 当前作者与维护者。开源项目，与 Mojang、Microsoft、网易无关。",
+            AboutItemButtonBean(requireActivity(), "在爱发电支持作者", AfdianApi.FALLBACK_URL)))
+        mAboutData.add(AboutItemBean(
+            resources.getDrawable(R.drawable.ic_pojav_full, requireContext().theme),
+            "Zalith Launcher 1 / PojavLauncher",
+            "原作启动器与开源 Android Minecraft 启动内核，奠定本项目底层架构。",
+            AboutItemButtonBean(requireActivity(), "Github", "https://github.com/ZalithLauncher")))
+        mAboutData.add(AboutItemBean(
+            resources.getDrawable(R.drawable.ic_pojav_full, requireContext().theme),
+            "Terracotta / EasyTier",
+            "为 Minecraft Java 版提供 P2P 联机方案。",
+            AboutItemButtonBean(requireActivity(), "Github", "https://github.com/EasyTier/EasyTier")))
+        mAboutData.add(AboutItemBean(
+            resources.getDrawable(R.drawable.image_about_mcmod, requireContext().theme),
+            "MC 百科（mcmod.cn）",
+            "提供 Mod 与整合包中文翻译。",
+            AboutItemButtonBean(requireActivity(), getString(R.string.about_access_link), UrlManager.URL_MCMOD)))
+        mAboutData.add(AboutItemBean(
+            resources.getDrawable(R.drawable.ic_pojav_full, requireContext().theme),
+            "检查更新",
+            "当前版本 v" + InfoDistributor.VERSION_NAME + "。点击检查是否有新版本。",
+            AboutItemButtonBean(requireActivity(), "检查更新", "https://github.com/1953187487/CubernLauncher/releases")))
     }
 }
 

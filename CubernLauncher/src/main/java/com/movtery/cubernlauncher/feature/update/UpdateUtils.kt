@@ -163,7 +163,7 @@ class UpdateUtils {
         @JvmStatic
         fun getDownloadUrl(launcherVersion: LauncherVersion): String {
             val archModel = getArchModel()
-            return "https://github.com/CubernLauncher/CubernLauncher/releases/download/" +
+            return "https://github.com/1953187487/CubernLauncher/releases/download/" +
                     "${launcherVersion.versionCode}/CubernLauncher-${launcherVersion.versionName}" +
                     "${(if (archModel != null) String.format("-%s", archModel) else "")}.apk"
         }

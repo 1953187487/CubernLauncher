@@ -56,18 +56,25 @@ public class SponsorRecyclerAdapter extends RecyclerView.Adapter<SponsorRecycler
                     .load(sponsor.getAvatar())
                     .into(binding.avatarView);
 
+            // 1.0.5：赞助金额分级配色
             Drawable background = itemView.getBackground();
-            if (amount >= 12.0f) {
-                int color;
-                if (amount >= 18.0f) {
-                    color = ContextCompat.getColor(itemView.getContext(), R.color.background_sponsor_advanced);
-                } else {
-                    color = ContextCompat.getColor(itemView.getContext(), R.color.background_sponsor_intermediate);
-                }
-                background.setTint(color);
+            int tierColor;
+            if (amount >= 100.0f) {
+                tierColor = ContextCompat.getColor(itemView.getContext(), R.color.sponsor_tier_taiji); // 太极色（黑白）
+            } else if (amount >= 10.0f) {
+                tierColor = ContextCompat.getColor(itemView.getContext(), R.color.sponsor_tier_pink); // 粉红色
+            } else if (amount >= 1.0f) {
+                tierColor = ContextCompat.getColor(itemView.getContext(), R.color.sponsor_tier_red); // 红色
+            } else if (amount >= 0.1f) {
+                tierColor = ContextCompat.getColor(itemView.getContext(), R.color.sponsor_tier_yellow); // 黄色
             } else {
-                background.setTintList(null);
+                tierColor = ContextCompat.getColor(itemView.getContext(), R.color.sponsor_tier_cyan); // 青绿色
             }
+            background.setTint(tierColor);
+            // 太极色档位叠加黑白前景标记
+            binding.amountView.setTextColor(amount >= 100.0f
+                    ? ContextCompat.getColor(itemView.getContext(), android.R.color.white)
+                    : ContextCompat.getColor(itemView.getContext(), android.R.color.black));
         }
     }
 }
