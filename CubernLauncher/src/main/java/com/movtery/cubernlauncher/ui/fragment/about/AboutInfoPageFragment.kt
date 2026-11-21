@@ -117,7 +117,7 @@ class AboutInfoPageFragment() : Fragment(R.layout.fragment_about_info_page) {
         mAboutData.add(AboutItemBean(
             resources.getDrawable(R.drawable.ic_pojav_full, requireContext().theme),
             "检查更新",
-            "当前版本 v" + ZHTools.getVersionName(requireContext()) + "。点击检查是否有新版本。",
+            "当前版本 v" + ZHTools.getVersionName() + "。点击检查是否有新版本。",
             AboutItemButtonBean(requireActivity(), "检查更新", "https://github.com/1953187487/CubernLauncher/releases")))
     }
 }
