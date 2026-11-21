@@ -10,6 +10,7 @@
 :root{--bg:#080c18;--bg2:#0d1428;--panel:rgba(20,28,54,.58);--line:rgba(150,180,255,.14);--line-hi:rgba(150,180,255,.36);--txt:#eef2ff;--mut:#98a4d0;--c1:#7c8cff;--c2:#00e5b0;--c3:#ff6ec7;--gold:#ffcf5c;--warn:#ff9f43;--glass:blur(28px) saturate(180%);--sh:0 16px 44px rgba(0,0,0,.35)}
 html[data-theme=light]{--bg:#eef2ff;--bg2:#e2e9ff;--panel:rgba(255,255,255,.66);--line:rgba(40,60,130,.13);--line-hi:rgba(60,90,200,.32);--txt:#182046;--mut:#5c6998;--c1:#4f5fe0;--c2:#00a882;--c3:#d64ba6;--gold:#c89100;--sh:0 16px 44px rgba(40,60,130,.12)}
 *{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
 html{scroll-behavior:smooth}
 body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;background:transparent;color:var(--txt);line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden;position:relative;min-height:100vh}
 #bgCustom{position:fixed;inset:0;z-index:-4;background-size:cover;background-position:center;opacity:0;transition:opacity .5s}
@@ -170,27 +171,21 @@ section{padding:52px 0}
 .dl-status .step svg{width:16px;height:16px}
 .dl-file{margin-top:14px;font-size:12px;color:var(--mut)}
 .dl-file b{color:var(--txt)}
-/* 官方资源中心 */
-.res-center{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px;max-width:1100px;margin:0 auto}
-.res-card{border-radius:16px;padding:18px;position:relative;overflow:hidden;transition:transform .3s,border-color .3s}
-.res-card:hover{transform:translateY(-4px);border-color:var(--line-hi)}
-.res-card.latest{border-color:rgba(0,229,176,.45)}
-.res-card .rh{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
-.res-card .rv{font-size:16px;font-weight:900;color:var(--c1)}
-.res-card .rtag{font-size:10px;padding:2px 8px;border-radius:999px;color:var(--c2);border:1px solid rgba(0,229,176,.4)}
-.res-card .rdate{font-size:11px;color:var(--mut);margin-bottom:10px}
-.res-file{display:flex;align-items:center;gap:9px;padding:9px 11px;border-radius:10px;border:1px solid var(--line);margin-bottom:8px;transition:.2s}
-.res-file:hover{border-color:var(--c1);background:rgba(124,140,255,.06)}
-.res-file svg{width:15px;height:15px;color:var(--c1);flex:none}
-.res-file .rf{flex:1;min-width:0}
-.res-file .rf b{font-size:11.5px;display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.res-file .rf span{font-size:10px;color:var(--mut)}
-.res-file>svg.arrow{color:var(--mut);width:13px;height:13px}
-.res-note{text-align:center;font-size:11px;color:var(--mut);margin-top:16px;line-height:1.8}
-.res-links{display:flex;justify-content:center;gap:24px;flex-wrap:wrap;margin-top:14px}
-.res-links a{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--c2);padding:8px 14px;border-radius:10px;border:1px solid rgba(0,229,176,.3);transition:.25s}
-.res-links a:hover{background:rgba(0,229,176,.1);transform:translateY(-2px)}
-.res-links a svg{width:15px;height:15px}
+/* 历史版本折叠（并入下载区） */
+.history{border-radius:14px;padding:0;overflow:hidden}
+.history summary{list-style:none;cursor:pointer;padding:14px 18px;display:flex;align-items:center;gap:9px;font-size:13px;font-weight:700;color:var(--txt)}
+.history summary::-webkit-details-marker{display:none}
+.history summary svg{width:16px;height:16px;color:var(--c1)}
+.history summary span{margin-left:auto;font-size:11px;color:var(--mut);font-weight:400}
+.history[open] summary{border-bottom:1px solid var(--line)}
+.history[open] summary span{transform:rotate(0)}
+.history-body{padding:12px 18px 16px}
+.history-body>a{display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:9px;font-size:12px;color:var(--mut);transition:.2s;word-break:break-all}
+.history-body>a::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--c1);flex:none}
+.history-body>a:hover{background:rgba(124,140,255,.08);color:var(--txt)}
+.history-links{display:flex;gap:16px;flex-wrap:wrap;margin-top:12px;padding-top:12px;border-top:1px solid var(--line)}
+.history-links a{font-size:11px;color:var(--c2)}
+.history-links a:hover{text-decoration:underline}
 .dl-tip{font-size:11px;color:var(--mut);margin-top:12px;line-height:1.7}
 .bg-panel{position:fixed;right:18px;bottom:18px;z-index:70}
 .bg-fab{width:48px;height:48px;border-radius:14px;border:1px solid var(--line);background:var(--panel);backdrop-filter:var(--glass);color:var(--txt);cursor:pointer;display:grid;place-items:center;box-shadow:0 10px 30px rgba(0,0,0,.3);transition:.3s}
@@ -640,52 +635,30 @@ footer{border-top:1px solid var(--line);padding:36px 0 24px;background:rgba(8,12
       <div class="dl-file">CubernLauncher-1.0.5.apk · 约 275.6 MB · <b id="chosenSource">待测</b></div>
       <div class="dl-tip">签名已变更，升级前请先卸载旧版 · 若下载失败请换个网络重试</div>
     </div>
+
+    <details class="history glass reveal" style="max-width:760px;margin:24px auto 0">
+      <summary><svg><use href="#i-doc"/></svg> 历史版本与官方链接 <span>展开 ▾</span></summary>
+      <div class="history-body">
+        <a href="https://github.com/1953187487/CubernLauncher/releases/download/v1.0.4/CubernLauncher-1.0.4-release.apk" target="_blank" rel="noopener">v1.0.4 · CubernLauncher-1.0.4-release.apk · 275.6 MB</a>
+        <a href="https://github.com/1953187487/CubernLauncher/releases/download/v1.0.3/CubernLauncher-1.0.3-release.apk" target="_blank" rel="noopener">v1.0.3 · CubernLauncher-1.0.3-release.apk · 275.6 MB</a>
+        <a href="https://github.com/1953187487/CubernLauncher/releases/download/v1.0.2/com.movtery.cubernlauncher-1.0.2-arm64-v8a.apk" target="_blank" rel="noopener">v1.0.2 · arm64-v8a.apk · 158 MB</a>
+        <a href="https://github.com/1953187487/CubernLauncher/releases/download/v1.0.2/com.movtery.cubernlauncher-1.0.2-armeabi-v7a.apk" target="_blank" rel="noopener">v1.0.2 · armeabi-v7a.apk · 153 MB</a>
+        <a href="https://github.com/1953187487/CubernLauncher/releases/download/v1.0.2/com.movtery.cubernlauncher-1.0.2-x86_64.apk" target="_blank" rel="noopener">v1.0.2 · x86_64.apk · 162 MB</a>
+        <a href="https://github.com/1953187487/CubernLauncher/releases/download/v1.0.2/com.movtery.cubernlauncher-1.0.2-x86.apk" target="_blank" rel="noopener">v1.0.2 · x86.apk · 144 MB</a>
+        <a href="https://github.com/1953187487/CubernLauncher/releases/download/v1.0.1/com.movtery.cubernlauncher-1.0.1.apk" target="_blank" rel="noopener">v1.0.1 · com.movtery...1.0.1.apk · 275 MB</a>
+        <a href="https://github.com/1953187487/CubernLauncher/releases/download/v1.0.0/com.movtery.cubernlauncher-1.0.0.apk" target="_blank" rel="noopener">v1.0.0 · com.movtery...1.0.0.apk · 260 MB</a>
+        <div class="history-links">
+          <a href="https://github.com/1953187487/CubernLauncher/releases" target="_blank" rel="noopener">GitHub Releases</a>
+          <a href="https://github.com/1953187487/CubernLauncher" target="_blank" rel="noopener">项目仓库</a>
+          <a href="https://afdian.com/@KZjewnk" target="_blank" rel="noopener">爱发电赞助</a>
+          <a href="https://b23.tv/mrWamRX" target="_blank" rel="noopener">作者 B 站</a>
+        </div>
+      </div>
+    </details>
   </div>
 </section>
 
-<section id="resources">
-  <div class="wrap">
-    <div class="sec-head reveal"><div class="eyebrow">Resources</div><h2>官方资源中心</h2><p>Cubern Launcher 所有版本的官方下载地址，均来自 GitHub Releases。这里是唯一的官方资源入口。</p></div>
-    <div class="res-center">
-      <div class="res-card glass latest reveal">
-        <div class="rh"><span class="rv">v1.0.5</span><span class="rtag">最新</span></div>
-        <div class="rdate">2026-11-21 · Pre-release</div>
-        <a class="res-file" href="https://github.com/1953187487/CubernLauncher/releases/download/v1.0.5/CubernLauncher-1.0.5.apk" target="_blank" rel="noopener"><svg><use href="#i-down"/></svg><span class="rf"><b>CubernLauncher-1.0.5.apk</b><span>275.6 MB · 统一 APK</span></span><svg class="arrow"><use href="#i-link"/></svg></a>
-      </div>
-      <div class="res-card glass reveal">
-        <div class="rh"><span class="rv">v1.0.4</span></div>
-        <div class="rdate">2026-11-20 · Pre-release</div>
-        <a class="res-file" href="https://github.com/1953187487/CubernLauncher/releases/download/v1.0.4/CubernLauncher-1.0.4-release.apk" target="_blank" rel="noopener"><svg><use href="#i-down"/></svg><span class="rf"><b>CubernLauncher-1.0.4-release.apk</b><span>275.6 MB</span></span><svg class="arrow"><use href="#i-link"/></svg></a>
-      </div>
-      <div class="res-card glass reveal">
-        <div class="rh"><span class="rv">v1.0.3</span></div>
-        <div class="rdate">2026-11-20 · Pre-release</div>
-        <a class="res-file" href="https://github.com/1953187487/CubernLauncher/releases/download/v1.0.3/CubernLauncher-1.0.3-release.apk" target="_blank" rel="noopener"><svg><use href="#i-down"/></svg><span class="rf"><b>CubernLauncher-1.0.3-release.apk</b><span>275.6 MB</span></span><svg class="arrow"><use href="#i-link"/></svg></a>
-      </div>
-      <div class="res-card glass reveal">
-        <div class="rh"><span class="rv">v1.0.2</span></div>
-        <div class="rdate">2026-11-17 · 按 ABI 分包</div>
-        <a class="res-file" href="https://github.com/1953187487/CubernLauncher/releases/download/v1.0.2/com.movtery.cubernlauncher-1.0.2-arm64-v8a.apk" target="_blank" rel="noopener"><svg><use href="#i-down"/></svg><span class="rf"><b>arm64-v8a.apk</b><span>158.0 MB · 64 位 ARM</span></span><svg class="arrow"><use href="#i-link"/></svg></a>
-        <a class="res-file" href="https://github.com/1953187487/CubernLauncher/releases/download/v1.0.2/com.movtery.cubernlauncher-1.0.2-armeabi-v7a.apk" target="_blank" rel="noopener"><svg><use href="#i-down"/></svg><span class="rf"><b>armeabi-v7a.apk</b><span>152.9 MB · 32 位 ARM</span></span><svg class="arrow"><use href="#i-link"/></svg></a>
-        <a class="res-file" href="https://github.com/1953187487/CubernLauncher/releases/download/v1.0.2/com.movtery.cubernlauncher-1.0.2-x86_64.apk" target="_blank" rel="noopener"><svg><use href="#i-down"/></svg><span class="rf"><b>x86_64.apk</b><span>161.7 MB · 64 位 x86</span></span><svg class="arrow"><use href="#i-link"/></svg></a>
-        <a class="res-file" href="https://github.com/1953187487/CubernLauncher/releases/download/v1.0.2/com.movtery.cubernlauncher-1.0.2-x86.apk" target="_blank" rel="noopener"><svg><use href="#i-down"/></svg><span class="rf"><b>x86.apk</b><span>143.7 MB · 32 位 x86</span></span><svg class="arrow"><use href="#i-link"/></svg></a>
-      </div>
-      <div class="res-card glass reveal">
-        <div class="rh"><span class="rv">v1.0.1 / v1.0.0</span></div>
-        <div class="rdate">2026-11-16 · 早期版本</div>
-        <a class="res-file" href="https://github.com/1953187487/CubernLauncher/releases/download/v1.0.1/com.movtery.cubernlauncher-1.0.1.apk" target="_blank" rel="noopener"><svg><use href="#i-down"/></svg><span class="rf"><b>CubernLauncher-1.0.1.apk</b><span>275.1 MB</span></span><svg class="arrow"><use href="#i-link"/></svg></a>
-        <a class="res-file" href="https://github.com/1953187487/CubernLauncher/releases/download/v1.0.0/com.movtery.cubernlauncher-1.0.0.apk" target="_blank" rel="noopener"><svg><use href="#i-down"/></svg><span class="rf"><b>CubernLauncher-1.0.0.apk</b><span>260.1 MB</span></span><svg class="arrow"><use href="#i-link"/></svg></a>
-      </div>
-    </div>
-    <div class="res-links">
-      <a href="https://github.com/1953187487/CubernLauncher/releases" target="_blank" rel="noopener"><svg><use href="#i-github"/></svg>GitHub Releases</a>
-      <a href="https://github.com/1953187487/CubernLauncher" target="_blank" rel="noopener"><svg><use href="#i-star"/></svg>项目仓库</a>
-      <a href="https://afdian.com/@KZjewnk" target="_blank" rel="noopener"><svg><use href="#i-feed"/></svg>爱发电赞助</a>
-      <a href="https://b23.tv/mrWamRX" target="_blank" rel="noopener"><svg><use href="#i-play"/></svg>作者 B 站</a>
-    </div>
-    <div class="res-note">本资源站为 Cubern Launcher 唯一官方下载入口，所有文件托管于 GitHub Releases。<br>请仅从此处下载，勿使用第三方修改版。</div>
-  </div>
-</section>
+
 
 <footer>
   <div class="wrap">
@@ -796,11 +769,20 @@ footer{border-top:1px solid var(--line);padding:36px 0 24px;background:rgba(8,12
   if(!agreed)setTimeout(openAg,700);
 
   var APK='https://github.com/1953187487/CubernLauncher/releases/download/v1.0.5/CubernLauncher-1.0.5.apk';
+  /* 加速节点池：官方 + 多个公共镜像，测速后自动选最快 */
   var SOURCES=[
     {name:'GitHub 官方',url:APK},
     {name:'ghproxy.net',url:'https://ghproxy.net/'+APK},
     {name:'gh-proxy.com',url:'https://gh-proxy.com/'+APK},
-    {name:'gh-proxy.org',url:'https://gh-proxy.org/'+APK}
+    {name:'gh-proxy.org',url:'https://gh-proxy.org/'+APK},
+    {name:'ghfast.top',url:'https://ghfast.top/'+APK},
+    {name:'gh.llkk.cc',url:'https://gh.llkk.cc/'+APK},
+    {name:'github.moeyy.xyz',url:'https://github.moeyy.xyz/'+APK},
+    {name:'gh.9377.org',url:'https://gh.9377.org/'+APK},
+    {name:'ghproxy.cc',url:'https://ghproxy.cc/'+APK},
+    {name:'proxy.ghproxy.cc',url:'https://proxy.ghproxy.cc/'+APK},
+    {name:'github.gitmirror.com',url:'https://github.gitmirror.com/'+APK},
+    {name:'downloader.mefrp.com',url:'https://downloader.mefrp.com/'+APK}
   ];
   var btn=document.getElementById('dlBtn'),btnText=document.getElementById('dlBtnText'),chosen=document.getElementById('chosenSource');
   var steps=[].slice.call(document.querySelectorAll('#dlStatus .step'));
@@ -820,17 +802,28 @@ footer{border-top:1px solid var(--line);padding:36px 0 24px;background:rgba(8,12
           loop();
         }).catch(function(){finish(false,0)});
       }catch(e){finish(false,0)}
-      setTimeout(function(){finish(false,0)},7000);
+      setTimeout(function(){finish(false,0)},5000);
     });
+  }
+  /* 分批测速：每批 4 个，防止并发过高互相抢带宽导致速度失真 */
+  async function testAll(onProgress){
+    var results=[];
+    for(var i=0;i<SOURCES.length;i+=4){
+      var batch=SOURCES.slice(i,i+4);
+      var r=await Promise.all(batch.map(measure));
+      results=results.concat(r);
+      onProgress(results.length);
+    }
+    return results;
   }
   async function startDownload(){
     if(!agreed){openAg();toast('请先阅读并同意协议');return}
-    btn.disabled=true;btnText.textContent='正在测速…';setStep(0,'active');
-    var results=await Promise.all(SOURCES.map(measure));
+    btn.disabled=true;btnText.textContent='正在测速 0/'+SOURCES.length;setStep(0,'active');
+    var results=await testAll(function(n){btnText.textContent='正在测速 '+n+'/'+SOURCES.length+' 节点'});
     var ok=results.filter(function(r){return r.ok}).sort(function(a,b){return b.speed-a.speed});
     var best=ok.length?ok[0]:{src:SOURCES[0],speed:0};
     steps[0].classList.add('done');setStep(1,'active');
-    chosen.textContent=best.src.name+(best.speed?' · '+best.speed+' KB/s':'');
+    chosen.textContent=best.src.name+(best.speed?' · '+best.speed+' KB/s':'')+' · '+ok.length+'/'+SOURCES.length+' 可用';
     btnText.textContent='已选最快源，正在开始…';
     await new Promise(function(r){setTimeout(r,500)});
     steps[1].classList.add('done');setStep(2,'active');
