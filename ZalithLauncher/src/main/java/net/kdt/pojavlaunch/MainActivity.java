@@ -507,6 +507,15 @@ public class MainActivity extends BaseActivity implements ControlButtonMenuListe
 
     @Override
     public void onServiceConnected(ComponentName name, IBinder service) {
+        // 1.0.8：启动游戏画面加入现代化淡入缩放动画
+        binding.mainGameRenderView.setAlpha(0f);
+        binding.mainGameRenderView.setScaleX(0.96f);
+        binding.mainGameRenderView.setScaleY(0.96f);
+        binding.mainGameRenderView.animate()
+                .alpha(1f).scaleX(1f).scaleY(1f)
+                .setDuration(420)
+                .setInterpolator(new android.view.animation.DecelerateInterpolator())
+                .start();
         binding.mainGameRenderView.start(GameService.isActive(), binding.mainTouchpad);
         GameService.setActive(true);
     }

@@ -47,7 +47,16 @@ class GameMenuViewWrapper(
             setEnableEdgeAdsorption(false)
             addViewLifecycle(object : IFxViewLifecycle {
                 override fun initView(holder: FxViewHolder) {
-                    holder.view.alpha = AllSettings.gameMenuAlpha.getValue().toFloat() / 100f
+                    // 1.0.8：游戏控制中心现代化入场动画（缩放 + 淡入）
+                    holder.view.alpha = 0f
+                    holder.view.scaleX = 0.88f
+                    holder.view.scaleY = 0.88f
+                    holder.view.animate()
+                        .alpha(AllSettings.gameMenuAlpha.getValue().toFloat() / 100f)
+                        .scaleX(1f).scaleY(1f)
+                        .setDuration(260)
+                        .setInterpolator(android.view.animation.OvershootInterpolator(1.1f))
+                        .start()
 
                     updateInfoText(holder.view)
                 }
