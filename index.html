@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=5.0,viewport-fit=cover">
-<meta name="description" content="Cubern Launcher — 基于 Zalith Launcher 1 二改的 Minecraft Java 版 Android 启动器。真 3D 皮肤渲染、陶瓦联机、AI 助手、Vulkan 渲染，GPLv3 开源。当前 v1.0.8。">
+<meta name="description" content="Cubern Launcher — 基于 Zalith Launcher 1 二改的 Minecraft Java 版 Android 启动器。真 3D 皮肤渲染、陶瓦联机、AI 助手、Vulkan 渲染，GPLv3 开源。当前 v1.0.9。">
 <title>Cubern Launcher — 在手机上自由启动 Minecraft Java 版</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⛏️</text></svg>">
 <style>
@@ -256,7 +256,7 @@ footer{border-top:1px solid var(--line);padding:38px 0 24px;background:rgba(8,12
 </svg>
 
 <div class="notice" id="notice">
-  <div class="notice-in"><span class="pulse"></span><span class="txt"><b>更新公告：</b><b>v1.0.8</b> 已发布（修复 3D 皮肤崩溃、陶瓦联机、检查更新，新增 Rust 版 MC 专区）。官网 <b>v1.5</b> · 协议 <b>v1.2</b>。<a href="https://qun.qq.com/universal-share/share?ac=1&authKey=SwQb9TokqNswF95F7iPiZugcomKTgJOvB6uo%2BHiDMC18mRW0axxZHhmCc%2FvxeUqU&busi_data=eyJncm91cENvZGUiOiIxMTM0NTk3MTk3IiwidG9rZW4iOiJEQWxQMFExbGZveEVaWHdaeS9KdVJWM0RGT2o4a28yU3phTzI3YlgyenRFSWpCejBkeXRTczVkNDhkbjJOeEkrIiwidWluIjoiMjg2NTUyOTA1NyJ9&data=YkhhF1XEBl1JH8PELCFsIs-EcmqDaPYfYwnQGMgXRvH0-PwVJE2gAJvN5oBNpIjC8eomAfjNkaHxeQaVadKMZw&svctype=4&tempid=h5_group_info" target="_blank" rel="noopener">官方 QQ 群 1134597197</a>。</span><button class="close" id="noticeClose">×</button></div>
+  <div class="notice-in"><span class="pulse"></span><span class="txt"><b>更新公告：</b><b>v1.0.9</b> 已发布（彻底修复陶瓦联机三处致命 bug、纳入 jre-25、关于页 UI 恢复）。官网 <b>v1.5</b> · 协议 <b>v1.2</b>。<a href="https://qun.qq.com/universal-share/share?ac=1&authKey=SwQb9TokqNswF95F7iPiZugcomKTgJOvB6uo%2BHiDMC18mRW0axxZHhmCc%2FvxeUqU&busi_data=eyJncm91cENvZGUiOiIxMTM0NTk3MTk3IiwidG9rZW4iOiJEQWxQMFExbGZveEVaWHdaeS9KdVJWM0RGT2o4a28yU3phTzI3YlgyenRFSWpCejBkeXRTczVkNDhkbjJOeEkrIiwidWluIjoiMjg2NTUyOTA1NyJ9&data=YkhhF1XEBl1JH8PELCFsIs-EcmqDaPYfYwnQGMgXRvH0-PwVJE2gAJvN5oBNpIjC8eomAfjNkaHxeQaVadKMZw&svctype=4&tempid=h5_group_info" target="_blank" rel="noopener">官方 QQ 群 1134597197</a>。</span><button class="close" id="noticeClose">×</button></div>
 </div>
 
 <div class="topbar">
@@ -282,7 +282,7 @@ footer{border-top:1px solid var(--line);padding:38px 0 24px;background:rgba(8,12
         <h1>在手机上，<br><span class="grad">自由启动 Minecraft</span><br>Java 版</h1>
         <p class="lead">基于 Zalith Launcher 1 二改开发。真 3D 皮肤渲染、陶瓦联机、AI 版本助手、Java 运行时自动管理与 Vulkan 渲染，一手掌握。</p>
         <div class="btn-row">
-          <a href="#download" class="btn p"><svg><use href="#i-down"/></svg>下载 v1.0.8</a>
+          <a href="#download" class="btn p"><svg><use href="#i-down"/></svg>下载 v1.0.9</a>
           <a href="https://github.com/1953187487/CubernLauncher" target="_blank" rel="noopener" class="btn g"><svg><use href="#i-star"/></svg>GitHub 仓库</a>
           <a href="https://qun.qq.com/universal-share/share?ac=1&authKey=SwQb9TokqNswF95F7iPiZugcomKTgJOvB6uo%2BHiDMC18mRW0axxZHhmCc%2FvxeUqU&busi_data=eyJncm91cENvZGUiOiIxMTM0NTk3MTk3IiwidG9rZW4iOiJEQWxQMFExbGZveEVaWHdaeS9KdVJWM0RGT2o4a28yU3phTzI3YlgyenRFSWpCejBkeXRTczVkNDhkbjJOeEkrIiwidWluIjoiMjg2NTUyOTA1NyJ9&data=YkhhF1XEBl1JH8PELCFsIs-EcmqDaPYfYwnQGMgXRvH0-PwVJE2gAJvN5oBNpIjC8eomAfjNkaHxeQaVadKMZw&svctype=4&tempid=h5_group_info" target="_blank" rel="noopener" class="btn g"><svg><use href="#i-chat"/></svg>官方 QQ 群</a>
         </div>
@@ -302,7 +302,7 @@ footer{border-top:1px solid var(--line);padding:38px 0 24px;background:rgba(8,12
 </header>
 
 <div class="wrap"><div class="metrics">
-  <div class="metric glass"><div class="n">1.0.8</div><div class="l">最新版本</div></div>
+  <div class="metric glass"><div class="n">1.0.9</div><div class="l">最新版本</div></div>
   <div class="metric glass"><div class="n">3D</div><div class="l">皮肤渲染</div></div>
   <div class="metric glass"><div class="n">26.2+</div><div class="l">运行环境</div></div>
   <div class="metric glass"><div class="n">GPLv3</div><div class="l">开源协议</div></div>
@@ -326,6 +326,19 @@ footer{border-top:1px solid var(--line);padding:38px 0 24px;background:rgba(8,12
   <div class="wrap">
     <div class="sec-head reveal"><div class="eyebrow">Changelog</div><h2>更新公告</h2><p>向下滚动查看全部版本更新记录。</p></div>
     <div class="timeline"><div class="timeline-scroll" id="timelineScroll">
+
+      <article class="update-card glass">
+        <div class="update-top"><span class="v">v1.0.9</span><span class="tag">Pre-release 测试版</span><span class="date">2026-11-22</span></div>
+        <div class="upd-group"><h5><svg><use href="#i-bolt"/></svg>本次更新</h5><ul>
+          <li>关于页恢复 1.0.1 时期 UI（图标 + 标题 + 描述 + 按钮列表）</li>
+          <li>深度研究并<b>彻底修复陶瓦联机三处致命 bug</b>：状态分发断裂、VPN 生命周期缺失、节点过滤错误</li>
+          <li>修复赞助链接（爱发电改为鹙鸟主页）</li>
+          <li>修复下载与启动：纳入 <b>jre-25</b>，运行库 pick 失败中断启动，避免 libjvm.so 错误</li>
+          <li>下载游戏版本页新增 <b>Rust 版 MC 正式分类</b></li>
+          <li>清除旧更新公告残留（公告源失败时隐藏）</li>
+        </ul></div>
+        <div class="upd-group"><h5><svg><use href="#i-user"/></svg>作者与赞助</h5><ul><li>作者：鹙鸟（B站同名） · 爱发电：<a href="https://afdian.com/@KZjewnk" target="_blank" rel="noopener" style="color:var(--c1)">afdian.com/@KZjewnk</a></li></ul></div>
+      </article>
 
       <article class="update-card glass">
         <div class="update-top"><span class="v">v1.0.8</span><span class="tag">Pre-release 测试版</span><span class="date">2026-11-22</span></div>
@@ -408,7 +421,7 @@ footer{border-top:1px solid var(--line);padding:38px 0 24px;background:rgba(8,12
 
 <section id="download">
   <div class="wrap">
-    <div class="sec-head reveal"><div class="eyebrow">Download</div><h2>下载 v1.0.8</h2><p>点击即自动测速、选最快源并开始下载，无需手动操作。</p></div>
+    <div class="sec-head reveal"><div class="eyebrow">Download</div><h2>下载 v1.0.9</h2><p>点击即自动测速、选最快源并开始下载，无需手动操作。</p></div>
     <div class="dl-stage reveal">
       <button class="dl-btn" id="dlBtn"><svg><use href="#i-down"/></svg><span id="dlBtnText">一键下载 APK</span></button>
       <div class="dl-status glass" id="dlStatus">
@@ -416,12 +429,13 @@ footer{border-top:1px solid var(--line);padding:38px 0 24px;background:rgba(8,12
         <div class="step" data-step="1"><svg><use href="#i-globe"/></svg>自动选择最快源</div>
         <div class="step" data-step="2"><svg><use href="#i-down"/></svg>开始下载</div>
       </div>
-      <div class="dl-file">CubernLauncher-1.0.8.apk · 约 275.7 MB · <b id="chosenSource">待测</b></div>
+      <div class="dl-file">CubernLauncher-1.0.9.apk · 约 275.7 MB · <b id="chosenSource">待测</b></div>
       <div class="dl-tip">签名已变更，升级前请先卸载旧版 · 若下载失败请换个网络重试</div>
     </div>
     <details class="history glass reveal" style="max-width:760px;margin:24px auto 0">
       <summary><svg><use href="#i-doc"/></svg> 历史版本与官方链接 <span>展开 ▾</span></summary>
       <div class="history-body">
+        <a href="https://github.com/1953187487/CubernLauncher/releases/download/v1.0.8/CubernLauncher-1.0.8.apk" target="_blank" rel="noopener">v1.0.8 · CubernLauncher-1.0.8.apk · 275.7 MB</a>
         <a href="https://github.com/1953187487/CubernLauncher/releases/download/v1.0.7/CubernLauncher-1.0.7.apk" target="_blank" rel="noopener">v1.0.7 · CubernLauncher-1.0.7.apk · 275.7 MB</a>
         <a href="https://github.com/1953187487/CubernLauncher/releases/download/v1.0.6/CubernLauncher-1.0.6.apk" target="_blank" rel="noopener">v1.0.6 · CubernLauncher-1.0.6.apk · 275.6 MB</a>
         <a href="https://github.com/1953187487/CubernLauncher/releases/download/v1.0.5/CubernLauncher-1.0.5.apk" target="_blank" rel="noopener">v1.0.5 · CubernLauncher-1.0.5.apk · 275.6 MB</a>
@@ -521,7 +535,7 @@ footer{border-top:1px solid var(--line);padding:38px 0 24px;background:rgba(8,12
 
   /* 协议（合并去重版） */
   var TERMS=[
-    '<h4>① 关于本项目</h4><p>Cubern Launcher 基于 <b>Zalith Launcher 1</b> 二次开发，遵循 <b>GPL v3.0</b>。当前作者 <b>鹙鸟</b>，软件版本 <b>v1.0.8</b>。为非官方作品，与 Mojang、Microsoft、网易及 ZL1 官方无隶属关系。</p>',
+    '<h4>① 关于本项目</h4><p>Cubern Launcher 基于 <b>Zalith Launcher 1</b> 二次开发，遵循 <b>GPL v3.0</b>。当前作者 <b>鹙鸟</b>，软件版本 <b>v1.0.9</b>。为非官方作品，与 Mojang、Microsoft、网易及 ZL1 官方无隶属关系。</p>',
     '<h4>② 测试版与升级</h4><p>所有版本均为测试版，可能有未完善功能。自 v1.0.4 起更换包名（com.cubern.launcher）与签名，升级旧版前<b>必须先卸载旧版</b>。</p>',
     '<h4>③ 功能与网络</h4><p>提供陶瓦联机、真 3D 皮肤预览、AI 助手、Java 运行时管理、Vulkan 检测、Forge/Fabric/NeoForge/Quilt 支持。下载默认用 BMCLAPI 镜像，部分功能需联网。详见《隐私协议》。</p>',
     '<h4>④ 免责声明</h4><p>本项目按“现状”提供，不作任何担保，因使用造成的任何损失，作者与贡献者不承担法律责任。</p>'
@@ -554,21 +568,12 @@ footer{border-top:1px solid var(--line);padding:38px 0 24px;background:rgba(8,12
   if(!agreed)setTimeout(openAg,700);
 
   /* 多源智能下载（12 节点 · 分批测速） */
-  var APK='https://github.com/1953187487/CubernLauncher/releases/download/v1.0.8/CubernLauncher-1.0.8.apk';
-  var SOURCES=[
-    {name:'GitHub 官方',url:APK},
-    {name:'ghproxy.net',url:'https://ghproxy.net/'+APK},
-    {name:'gh-proxy.com',url:'https://gh-proxy.com/'+APK},
-    {name:'gh-proxy.org',url:'https://gh-proxy.org/'+APK},
-    {name:'ghfast.top',url:'https://ghfast.top/'+APK},
-    {name:'gh.llkk.cc',url:'https://gh.llkk.cc/'+APK},
-    {name:'github.moeyy.xyz',url:'https://github.moeyy.xyz/'+APK},
-    {name:'gh.9377.org',url:'https://gh.9377.org/'+APK},
-    {name:'ghproxy.cc',url:'https://ghproxy.cc/'+APK},
-    {name:'proxy.ghproxy.cc',url:'https://proxy.ghproxy.cc/'+APK},
-    {name:'github.gitmirror.com',url:'https://github.gitmirror.com/'+APK},
-    {name:'downloader.mefrp.com',url:'https://downloader.mefrp.com/'+APK}
-  ];
+  var APK='https://github.com/1953187487/CubernLauncher/releases/download/v1.0.9/CubernLauncher-1.0.9.apk';
+  /* 加速节点：官方源 + 镜像域名池，统一由模板生成，便于维护与增删 */
+  var MIRRORS=['', 'https://ghproxy.net/', 'https://gh-proxy.com/', 'https://gh-proxy.org/', 'https://ghfast.top/', 'https://gh.llkk.cc/', 'https://github.moeyy.xyz/', 'https://gh.9377.org/', 'https://ghproxy.cc/', 'https://proxy.ghproxy.cc/', 'https://github.gitmirror.com/', 'https://downloader.mefrp.com/'];
+  var SOURCES=MIRRORS.map(function(prefix,i){
+    return {name:i===0?'GitHub 官方':(prefix.replace(/^https:\/\//,'').replace(/\/$/,'')),url:prefix+APK};
+  });
   var btn=document.getElementById('dlBtn'),btnText=document.getElementById('dlBtnText'),chosen=document.getElementById('chosenSource');
   var steps=[].slice.call(document.querySelectorAll('#dlStatus .step'));
   function setStep(i,state){steps.forEach(function(s,k){s.classList.toggle('active',k===i);if(state==='done'&&k<i)s.classList.add('done')})}
@@ -593,7 +598,7 @@ footer{border-top:1px solid var(--line);padding:38px 0 24px;background:rgba(8,12
     btnText.textContent='已选最快源，正在开始…';
     await new Promise(function(r){setTimeout(r,500)});
     steps[1].classList.add('done');setStep(2,'active');
-    var a=document.createElement('a');a.href=best.src.url;a.download='CubernLauncher-1.0.8.apk';document.body.appendChild(a);a.click();a.remove();
+    var a=document.createElement('a');a.href=best.src.url;a.download='CubernLauncher-1.0.9.apk';document.body.appendChild(a);a.click();a.remove();
     steps[2].classList.add('done');btnText.textContent='已开始下载 ✓';toast('已从最快源开始下载：'+best.src.name);
     setTimeout(function(){btn.disabled=false;btnText.textContent='一键下载 APK';steps.forEach(function(s){s.classList.remove('active','done')})},4000);
   }
