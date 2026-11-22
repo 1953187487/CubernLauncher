@@ -1,0 +1,23 @@
+{
+  "version_code": 9,
+  "version_name": "1.0.8",
+  "title": {
+    "en_us": "Cubern Launcher 1.0.8",
+    "zh_cn": "Cubern Launcher 1.0.8",
+    "zh_tw": "Cubern Launcher 1.0.8"
+  },
+  "description": {
+    "en_us": "Fix skin preview crash, experimental settings, terracotta multiplayer, update check and more.",
+    "zh_cn": "修复3D皮肤预览崩溃、实验性设置重复入口、陶瓦联机、检查更新等问题。",
+    "zh_tw": "修復3D皮膚預覽崩潰、實驗性設定重複入口、陶瓦聯機、檢查更新等問題。"
+  },
+  "published_at": "2026-11-22T00:00:00Z",
+  "file_size": {
+    "all": 289000000,
+    "arm": 0,
+    "arm64": 0,
+    "x86": 0,
+    "x86_64": 0
+  },
+  "pre_release": true
+}
