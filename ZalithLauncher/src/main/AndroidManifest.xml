@@ -122,11 +122,25 @@
             <property android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE"
                 android:value="This application is intended to run a 3rd-party piece of software which cannot be managed using the activity's saved instance state. This service is used for background persistence of this piece of software."/>
         </service>
+        <!-- 1.0.8：修复 3D 皮肤预览崩溃——注册 Activity -->
+        <activity
+            android:name=".ui.activity.SkinPreviewActivity"
+            android:exported="false"
+            android:screenOrientation="sensorLandscape" />
         <receiver android:name=".feature.afdian.SponsorRefreshReceiver" android:exported="false">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
         </receiver>
+        <!-- 1.0.8：修复陶瓦联机——注册 VPN 服务 -->
+        <service
+            android:name=".terracotta.TerracottaVPNService"
+            android:permission="android.permission.BIND_VPN_SERVICE"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.net.VpnService" />
+            </intent-filter>
+        </service>
     </application>
     <queries>
         <package android:name="net.kdt.pojavlaunch.ffmpeg"/>

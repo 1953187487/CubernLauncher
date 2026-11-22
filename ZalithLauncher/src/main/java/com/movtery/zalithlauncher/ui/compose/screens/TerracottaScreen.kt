@@ -188,17 +188,7 @@ fun TerracottaScreen(onBack: () -> Unit) {
                 enableMultiplayer = enableMultiplayer,
                 onEnableMultiplayerChanged = {
                     enableMultiplayer = it
-                    if (it) {
-                        runCatching {
-                            Terracotta.initialize(CoroutineScope(scope.coroutineContext + SupervisorJob()), object : Terracotta.Listener {
-                                override fun onRequestVpnPermission() {
-                                    val intent = VpnService.prepare(context)
-                                    if (intent != null) vpnLauncher.launch(intent)
-                                }
-                                override fun onStateChanged(newState: TerracottaState.Ready) { state = newState }
-                            })
-                        }
-                    }
+                    // 1.0.8：初始化统一由 DisposableEffect 处理，避免双重初始化
                 },
                 enableCustomNodes = enableCustomNodes,
                 onEnableCustomNodesChanged = {
