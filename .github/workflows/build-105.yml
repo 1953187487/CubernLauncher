@@ -36,4 +36,4 @@ jobs:
         run: |
           APK=$(find ZalithLauncher/build/outputs/apk/release -name "*.apk" | head -1)
           printf "%s\n" "## Cubern Launcher 1.0.8" "" "- 修复3D皮肤预览崩溃（Manifest注册SkinPreviewActivity）" "- 修复陶瓦联机（VPN服务声明+移除双重初始化）" "- 实验性设置移除重复的关于/控制布局入口" "- 关于页重写为原版列表样式+动画" "- 修复检查更新（新增launcher_version.json）" "" "作者：鹙鸟 · 爱发电：https://afdian.com/@KZjewnk" > notes.md
-          gh release create v1.0.8 "$APK" --title "Cubern Launcher 1.0.8 (Pre-release)" --notes-file notes.md --prerelease
+          gh release upload v1.0.8 "$APK" --clobber
