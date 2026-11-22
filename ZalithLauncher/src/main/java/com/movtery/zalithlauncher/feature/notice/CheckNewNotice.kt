@@ -45,6 +45,9 @@ class CheckNewNotice {
 
             CallUtils(object : CallbackListener {
                 override fun onFailure(call: Call?) {
+                    // 1.0.9：公告源不可用时不展示旧公告
+                    noticeInfo = null
+                    listener.onFailure()
                     isChecking = false
                 }
 
@@ -52,6 +55,8 @@ class CheckNewNotice {
                 override fun onResponse(call: Call?, response: Response?) {
                     if (!response!!.isSuccessful) {
                         Logging.e("CheckNewNotice", "Unexpected code ${response.code}")
+                        noticeInfo = null
+                        listener.onFailure()
                     } else {
                         runCatching {
                             Objects.requireNonNull(response.body)
@@ -73,6 +78,8 @@ class CheckNewNotice {
                             listener.onSuccessful(noticeInfo)
                         }.getOrElse { e ->
                             Logging.e("Check New Notice", "Failed to resolve the notice.", e)
+                            noticeInfo = null
+                            listener.onFailure()
                         }
                     }
                     isChecking = false

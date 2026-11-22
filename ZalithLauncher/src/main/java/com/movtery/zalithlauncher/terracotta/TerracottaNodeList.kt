@@ -114,24 +114,26 @@ private fun parseNode(node: TerracottaNode): URI? {
 }
 
 private fun shouldUseNode(region: String?): Boolean {
+    // 1.0.9 修复：地区标注为空或非 CN 的节点一律保留（此前非大陆用户会丢弃全部节点）。
+    // 只有明确标注 CN 的节点才按当前地区决定；地区检测失败时保留全部节点，避免 EasyTier 无中继可用。
     if (region.isNullOrBlank()) return true
-
-    // 仅限中国大陆地区使用 CN 节点
-    val isMainLand = isChinaMainland()
-    return isMainLand && region.equals("CN", ignoreCase = true)
+    val isCN = region.equals("CN", ignoreCase = true)
+    if (!isCN) return true
+    val isMainLand = isChinaMainland() ?: return true // 地区未知时保留 CN 节点
+    return isMainLand
 }
 
 /**
  * 判断当前是否位于中国大陆
  */
-private fun isChinaMainland(): Boolean {
+private fun isChinaMainland(): Boolean? {
     return try {
         val url = java.net.URL("https://www.gstatic.com/ipranges/country.json")
         val text = url.openStream().bufferedReader().use { it.readText() }
         val json = Gson().fromJson(text, com.google.gson.JsonObject::class.java)
-        json?.get("country")?.asString?.uppercase()?.contains("CN") ?: false
+        json?.get("country")?.asString?.uppercase()?.contains("CN")
     } catch (throwable: Throwable) {
         Logging.w(TAG, "Failed to resolve region", throwable)
-        true
+        null // 1.0.9：未知地区，保留全部节点
     }
 }

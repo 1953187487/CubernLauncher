@@ -134,7 +134,11 @@ class LaunchGame {
 
             val customArgs = minecraftVersion.getJavaArgs().takeIf { it.isNotBlank() } ?: ""
 
-            val javaRuntime = getRuntime(activity, minecraftVersion, version.javaVersion?.majorVersion ?: 8)
+            val javaRuntime = getRuntime(activity, minecraftVersion, version.javaVersion?.majorVersion ?: 8) ?: run {
+                // 1.0.9：运行库不可用，停止启动流程
+                GameService.setActive(false)
+                return
+            }
 
             printLauncherInfo(
                 minecraftVersion,
@@ -163,7 +167,7 @@ class LaunchGame {
             GameService.setActive(false)
         }
 
-        private fun getRuntime(activity: Activity, version: Version, targetJavaVersion: Int): String {
+        private fun getRuntime(activity: Activity, version: Version, targetJavaVersion: Int): String? {
             val versionRuntime = version.getJavaDir()
                 .takeIf { it.isNotEmpty() && it.startsWith(Tools.LAUNCHERPROFILES_RTPREFIX) }
                 ?.removePrefix(Tools.LAUNCHERPROFILES_RTPREFIX)
@@ -179,7 +183,7 @@ class LaunchGame {
                     activity.runOnUiThread {
                         Toast.makeText(activity, activity.getString(R.string.game_autopick_runtime_failed), Toast.LENGTH_SHORT).show()
                     }
-                    return runtime
+                    return null // 1.0.9：没有兼容运行库时中断启动，避免用坏 runtime 导致 libjvm.so 找不到
                 }
             }
             return runtime

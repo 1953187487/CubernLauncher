@@ -179,6 +179,34 @@
                     android:text="@string/download_classify_shader_pack"
                     android:textColor="@color/black_or_white" />
             </com.movtery.zalithlauncher.ui.layout.AnimRelativeLayout>
+
+            <!-- 1.0.9：Rust 版 MC 分类 -->
+            <com.movtery.zalithlauncher.ui.layout.AnimRelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/_8sdp">
+
+                <ImageView
+                    android:id="@+id/rust_mc_image"
+                    android:layout_width="@dimen/_28sdp"
+                    android:layout_height="@dimen/_28sdp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="@dimen/_4sdp"
+                    android:background="@android:color/transparent"
+                    android:scaleType="fitCenter"
+                    android:scaleX="0.95"
+                    android:scaleY="0.95"
+                    app:srcCompat="@drawable/ic_ai" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="@dimen/_8sdp"
+                    android:layout_toEndOf="@+id/rust_mc_image"
+                    android:text="Rust 版 MC"
+                    android:textColor="@color/black_or_white" />
+            </com.movtery.zalithlauncher.ui.layout.AnimRelativeLayout>
         </com.angcyo.tablayout.DslTabLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

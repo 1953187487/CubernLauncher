@@ -2,6 +2,7 @@ package com.movtery.zalithlauncher.terracotta
 
 import com.google.gson.JsonParseException
 import com.google.gson.reflect.TypeToken
+import com.movtery.zalithlauncher.context.ContextExecutor
 import com.movtery.zalithlauncher.feature.log.Logging
 import com.movtery.zalithlauncher.utils.path.PathManager
 import kotlinx.coroutines.CoroutineScope
@@ -111,9 +112,15 @@ object Terracotta {
     fun setWaiting(manual: Boolean) {
         if (!initialized) return
 
-        stopNotificationJob()
+        // 1.0.9 修复：不再停止状态分发 job，否则点房主/房客后 UI 永远收不到状态更新
         TerracottaAndroidAPI.setWaiting()
         if (manual) {
+            // 1.0.9 修复：手动重置时像 FCL 一样发送 ACTION_STOP 关闭 tun，避免残留 pendingRequest 导致 30 秒超时
+            try {
+                val app = com.movtery.zalithlauncher.context.ContextExecutor.getApplication()
+                val stopIntent = android.content.Intent(app, TerracottaVPNService::class.java).setAction(TerracottaVPNService.ACTION_STOP)
+                androidx.core.content.ContextCompat.startForegroundService(app, stopIntent)
+            } catch (t: Throwable) { Logging.w(TAG, "stop vpn failed: " + t.message) }
             Logging.i(TAG, "Terracotta reset to waiting state")
         }
     }
@@ -184,7 +191,8 @@ object Terracotta {
         notificationJob?.cancel()
         notificationJob = launch(Dispatchers.Default) {
             state.collect { current ->
-                if (current != null && current !is TerracottaState.Waiting) {
+                if (current != null) {
+                    // 1.0.9 修复：所有状态都分发（含 Waiting），避免 UI 卡在旧状态
                     listener?.onStateChanged(current)
                 }
             }

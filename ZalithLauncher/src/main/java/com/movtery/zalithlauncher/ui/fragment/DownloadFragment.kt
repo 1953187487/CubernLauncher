@@ -82,13 +82,14 @@ class DownloadFragment : FragmentWithAnim(R.layout.fragment_download) {
     }
 
     private class ViewPagerAdapter(private val fragment: Fragment): FragmentStateAdapter(fragment.requireActivity()) {
-        override fun getItemCount(): Int = 5
+        override fun getItemCount(): Int = 6
         override fun createFragment(position: Int): Fragment {
             return when(position) {
                 1 -> ModPackDownloadFragment(fragment)
                 2 -> ResourcePackDownloadFragment(fragment)
                 3 -> WorldDownloadFragment(fragment)
                 4 -> ShaderPackDownloadFragment(fragment)
+                5 -> RustMcFragment()
                 else -> ModDownloadFragment(fragment)
             }
         }
