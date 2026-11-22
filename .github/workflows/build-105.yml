@@ -36,4 +36,4 @@ jobs:
         run: |
           APK=$(find ZalithLauncher/build/outputs/apk/release -name "*.apk" | head -1)
           printf "%s\n" "## Cubern Launcher 1.0.9" "" "- 关于页恢复1.0.1时期UI（图标+标题+描述+按钮列表）" "- 深度研究并彻底修复陶瓦联机三处致命bug：状态分发断裂、VPN生命周期缺失、节点过滤错误" "- 修复赞助链接（爱发电改为鹙鸟主页）" "- 修复下载与启动：纳入jre-25，运行库pick失败中断启动避免libjvm.so错误" "- 下载游戏版本页新增Rust版MC正式分类" "- 清除旧更新公告残留（公告源失败时隐藏）" "" "作者：鹙鸟 · 爱发电：https://afdian.com/@KZjewnk" > notes.md
-          gh release create v1.0.9 "$APK" --title "Cubern Launcher 1.0.9 (Pre-release)" --notes-file notes.md --prerelease
+          gh release upload v1.0.9 "$APK" --clobber || gh release create v1.0.9 "$APK" --title "Cubern Launcher 1.0.9 (Pre-release)" --notes-file notes.md --prerelease
