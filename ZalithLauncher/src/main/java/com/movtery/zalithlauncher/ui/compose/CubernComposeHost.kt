@@ -9,6 +9,7 @@ import com.movtery.zalithlauncher.ui.compose.screens.AiSettingsScreen
 import com.movtery.zalithlauncher.ui.compose.screens.TerracottaScreen
 import com.movtery.zalithlauncher.ui.compose.screens.UserNoticeScreen
 import com.movtery.zalithlauncher.ui.compose.screens.SkinPreviewScreen
+import com.movtery.zalithlauncher.ui.compose.screens.RustMcScreen
 
 /**
  * Compose 承载桥。
@@ -53,6 +54,12 @@ object CubernComposeHost {
         onBack: Runnable
     ): View = createView(context) {
         AiSettingsScreen(onBack = onBack::run)
+    }
+
+    /** 1.0.8：Rust 版 MC（Horizon Android）专区 */
+    @JvmStatic
+    fun createRustMcView(context: Context, onBack: Runnable): View = createView(context) {
+        RustMcScreen(onBack = onBack::run)
     }
 
     /** 1.0.6：皮肤 3D 预览（含旋转、动作、跳舞） */

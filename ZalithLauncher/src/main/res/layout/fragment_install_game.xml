@@ -52,8 +52,20 @@
             android:autofillHints="name"
             android:hint="@string/generic_required"
             android:inputType="text"
-            app:layout_constraintEnd_toStartOf="@id/install"
+            app:layout_constraintEnd_toStartOf="@id/rust_mc_button"
             app:layout_constraintStart_toEndOf="@id/name_title"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/rust_mc_button"
+            android:layout_width="@dimen/_28sdp"
+            android:layout_height="@dimen/_28sdp"
+            android:layout_marginEnd="@dimen/_4sdp"
+            android:src="@drawable/ic_ai"
+            android:contentDescription="Rust 版 MC"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/install"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView

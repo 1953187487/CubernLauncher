@@ -89,6 +89,11 @@ class InstallGameFragment : FragmentWithAnim(R.layout.fragment_install_game), Vi
             quiltApiDelete.setOnClickListener(clickListener)
 
             back.setOnClickListener(clickListener)
+            // 1.0.8：Rust 版 MC（Horizon Android）入口
+            rustMcButton.setOnClickListener {
+                val activity = requireActivity()
+                if (activity is net.kdt.pojavlaunch.LauncherActivity) activity.showRustMc()
+            }
             install.setOnClickListener(clickListener)
         }
     }

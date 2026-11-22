@@ -778,6 +778,11 @@ public class LauncherActivity extends BaseActivity {
                 this::dismissComposeOverlay));
     }
 
+    /** 1.0.8：下载游戏页「Rust 版 MC（Horizon Android）」入口 */
+    public void showRustMc() {
+        showComposeOverlay(CubernComposeHost.INSTANCE.createRustMcView(this, this::dismissComposeOverlay));
+    }
+
     /** 设置页"AI 助手"入口调用。 */
     public void showAiSettings() {
         showComposeOverlay(CubernComposeHost.INSTANCE.createAiSettingsView(this, this::dismissComposeOverlay));
