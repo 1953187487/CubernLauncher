@@ -41,7 +41,6 @@ import androidx.compose.ui.unit.dp
 import com.cubern.launcher.feature.afdian.AfdianApi
 import com.cubern.launcher.terracotta.Terracotta
 import com.cubern.launcher.terracotta.TerracottaNodeList
-import TerracottaNodeList
 import com.cubern.launcher.terracotta.TerracottaState
 import com.cubern.launcher.ui.theme.cardColor
 import kotlinx.coroutines.Dispatchers
