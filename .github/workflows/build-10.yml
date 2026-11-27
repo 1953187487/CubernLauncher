@@ -29,6 +29,13 @@ jobs:
           ANDROID_HOME: /usr/local/lib/android/sdk
           ANDROID_SDK_ROOT: /usr/local/lib/android/sdk
         run: ./gradlew :ZalithLauncher:assembleRelease --no-daemon --max-workers=2 -Dorg.gradle.jvmargs=-Xmx4096M
+      - name: Upload APK to Release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          APK=$(find ZalithLauncher/build/outputs/apk/release -name "*.apk" | head -1)
+          echo "APK: $APK"
+          gh release upload v1.0 "$APK" --clobber
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
