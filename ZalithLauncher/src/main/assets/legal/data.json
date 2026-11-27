@@ -11,6 +11,10 @@
         {
           "title": "隐私协议",
           "path": "legal/privacy_policy.md"
+        },
+        {
+          "title": "联机功能用户须知",
+          "path": "legal/multiplayer_notice.md"
         }
       ]
     }
