@@ -28,7 +28,7 @@ object AfdianApi {
     /** 用户是否已登录爱发电（本地标记） */
     fun isLoggedIn(): Boolean = com.cubern.launcher.setting.launcherMMKV().getString("afdian_logged_in", null) == "true"
 
-    fun markLoggedIn() = com.cubern.launcher.context.launcherMMKV().putString("afdian_logged_in", "true")
+    fun markLoggedIn() = com.cubern.launcher.setting.launcherMMKV().putString("afdian_logged_in", "true")
 
     suspend fun querySponsors(): Result<List<AfdianSponsor>> = try {
         val page = 1
