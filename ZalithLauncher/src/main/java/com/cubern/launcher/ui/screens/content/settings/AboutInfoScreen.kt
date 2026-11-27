@@ -162,6 +162,30 @@ fun AboutInfoScreen(
                     Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
                         val launcherName = remember { launcherName() }
 
+                        // 1.0.1：原启动器（ZL2）赞助者
+                        ButtonIconItem(
+                            icon = painterResource(R.drawable.img_sponsor),
+                            title = "原启动器赞助者（Zalith Launcher 2）",
+                            text = "感谢 bangbang93、mcmod-info-mirror 等赞助者支持原作发展",
+                            button = {
+                                Button(onClick = { openLink("https://afdian.com/a/MovTery") }) {
+                                    Text(text = stringResource(R.string.about_sponsor))
+                                }
+                            }
+                        )
+
+                        // 1.0.1：现启动器（Cubern）赞助者 —— 来自爱发电 Open API
+                        ButtonIconItem(
+                            icon = painterResource(R.drawable.img_avatar_cubern),
+                            title = "Cubern Launcher 赞助者",
+                            text = "感谢所有在爱发电支持鹙鸟的赞助者，名单见爱发电主页",
+                            button = {
+                                Button(onClick = { openLink("https://afdian.com/@KZjewnk") }) {
+                                    Text(text = stringResource(R.string.about_sponsor))
+                                }
+                            }
+                        )
+
                         ButtonIconItem(
                             icon = painterResource(R.drawable.img_sponsor),
                             title = stringResource(R.string.about_sponsors_title),
