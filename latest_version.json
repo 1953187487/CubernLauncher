@@ -1,0 +1,63 @@
+{
+  "code": 101,
+  "version": "1.0.1",
+  "created_at": "2026-11-27T00:00:00Z",
+  "default_cloud_drive": {
+    "language": "zh",
+    "link": ""
+  },
+  "files": [
+    {
+      "file_name": "CubernLauncher-1.0.1-arm64-v8a.apk",
+      "uri": "https://github.com/1953187487/CubernLauncher/releases/download/v1.0.1/CubernLauncher-1.0.1-arm64-v8a.apk",
+      "arch": "arm64",
+      "size": 210000000
+    },
+    {
+      "file_name": "CubernLauncher-1.0.1.apk",
+      "uri": "https://github.com/1953187487/CubernLauncher/releases/download/v1.0.1/CubernLauncher-1.0.1.apk",
+      "arch": "all",
+      "size": 366895243
+    }
+  ],
+  "default_body": {
+    "language": "zh",
+    "chunks": [
+      {
+        "title": "更新：",
+        "texts": [
+          {
+            "text": "联机功能二级导航（陶瓦联机/爱发电联机）"
+          },
+          {
+            "text": "作者头像与鸣谢重写"
+          },
+          {
+            "text": "公告与协议升级至 v1.1"
+          }
+        ]
+      }
+    ]
+  },
+  "bodies": [
+    {
+      "language": "zh",
+      "chunks": [
+        {
+          "title": "更新：",
+          "texts": [
+            {
+              "text": "联机功能二级导航（陶瓦联机/爱发电联机）"
+            },
+            {
+              "text": "作者头像与鸣谢重写"
+            },
+            {
+              "text": "公告与协议升级至 v1.1"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
