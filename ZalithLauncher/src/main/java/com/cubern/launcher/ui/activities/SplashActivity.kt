@@ -40,6 +40,7 @@ import com.cubern.launcher.components.jre.Jre
 import com.cubern.launcher.components.jre.UnpackJnaTask
 import com.cubern.launcher.components.jre.UnpackJreTask
 import com.cubern.launcher.context.readAssetFile
+import com.cubern.launcher.announcement.RemoteNoticeRepository
 import com.cubern.launcher.legal.AvailableAgreement
 import com.cubern.launcher.path.GLOBAL_JSON
 import com.cubern.launcher.setting.GameSettings
@@ -167,8 +168,18 @@ class SplashActivity : BaseAppCompatActivity() {
 
             withContext(Dispatchers.IO) {
                 checkAllTask()
+                // 1.0: 拉取远程公告（私有仓库 + 加密Token），协议内容随 APK 内置 assets
+                val remoteNotice = RemoteNoticeRepository.fetchNotice()
                 val agreement = loadAvailableAgreement()
-                _availableAgreement.update { agreement }
+                // 若远程协议版本更新，提升本地协议版本以触发重新同意
+                val finalAgreement = if (remoteNotice?.enabled == true && agreement != null) {
+                    agreement.copy(version = "1.0-" + (remoteNotice.date.ifBlank { "remote" }))
+                } else agreement
+                _availableAgreement.update { finalAgreement }
+                if (remoteNotice?.enabled == true) {
+                    launcherMMKV().putString("cubern_announcement_title", remoteNotice.title)
+                    launcherMMKV().putString("cubern_announcement_content", remoteNotice.content)
+                }
             }
 
             // 检查协议同意情况
