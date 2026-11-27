@@ -138,18 +138,6 @@ fun AboutInfoScreen(
                             }
                         )
 
-                        ButtonIconItem(
-                            icon = painterResource(R.drawable.img_avatar_movtery),
-                            title = stringResource(R.string.about_launcher_author_movtery_title),
-                            text = stringResource(R.string.about_launcher_author_movtery_text, launcherName),
-                            button = {
-                                Button(
-                                    onClick = { openLink(URL_SUPPORT) }
-                                ) {
-                                    Text(text = stringResource(R.string.about_sponsor))
-                                }
-                            }
-                        )
                     }
                 }
             }
@@ -169,6 +157,18 @@ fun AboutInfoScreen(
                             text = "感谢 bangbang93、mcmod-info-mirror 等赞助者支持原作发展",
                             button = {
                                 Button(onClick = { openLink("https://afdian.com/a/MovTery") }) {
+                                    Text(text = stringResource(R.string.about_sponsor))
+                                }
+                            }
+                        )
+
+                        // 1.0.1：原作者 MovTery 移至鸣谢
+                        ButtonIconItem(
+                            icon = painterResource(R.drawable.img_avatar_movtery),
+                            title = stringResource(R.string.about_launcher_author_movtery_title),
+                            text = "Zalith Launcher 原作者，Cubern 基于其作品二改，特此致谢",
+                            button = {
+                                Button(onClick = { openLink(URL_SUPPORT) }) {
                                     Text(text = stringResource(R.string.about_sponsor))
                                 }
                             }
