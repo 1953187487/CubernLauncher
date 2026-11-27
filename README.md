@@ -1,110 +1,67 @@
-# Zalith Launcher 2
-![Downloads](https://img.shields.io/github/downloads/ZalithLauncher/ZalithLauncher2/total)
-[![Sponsor](https://img.shields.io/badge/sponsor-30363D?logo=GitHub-Sponsors)](https://afdian.com/a/MovTery)
+# Cubern Launcher
 
-[English](README_EN_US.md) | [繁體中文](README_ZH_TW.md)
+<div align="center">
 
+![Downloads](https://img.shields.io/github/downloads/1953187487/CubernLauncher/total?label=downloads)
+![Version](https://img.shields.io/badge/version-1.0.0-blue)
+![License](https://img.shields.io/badge/license-GPL--3.0-green)
+[![Afdian](https://img.shields.io/badge/sponsor-%E9%B9%99%E9%B8%9F-ff69b4)](https://afdian.com/@KZjewnk)
 
-> [!IMPORTANT]
-> 该项目与 [ZalithLauncher](https://github.com/ZalithLauncher/ZalithLauncher) 属于两个完全不同的项目  
+**一款基于 Zalith Launcher 2 深度二改的 Minecraft Java 版 Android 启动器**
 
-**Zalith Launcher 2** 是一个全新设计、面向 **Android 设备** 的 [Minecraft: Java Edition](https://www.minecraft.net/) 启动器。项目使用 [PojavLauncher](https://github.com/PojavLauncherTeam/PojavLauncher/tree/v3_openjdk/app_pojavlauncher/src/main/jni) 作为启动核心，采用 **Jetpack Compose** 与 **Material Design 3** 构建现代化 UI 体验。  
-我们目前正在搭建自己的官方网站 [zalithlauncher.cn](https://zalithlauncher.cn)  
-此外，我们已注意到有第三方使用“Zalith Launcher”名称搭建了一个看似官方的网站。请注意：**该网站并非我们创建**，其通过冒用名义并植入广告牟利。我们对此类行为**不参与、不认可、不信任**。  
-请务必提高警惕，**谨防个人隐私信息泄露**！
+</div>
 
+## 关于本项目
 
-## 🌐 语言与翻译支持
+Cubern Launcher 由 **鹙鸟**（B站同名）独立维护，基于 [Zalith Launcher 2](https://github.com/ZalithLauncher/ZalithLauncher2) 深度二改而来。项目保留了上游的现代化多模块底层（双 LWJGL、Terracotta 独立联机模块、LayerController 触控层等），并在此基础上打造了属于自己的界面与功能体系。
 
-我们正在使用 Weblate 平台翻译 Zalith Launcher 2，欢迎您前往我们的 [Weblate 项目](https://hosted.weblate.org/projects/zalithlauncher2) 参与翻译！  
-感谢每一位语言贡献者的支持，让 Zalith Launcher 2 更加多语、更加全球化！
+> ⚠️ **非官方声明**：本项目与 Mojang Studios、Microsoft、网易公司没有任何隶属、授权或合作关系。Minecraft 是 Mojang Studios 的商标。本项目不分发任何游戏本体内容，请自备正版账号与游戏文件。
 
+## 特色功能
 
+- 🎨 **拟物沉浸风界面** —— Jetpack Compose + Material 3，液态玻璃质感
+- 🌐 **陶瓦 P2P 联机** —— 基于 EasyTier，房间码联机，无需中转服务器
+- 🤖 **AI 版本助手** —— 日志脱敏分析、启动诊断，自备 API Key
+- 🧑 **3D 皮肤预览** —— skinview3d 真 3D 渲染，支持动作与跳舞
+- 💰 **爱发电赞助接入** —— Open API 赞助者列表，金额分级配色
+- 📢 **远程公告系统** —— 独立仓库统一推送公告、用户须知与隐私协议
+- 🦀 **Rust 版 MC 专区** —— Horizon Android 多源下载中心
 
+## 版本与升级
 
-## 📦 构建方式（开发者）
+当前版本：**1.0.0 正式版**（首个正式公测版）
 
-> 以下内容适用于希望参与开发或自行构建应用的用户。
+- 包名保持 `com.cubern.launcher`，老用户可直接覆盖安装，游戏目录、账号、配置、皮肤不丢失。
+- 版本号体系：0.1 → 0.9 → 1.0.0 正式版。
 
-### 环境要求
+## 联系方式
 
-* Android Studio Bumblebee 以上
-* Android SDK：
-    * **最低 API**：26
-    * **目标 API**：35
-* JDK 11
+- 作者：鹙鸟（B站同名）
+- 爱发电：https://afdian.com/@KZjewnk
+- QQ 群：1134597197
+- GitHub：https://github.com/1953187487/CubernLauncher
 
-### 构建步骤
+## 开源协议
 
-```bash
-git clone git@github.com:ZalithLauncher/ZalithLauncher2.git
-# 使用 Android Studio 打开项目并进行构建
-```
+本项目遵循 **GNU General Public License v3.0**。基于 Zalith Launcher 2（GPL-3.0）二改，完整署名与第三方依赖清单见 [NOTICE](NOTICE)。
 
+衍生代码同样必须以 GPL-3.0 开源。详见 [LICENSE](LICENSE)。
 
+## 致谢
 
+- [Zalith Launcher 2](https://github.com/ZalithLauncher/ZalithLauncher2) —— 原作底层与启动内核
+- [PojavLauncher](https://github.com/PojavLauncherTeam/PojavLauncher) —— Android Minecraft 启动核心
+- [Fold Craft Launcher](https://github.com/FCL-Team/FoldCraftLauncher) —— UI 与功能参考
+- [Terracotta](https://github.com/burningtnt/terracotta) / EasyTier —— P2P 联机方案
+- [skinview3d](https://github.com/bs-community/skinview3d) —— 3D 皮肤渲染
+- 所有反馈问题与支持的玩家
 
-## 📜 License
+---
 
-本项目代码遵循 **[GPL-3.0 license](LICENSE)** 开源协议。
+<div align="center">
 
-### 附加条款 (依据 GPLv3 开源协议第七条)  
+**NOT AN OFFICIAL MINECRAFT PRODUCT. NOT APPROVED BY OR ASSOCIATED WITH MOJANG OR MICROSOFT.**
 
-1. 当你分发该程序的修改版本时，你必须以合理方式修改该程序的名称或版本号，以示其与原始版本不同。(依据 [GPLv3, 7(c)](https://github.com/ZalithLauncher/ZalithLauncher2/blob/969827b/LICENSE#L372-L374))
-   - 修改版本 **不得在名称中包含原程序名称 “ZalithLauncher” 或其缩写 “ZL”，也不得使用与官方名称相近、可能导致混淆的名称**。
-   - 所有修改版本 **必须在程序启动页面或主界面中以明显方式标注其为“非官方修改版”**。
-   - 该程序的应用名称可在 [gradle.properties](./ZalithLauncher/gradle.properties) 中修改。
+Made with ❤️ by 鹙鸟
 
-2. 你不得移除该程序所显示的版权声明。(依据 [GPLv3, 7(b)](https://github.com/ZalithLauncher/ZalithLauncher2/blob/969827b/LICENSE#L368-L370))
-
-3. 《用户协议》与《隐私政策》为本项目专有法律文件，**不属于 GPL-3.0 授权范围**：它们仅随官方构建分发，修改版本不得捆绑、复制或仿冒这些文件；未包含这些文件的构建将在启动时跳过协议同意页面。
-
-## 引用开源项目
-
-本软件使用以下开源库:
-
-| Library                               | Copyright                                                                                                     | License              | Official Link                                                                    |
-|---------------------------------------|---------------------------------------------------------------------------------------------------------------|----------------------|----------------------------------------------------------------------------------|
-| androidx-appcompat                    | Copyright © The Android Open Source Project                                                                   | Apache 2.0           | [链接↗](https://developer.android.com/jetpack/androidx/releases/appcompat)         |
-| androidx-constraintlayout-compose     | Copyright © The Android Open Source Project                                                                   | Apache 2.0           | [链接↗](https://developer.android.com/develop/ui/compose/layouts/constraintlayout) |
-| androidx-webkit                       | Copyright © The Android Open Source Project                                                                   | Apache 2.0           | [链接↗](https://developer.android.com/jetpack/androidx/releases/webkit)            |
-| ANGLE                                 | Copyright 2018 The ANGLE Project Authors                                                                      | BSD 3-Clause License | [链接↗](http://angleproject.org/)                                                  |
-| Apache Commons Codec                  | -                                                                                                             | Apache 2.0           | [链接↗](https://commons.apache.org/proper/commons-codec)                           |
-| Apache Commons Compress               | -                                                                                                             | Apache 2.0           | [链接↗](https://commons.apache.org/proper/commons-compress)                        |
-| Apache Commons IO                     | -                                                                                                             | Apache 2.0           | [链接↗](https://commons.apache.org/proper/commons-io)                              |
-| ByteHook                              | Copyright © 2020-2024 ByteDance, Inc.                                                                         | MIT License          | [链接↗](https://github.com/bytedance/bhook)                                        |
-| BuildKeys                             | Copyright © 2026 MovTery                                                                                      | Aoache 2.0           | [链接↗](https://github.com/MovTery/BuildKeys)                                      |
-| Coil Compose                          | Copyright © 2025 Coil Contributors                                                                            | Apache 2.0           | [链接↗](https://github.com/coil-kt/coil)                                           |
-| Coil Gifs                             | Copyright © 2025 Coil Contributors                                                                            | Apache 2.0           | [链接↗](https://github.com/coil-kt/coil)                                           |
-| Coil SVG                              | Copyright © 2025 Coil Contributors                                                                            | Apache 2.0           | [链接↗](https://github.com/coil-kt/coil)                                           |
-| Fishnet                               | Copyright © 2025 Kyant                                                                                        | Apache 2.0           | [链接↗](https://github.com/Kyant0/Fishnet)                                         |
-| gl4es_extra_extra                     | Copyright © 2016-2018 Sebastien Chevalier; Copyright (c) 2013-2016 Ryan Hileman                               | MIT License          | [链接↗](https://github.com/PojavLauncherTeam/gl4es_extra_extra)                    |
-| Gson                                  | Copyright © 2008 Google Inc.                                                                                  | Apache 2.0           | [链接↗](https://github.com/google/gson)                                            |
-| kotlinx.coroutines                    | Copyright © 2000-2020 JetBrains s.r.o.                                                                        | Apache 2.0           | [链接↗](https://github.com/Kotlin/kotlinx.coroutines)                              |
-| ktor-client-content-negotiation       | Copyright © 2000-2023 JetBrains s.r.o.                                                                        | Apache 2.0           | [链接↗](https://ktor.io)                                                           |
-| ktor-client-core                      | Copyright © 2000-2023 JetBrains s.r.o.                                                                        | Apache 2.0           | [链接↗](https://ktor.io)                                                           |
-| ktor-client-okhttp                    | Copyright © 2000-2023 JetBrains s.r.o.                                                                        | Apache 2.0           | [链接↗](https://ktor.io)                                                           |
-| ktor-http                             | Copyright © 2000-2023 JetBrains s.r.o.                                                                        | Apache 2.0           | [链接↗](https://ktor.io)                                                           |
-| ktor-serialization-kotlinx-json       | Copyright © 2000-2023 JetBrains s.r.o.                                                                        | Apache 2.0           | [链接↗](https://ktor.io)                                                           |
-| LWJGL - Lightweight Java Game Library | Copyright © 2012-present Lightweight Java Game Library All rights reserved.                                   | BSD 3-Clause License | [链接↗](https://github.com/LWJGL/lwjgl3)                                           |
-| material-color-utilities              | Copyright 2021 Google LLC                                                                                     | Apache 2.0           | [链接↗](https://github.com/material-foundation/material-color-utilities)           |
-| Maven Artifact                        | Copyright © The Apache Software Foundation                                                                    | Apache 2.0           | [链接↗](https://github.com/apache/maven/tree/maven-3.9.9/maven-artifact)           |
-| Media3                                | Copyright © The Android Open Source Project                                                                   | Apache 2.0           | [链接↗](https://developer.android.com/jetpack/androidx/releases/media3)            |
-| Mesa                                  | Copyright © The Mesa Authors                                                                                  | MIT License          | [链接↗](https://mesa3d.org/)                                                       |
-| MobileGlues                           | Copyright © 2025-2026 MobileGL-Dev                                                                           | LGPL-2.1 License     | [链接↗](https://github.com/MobileGL-Dev/MobileGlues)                         |
-| MMKV                                  | Copyright © 2018 THL A29 Limited, a Tencent company.                                                          | BSD 3-Clause License | [链接↗](https://github.com/Tencent/MMKV)                                           |
-| Navigation 3                          | Copyright © The Android Open Source Project                                                                   | Apache 2.0           | [链接↗](https://developer.android.com/jetpack/androidx/releases/navigation3)       |
-| NG-GL4ES                              | Copyright © 2016-2018 Sebastien Chevalier; Copyright © 2013-2016 Ryan Hileman; Copyright (c) 2025-2026 BZLZHH | MIT License          | [链接↗](https://github.com/BZLZHH/NG-GL4ES)                                        |
-| OkHttp                                | Copyright © 2019 Square, Inc.                                                                                 | Apache 2.0           | [链接↗](https://github.com/square/okhttp)                                          |
-| Okio                                  | Copyright © 2013 Square, Inc.                                                                                 | Apache 2.0           | [链接↗](https://square.github.io/okio/)                                            |
-| OpenNBT                               | Copyright © 2013-2021 Steveice10.                                                                             | MIT License          | [链接↗](https://github.com/GeyserMC/OpenNBT)                                       |
-| Process Phoenix                       | Copyright © 2015 Jake Wharton                                                                                 | Apache 2.0           | [链接↗](https://github.com/JakeWharton/ProcessPhoenix)                             |
-| proxy-client-android                  | -                                                                                                             | LGPL-3.0 License     | [链接↗](https://github.com/TouchController/TouchController)                        |
-| Reorderable                           | Copyright © 2023 Calvin Liang                                                                                 | Apache 2.0           | [链接↗](https://github.com/Calvin-LL/Reorderable)                                  |
-| sdl2-compat                           | Copyright (C) 2026 Sam Lantinga <slouken@libsdl.org>                                                          | Zlib License         | [链接↗](https://github.com/libsdl-org/sdl2-compat)                                 |
-| SDL3                                  | Copyright (C) 1997-2026 Sam Lantinga <slouken@libsdl.org>                                                     | Zlib License         | [链接↗](https://github.com/libsdl-org/SDL)                                         |
-| SimpleFPEWrapper                      | Copyright © 2026 MobileGL-Dev                                                                                | LGPL-3.0 License     | [链接↗](https://github.com/MobileGL-Dev/SimpleFPEWrapper)                    |
-| sora-editor                           | Copyright (C) 2020-2026  Rosemoe                                                                              | LGPL-2.1 License     | [链接↗](https://github.com/Rosemoe/sora-editor)                                    |
-| StringFog                             | Copyright © 2016-2023, Megatron King                                                                          | Apache 2.0           | [链接↗](https://github.com/MegatronKing/StringFog)                                 |
-| tm4e (TextMate for Eclipse)           | Copyright © Eclipse Foundation                                                                                | EPL-2.0 License      | [链接↗](https://github.com/eclipse-tm4e/tm4e)                                      |
-| XZ for Java                           | Copyright © The XZ for Java authors and contributors                                                          | 0BSD License         | [链接↗](https://tukaani.org/xz/java.html)                                          |
+</div>
