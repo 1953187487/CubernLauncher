@@ -43,7 +43,14 @@ object AfdianApi {
             setBody(body)
         }.bodyAsText()
         val arr = json.parseToJsonElement(resp).toString()
-        val names = Regex("\"name\"\s*:\s*\"([^\"]+)\"").findAll(arr).map { it.groupValues[1] }.toList()
+        val names = mutableListOf<String>()
+        try {
+            val dataObj = org.json.JSONObject(resp).optJSONObject("data")
+            val listArr = dataObj?.optJSONArray("list")
+            if (listArr != null) for (i in 0 until listArr.length()) {
+                names.add(listArr.getJSONObject(i).optString("name", ""))
+            }
+        } catch (t: Throwable) {}
         Result.success(names.map { AfdianSponsor(it) })
     } catch (t: Throwable) { Result.failure(t) }
 }
