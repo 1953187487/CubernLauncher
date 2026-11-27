@@ -26,7 +26,7 @@ object AfdianApi {
     }
 
     /** 用户是否已登录爱发电（本地标记） */
-    fun isLoggedIn(): Boolean = com.cubern.launcher.context.launcherMMKV().getString("afdian_logged_in", null) == "true"
+    fun isLoggedIn(): Boolean = com.cubern.launcher.setting.launcherMMKV().getString("afdian_logged_in", null) == "true"
 
     fun markLoggedIn() = com.cubern.launcher.context.launcherMMKV().putString("afdian_logged_in", "true")
 
