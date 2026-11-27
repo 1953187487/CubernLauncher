@@ -124,6 +124,20 @@ fun AboutInfoScreen(
                             }
                         )
 
+                        // 1.0.1 Cubern：本启动器作者（鹙鸟）放在原作者上方
+                        ButtonIconItem(
+                            icon = painterResource(R.drawable.img_avatar_cubern),
+                            title = stringResource(R.string.about_cubern_author_title),
+                            text = stringResource(R.string.about_cubern_author_text),
+                            button = {
+                                Button(
+                                    onClick = { openLink("https://afdian.com/@KZjewnk") }
+                                ) {
+                                    Text(text = stringResource(R.string.about_sponsor))
+                                }
+                            }
+                        )
+
                         ButtonIconItem(
                             icon = painterResource(R.drawable.img_avatar_movtery),
                             title = stringResource(R.string.about_launcher_author_movtery_title),
@@ -131,20 +145,6 @@ fun AboutInfoScreen(
                             button = {
                                 Button(
                                     onClick = { openLink(URL_SUPPORT) }
-                                ) {
-                                    Text(text = stringResource(R.string.about_sponsor))
-                                }
-                            }
-                        )
-
-                        // 1.0 Cubern：本启动器作者（紧跟 ZL2 原作者下方）
-                        ButtonIconItem(
-                            icon = painterResource(R.drawable.img_avatar_movtery),
-                            title = stringResource(R.string.about_cubern_author_title),
-                            text = stringResource(R.string.about_cubern_author_text),
-                            button = {
-                                Button(
-                                    onClick = { openLink("https://afdian.com/@KZjewnk") }
                                 ) {
                                     Text(text = stringResource(R.string.about_sponsor))
                                 }
