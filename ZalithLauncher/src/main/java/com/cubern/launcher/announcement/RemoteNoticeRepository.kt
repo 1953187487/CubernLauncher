@@ -1,12 +1,14 @@
 package com.cubern.launcher.announcement
 
 import io.ktor.client.request.get
+import io.ktor.client.request.header
 import io.ktor.client.statement.bodyAsText
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
+import kotlinx.serialization.json.Json
 import com.cubern.launcher.path.GLOBAL_CLIENT
 
-/** 远程公告（1.0）：来自 Cubern-Announcements 仓库 */
+/** 远程公告（1.0）：来自私有仓库 Cubern-Announcements，Token 经 XOR+Base64 混淆存储 */
 @Serializable
 data class RemoteNotice(
     @SerialName("version") val version: Int = 0,
@@ -18,17 +20,35 @@ data class RemoteNotice(
 )
 
 object RemoteNoticeRepository {
-    private const val BASE = "https://raw.githubusercontent.com/1953187487/Cubern-Announcements/main/"
+    private const val REPO = "1953187487/Cubern-Announcements"
+    // XOR + Base64 混淆的只读 Token（运行时解密，仅 contents:read 权限）
+    private const val TOKEN_ENC = "JB0SOjEkDVBkVFkbFS4hFEYSAyAZXUYaJz8AGSgEGDohXAMCXGdhNQ=="
+    private const val XOR_KEY = "Cubern@2026#SecureAnnounce"
+    private const val API = "https://api.github.com/repos/$REPO/contents/"
+    private val json = Json { ignoreUnknownKeys = true }
 
-    suspend fun fetchNotice(): RemoteNotice? = try {
-        val text = GLOBAL_CLIENT.get(BASE + "announcement.json").bodyAsText()
-        kotlinx.serialization.json.Json { ignoreUnknownKeys = true }.decodeFromString<RemoteNotice>(text)
+    private fun decryptToken(): String {
+        val bytes = java.util.Base64.getDecoder().decode(TOKEN_ENC)
+        return buildString {
+            for (i in bytes.indices) append((bytes[i].toInt() xor XOR_KEY[i % XOR_KEY.length].code).toChar())
+        }
+    }
+
+    private suspend fun fetchFile(name: String): String? = try {
+        val resp = GLOBAL_CLIENT.get(API + name) {
+            header("Authorization", "Bearer " + decryptToken())
+            header("Accept", "application/vnd.github+json")
+        }
+        val obj = org.json.JSONObject(resp.bodyAsText())
+        val content = obj.optString("content")
+        if (content.isBlank()) return null
+        java.util.Base64.getDecoder().decode(content).toString(Charsets.UTF_8)
     } catch (t: Throwable) { null }
 
-    suspend fun fetchUserNotice(): String? = fetchText("user_notice.md")
-    suspend fun fetchPrivacyPolicy(): String? = fetchText("privacy_policy.md")
+    suspend fun fetchNotice(): RemoteNotice? = fetchFile("announcement.json")?.let {
+        try { json.decodeFromString<RemoteNotice>(it) } catch (t: Throwable) { null }
+    }
 
-    private suspend fun fetchText(name: String): String? = try {
-        GLOBAL_CLIENT.get(BASE + name).bodyAsText()
-    } catch (t: Throwable) { null }
+    suspend fun fetchUserNotice(): String? = fetchFile("user_notice.md")
+    suspend fun fetchPrivacyPolicy(): String? = fetchFile("privacy_policy.md")
 }
