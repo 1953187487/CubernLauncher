@@ -2,6 +2,7 @@ package com.cubern.launcher.ui.screens.content
 
 import android.content.ClipData
 import android.content.ClipboardManager
+import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.widget.Toast
@@ -24,7 +25,7 @@ import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.collectAsStateWithLifecycle
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -39,6 +40,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.cubern.launcher.feature.afdian.AfdianApi
 import com.cubern.launcher.terracotta.Terracotta
+import com.cubern.launcher.terracotta.TerracottaNodeList
+import TerracottaNodeList
 import com.cubern.launcher.terracotta.TerracottaState
 import com.cubern.launcher.ui.theme.cardColor
 import kotlinx.coroutines.Dispatchers
@@ -60,7 +63,7 @@ fun AfdianMultiplayerScreen(onBack: () -> Unit) {
     var roomCode by remember { mutableStateOf("") }
     var playerName by remember { mutableStateOf("") }
     var status by remember { mutableStateOf("未开始") }
-    val terracottaState by Terracotta.state.collectAsStateWithLifecycle()
+    val terracottaState by Terracotta.state.collectAsState()
 
     LaunchedEffect(terracottaState) {
         when (val s = terracottaState) {
@@ -121,7 +124,7 @@ fun AfdianMultiplayerScreen(onBack: () -> Unit) {
                     scope.launch {
                         try {
                             Terracotta.setWaiting(true)
-                            val nodes = com.cubern.launcher.terracotta.TerracottaNodeList.fetchNodes().map { it.toString() }
+                            val nodes = TerracottaNodeList.fetchNodes().map { it.toString() }
                             Terracotta.setScanning(null, playerName.ifBlank { null }, nodes)
                             status = "正在创建房间…"
                         } catch (t: Throwable) { status = "创建失败：${t.message}" }
@@ -145,7 +148,7 @@ fun AfdianMultiplayerScreen(onBack: () -> Unit) {
                 scope.launch {
                     try {
                         Terracotta.setWaiting(true)
-                        val nodes = com.cubern.launcher.terracotta.TerracottaNodeList.fetchNodes().map { it.toString() }
+                        val nodes = TerracottaNodeList.fetchNodes().map { it.toString() }
                         Terracotta.setGuesting(roomCode.trim(), playerName.ifBlank { null }, nodes)
                         status = "正在连接房间…"
                     } catch (t: Throwable) { status = "加入失败：${t.message}" }
