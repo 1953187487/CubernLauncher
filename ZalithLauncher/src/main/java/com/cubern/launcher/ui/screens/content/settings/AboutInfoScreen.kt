@@ -131,19 +131,21 @@ fun AboutInfoScreen(
                             button = {
                                 Button(
                                     onClick = { openLink(URL_SUPPORT) }
-                                )
+                                ) {
+                                    Text(text = stringResource(R.string.about_sponsor))
+                                }
+                            }
+                        )
 
-                        // Cubern Launcher author
+                        // 1.0 Cubern：本启动器作者（紧跟 ZL2 原作者下方）
                         ButtonIconItem(
                             icon = painterResource(R.drawable.img_avatar_movtery),
                             title = stringResource(R.string.about_cubern_author_title),
                             text = stringResource(R.string.about_cubern_author_text),
                             button = {
-                                Button(onClick = { openLink("https://afdian.com/@KZjewnk") }) {
-                                    Text(text = stringResource(R.string.about_sponsor))
-                                }
-                            }
-                        ) {
+                                Button(
+                                    onClick = { openLink("https://afdian.com/@KZjewnk") }
+                                ) {
                                     Text(text = stringResource(R.string.about_sponsor))
                                 }
                             }
