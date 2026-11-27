@@ -28,7 +28,7 @@ jobs:
           CUBERN_KEYSTORE_PASSWORD: "Cubern@103!"
           ANDROID_HOME: /usr/local/lib/android/sdk
           ANDROID_SDK_ROOT: /usr/local/lib/android/sdk
-        run: ./gradlew :ZalithLauncher:assembleRelease --no-daemon --max-workers=2 -Dorg.gradle.jvmargs=-Xmx4096M
+        run: ./gradlew :ZalithLauncher:assembleRelease --no-daemon --max-workers=2 -Darch=arm64 -Dorg.gradle.jvmargs=-Xmx4096M
       - name: Upload APK to Release
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
