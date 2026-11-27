@@ -220,8 +220,8 @@ android {
         create("releaseBuild") {
             storeFile = file("cubern-release.jks")
             storePassword = System.getenv("CUBERN_KEYSTORE_PASSWORD") ?: getKeyFromLocal("STORE_PASSWORD", ".store_password.txt")
-            keyAlias = "movtery_zalith"
-            keyPassword = getKeyFromLocal("KEY_PASSWORD", ".key_password.txt")
+            keyAlias = "cubern"
+            keyPassword = System.getenv("CUBERN_KEYSTORE_PASSWORD") ?: getKeyFromLocal("KEY_PASSWORD", ".key_password.txt")
         }
         create("debugBuild") {
             storeFile = file("zalith_launcher_debug.jks")
