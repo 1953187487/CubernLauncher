@@ -15,6 +15,12 @@ jobs:
         with:
           distribution: temurin
           java-version: "17"
+      - name: Set up Rust & cargo-ndk
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: aarch64-linux-android,armv7-linux-androideabi,i686-linux-android,x86_64-linux-android
+      - name: Install cargo-ndk
+        run: cargo install cargo-ndk --locked
       - name: Make gradlew executable
         run: chmod +x gradlew
       - name: Build Release
