@@ -21,6 +21,10 @@ package com.cubern.launcher.ui.screens.content
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.ScrollState
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.material3.ButtonDefaults
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.ui.graphics.Color
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.PaddingValues
@@ -90,36 +94,32 @@ fun MultiplayerScreen(
         screenKey = NormalNavKey.Multiplayer,
         currentKey = backScreenViewModel.mainScreen.currentKey
     ) { isVisible ->
-        AnimatedRow(
-            modifier = Modifier.fillMaxSize(),
-            isVisible = isVisible,
-            stagger = false, //同时进行
-        ) {
-            AnimatedItem { ctx ->
-                TutorialMenu(
-                    modifier = Modifier
-                        .weight(0.5f)
-                        .animated(ctx, from = AnimatedDirection.Left)
-                        .padding(start = 12.dp)
-                )
+        // 1.0.1：联机功能二级导航（陶瓦联机 / 爱发电联机）
+        var mode by remember { mutableIntStateOf(0) } // 0=陶瓦联机 1=爱发电联机
+        Row(modifier = Modifier.fillMaxSize()) {
+            // 左侧导航
+            Column(modifier = Modifier.weight(0.25f).padding(start = 12.dp, top = 12.dp)) {
+                Button(onClick = { mode = 0 }, modifier = Modifier.fillMaxWidth(),
+                    colors = ButtonDefaults.buttonColors(containerColor = if (mode == 0) MaterialTheme.colorScheme.primary else Color.Gray)) {
+                    Text("陶瓦联机")
+                }
+                Spacer(Modifier.height(8.dp))
+                Button(onClick = { mode = 1 }, modifier = Modifier.fillMaxWidth(),
+                    colors = ButtonDefaults.buttonColors(containerColor = if (mode == 1) MaterialTheme.colorScheme.primary else Color.Gray)) {
+                    Text("爱发电联机")
+                }
             }
-
-            AnimatedItem { ctx ->
-                MainMenu(
-                    modifier = Modifier
-                        .weight(0.5f)
-                        .animated(ctx, from = AnimatedDirection.Right)
-                        .padding(end = 12.dp),
-                    eventViewModel = eventViewModel,
-                    onShareLogs = {
+            // 右侧内容
+            if (mode == 0) {
+                AnimatedRow(modifier = Modifier.weight(0.75f), isVisible = isVisible, stagger = false) {
+                    AnimatedItem { ctx -> TutorialMenu(modifier = Modifier.weight(0.5f).animated(ctx, from = AnimatedDirection.Left).padding(start = 12.dp)) }
+                    AnimatedItem { ctx -> MainMenu(modifier = Modifier.weight(0.5f).animated(ctx, from = AnimatedDirection.Right).padding(end = 12.dp), eventViewModel = eventViewModel, onShareLogs = {
                         val logFile = PathManager.FILE_TERRACOTTA_LOG
-                        if (logFile.exists()) {
-                            shareFile(context, logFile)
-                        } else {
-                            eventViewModel.sendToast(androidText(R.string.terracotta_export_log_share_null))
-                        }
-                    }
-                )
+                        if (logFile.exists()) shareFile(context, logFile) else eventViewModel.sendToast(androidText(R.string.terracotta_export_log_share_null))
+                    }) }
+                }
+            } else {
+                AfdianMultiplayerScreen(onBack = { mode = 0 })
             }
         }
     }
