@@ -1,0 +1,30 @@
+name: Build Cubern Launcher 1.0
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v3
+      - name: Make gradlew executable
+        run: chmod +x gradlew
+      - name: Build Release
+        env:
+          MOVTERY_KEYSTORE_PASSWORD: "Cubern@103!"
+        run: ./gradlew :ZalithLauncher:assembleRelease --no-daemon --max-workers=2 -Dorg.gradle.jvmargs=-Xmx4096M
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: Cubern-1.0
+          path: ZalithLauncher/build/outputs/apk/release/*.apk
