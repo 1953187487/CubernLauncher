@@ -40,7 +40,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.cubern.launcher.feature.afdian.AfdianApi
 import com.cubern.launcher.terracotta.Terracotta
-import com.cubern.launcher.terracotta.TerracottaNodeList
+import com.cubern.launcher.terracotta.fetchNodes
 import com.cubern.launcher.terracotta.TerracottaState
 import com.cubern.launcher.ui.theme.cardColor
 import kotlinx.coroutines.Dispatchers
@@ -123,7 +123,7 @@ fun AfdianMultiplayerScreen(onBack: () -> Unit) {
                     scope.launch {
                         try {
                             Terracotta.setWaiting(true)
-                            val nodes = TerracottaNodeList.fetchNodes().map { it.toString() }
+                            val nodes = fetchNodes().map { it.toString() }
                             Terracotta.setScanning(null, playerName.ifBlank { null }, nodes)
                             status = "正在创建房间…"
                         } catch (t: Throwable) { status = "创建失败：${t.message}" }
@@ -147,7 +147,7 @@ fun AfdianMultiplayerScreen(onBack: () -> Unit) {
                 scope.launch {
                     try {
                         Terracotta.setWaiting(true)
-                        val nodes = TerracottaNodeList.fetchNodes().map { it.toString() }
+                        val nodes = fetchNodes().map { it.toString() }
                         Terracotta.setGuesting(roomCode.trim(), playerName.ifBlank { null }, nodes)
                         status = "正在连接房间…"
                     } catch (t: Throwable) { status = "加入失败：${t.message}" }
