@@ -35,7 +35,7 @@ jobs:
         run: |
           APK=$(find ZalithLauncher/build/outputs/apk/release -name "*.apk" | head -1)
           echo "APK: $APK"
-          gh release upload v1.0 "$APK" --clobber
+          gh release create v1.0.1 "$APK" --title "Cubern Launcher 1.0.1" --notes "1.0.1: 联机功能二级导航（陶瓦联机/爱发电联机）；爱发电联机需登录；头像与鸣谢重写；联机用户须知协议" --prerelease
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
