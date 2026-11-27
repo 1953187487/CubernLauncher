@@ -70,7 +70,7 @@ fun AfdianMultiplayerScreen(onBack: () -> Unit) {
         if (!loggedIn) {
             // 未登录：显示登录引导
             Column(
-                Modifier.fillMaxWidth().clip(RoundedCornerShape(16.dp)).background(cardColor).padding(24.dp),
+                Modifier.fillMaxWidth().clip(RoundedCornerShape(16.dp)).background(cardColor()).padding(24.dp),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 Text("🔒", style = MaterialTheme.typography.displaySmall)
@@ -103,7 +103,7 @@ fun AfdianMultiplayerScreen(onBack: () -> Unit) {
             LazyColumn(verticalArrangement = Arrangement.spacedBy(8.dp)) {
                 items(friends) { friend ->
                     Row(
-                        Modifier.fillMaxWidth().clip(RoundedCornerShape(12.dp)).background(cardColor).padding(12.dp),
+                        Modifier.fillMaxWidth().clip(RoundedCornerShape(12.dp)).background(cardColor()).padding(12.dp),
                         verticalAlignment = Alignment.CenterVertically
                     ) {
                         Text("👤", Modifier.size(28.dp).clip(CircleShape).background(Color.Gray.copy(alpha = 0.1f)))
