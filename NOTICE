@@ -1,0 +1,38 @@
+Cubern Launcher
+Copyright (C) 2026 鹙鸟 (QunNiao)
+
+This project is a derivative work of:
+- Zalith Launcher 2 — Copyright (C) 2025-2026 MovTery <movtery228@qq.com> and contributors
+  https://github.com/ZalithLauncher/ZalithLauncher2
+  Licensed under GNU General Public License v3.0 or later
+- Zalith Launcher 1 (earlier versions) — Copyright (C) MovTery and contributors
+- PojavLauncher — Copyright (C) PojavLauncherTeam
+  https://github.com/PojavLauncherTeam/PojavLauncher
+  Licensed under GNU General Public License v3.0
+- Fold Craft Launcher (FCL) — Copyright (C) FCL-Team
+  https://github.com/FCL-Team/FoldCraftLauncher
+  Licensed under GNU General Public License v3.0
+- Terracotta — Copyright (C) BurningTNT
+  https://github.com/burningtnt/terracotta
+- skinview3d — Copyright (C) bs-community
+  https://github.com/bs-community/skinview3d
+  Licensed under MIT
+
+This product includes software developed by the Android Open Source Project,
+Jetpack Compose, Kotlin, LWJGL, Mesa, GL4ES, and other open source projects.
+See individual LICENSE files in each module for details.
+
+Cubern Launcher is NOT an official Minecraft product.
+NOT APPROVED BY OR ASSOCIATED WITH MOJANG OR MICROSOFT.
+Minecraft is a trademark of Mojang Synergies AB.
+
+This program is free software: you can redistribute it and/or modify it under
+the terms of the GNU General Public License as published by the Free Software
+Foundation, either version 3 of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY
+WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR
+A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License along with
+this program. If not, see <https://www.gnu.org/licenses/gpl-3.0.txt>.
