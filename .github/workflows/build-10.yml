@@ -15,13 +15,14 @@ jobs:
         with:
           distribution: temurin
           java-version: "17"
-      - name: Setup Android SDK
-        uses: android-actions/setup-android@v3
       - name: Make gradlew executable
         run: chmod +x gradlew
       - name: Build Release
         env:
           MOVTERY_KEYSTORE_PASSWORD: "Cubern@103!"
+        env:
+          ANDROID_HOME: /usr/local/lib/android/sdk
+          ANDROID_SDK_ROOT: /usr/local/lib/android/sdk
         run: ./gradlew :ZalithLauncher:assembleRelease --no-daemon --max-workers=2 -Dorg.gradle.jvmargs=-Xmx4096M
       - name: Upload artifact
         uses: actions/upload-artifact@v4
