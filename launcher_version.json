@@ -1,0 +1,23 @@
+{
+  "version_code": 101,
+  "version_name": "1.0.1",
+  "title": {
+    "en_us": "Cubern Launcher 1.0.1",
+    "zh_cn": "Cubern Launcher 1.0.1",
+    "zh_tw": "Cubern Launcher 1.0.1"
+  },
+  "description": {
+    "en_us": "Multiplayer navigation, Afdian multiplayer with login gate, author avatar and acknowledgements update.",
+    "zh_cn": "联机功能二级导航、爱发电联机（需登录）、作者头像与鸣谢重写。",
+    "zh_tw": "聯機功能二級導航、愛發電聯機（需登入）、作者頭像與鳴謝重寫。"
+  },
+  "published_at": "2026-11-27T00:00:00Z",
+  "file_size": {
+    "all": 366000000,
+    "arm": 0,
+    "arm64": 0,
+    "x86": 0,
+    "x86_64": 0
+  },
+  "pre_release": false
+}
