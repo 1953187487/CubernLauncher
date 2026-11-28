@@ -1,8 +1,8 @@
 {
-  "version": 2,
+  "version": 3,
   "enabled": true,
   "title": "Cubern Launcher 1.0.2 更新公告",
-  "content": "本版本新增 Rust 版 Minecraft 专区、游戏内服务器功能与模组下载入口，并全面升级用户须知、隐私协议与联机协议至 v1.1。欢迎体验并反馈！",
-  "date": "2026-11-27",
+  "content": "本版本新增 Rust 版 Minecraft 专区、游戏服务器功能、模组下载入口，升级协议至 v1.2 并新增主页透明公告栏。欢迎体验并反馈！",
+  "date": "2026-11-28",
   "url": ""
 }
