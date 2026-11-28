@@ -43,11 +43,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.SecondaryScrollableTabRow
 import androidx.compose.material3.Tab
 import androidx.compose.material3.Text
-import androidx.compose.material3.AlertDialog
-import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -126,10 +122,6 @@ fun GameMenuSubscreen(
     onEditLayout: () -> Unit,
     onShowToast: (AndroidStringText, Int) -> Unit
 ) {
-    // 1.0.2：服务器列表面板
-    var showServerDialog by remember { mutableStateOf(false) }
-    val serverList = remember { listOf("mc.hypixel.net" to "Hypixel", "play.cubecraft.net" to "CubeCraft", "hub.mc-world.net" to "Mineplex") }
-
     DualMenuSubscreen(
         state = state,
         closeScreen = closeScreen,
@@ -272,18 +264,7 @@ private fun GameActionContent(
                     contentColor = contentColor,
                 )
             }
-        
-        // 1.0.2：服务器功能（状态 / 一键加入）
-        item {
-            MenuTextButton(
-                modifier = Modifier.fillMaxWidth(),
-                text = "服务器",
-                onClick = { showServerDialog = true },
-                color = color,
-                contentColor = contentColor,
-            )
         }
-
 
         item {
             Spacer(modifier = Modifier.height(8.dp))
@@ -1181,21 +1162,4 @@ private fun ControlGyroscope(
             )
         }
     }
-    if (showServerDialog) {
-        AlertDialog(
-            onDismissRequest = { showServerDialog = false },
-            title = { Text("服务器列表") },
-            text = {
-                Column {
-                    serverList.forEach { (addr, name) ->
-                        Text("• " + name + " (" + addr + ")", style = MaterialTheme.typography.bodyMedium)
-                        Spacer(modifier = Modifier.height(4.dp))
-                    }
-                    Text("进入游戏后可在"多人游戏"中直接加入上述服务器。", style = MaterialTheme.typography.bodySmall)
-                }
-            },
-            confirmButton = { TextButton(onClick = { showServerDialog = false }) { Text("关闭") } },
-        )
-    }
-
 }
