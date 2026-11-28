@@ -59,7 +59,6 @@ import com.cubern.launcher.feature.afdian.AfdianSponsorsDialog
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.remember
 import com.cubern.launcher.game.plugin.ApkPlugin
 import com.cubern.launcher.game.plugin.PluginLoader
 import com.cubern.launcher.game.plugin.appCacheIcon
