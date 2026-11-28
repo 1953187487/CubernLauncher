@@ -35,7 +35,7 @@ jobs:
         run: |
           APK=$(find ZalithLauncher/build/outputs/apk/release -name "*.apk" | head -1)
           echo "APK: $APK"
-          gh release upload v1.0.2 "$APK" --clobber
+          gh release create v1.0.3 "$APK" --title "Cubern Launcher 1.0.3" --notes "1.0.3 全新升级：Verse-App Rust MC、酷狗音乐播放器、Cubernai 键位 AI；协议 v2.0；修复更新/赞助者/头像/服务器"
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
