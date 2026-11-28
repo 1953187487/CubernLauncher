@@ -251,7 +251,8 @@ private fun NavigationUI(
                         key = key,
                         mainScreenKey = backScreenViewModel.mainScreen.currentKey,
                         downloadScreenKey = backScreenViewModel.downloadScreen.currentKey,
-                        backScreenViewModel = backScreenViewModel
+                        backScreenViewModel = backScreenViewModel,
+                        eventViewModel = eventViewModel
                     )
                 }
 
