@@ -278,26 +278,13 @@ private fun GameActionContent(
                 )
             }
 
-            // 1.0.3 Rust 版 Minecraft（Verse-App）
+            // 1.0.3 Rust 版 Minecraft（Horizon Android：官方源下载游戏版本）
             item {
                 MenuTextButton(
                     modifier = Modifier.fillMaxWidth(),
-                    text = "Rust MC (Verse)",
+                    text = "Rust MC 26.3",
                     onClick = {
-                        try { context.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/doujie081231/Verse-App/releases/latest"))) } catch (_: Exception) {}
-                    },
-                    color = color,
-                    contentColor = contentColor,
-                )
-            }
-
-            // 1.0.3 音乐播放器（酷狗概念版）
-            item {
-                MenuTextButton(
-                    modifier = Modifier.fillMaxWidth(),
-                    text = "音乐播放器",
-                    onClick = {
-                        try { context.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://www.kugou.com/"))) } catch (_: Exception) {}
+                        try { context.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/GoyDevv/Horizon-Android/releases/latest"))) } catch (_: Exception) {}
                     },
                     color = color,
                     contentColor = contentColor,
