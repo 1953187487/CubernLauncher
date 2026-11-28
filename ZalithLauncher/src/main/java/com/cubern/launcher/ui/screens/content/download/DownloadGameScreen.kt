@@ -25,6 +25,8 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.material3.Button
+import androidx.compose.foundation.background
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -212,6 +214,20 @@ fun DownloadGameScreen(
             eventViewModel.sendKeepScreen(false)
         }
     )
+
+    // 1.0.3: Rust 版 Minecraft 提示（融入游戏版本分类）
+    if (backStack.isEmpty()) {
+        androidx.compose.foundation.layout.Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 12.dp, vertical = 6.dp)
+                .background(cardColor(), androidx.compose.foundation.shape.RoundedCornerShape(12.dp))
+                .padding(12.dp)
+        ) {
+            Text("🦀 Rust 版 Minecraft 26.3", style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.Bold)
+            Text("在下方选择 26.3 版本下载，即可用 Horizon 引擎游玩 Rust 版 MC。", style = MaterialTheme.typography.bodySmall)
+        }
+    }
 
     if (backStack.isNotEmpty()) {
         NestedNavDisplay(
