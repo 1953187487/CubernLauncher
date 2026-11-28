@@ -180,9 +180,9 @@ fun AboutInfoScreen(
 
                         // Zalith Launcher2 的赞助者
                         ButtonIconItem(
-                            icon = painterResource(R.drawable.img_avatar_cubern),
+                            icon = painterResource(R.drawable.img_avatar_movtery),
                             title = "Zalith Launcher2 的赞助者",
-                            text = "感谢在爱发电支持鹙鸟的赞助者",
+                            text = "感谢支持 Zalith Launcher 2 原作发展的赞助者",
                             button = {
                                 Button(onClick = onViewSponsors) { Text(text = stringResource(R.string.generic_view)) }
                             }
