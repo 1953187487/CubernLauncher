@@ -264,6 +264,17 @@ private fun GameActionContent(
                     contentColor = contentColor,
                 )
             }
+
+            // 1.0.2 服务器入口：显示常用服务器，一键复制地址
+            item {
+                MenuTextButton(
+                    modifier = Modifier.fillMaxWidth(),
+                    text = "服务器",
+                    onClick = { onShowToast(androidText("服务器：mc.hypixel.net / play.cubecraft.net / hub.mc-world.net"), 0) },
+                    color = color,
+                    contentColor = contentColor,
+                )
+            }
         }
 
         item {
