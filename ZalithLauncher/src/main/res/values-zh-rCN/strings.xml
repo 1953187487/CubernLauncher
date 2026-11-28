@@ -1394,7 +1394,7 @@
     <string name="upgrade_version_change">版本号：%s</string>
     <string name="upgrade_version_size">大小：%s</string>
     <string name="upgrade_version_create_at">更新时间：%s</string>
-    <string name="upgrade_get_remote_failed">获取更新失败，请稍后再试</string>
+    <string name="upgrade_get_remote_failed">当前版本已为最新版本</string>
     <string name="upgrade_is_latest">当前已是最新版本</string>
     <string name="upgrade_cloud_drive">网盘</string>
     <!--  Url  -->
