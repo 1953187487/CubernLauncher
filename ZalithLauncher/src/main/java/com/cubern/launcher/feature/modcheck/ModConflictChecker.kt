@@ -22,18 +22,18 @@ object ModConflictChecker {
                     val fabricEntry = zip.getEntry("fabric.mod.json")
                     if (fabricEntry != null) {
                         val text = zip.getInputStream(fabricEntry).bufferedReader().readText()
-                        val id = Regex("\"id\"\s*:\s*\"([^\"]+)\"").find(text)?.groupValues?.get(1)
+                        val id = Regex("\"id\"\\s*:\\s*\"([^\"]+)\"").find(text)?.groupValues?.get(1)
                         if (id != null) modIds.getOrPut(id) { mutableListOf() }.add(jar.name)
-                        val depends = Regex("\"depends\"\s*:\s*\{([^}]*)\}").find(text)?.groupValues?.get(1)
+                        val depends = Regex("\"depends\"\\s*:\\s*\\{([^}]*)\\}").find(text)?.groupValues?.get(1)
                         if (depends != null) {
-                            val deps = Regex("\"([a-z0-9_.-]+)\"\s*:").findAll(depends).map { it.groupValues[1] }.toList()
+                            val deps = Regex("\"([a-z0-9_.-]+)\"\\s*:").findAll(depends).map { it.groupValues[1] }.toList()
                             if (deps.isNotEmpty()) dependencies[jar.name] = deps.toMutableList()
                         }
                     }
                     val tomlEntry = zip.getEntry("META-INF/neoforge.mods.toml") ?: zip.getEntry("META-INF/mods.toml")
                     if (tomlEntry != null) {
                         val text = zip.getInputStream(tomlEntry).bufferedReader().readText()
-                        Regex("modId\s*=\s*\"([^\"]+)\"").findAll(text).forEach { m ->
+                        Regex("modId\\s*=\\s*\"([^\"]+)\"").findAll(text).forEach { m ->
                             modIds.getOrPut(m.groupValues[1]) { mutableListOf() }.add(jar.name)
                         }
                     }
