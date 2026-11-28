@@ -93,7 +93,7 @@ fun AboutInfoScreen(
     openLicense: (raw: Int) -> Unit,
     openLink: (url: String) -> Unit
 ) {
-    var showAfdianSponsors by remember { mutableStateOf(false) }
+    val showAfdianSponsors = remember { mutableStateOf(false) }
 
     BaseScreen(
         Triple(key, mainScreenKey, false),
@@ -174,7 +174,7 @@ fun AboutInfoScreen(
                             title = "本启动器的赞助者",
                             text = stringResource(R.string.about_sponsors_summary, launcherName),
                             button = {
-                                Button(onClick = { showAfdianSponsors = true }) { Text(text = stringResource(R.string.generic_view)) }
+                                Button(onClick = { showAfdianSponsors.value = true }) { Text(text = stringResource(R.string.generic_view)) }
                             }
                         )
 
@@ -605,6 +605,6 @@ private fun LibraryInfoItem(
             }
         }
     }
-    if (showAfdianSponsors) { AfdianSponsorsDialog(onDismiss = { showAfdianSponsors = false }) }
+    if (showAfdianSponsors.value) { AfdianSponsorsDialog(onDismiss = { showAfdianSponsors.value = false }) }
 
 }
