@@ -300,6 +300,7 @@ fun AboutInfoScreen(
             }
         }
     }
+    if (showAfdianSponsors.value) { AfdianSponsorsDialog(onDismiss = { showAfdianSponsors.value = false }) }
 }
 
 @Composable
