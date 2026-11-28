@@ -170,7 +170,7 @@ fun AboutInfoScreen(
 
                         // 本启动器的赞助者
                         ButtonIconItem(
-                            icon = painterResource(R.drawable.img_sponsor),
+                            icon = painterResource(R.drawable.img_avatar_cubern),
                             title = "本启动器的赞助者",
                             text = stringResource(R.string.about_sponsors_summary, launcherName),
                             button = {
