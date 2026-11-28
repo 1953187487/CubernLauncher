@@ -50,6 +50,8 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import android.content.Intent
+import android.net.Uri
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -271,6 +273,32 @@ private fun GameActionContent(
                     modifier = Modifier.fillMaxWidth(),
                     text = "服务器",
                     onClick = { onShowToast(androidText("服务器：mc.hypixel.net / play.cubecraft.net / hub.mc-world.net"), 0) },
+                    color = color,
+                    contentColor = contentColor,
+                )
+            }
+
+            // 1.0.3 Rust 版 Minecraft（Verse-App）
+            item {
+                MenuTextButton(
+                    modifier = Modifier.fillMaxWidth(),
+                    text = "Rust MC (Verse)",
+                    onClick = {
+                        try { context.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/doujie081231/Verse-App/releases/latest"))) } catch (_: Exception) {}
+                    },
+                    color = color,
+                    contentColor = contentColor,
+                )
+            }
+
+            // 1.0.3 音乐播放器（酷狗概念版）
+            item {
+                MenuTextButton(
+                    modifier = Modifier.fillMaxWidth(),
+                    text = "音乐播放器",
+                    onClick = {
+                        try { context.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://www.kugou.com/"))) } catch (_: Exception) {}
+                    },
                     color = color,
                     contentColor = contentColor,
                 )
