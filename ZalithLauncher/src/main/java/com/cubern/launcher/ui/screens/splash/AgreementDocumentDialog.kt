@@ -78,7 +78,11 @@ fun AgreementDocumentDialog(
         content = DocumentOperation.Loading
         content = withContext(Dispatchers.IO) {
             runCatching {
-                val string = context.readAssetFile(document.path)
+                val string = if (document.path.startsWith("/")) {
+                    java.io.File(document.path).readText()
+                } else {
+                    context.readAssetFile(document.path)
+                }
                 DocumentOperation.Loaded(string)
             }.onFailure { e ->
                 Logger.warning(
