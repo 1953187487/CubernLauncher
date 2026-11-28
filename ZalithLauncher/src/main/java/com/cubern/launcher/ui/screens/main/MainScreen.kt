@@ -219,6 +219,8 @@ fun MainScreen(
                     .fillMaxWidth()
                     .weight(1f)
             ) {
+                AnnouncementBar(modifier = Modifier.align(Alignment.CenterStart))
+
                 NavStateHost(rootKey = screenBackStackModel.mainScreen) {
                     NavigationUI(
                         modifier = Modifier.fillMaxSize(),
