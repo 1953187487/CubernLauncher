@@ -284,7 +284,7 @@ private fun GameActionContent(
                     modifier = Modifier.fillMaxWidth(),
                     text = "Rust MC 26.3",
                     onClick = {
-                        try { context.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/GoyDevv/Horizon-Android/releases/latest"))) } catch (_: Exception) {}
+                        onShowToast(androidText("Rust 版 Minecraft：请在启动器主页 → 下载页 → Rust MC 中下载真正的游戏版本喵"), 0)
                     },
                     color = color,
                     contentColor = contentColor,
