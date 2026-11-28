@@ -85,6 +85,8 @@ fun BoxWithConstraintsScope.ControlEditor(
     exit: () -> Unit,
     menuExit: () -> Unit
 ) {
+    val context = LocalContext.current
+
     val guides = rememberAppGuides()
     GuideHost(
         guides.editorScreen, guides.joystickEvents,
@@ -130,7 +132,7 @@ fun BoxWithConstraintsScope.ControlEditor(
                         painter = painterResource(R.drawable.ic_settings_filled),
                         text = "Cubernai",
                         onClick = {
-                            Toast.makeText(LocalContext.current, "Cubernai 键位 AI：已为当前布局生成优化建议（本地分析）", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(context, "Cubernai 键位 AI：已为当前布局生成优化建议（本地分析）", Toast.LENGTH_SHORT).show()
                         }
                     )
                     //设置属性
