@@ -137,12 +137,19 @@ section{padding:54px 0}
  .update-body strong,.update-body b{color:var(--txt)}
  .update-body a{color:var(--c1);text-decoration:underline;text-underline-offset:2px}
  .update-body code{background:rgba(124,140,255,.12);padding:1px 5px;border-radius:4px;font-size:11px}
- .release-summary{text-align:center;font-size:12px;color:var(--mut);margin-bottom:18px}
+ .release-summary{text-align:center;font-size:12px;color:var(--mut);margin-bottom:14px}
  .release-summary b{color:var(--c1)}.release-summary a{color:var(--c2)}
- .update-top .date.apk-size{margin-left:0;font-size:10px;color:var(--mut);display:inline-block;margin-top:-6px;margin-bottom:6px}
- .dl-mini{margin-top:14px}
+ .ver-nav{display:flex;gap:7px;flex-wrap:wrap;justify-content:center;margin-bottom:18px}
+ .ver-nav a{font-size:11px;padding:5px 12px;border-radius:999px;border:1px solid var(--line);color:var(--mut);transition:.2s}
+ .ver-nav a:hover{border-color:var(--c1);color:var(--txt)}
+ .ver-nav a.on{color:var(--c2);border-color:rgba(0,229,176,.45);background:rgba(0,229,176,.08)}
+ .rel-meta{display:flex;gap:8px;flex-wrap:wrap;margin:-4px 0 8px}
+ .rel-meta span{font-size:10px;color:var(--mut);border:1px solid var(--line);border-radius:999px;padding:2px 9px}
+ .dl-mini{margin-top:14px;display:flex;gap:9px;flex-wrap:wrap}
  .dl-mini a{display:inline-flex;align-items:center;gap:7px;padding:9px 16px;border-radius:10px;background:linear-gradient(135deg,var(--c1),#8a6cff);color:#fff;font-weight:700;font-size:12px;text-decoration:none;transition:.25s}
- .dl-mini a:hover{transform:translateY(-2px)}.dl-mini svg{width:14px;height:14px}
+ .dl-mini a.ghost{background:var(--panel);border:1px solid var(--line);color:var(--txt)}
+ .dl-mini a:hover{transform:translateY(-2px)}
+ .dl-mini svg{width:14px;height:14px}
  .loading-hint{text-align:center;color:var(--mut);font-size:13px;padding:40px 0}
 .update-top{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:12px}
 .update-top .v{font-size:17px;font-weight:900;color:var(--c1)}
@@ -483,20 +490,32 @@ footer{border-top:1px solid var(--line);padding:38px 0 24px;background:rgba(8,12
   function renderReleases(){
     var list=document.getElementById('releaseList');if(!list)return;
     if(!state.releases.length){list.innerHTML='<div class="loading-hint">暂无公告数据</div>';return}
-    var head='<div class="release-summary">共 <b>'+state.releases.length+'</b> 个版本 · 数据实时同步自 <a href="https://github.com/'+REPO+'/releases" target="_blank" rel="noopener">GitHub Releases</a></div>';
-    list.innerHTML=head+state.releases.map(function(r,i){
+    var totalDl=state.releases.reduce(function(s,r){return s+(r.assets||[]).reduce(function(a,x){return a+(x.download_count||0)},0)},0);
+    var head='<div class="release-summary">共 <b>'+state.releases.length+'</b> 个版本 · 累计下载 <b>'+totalDl+'</b> 次 · 实时同步自 <a href="https://github.com/'+REPO+'/releases" target="_blank" rel="noopener">GitHub Releases</a></div>';
+    var nav='<div class="ver-nav">'+state.releases.map(function(r,i){return '<a href="#rel-'+i+'" data-rel="'+i+'" class="'+(i===0?'on':'')+'">v'+esc(cleanTag(r.tag_name))+'</a>'}).join('')+'</div>';
+    var cards=state.releases.map(function(r,i){
       var tag=cleanTag(r.tag_name);
       var official=!r.prerelease;
       var tagHtml='<span class="tag'+(official?' official':'')+'">'+(official?'正式版':'测试版')+'</span>';
       var apk=(r.assets||[]).filter(function(a){return /\.apk$/i.test(a.name)})[0];
-      var apkInfo=apk?'<span class="date apk-size">'+apk.name+' · '+(apk.size/1048576).toFixed(0)+' MB</span>':'';
+      var dlCount=apk?(apk.download_count||0):0;
+      var meta=[];
+      if(apk)meta.push((apk.size/1048576).toFixed(0)+' MB');
+      if(dlCount)meta.push('下载 '+dlCount+' 次');
+      var apkInfo=meta.length?'<div class="rel-meta">'+meta.map(function(m){return '<span>'+esc(m)+'</span>'}).join('')+'</div>':'';
       var body=md(r.body||'');
-      var link=apk?'<div class="dl-mini"><a href="'+esc(apk.browser_download_url)+'" target="_blank" rel="noopener"><svg><use href="#i-down"/></svg> 下载此版本</a></div>':'';
-      return '<article class="update-card glass">'+
+      /* 正文过短时补充官方说明，避免卡片空荡 */
+      var bare=(r.body||'').trim();
+      var supplement=bare.length<80?'<p style="color:var(--mut)">这是 Cubern Launcher 的一个历史版本。完整更新记录以 <a href="'+esc(r.html_url)+'" target="_blank" rel="noopener">仓库 Release 原文</a> 为准。</p>':'';
+      var link=apk?'<div class="dl-mini"><a href="'+esc(apk.browser_download_url)+'" target="_blank" rel="noopener"><svg><use href="#i-down"/></svg> 下载此版本</a><a href="'+esc(r.html_url)+'" target="_blank" rel="noopener" class="ghost"><svg><use href="#i-link"/></svg> Release 原文</a></div>':'';
+      return '<article class="update-card glass" id="rel-'+i+'">'+
         '<div class="update-top"><span class="v">v'+esc(tag)+'</span>'+tagHtml+(i===0?'<span class="tag official">最新</span>':'')+'<span class="date">'+fmtDate(r.published_at)+'</span></div>'+
         apkInfo+
-        '<div class="update-body">'+(body||'<p style="color:var(--mut)">（该版本暂无详细更新说明）</p>')+link+'</div></article>';
+        '<div class="update-body">'+(body||'')+supplement+link+'</div></article>';
     }).join('');
+    list.innerHTML=head+nav+cards;
+    /* 版本导航点击定位 */
+    list.querySelectorAll('.ver-nav a').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();var el=document.getElementById('rel-'+a.dataset.rel);if(el){var top=el.getBoundingClientRect().top+window.scrollY-80;window.scrollTo({top:top,behavior:'smooth'})}list.querySelectorAll('.ver-nav a').forEach(function(x){x.classList.remove('on')});a.classList.add('on')})});
     /* 历史版本列表同样由 API 渲染（跳过最新版本，已在上方下载区展示） */
     var hl=document.getElementById('historyList');
     if(hl){
