@@ -301,12 +301,8 @@ class SponsorsViewModel : ViewModel() {
         return withContext(Dispatchers.IO) {
             runCatching {
                 withRetry(logTag = "Sponsors", maxRetries = 2) {
-                    val api = GLOBAL_CLIENT.get(SPONSORS_API_URL) {
-                        header("Authorization", "Bearer " + com.cubern.launcher.announcement.RemoteNoticeRepository.publicToken())
-                    }.safeBodyAsJson<GithubContentApi>()
-                    //需要Base64解密
-                    val contentString = decodeBase64(api.content)
-                    GLOBAL_JSON.decodeFromString(MonthlySponsors.serializer(), contentString)
+                    com.cubern.launcher.feature.afdian.AfdianSponsorsApi.fetchMonthlySponsors()
+                        ?: throw IllegalStateException("Afdian sponsors unavailable")
                 }
             }.getOrElse { e ->
                 Logger.warning(TAG, "Failed to fetch monthly sponsors!", e)
