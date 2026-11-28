@@ -1,9 +1,9 @@
 # Cubern Launcher 联机功能用户须知
 
-**版本：v1.2 · 生效日期：2026-11-28**
+**版本：v2.0 · 生效日期：2026-11-28**
 
 ## 一、联机功能说明
-Cubern Launcher 提供基于开源 EasyTier P2P 协议的 Minecraft Java 版联机方案 —— 陶瓦联机。
+Cubern Launcher 提供基于开源 EasyTier P2P 协议的 Minecraft Java 版联机方案 —— 陶瓦联机，并支持游戏内服务器入口。
 
 ## 二、陶瓦联机
 - 通过房间码创建或加入房间，游戏流量在设备间直接传输，不经过本项目服务器。
