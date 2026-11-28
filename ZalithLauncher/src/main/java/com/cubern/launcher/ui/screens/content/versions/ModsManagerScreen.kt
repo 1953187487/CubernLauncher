@@ -155,6 +155,8 @@ import com.cubern.launcher.utils.file.formatFileSize
 import com.cubern.launcher.utils.string.isNotEmptyOrBlank
 import com.cubern.launcher.viewmodel.ErrorViewModel
 import com.cubern.launcher.viewmodel.EventViewModel
+import com.cubern.launcher.feature.modcheck.ModConflictChecker
+import com.cubern.launcher.feature.modcheck.ModConflictDialog
 import com.cubern.launcher.viewmodel.sendKeepScreen
 import com.cubern.launcher.viewmodel.sendToast
 import kotlinx.coroutines.CancellationException
@@ -593,6 +595,8 @@ fun ModsManagerScreen(
     submitError: (ErrorViewModel.ThrowableMessage) -> Unit
 ) {
     val context = LocalContext.current
+    var showConflictDialog by remember { mutableStateOf(false) }
+    var conflicts by remember { mutableStateOf<List<ModConflictChecker.Conflict>>(emptyList()) }
 
     if (!version.isValid()) {
         backToMainScreen()
@@ -746,12 +750,20 @@ fun ModsManagerScreen(
                         viewModel.clearSelected()
                     },
                     swapToDownload = swapToDownload,
+                    onCheckConflicts = {
+                        conflicts = with(kotlinx.coroutines.Dispatchers.IO) { ModConflictChecker.check(modsDir) }
+                        showConflictDialog = true
+                    },
                     refresh = { viewModel.refresh(context) },
                     submitError = submitError,
                     enabled = viewModel.modsState is LoadingState.None,
                 )
 
-                PullToRefreshLayout(
+                if (showConflictDialog) {
+                    ModConflictDialog(conflicts = conflicts, onDismiss = { showConflictDialog = false })
+                }
+
+    PullToRefreshLayout(
                     modifier = Modifier
                         .fillMaxWidth()
                         .weight(1f),
@@ -847,6 +859,7 @@ private fun ModsActionsHeader(
     onSelectAll: () -> Unit,
     onClearModsSelected: () -> Unit,
     swapToDownload: () -> Unit,
+    onCheckConflicts: () -> Unit,
     refresh: () -> Unit,
     submitError: (ErrorViewModel.ThrowableMessage) -> Unit = {},
     inputFieldColor: Color = itemColor(),
@@ -935,6 +948,13 @@ private fun ModsActionsHeader(
                         isAscending = isAscending,
                         onToggleSortOrder = onToggleSortOrder,
                         enabled = enabled,
+                    )
+                }
+
+                IconButton(onClick = onCheckConflicts, enabled = enabled) {
+                    Icon(
+                        painter = painterResource(R.drawable.ic_list_alt_check_outlined),
+                        contentDescription = "检查冲突喵"
                     )
                 }
 
