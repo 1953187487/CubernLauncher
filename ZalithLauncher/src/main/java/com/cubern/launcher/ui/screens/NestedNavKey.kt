@@ -121,6 +121,10 @@ sealed interface NestedNavKey {
             backStack.addIfEmpty(NormalNavKey.SearchShaders)
         }
     }
+    /** Rust 版 Minecraft（Horizon）下载专区 */
+    @Serializable class DownloadRustMc : BackStackNavKey<TitledNavKey>(
+        androidText(R.string.download_category_rust_mc)
+    )
     /** 下载收藏屏幕 */
     @Serializable class DownloadFavorites : BackStackNavKey<TitledNavKey>(
         androidText(R.string.download_category_favorites)
