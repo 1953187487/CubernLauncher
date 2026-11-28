@@ -50,6 +50,7 @@ import com.cubern.launcher.ui.screens.rememberTransitionSpec
 import com.cubern.launcher.utils.network.isUsingMobileData
 import com.cubern.launcher.viewmodel.ErrorViewModel
 import com.cubern.launcher.viewmodel.EventViewModel
+import com.cubern.launcher.viewmodel.sendKeepScreen
 
 @Composable
 fun DownloadModScreen(
@@ -89,6 +90,7 @@ fun DownloadModScreen(
         operation = operation,
         changeOperation = { operation = it },
         doInstall = { classes, version, gameVersions, dependencies ->
+            eventViewModel.sendKeepScreen(true) // 1.0.3: 后台下载保活
             downloadSingleForVersions(
                 version = version,
                 versions = gameVersions,
@@ -100,6 +102,7 @@ fun DownloadModScreen(
                 versions = gameVersions,
                 submitError = submitError
             )
+            eventViewModel.sendKeepScreen(false)
         },
         installedProjects = installedProjects,
         onDependencyClicked = { platform, projectId, classes ->
