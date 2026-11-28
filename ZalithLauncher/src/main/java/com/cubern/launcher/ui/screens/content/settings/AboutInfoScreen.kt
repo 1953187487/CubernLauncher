@@ -162,20 +162,20 @@ fun AboutInfoScreen(
                             }
                         )
 
-                        // 原启动器赞助者
+                        // 本启动器的赞助者
                         ButtonIconItem(
                             icon = painterResource(R.drawable.img_sponsor),
-                            title = "原启动器赞助者",
+                            title = "本启动器的赞助者",
                             text = stringResource(R.string.about_sponsors_summary, launcherName),
                             button = {
                                 Button(onClick = onViewSponsors) { Text(text = stringResource(R.string.generic_view)) }
                             }
                         )
 
-                        // 新启动器赞助者（Cubern）
+                        // Zalith Launcher2 的赞助者
                         ButtonIconItem(
                             icon = painterResource(R.drawable.img_avatar_cubern),
-                            title = "新启动器赞助者",
+                            title = "Zalith Launcher2 的赞助者",
                             text = "感谢在爱发电支持鹙鸟的赞助者",
                             button = {
                                 Button(onClick = { openLink("https://afdian.com/@KZjewnk") }) { Text(text = stringResource(R.string.about_sponsor)) }
