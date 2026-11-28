@@ -165,7 +165,7 @@ private fun TabMenu(
 ) {
     val downloadsList = listOf(
         CategoryItem(backScreenViewModel.downloadGameScreen, { CategoryIcon(R.drawable.ic_sports_esports_outlined, R.string.download_category_game) }, R.string.download_category_game),
-        CategoryItem(backScreenViewModel.downloadRustMcScreen, { CategoryIcon(R.drawable.ic_extension, R.string.download_category_rust_mc) }, R.string.download_category_rust_mc),
+        CategoryItem(backScreenViewModel.downloadRustMcScreen, { CategoryIcon(R.drawable.ic_sports_esports_outlined, R.string.download_category_rust_mc) }, R.string.download_category_rust_mc),
         CategoryItem(backScreenViewModel.downloadModPackScreen, { CategoryIcon(R.drawable.ic_package_2_outlined, R.string.download_category_modpack) }, R.string.download_category_modpack),
         CategoryItem(backScreenViewModel.downloadModScreen, { CategoryIcon(R.drawable.ic_extension_outlined, R.string.download_category_mod) }, R.string.download_category_mod, division = true),
         CategoryItem(backScreenViewModel.downloadResourcePackScreen, { CategoryIcon(R.drawable.ic_format_paint_outlined, R.string.download_category_resource_pack) }, R.string.download_category_resource_pack),
