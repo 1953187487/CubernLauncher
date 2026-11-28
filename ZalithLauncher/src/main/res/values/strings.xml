@@ -3117,4 +3117,5 @@
     <string name="guide_joystick_events_events_text2">If you only want to control the game, just edit the actual key bindings in the \"Key\" section</string>
     <string name="about_cubern_author_title">QunNiao (Cubern Launcher Author)</string>
     <string name="about_cubern_author_text">Author and maintainer of Cubern Launcher</string>
+    <string name="download_category_rust_mc">Rust MC</string>
 </resources>
