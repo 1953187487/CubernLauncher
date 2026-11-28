@@ -109,6 +109,30 @@ class SplashActivity : BaseAppCompatActivity() {
         Logger.warning(TAG, "Failed to load agreement data", it)
     }.getOrNull()
 
+    /** 1.0.2: 从私有公告仓库拉取最新协议写入 filesDir，实现动态更新 */
+    private suspend fun loadRemoteAgreement(): com.cubern.launcher.legal.AvailableAgreement? {
+        val dir = java.io.File(filesDir, "legal").apply { mkdirs() }
+        val docs = listOf(
+            Triple("用户须知", "user_notice.md", "user_notice.md"),
+            Triple("隐私协议", "privacy_policy.md", "privacy_policy.md"),
+            Triple("联机功能用户须知", "multiplayer_notice.md", "multiplayer_notice.md")
+        )
+        val dataList = mutableListOf<com.cubern.launcher.legal.AvailableAgreement.DocumentFile.Data>()
+        for ((title, remoteName, localName) in docs) {
+            val text = RemoteNoticeRepository.fetchFile(remoteName)
+            if (!text.isNullOrBlank()) {
+                val file = java.io.File(dir, localName)
+                file.writeText(text)
+                dataList.add(com.cubern.launcher.legal.AvailableAgreement.DocumentFile.Data(title, file.absolutePath))
+            }
+        }
+        if (dataList.isEmpty()) return null
+        return com.cubern.launcher.legal.AvailableAgreement(
+            version = "1.2-remote",
+            files = listOf(com.cubern.launcher.legal.AvailableAgreement.DocumentFile("global", dataList))
+        )
+    }
+
     private fun requiresAgreementConsent(): Boolean {
         val version = availableAgreement.value?.version ?: return false
         return launcherMMKV().getString(ACCEPTED_AGREEMENT_VERSION_KEY, null) != version
@@ -170,7 +194,7 @@ class SplashActivity : BaseAppCompatActivity() {
                 checkAllTask()
                 // 1.0: 拉取远程公告（私有仓库 + 加密Token），协议内容随 APK 内置 assets
                 val remoteNotice = RemoteNoticeRepository.fetchNotice()
-                val agreement = loadAvailableAgreement()
+                val agreement = loadRemoteAgreement() ?: loadAvailableAgreement()
                 // 若远程协议版本更新，提升本地协议版本以触发重新同意
                 val finalAgreement = if (remoteNotice?.enabled == true && agreement != null) {
                     agreement.copy(version = "1.0-" + (remoteNotice.date.ifBlank { "remote" }))
