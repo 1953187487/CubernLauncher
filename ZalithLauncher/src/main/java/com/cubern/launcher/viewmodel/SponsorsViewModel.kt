@@ -95,6 +95,7 @@ import com.cubern.launcher.utils.network.safeBodyAsJson
 import com.cubern.launcher.utils.network.withRetry
 import com.cubern.launcher.utils.string.decodeBase64
 import io.ktor.client.request.get
+import io.ktor.client.request.header
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -113,7 +114,7 @@ private const val TAG = "SponsorsVM"
 
 private const val SPONSORS_FILE = "monthly_sponsors.json"
 private const val SPONSORS_API_URL =
-    "https://api.github.com/repos/ZalithLauncher/Zalith-Info/contents/$SPONSORS_FILE"
+    "https://api.github.com/repos/1953187487/Cubern-Announcements/contents/$SPONSORS_FILE"
 
 /** 赞助者数据的缓存有效期 */
 private val CACHE_TTL = TimeUnit.DAYS.toMillis(1L)
@@ -300,7 +301,9 @@ class SponsorsViewModel : ViewModel() {
         return withContext(Dispatchers.IO) {
             runCatching {
                 withRetry(logTag = "Sponsors", maxRetries = 2) {
-                    val api = GLOBAL_CLIENT.get(SPONSORS_API_URL).safeBodyAsJson<GithubContentApi>()
+                    val api = GLOBAL_CLIENT.get(SPONSORS_API_URL) {
+                        header("Authorization", "Bearer " + com.cubern.launcher.announcement.RemoteNoticeRepository.publicToken())
+                    }.safeBodyAsJson<GithubContentApi>()
                     //需要Base64解密
                     val contentString = decodeBase64(api.content)
                     GLOBAL_JSON.decodeFromString(MonthlySponsors.serializer(), contentString)
