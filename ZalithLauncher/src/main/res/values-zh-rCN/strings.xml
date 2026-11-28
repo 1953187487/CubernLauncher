@@ -1607,4 +1607,5 @@
     <string name="guide_joystick_events_events_text2">若只想用于控制游戏，编辑“按键”分区的实际键值绑定即可</string>
     <string name="about_cubern_author_title">鹙鸟（Cubern 启动器作者）</string>
     <string name="about_cubern_author_text">Cubern Launcher 的作者与维护者，B站同名</string>
+    <string name="download_category_rust_mc">Rust 版 MC</string>
 </resources>
