@@ -605,6 +605,5 @@ private fun LibraryInfoItem(
             }
         }
     }
-    if (showAfdianSponsors.value) { AfdianSponsorsDialog(onDismiss = { showAfdianSponsors.value = false }) }
 
 }
