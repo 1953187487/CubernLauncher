@@ -48,7 +48,7 @@ fun DownloadRustMcScreen(
         Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(16.dp)) {
             Text("Rust 版 Minecraft", style = MaterialTheme.typography.headlineSmall, fontWeight = FontWeight.Bold)
             Spacer(Modifier.height(6.dp))
-            Text("Horizon 是用 Rust 从零重写的 Minecraft Java 26.3。它不含游戏本体，需要你已安装官方 26.3 游戏文件。", style = MaterialTheme.typography.bodyMedium, color = Color.Gray)
+            Text("Horus 版 Minecraft Java 26.3（Horizon Android）由 Rust + wgpu 编写。安装 APK 后在 Horizon 内选择「Download Minecraft 26.3」，它会从 Mojang 官方源下载约 500MB 游戏资源（含校验），无需电脑准备。", style = MaterialTheme.typography.bodyMedium, color = Color.Gray)
             Spacer(Modifier.height(16.dp))
 
             Text("第一步：安装游戏版本", style = MaterialTheme.typography.titleMedium)
@@ -71,7 +71,7 @@ fun DownloadRustMcScreen(
             }, Modifier.fillMaxWidth()) { Text("打开 Horizon Android 运行库下载") }
             Spacer(Modifier.height(16.dp))
 
-            Text("注意：本项目与 Mojang / Microsoft / Horizon 官方无隶属关系，请自备正版游戏。", style = MaterialTheme.typography.bodySmall, color = Color(0xFFFF9800))
+            Text("注意：需 Android 9+ 与 Vulkan 1.0+。多人服务器需正版账号。本项目与 Mojang / Microsoft / Horizon 无隶属关系。", style = MaterialTheme.typography.bodySmall, color = Color(0xFFFF9800))
         }
     }
 }
