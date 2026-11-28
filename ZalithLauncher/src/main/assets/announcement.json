@@ -1,8 +1,8 @@
 {
-  "version": 4,
+  "version": 5,
   "enabled": true,
   "title": "Cubern Launcher 1.0.3 更新公告",
-  "content": "1.0.3 全新升级：引入 Verse-App Rust 版 Minecraft、酷狗音乐概念版播放器、Cubernai 键位 AI；彻底升级协议至 v2.0；修复检查更新与赞助者问题；图标换回原版。",
+  "content": "1.0.3 修复检查更新与赞助者问题；Rust 版 Minecraft 改用 Horizon Android 官方源，可直接在游戏内下载真正的 26.3 游戏版本；已移除酷狗音乐相关功能。协议升级至 v2.1。",
   "date": "2026-11-28",
   "url": ""
 }
