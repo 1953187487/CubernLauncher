@@ -58,6 +58,7 @@ import com.cubern.launcher.ui.screens.NestedNavKey
 import com.cubern.launcher.ui.screens.NormalNavKey
 import com.cubern.launcher.ui.screens.TitledNavKey
 import com.cubern.launcher.ui.screens.content.download.DownloadFavoritesScreen
+import com.cubern.launcher.ui.screens.content.download.DownloadRustMcScreen
 import com.cubern.launcher.ui.screens.content.download.DownloadGameScreen
 import com.cubern.launcher.ui.screens.content.download.DownloadModPackScreen
 import com.cubern.launcher.ui.screens.content.download.DownloadModScreen
@@ -164,6 +165,7 @@ private fun TabMenu(
 ) {
     val downloadsList = listOf(
         CategoryItem(backScreenViewModel.downloadGameScreen, { CategoryIcon(R.drawable.ic_sports_esports_outlined, R.string.download_category_game) }, R.string.download_category_game),
+        CategoryItem(backScreenViewModel.downloadRustMcScreen, { CategoryIcon(R.drawable.ic_terminal, R.string.download_category_rust_mc) }, R.string.download_category_rust_mc),
         CategoryItem(backScreenViewModel.downloadModPackScreen, { CategoryIcon(R.drawable.ic_package_2_outlined, R.string.download_category_modpack) }, R.string.download_category_modpack),
         CategoryItem(backScreenViewModel.downloadModScreen, { CategoryIcon(R.drawable.ic_extension_outlined, R.string.download_category_mod) }, R.string.download_category_mod, division = true),
         CategoryItem(backScreenViewModel.downloadResourcePackScreen, { CategoryIcon(R.drawable.ic_format_paint_outlined, R.string.download_category_resource_pack) }, R.string.download_category_resource_pack),
@@ -244,6 +246,15 @@ private fun NavigationUI(
             transitionSpec = rememberTransitionSpec(),
             popTransitionSpec = rememberTransitionSpec(),
             entryProvider = entryProvider {
+                entry<NestedNavKey.DownloadRustMc> { key ->
+                    DownloadRustMcScreen(
+                        key = key,
+                        mainScreenKey = backScreenViewModel.mainScreen.currentKey,
+                        downloadScreenKey = backScreenViewModel.downloadScreen.currentKey,
+                        backScreenViewModel = backScreenViewModel
+                    )
+                }
+
                 entry<NestedNavKey.DownloadGame> { key ->
                     DownloadGameScreen(
                         key = key,
