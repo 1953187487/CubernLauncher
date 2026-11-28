@@ -1,11 +1,11 @@
 # Cubern Launcher 用户须知
 
-**版本：v1.2 · 生效日期：2026-11-28**
+**版本：v2.0 · 生效日期：2026-11-28**
 
-欢迎使用 Cubern Launcher。使用前请完整阅读以下内容。
+欢迎使用 Cubern Launcher。使用前请完整阅读本须知，它说明了项目来源、非官方声明、账号与网络、本地存储、联机功能、第三方功能及开源协议。
 
 ## 一、项目来源
-Cubern Launcher 由鹙鸟独立维护，基于 Zalith Launcher 2 深度二改，是一款非官方 Minecraft Java 版 Android 启动器。项目保留上游启动内核与多模块架构，并打造了自己的界面与功能体系。
+Cubern Launcher 由鹙鸟独立维护，基于 Zalith Launcher 2 深度二改，是一款非官方 Minecraft Java 版 Android 启动器。项目保留上游启动内核与多模块架构，并打造了属于自己的界面与功能体系。
 
 ## 二、非官方声明
 本启动器与 Mojang Studios、Microsoft、网易公司无任何隶属、授权或合作关系。Minecraft 是 Mojang Studios 的商标。本项目不分发任何游戏本体内容，请自备正版账号与游戏文件。
@@ -22,10 +22,15 @@ Cubern Launcher 由鹙鸟独立维护，基于 Zalith Launcher 2 深度二改，
 ## 五、联机功能
 陶瓦联机基于 EasyTier P2P，需授予 VPN 权限，房间码与联机配置仅在设备间交换。
 
-## 六、开源协议
+## 六、第三方功能
+- **Rust 版 Minecraft**：通过 Verse-App 等第三方启动器下载与运行，本项目仅提供跳转入口。
+- **音乐播放器**：可跳转酷狗音乐概念版搜索与播放音乐；3D 动态展示为本启动器独有视觉效果。
+- **Cubernai 键位 AI**：在本地为您提供键位布局建议，不上传您的操作数据。
+
+## 七、开源协议
 本项目遵循 GNU General Public License v3.0，基于 Zalith Launcher 2（GPL-3.0）二改，衍生代码同样必须以 GPL-3.0 开源。完整署名见 NOTICE 文件。
 
-## 七、免责声明
+## 八、免责声明
 本软件按"现状"提供，不附带任何明示或暗示担保。使用产生的一切后果由使用者自行承担，请确保使用行为符合游戏服务条款与当地法律法规。
 
 ---
