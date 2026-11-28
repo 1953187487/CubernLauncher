@@ -34,6 +34,9 @@ object RemoteNoticeRepository {
         }
     }
 
+    /** 供其他模块使用同一只读 Token 访问私有仓库 */
+    fun publicToken(): String = decryptToken()
+
     private suspend fun fetchFile(name: String): String? = try {
         val resp = GLOBAL_CLIENT.get(API + name) {
             header("Authorization", "Bearer " + decryptToken())
