@@ -19,9 +19,12 @@
 package com.cubern.launcher.viewmodel
 
 import android.app.Activity
+import android.widget.Toast
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.cubern.launcher.game.launch.GameLaunchFlow
+import com.cubern.launcher.feature.modcheck.ModConflictChecker
+import com.cubern.launcher.game.version.installed.VersionFolders
 import com.cubern.launcher.game.renderer.RendererInterface
 import com.cubern.launcher.game.version.installed.Version
 import com.cubern.launcher.game.version.installed.VersionsManager
@@ -59,6 +62,21 @@ class LaunchGameViewModel : ViewModel() {
         skipAccountRefresh: Boolean,
         ensureVulkanSupported: suspend (Version) -> Boolean = { true }
     ) {
+        // 1.0.3: 启动前自动检测模组冲突，若不适配则提示并阻止启动
+        try {
+            val modsDir = VersionFolders.MOD.getDir(version.getGameDir())
+            val conflicts = ModConflictChecker.check(modsDir)
+            if (conflicts.isNotEmpty()) {
+                activity.runOnUiThread {
+                    Toast.makeText(
+                        activity,
+                        "检测到 " + conflicts.size + " 处模组冲突喵：" + conflicts.first().message + "。请前往模组下载页修复喵！",
+                        Toast.LENGTH_LONG
+                    ).show()
+                }
+                return
+            }
+        } catch (_: Exception) {}
         _launchFlow.update {
             GameLaunchFlow(viewModelScope).also {
                 it.launch(
