@@ -123,16 +123,27 @@ section{padding:54px 0}
 .update-card::before{content:"";position:absolute;left:-28px;top:26px;width:12px;height:12px;border-radius:50%;background:var(--c1);box-shadow:0 0 0 4px var(--bg2),0 0 14px var(--c1)}
 .update-card:first-child::before{background:var(--c2);box-shadow:0 0 0 4px var(--bg2),0 0 14px var(--c2)}
 .update-top .tag.official{color:var(--c2);border-color:rgba(0,229,176,.4);background:rgba(0,229,176,.08)}
-.update-body{font-size:13px;color:var(--mut);line-height:1.75}
-.update-body p{margin:6px 0}
-.update-body h3,.update-body h4{color:var(--txt);font-size:13px;font-weight:800;margin:12px 0 5px}
-.update-body ul{list-style:none;padding:0}
-.update-body li{padding:3px 0 3px 18px;position:relative}
-.update-body li::before{content:"";position:absolute;left:3px;top:12px;width:5px;height:5px;border-radius:50%;background:var(--c2)}
-.update-body strong,.update-body b{color:var(--txt)}
-.update-body a{color:var(--c1);text-decoration:underline;text-underline-offset:2px}
-.update-body code{background:rgba(124,140,255,.12);padding:1px 5px;border-radius:4px;font-size:11px}
-.loading-hint{text-align:center;color:var(--mut);font-size:13px;padding:40px 0}
+ .update-body{font-size:13px;color:var(--mut);line-height:1.75}
+ .update-body p{margin:6px 0;font-size:13px;line-height:1.8}
+ .update-body h2{color:var(--txt);font-size:15px;font-weight:900;margin:16px 0 7px}
+ .update-body h3,.update-body h4{color:var(--txt);font-size:14px;font-weight:800;margin:14px 0 6px;padding-left:10px;border-left:2px solid var(--c1)}
+ .update-body ul,.update-body ol{list-style:none;padding:0}
+ .update-body li{padding:4px 0 4px 20px;position:relative;line-height:1.7}
+ .update-body li::before{content:"";position:absolute;left:3px;top:14px;width:5px;height:5px;border-radius:50%;background:var(--c2)}
+ .update-body ol li::before{background:var(--c1)}
+ .update-body blockquote{margin:10px 0;padding:8px 14px;border-left:3px solid var(--c2);background:rgba(0,229,176,.06);border-radius:0 8px 8px 0;font-size:12.5px;color:var(--mut)}
+ .update-body hr{border:0;border-top:1px solid var(--line);margin:14px 0}
+ .update-body em{color:var(--mut)}
+ .update-body strong,.update-body b{color:var(--txt)}
+ .update-body a{color:var(--c1);text-decoration:underline;text-underline-offset:2px}
+ .update-body code{background:rgba(124,140,255,.12);padding:1px 5px;border-radius:4px;font-size:11px}
+ .release-summary{text-align:center;font-size:12px;color:var(--mut);margin-bottom:18px}
+ .release-summary b{color:var(--c1)}.release-summary a{color:var(--c2)}
+ .update-top .date.apk-size{margin-left:0;font-size:10px;color:var(--mut);display:inline-block;margin-top:-6px;margin-bottom:6px}
+ .dl-mini{margin-top:14px}
+ .dl-mini a{display:inline-flex;align-items:center;gap:7px;padding:9px 16px;border-radius:10px;background:linear-gradient(135deg,var(--c1),#8a6cff);color:#fff;font-weight:700;font-size:12px;text-decoration:none;transition:.25s}
+ .dl-mini a:hover{transform:translateY(-2px)}.dl-mini svg{width:14px;height:14px}
+ .loading-hint{text-align:center;color:var(--mut);font-size:13px;padding:40px 0}
 .update-top{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:12px}
 .update-top .v{font-size:17px;font-weight:900;color:var(--c1)}
 .update-top .tag{font-size:10px;padding:3px 9px;border-radius:999px;border:1px solid rgba(255,159,67,.4);color:var(--warn);background:rgba(255,159,67,.08)}
@@ -433,33 +444,38 @@ footer{border-top:1px solid var(--line);padding:38px 0 24px;background:rgba(8,12
   /* ===== 动态数据层：从 GitHub Releases 实时同步版本与公告 =====
      拉取后写入 localStorage 缓存；API 失败时用缓存，绝不空白。 */
   var REPO='1953187487/CubernLauncher';
-  var API='https://api.github.com/repos/'+REPO+'/releases?per_page=8';
+  var API='https://api.github.com/repos/'+REPO+'/releases?per_page=20';
   var CACHE_KEY='cubern-releases-v1';
   var state={releases:[],latest:null,apk:''};
 
   function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
-  /* 极简 Markdown -> HTML（标题/列表/加粗/引用/链接/代码，够 Release 正文用） */
+  /* Markdown -> HTML：标题分级 / 有序无序列表 / 引用 / 分隔线 / 加粗 / 行内码 / 链接 / 裸URL */
   function md(src){
     if(!src)return '';
-    var lines=String(src).split(/\r?\n/),out=[],inUl=false;
-    function closeUl(){if(inUl){out.push('</ul>');inUl=false}}
+    var lines=String(src).split(/\r?\n/),out=[],listType='';
+    function closeList(){if(listType){out.push('</'+listType+'>');listType=''}}
     lines.forEach(function(l){
       var t=l.trim();
-      if(!t){closeUl();return}
-      if(/^###\s/.test(t)){closeUl();out.push('<h4>'+inline(t.replace(/^###\s+/,''))+'</h4>');return}
-      if(/^##\s/.test(t)){closeUl();out.push('<h4>'+inline(t.replace(/^##\s+/,''))+'</h4>');return}
-      if(/^#\s/.test(t)){closeUl();return}
-      if(/^[-*]\s/.test(t)){if(!inUl){out.push('<ul>');inUl=true}out.push('<li>'+inline(t.replace(/^[-*]\s+/,''))+'</li>');return}
-      if(/^>\s?/.test(t)){closeUl();out.push('<p><em>'+inline(t.replace(/^>\s?/,''))+'</em></p>');return}
-      closeUl();out.push('<p>'+inline(t)+'</p>');
+      if(!t){closeList();return}
+      if(/^---+$/.test(t)||/^\*\*\*+$/.test(t)){closeList();out.push('<hr>');return}
+      var h=t.match(/^(#{1,6})\s+(.*)$/);
+      if(h){closeList();var lv=Math.min(h[1].length+1,6);out.push('<h'+lv+'>'+inline(h[2])+'</h'+lv+'>');return}
+      if(/^>\s?/.test(t)){closeList();out.push('<blockquote>'+inline(t.replace(/^>\s?/,''))+'</blockquote>');return}
+      var ol=t.match(/^\d+[.)]\s+(.*)$/);
+      if(ol){if(listType!=='ol'){closeList();out.push('<ol>');listType='ol'}out.push('<li>'+inline(ol[1])+'</li>');return}
+      var ul=t.match(/^[-*+]\s+(.*)$/);
+      if(ul){if(listType!=='ul'){closeList();out.push('<ul>');listType='ul'}out.push('<li>'+inline(ul[1])+'</li>');return}
+      closeList();out.push('<p>'+inline(t)+'</p>');
     });
-    closeUl();return out.join('');
+    closeList();return out.join('');
   }
   function inline(s){
     return esc(s)
       .replace(/\*\*([^*]+)\*\*/g,'<b>$1</b>')
+      .replace(/(^|[^*])\*([^*]+)\*/g,'$1<em>$2</em>')
       .replace(/`([^`]+)`/g,'<code>$1</code>')
-      .replace(/\[([^\]]+)\]\((https?:[^)]+)\)/g,'<a href="$2" target="_blank" rel="noopener">$1</a>');
+      .replace(/\[([^\]]+)\]\((https?:[^)]+)\)/g,'<a href="$2" target="_blank" rel="noopener">$1</a>')
+      .replace(/(https?:\/\/[^\s<]+)/g,'<a href="$1" target="_blank" rel="noopener">$1</a>');
   }
   function fmtDate(d){try{var x=new Date(d);return x.getFullYear()+'-'+String(x.getMonth()+1).padStart(2,'0')+'-'+String(x.getDate()).padStart(2,'0')}catch(e){return ''}}
   function cleanTag(tag){return String(tag||'').replace(/^v/i,'')}
@@ -467,16 +483,19 @@ footer{border-top:1px solid var(--line);padding:38px 0 24px;background:rgba(8,12
   function renderReleases(){
     var list=document.getElementById('releaseList');if(!list)return;
     if(!state.releases.length){list.innerHTML='<div class="loading-hint">暂无公告数据</div>';return}
-    list.innerHTML=state.releases.map(function(r,i){
+    var head='<div class="release-summary">共 <b>'+state.releases.length+'</b> 个版本 · 数据实时同步自 <a href="https://github.com/'+REPO+'/releases" target="_blank" rel="noopener">GitHub Releases</a></div>';
+    list.innerHTML=head+state.releases.map(function(r,i){
       var tag=cleanTag(r.tag_name);
       var official=!r.prerelease;
       var tagHtml='<span class="tag'+(official?' official':'')+'">'+(official?'正式版':'测试版')+'</span>';
-      var body=md(r.body||'');
       var apk=(r.assets||[]).filter(function(a){return /\.apk$/i.test(a.name)})[0];
-      var link=apk?'<p style="margin-top:10px"><a href="'+esc(apk.browser_download_url)+'" target="_blank" rel="noopener">⬇ 下载 '+esc(apk.name)+'</a></p>':'';
+      var apkInfo=apk?'<span class="date apk-size">'+apk.name+' · '+(apk.size/1048576).toFixed(0)+' MB</span>':'';
+      var body=md(r.body||'');
+      var link=apk?'<div class="dl-mini"><a href="'+esc(apk.browser_download_url)+'" target="_blank" rel="noopener"><svg><use href="#i-down"/></svg> 下载此版本</a></div>':'';
       return '<article class="update-card glass">'+
-        '<div class="update-top"><span class="v">v'+esc(tag)+'</span>'+tagHtml+'<span class="date">'+fmtDate(r.published_at)+'</span></div>'+
-        '<div class="update-body">'+body+link+'</div></article>';
+        '<div class="update-top"><span class="v">v'+esc(tag)+'</span>'+tagHtml+(i===0?'<span class="tag official">最新</span>':'')+'<span class="date">'+fmtDate(r.published_at)+'</span></div>'+
+        apkInfo+
+        '<div class="update-body">'+(body||'<p style="color:var(--mut)">（该版本暂无详细更新说明）</p>')+link+'</div></article>';
     }).join('');
     /* 历史版本列表同样由 API 渲染（跳过最新版本，已在上方下载区展示） */
     var hl=document.getElementById('historyList');
