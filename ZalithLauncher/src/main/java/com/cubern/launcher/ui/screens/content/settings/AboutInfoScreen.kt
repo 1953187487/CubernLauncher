@@ -55,6 +55,11 @@ import coil3.request.ImageRequest
 import com.cubern.launcher.BuildConfig
 import com.cubern.launcher.BuildKeys
 import com.cubern.launcher.R
+import com.cubern.launcher.feature.afdian.AfdianSponsorsDialog
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import com.cubern.launcher.game.plugin.ApkPlugin
 import com.cubern.launcher.game.plugin.PluginLoader
 import com.cubern.launcher.game.plugin.appCacheIcon
@@ -89,6 +94,8 @@ fun AboutInfoScreen(
     openLicense: (raw: Int) -> Unit,
     openLink: (url: String) -> Unit
 ) {
+    var showAfdianSponsors by remember { mutableStateOf(false) }
+
     BaseScreen(
         Triple(key, mainScreenKey, false),
         Triple(NormalNavKey.Settings.AboutInfo, settingsScreenKey, false)
@@ -168,7 +175,7 @@ fun AboutInfoScreen(
                             title = "本启动器的赞助者",
                             text = stringResource(R.string.about_sponsors_summary, launcherName),
                             button = {
-                                Button(onClick = onViewSponsors) { Text(text = stringResource(R.string.generic_view)) }
+                                Button(onClick = { showAfdianSponsors = true }) { Text(text = stringResource(R.string.generic_view)) }
                             }
                         )
 
@@ -178,7 +185,7 @@ fun AboutInfoScreen(
                             title = "Zalith Launcher2 的赞助者",
                             text = "感谢在爱发电支持鹙鸟的赞助者",
                             button = {
-                                Button(onClick = { openLink("https://afdian.com/@KZjewnk") }) { Text(text = stringResource(R.string.about_sponsor)) }
+                                Button(onClick = onViewSponsors) { Text(text = stringResource(R.string.generic_view)) }
                             }
                         )
 
@@ -599,4 +606,6 @@ private fun LibraryInfoItem(
             }
         }
     }
+    if (showAfdianSponsors) { AfdianSponsorsDialog(onDismiss = { showAfdianSponsors = false }) }
+
 }
