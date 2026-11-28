@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="generic_cancel">取消</string>
+    <string name="generic_cancel">不要喵</string>
     <string name="generic_confirm">确认</string>
     <string name="generic_error">错误</string>
     <string name="generic_tip">提示</string>
@@ -14,11 +14,11 @@
     <string name="generic_copy">复制</string>
     <string name="generic_paste">粘贴</string>
     <string name="generic_more">更多</string>
-    <string name="generic_setting">设置</string>
+    <string name="generic_setting">设置喵</string>
     <string name="generic_expand">展开</string>
     <string name="generic_collapse">收起</string>
     <string name="generic_main_menu">主菜单</string>
-    <string name="generic_download">下载</string>
+    <string name="generic_download">下载中心喵</string>
     <string name="generic_done">完成</string>
     <string name="generic_close">关闭</string>
     <string name="generic_clear">清除</string>
