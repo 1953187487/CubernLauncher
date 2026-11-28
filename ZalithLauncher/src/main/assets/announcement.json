@@ -1,8 +1,8 @@
 {
-  "version": 3,
+  "version": 4,
   "enabled": true,
-  "title": "Cubern Launcher 1.0.2 更新公告",
-  "content": "本版本新增 Rust 版 Minecraft 专区、游戏服务器功能、模组下载入口，升级协议至 v1.2 并新增主页透明公告栏。欢迎体验并反馈！",
+  "title": "Cubern Launcher 1.0.3 更新公告",
+  "content": "1.0.3 全新升级：引入 Verse-App Rust 版 Minecraft、酷狗音乐概念版播放器、Cubernai 键位 AI；彻底升级协议至 v2.0；修复检查更新与赞助者问题；图标换回原版。",
   "date": "2026-11-28",
   "url": ""
 }
